@@ -32,6 +32,7 @@ namespace SmoothTranscode
     public partial class ProgressWindow : Form
     {
         private ffmpeg ffmpegConverter = new ffmpeg();
+        private bool ended = false;
 
         public ProgressWindow()
         {
@@ -51,11 +52,22 @@ namespace SmoothTranscode
 
         private void ProgressWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-            ffmpegConverter.CancelConversion();
+            if (!ended)
+            {
+                if (MessageBox.Show("Are you sure you want to cancel this conversion?", "Cancel Conversion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                    e.Cancel = true;
+                else
+                {
+                    ffmpegConverter.CancelConversion();
+                    e.Cancel = true;
+                }
+            }
         }
 
-        private void ConversionEnded(object sender, System.EventArgs e)
+        private void ConversionEnded(object sender, EventArgs e)
         {
+            ended = true;
+            ffmpegConverter.ConversionEnded -= new EventHandler(ConversionEnded);
             this.Close();
         }
     }

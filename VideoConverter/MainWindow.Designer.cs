@@ -202,7 +202,7 @@
             this.groupBox1.Size = new System.Drawing.Size(547, 48);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Input Video File";
+            this.groupBox1.Text = "Input File";
             // 
             // inputButton
             // 
@@ -916,7 +916,7 @@
             this.groupBox19.Size = new System.Drawing.Size(548, 47);
             this.groupBox19.TabIndex = 0;
             this.groupBox19.TabStop = false;
-            this.groupBox19.Text = "Output Video File";
+            this.groupBox19.Text = "Output File";
             // 
             // outputButton
             // 

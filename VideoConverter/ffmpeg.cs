@@ -93,21 +93,13 @@ namespace SmoothTranscode
 
         public void CancelConversion()
         {
-            if (!ffmpegProcess.HasExited)
-            {
-                ffmpegProcess.Kill();
-            }
+            ffmpegProcess.Kill();
         }
 
-        protected virtual void OnProcessExit(EventArgs e)
+        protected virtual void ffmpegProcess_Exited(object sender, EventArgs e)
         {
             if (ConversionEnded != null)
                 ConversionEnded(this, e);
-        }
-
-        private void ffmpegProcess_Exited(object sender, System.EventArgs e)
-        {
-            OnProcessExit(new EventArgs());
         }
     }
 }

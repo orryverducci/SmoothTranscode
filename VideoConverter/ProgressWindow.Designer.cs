@@ -67,7 +67,6 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Conversion in Progress";
-            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProgressWindow_FormClosing);
             this.Load += new System.EventHandler(this.ProgressWindow_Load);
             this.ResumeLayout(false);
