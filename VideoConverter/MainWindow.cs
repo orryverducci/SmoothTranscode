@@ -278,5 +278,23 @@ namespace SmoothTranscode
             progressWindow.ShowDialog();
         }
         #endregion
+
+        private void MainWindow_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+
+            foreach (string file in files)
+            {
+                inputTextBox.Text = file;
+            }  
+        }
+
+        private void MainWindow_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop, false) == true)
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+        }
     }
 }
