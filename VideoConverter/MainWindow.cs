@@ -32,7 +32,6 @@ namespace SmoothTranscode
 {
     public partial class MainWindow : Form
     {
-        private string InputFile;
         private string OutputFile;
         private string Video = String.Empty;
         private string Audio = String.Empty;
@@ -63,14 +62,10 @@ namespace SmoothTranscode
         #region Input Video Tab
         private void inputButton_Click(object sender, EventArgs e)
         {
-            inputFileDialog.Title = "Select Video File to Convert";
-            inputFileDialog.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            inputFileDialog.FileName = "";
-            inputFileDialog.Filter = "MPEG Video (*.mpg;*.mpeg;*.ps;*.ts)|*.mpg;*.mpeg*.ps;*.ts|MPEG-4 Video (*.mp4)|*.mp4|Windows Media Video (*.wmv,*.asf)|*.wmv,*.asf|Microsoft Recorded TV Show (*.dvr-ms)|*.dvr-ms|Windows Video (*.avi)|*.avi|Flash Video (*.flv)|*.flv|DivX (*.divx)|*.divx|XviD (*.xvid)|*.xvid|Real Media (*.rm)|*.rm|Quicktime Video (*.mov)|*.mov|Mobile Video (*.3gp;*.3g2)|*.3gp;*.3g2|Nullsoft Video (*.nsv)|*.nsv|Motion JPEG (*.mjp;*.mjpg)|*.mjp;*.mjpg|Matroska (*.mkv;*.mka;*.mks)|*.mkv;*.mka;*.mks|NUT Video (*.nut)|*.nut|TechnoTrend PVA (*.pva)|*.pva|Mimic MSN/WLM Webcam (*.cam)|*.cam|Electronic Arts Format (*.cmv;*.dct;*.snd;*.tgi;*.tgv;*.tgq;*.wve;*.uv;*.uv2;*.mad;*.vp6)|*.cmv;*.dct;*.snd;*.tgi;*.tgv;*.tgq;*.wve;*.uv;*.uv2;*.mad;*.vp6|4X Technologies (*.4xm)|*.4xm|Playstation STR (*.str)|*.str|Nintendo Gamecube THP (*.thp)|*.thp|Smacker Video (*.smk)|*.vqa|Id RoQ (*.roq)|*.roq|Interplay MVE (*.mve)|*.mve|Sega FILM (*.cpk;*.cak;*.film)|*.cpk;*.cak;*.film|Westwood Studios VQA (*.vqa)|*.vqa|Id Cinematic (*.cin)|*.cin|FLIC Video (*.fli;*.flc)|*.fli;*.flc|Sierra Video and Music Data (*.vmd)|*.vmd|Sierra Online (*.sol)|*.sol|American Laser Games MM (*.mm)|*.mm|AVS Video (*.avs)|*.avs|Tiertex SEQ (*.seq)|*.seq|DXA Video (*.dxa)|*.dxa|Interplay C93 (*.c93)|*.c93|Bethsoft VID (*.vid)|*.vid|Beam SIFF (*.vb;*.son)|*.vb;*.son|RL2 Video (*.rl2)|*.rl2|Interchange File Format (*.8svx;*.16sv;*ilbm;*.anim)|*.8svx;*.16sv;*ilbm;*.anim|General eXchange Format (*.gxf)|*.gxf|Material eXchange Format (*.mxf)|*.mxf|Any file|*.*";
+            inputFileDialog.Filter = "All Compatible Formats|*.mpg;*.mpeg;*.ps;*.ts;*.mp4;*.m4v;*.mp3;*.aac;*.m4a;*.m4b;*.wmv;*.wma;*.asf;*.webm;*.mkv;*.mka;*.mks;*.ogv;*.oga;*.ogx;*.ogg;*.spx;*.flac;*.dvr-ms;*.wtv;*.avi;*.flv;*.divx;*.xvid;*.rm;*.ra;*.rv;*.ram;*.mov;*.3gp;*.3g2;*.avs;*.nsv;*.mjp;*.mjpg;*.gfx;*.mfx|MPEG Video (*.mpg; *.mpeg; *.ps; *.ts)|*.mpg;*.mpeg;*.ps;*.ts|MPEG-4 Video (*.mp4; *.m4v)|*.mp4;*.m4v|MP3 Audio (*.mp3)|*.mp3|MP4/AAC Audio (*.aac; *.m4a; *.m4b)|*.aac;*.m4a;*.m4b|Windows Media (*.wmv; *.wma; *.asf)|*.wmv;*.wma;*.asf|WebM (*.webm)|*.webm|Matroska (*.mkv; *.mka; *.mks)|*.mkv;*.mka;*.mks|Ogg (*.ogv; *.oga; *.ogx; *.ogg; *.spx)|*.ogv;*.oga;*.ogx;*.ogg;*.spx|Flac Audio (*.flac)|*.flac|Microsoft Recorded TV Show (*.dvr-ms; *.wtv)|*.dvr-ms,*.wtv|Windows Video (*.avi)|*.avi|Flash Video (*.flv)|*.flv|DivX (*.divx)|*.divx|XviD (*.xvid)|*.xvid|Real Media (*.rm; *.ra; *.rv; *.ram)|*.rm;*.ra;*.rv;*.ram|Quicktime Video (*.mov)|*.mov|Mobile Video (*.3gp; *.3g2)|*.3gp;*.3g2|AVISynth (*.avs)|*.avs|Nullsoft Video (*.nsv)|*.nsv|Motion JPEG (*.mjp; *.mjpg)|*.mjp;*.mjpg|General eXchange Format (*.gxf)|*.gxf|Material eXchange Format (*.mxf)|*.mxf|Any file|*.*";
             if (inputFileDialog.ShowDialog() != DialogResult.Cancel)
             {
-                InputFile = inputFileDialog.FileName;
-                inputTextBox.Text = InputFile;
+                inputTextBox.Text = inputFileDialog.FileName;
             }
         }
         #endregion
@@ -185,9 +180,7 @@ namespace SmoothTranscode
         #region Output Setup Tab
         private void outputButton_Click(object sender, EventArgs e)
         {
-            outputFileDialog.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            outputFileDialog.FileName = "";
-            outputFileDialog.Filter = "MPEG Video (*.mpg;*.mpeg;*.ps)|*.mpg;*.mpeg;*.ps|MPEG-4 Video (*.mp4)|*.mp4|Windows Media Video (*.wmv,*.asf)|*.wmv,*.asf|WebM (*.webm)|*.webm|Matroska (*.mkv;*.mka;*.mks)|*.mkv;*.mka;*.mks|Windows Video (*.avi)|*.avi|Flash Video (*.flv)|*.flv|DivX (*.divx)|*.divx|XviD (*.xvid)|*.xvid|Real Media (*.rm)|*.rm|Quicktime Video (*.mov)|*.mov|Mobile Video (*.3gp;*.3g2)|*.3gp;*.3g2|Motion JPEG (*.mjp;*.mjpg)|*.mjp;*.mjpg|Any file|*.*";
+            outputFileDialog.Filter = "MPEG Video (*.mpg; *.mpeg; *.ps)|*.mpg;*.mpeg;*.ps|MPEG-4 Video (*.mp4; *.m4v)|*.mp4;*.m4v|MP3 Audio (*.mp3)|*.mp3|MP4/AAC Audio (*.aac; *.m4a)|*.aac;*.m4a|Windows Media (*.wmv; *.wma; *.asf)|*.wmv;*.wma;*.asf|WebM (*.webm)|*.webm|Matroska (*.mkv; *.mka; *.mks)|*.mkv;*.mka;*.mks|Ogg (*.ogv; *.oga; *.ogx; *.ogg; *.spx)|*.ogv;*.oga;*.ogx;*.ogg;*.spx|Flac Audio (*.flac)|*.flac|Windows Video (*.avi)|*.avi|Flash Video (*.flv)|*.flv|DivX (*.divx)|*.divx|XviD (*.xvid)|*.xvid|Real Media (*.rm; *.rv; *.ra)|*.rm;*.rv;*.ra|Quicktime Video (*.mov)|*.mov|Mobile Video (*.3gp; *.3g2)|*.3gp;*.3g2|Motion JPEG (*.mjp; *.mjpg)|*.mjp;*.mjpg|Any file|*.*";
             if (outputFileDialog.ShowDialog() != DialogResult.Cancel)
             {
                 OutputFile = outputFileDialog.FileName;

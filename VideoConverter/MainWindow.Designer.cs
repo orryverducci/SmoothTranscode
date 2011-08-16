@@ -938,7 +938,8 @@
             // 
             // inputFileDialog
             // 
-            this.inputFileDialog.FileName = "openFileDialog1";
+            this.inputFileDialog.RestoreDirectory = true;
+            this.inputFileDialog.Title = "Select File to Convert";
             // 
             // button2
             // 
@@ -954,6 +955,7 @@
             // outputFileDialog
             // 
             this.outputFileDialog.OverwritePrompt = false;
+            this.outputFileDialog.RestoreDirectory = true;
             // 
             // MainWindow
             // 

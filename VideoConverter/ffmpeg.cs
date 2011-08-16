@@ -94,6 +94,8 @@ namespace SmoothTranscode
         public void CancelConversion()
         {
             ffmpegProcess.Kill();
+            Thread.Sleep(500);
+            System.IO.File.Delete(output);
         }
 
         protected virtual void ffmpegProcess_Exited(object sender, EventArgs e)
