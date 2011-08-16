@@ -67,7 +67,6 @@ namespace SmoothTranscode
         private void ConversionEnded(object sender, EventArgs e)
         {
             ended = true;
-            ffmpegConverter.ConversionEnded -= new EventHandler(ConversionEnded);
             this.Close();
         }
     }

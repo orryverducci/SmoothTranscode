@@ -13,4 +13,4 @@ This project has been developed in Microsoft Visual Studio 2010, using .Net Fram
 
 License
 -------
-This software is distributed under the terms of the GNU General Public License, version 2. Full terms can be found at (http://www.gnu.org/licenses/gpl-2.0.html), or read in gpl-2.0.txt included in the source code.
+This software is distributed under the terms of the GNU General Public License, version 2. Full terms can be found at http://www.gnu.org/licenses/gpl-2.0.html, or read in gpl-2.0.txt included in the source code.

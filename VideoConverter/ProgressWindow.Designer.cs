@@ -28,17 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.button1 = new System.Windows.Forms.Button();
+            this.windows7ProgressBar1 = new wyDay.Controls.Windows7ProgressBar();
             this.SuspendLayout();
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(12, 12);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(260, 23);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.progressBar1.TabIndex = 0;
             // 
             // button1
             // 
@@ -52,20 +44,29 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // windows7ProgressBar1
+            // 
+            this.windows7ProgressBar1.ContainerControl = this;
+            this.windows7ProgressBar1.Location = new System.Drawing.Point(12, 12);
+            this.windows7ProgressBar1.Name = "windows7ProgressBar1";
+            this.windows7ProgressBar1.ShowInTaskbar = true;
+            this.windows7ProgressBar1.Size = new System.Drawing.Size(260, 23);
+            this.windows7ProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.windows7ProgressBar1.TabIndex = 2;
+            // 
             // ProgressWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.button1;
             this.ClientSize = new System.Drawing.Size(284, 76);
+            this.Controls.Add(this.windows7ProgressBar1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.progressBar1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ProgressWindow";
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.Text = "Conversion in Progress";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProgressWindow_FormClosing);
             this.Load += new System.EventHandler(this.ProgressWindow_Load);
@@ -75,7 +76,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button button1;
+        private wyDay.Controls.Windows7ProgressBar windows7ProgressBar1;
     }
 }

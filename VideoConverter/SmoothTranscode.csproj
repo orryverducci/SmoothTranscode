@@ -155,6 +155,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Control\Windows7ProgressBar.csproj">
+      <Project>{7C2CCE0A-A288-4869-A7B7-CC0D18AF3B8C}</Project>
+      <Name>Windows7ProgressBar</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HelpEngine\Help.csproj">
       <Project>{A6468F09-0572-486D-B4DF-8E05E787A70F}</Project>
       <Name>Help</Name>
