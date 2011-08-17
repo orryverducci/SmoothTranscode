@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.encodeButton = new System.Windows.Forms.Button();
             this.aboutButton = new System.Windows.Forms.Button();
             this.mainTabs = new System.Windows.Forms.TabControl();
@@ -968,6 +969,7 @@
             this.Controls.Add(this.aboutButton);
             this.Controls.Add(this.encodeButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainWindow";
             this.Text = "SmoothTranscode Beta";

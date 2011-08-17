@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProgressWindow));
             this.button1 = new System.Windows.Forms.Button();
             this.windows7ProgressBar1 = new wyDay.Controls.Windows7ProgressBar();
             this.SuspendLayout();
@@ -63,10 +64,10 @@
             this.Controls.Add(this.windows7ProgressBar1);
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ProgressWindow";
-            this.ShowIcon = false;
             this.Text = "Conversion in Progress";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProgressWindow_FormClosing);
             this.Load += new System.EventHandler(this.ProgressWindow_Load);
