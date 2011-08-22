@@ -225,7 +225,7 @@ namespace SmoothTranscode
             if (channelsComboBox.Text != String.Empty)
                 Arguments += " -ac " + channelsComboBox.Text;
             if (audioTextBox.Text != String.Empty)
-                Arguments += " -ab " + audioTextBox.Text;
+                Arguments += " -ab " + audioTextBox.Text + "000";
             if (sampleComboBox.Text != String.Empty)
                 Arguments += " -ar " + sampleComboBox.Text;
             if (croptopUpDown.Value > 0)
