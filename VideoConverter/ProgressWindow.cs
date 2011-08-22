@@ -67,7 +67,7 @@ namespace SmoothTranscode
         private void ConversionEnded(object sender, EventArgs e)
         {
             ended = true;
-            Invoke((MethodInvoker) delegate
+            BeginInvoke((MethodInvoker) delegate
             {
                 this.Close();
             });
