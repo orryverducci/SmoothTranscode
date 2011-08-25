@@ -35,12 +35,15 @@ namespace SmoothTranscode
         private static string input;
         private static string arguments;
         private static string output;
+        private int? duration = 0;
+		public event EventHandler progressUpdate;
         public event EventHandler ConversionEnded;
 
         public ffmpeg()
         {
             procInfo = new ProcessStartInfo();
-            procInfo.UseShellExecute = true;
+            procInfo.UseShellExecute = false;
+            procInfo.RedirectStandardOutput = true;
             procInfo.FileName = "ffmpeg.exe";
         }
 
@@ -89,8 +92,62 @@ namespace SmoothTranscode
             ffmpegProcess.EnableRaisingEvents = true;
             ffmpegProcess.Exited += new EventHandler(ffmpegProcess_Exited);
             ffmpegProcess.Start();
+            using (System.IO.StreamReader reader = ffmpegProcess.StandardOutput)
+            {
+                string ffmpegOutput = reader.ReadToEnd();
+                ParseOutput(ffmpegOutput);
+                reader.Close();
+                ffmpegProcess.WaitForExit();
+            }
         }
 
+        private void ParseOutput(string ffmpegOutput)
+        {
+            if (duration.HasValue)
+            {
+                
+            }
+            elses
+            {
+                if (ffmpegOutput.Contains("Duration"))
+                {
+                    GetStringInBetween("Duration: ", "whatever", ffmpegOutput, false, false);
+                }
+            }
+        }
+
+		private string[] GetStringInBetween(string strBegin, string strEnd, string strSource, bool includeBegin, bool includeEnd)           
+        {
+            string[] result =
+			{
+			    "",
+				""
+			};
+            int iIndexOfBegin = strSource.IndexOf(strBegin);
+            if (iIndexOfBegin != -1)
+            {
+                // include the Begin string if desired
+                if (includeBegin)
+                    iIndexOfBegin -= strBegin.Length;
+                strSource = strSource.Substring(iIndexOfBegin + strBegin.Length);
+                int iEnd = strSource.IndexOf(strEnd);
+                if (iEnd != -1)
+                {
+				    // include the End string if desired
+                    if (includeEnd)
+                        iEnd += strEnd.Length;
+                    result[0] = strSource.Substring(0, iEnd);
+                    // advance beyond this segment
+                    if (iEnd + strEnd.Length < strSource.Length)
+                        result[1] = strSource.Substring(iEnd + strEnd.Length);
+				}
+            }
+            else
+            // stay where we are
+            result[1] = strSource;
+            return result;
+        }
+		
         public void CancelConversion()
         {
             ffmpegProcess.Kill();
