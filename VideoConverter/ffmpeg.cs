@@ -45,6 +45,7 @@ namespace SmoothTranscode
             procInfo.UseShellExecute = false;
             procInfo.RedirectStandardOutput = true;
             procInfo.FileName = "ffmpeg.exe";
+            procInfo.CreateNoWindow = true;
         }
 
         public static string inputFile
@@ -86,32 +87,28 @@ namespace SmoothTranscode
         public void ConvertFile()
         {
             procInfo.Arguments = "-i \"" + input + "\"" + arguments + " -y \"" + output + "\"";
-            //procInfo.WindowStyle = ProcessWindowStyle.Hidden;
             ffmpegProcess = new Process();
             ffmpegProcess.StartInfo = procInfo;
             ffmpegProcess.EnableRaisingEvents = true;
             ffmpegProcess.Exited += new EventHandler(ffmpegProcess_Exited);
+            ffmpegProcess.OutputDataReceived += ParseOutput;
             ffmpegProcess.Start();
-            using (System.IO.StreamReader reader = ffmpegProcess.StandardOutput)
-            {
-                string ffmpegOutput = reader.ReadToEnd();
-                ParseOutput(ffmpegOutput);
-                reader.Close();
-                ffmpegProcess.WaitForExit();
-            }
         }
 
-        private void ParseOutput(string ffmpegOutput)
+        private void ParseOutput(object sender, DataReceivedEventArgs e)
         {
             if (duration.HasValue)
             {
-                
-            }
-            elses
-            {
-                if (ffmpegOutput.Contains("Duration"))
+                if (e.Data.Contains("Time"))
                 {
-                    GetStringInBetween("Duration: ", "whatever", ffmpegOutput, false, false);
+                    GetStringInBetween("Time=", " Bitrate=", e.Data, false, false);
+                }
+            }
+            else
+            {
+                if (e.Data.Contains("Duration"))
+                {
+                    GetStringInBetween("Duration: ", ", start", e.Data, false, false);
                 }
             }
         }
