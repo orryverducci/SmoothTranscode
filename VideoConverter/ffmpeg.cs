@@ -37,13 +37,13 @@ namespace SmoothTranscode
         private static string output;
         private int? duration = 0;
 		public event EventHandler progressUpdate;
-        public event EventHandler ConversionEnded;
+        public event EventHandler conversionEnded;
 
         public ffmpeg()
         {
             procInfo = new ProcessStartInfo();
             procInfo.UseShellExecute = false;
-            procInfo.RedirectStandardOutput = true;
+            procInfo.RedirectStandardError = true;
             procInfo.FileName = "ffmpeg.exe";
             procInfo.CreateNoWindow = true;
         }
@@ -90,9 +90,11 @@ namespace SmoothTranscode
             ffmpegProcess = new Process();
             ffmpegProcess.StartInfo = procInfo;
             ffmpegProcess.EnableRaisingEvents = true;
-            ffmpegProcess.Exited += new EventHandler(ffmpegProcess_Exited);
-            ffmpegProcess.OutputDataReceived += ParseOutput;
+            ffmpegProcess.Exited += new EventHandler(FfmpegProcessExited);
+            ffmpegProcess.ErrorDataReceived += new DataReceivedEventHandler(ParseOutput);
             ffmpegProcess.Start();
+            ffmpegProcess.BeginErrorReadLine();
+
         }
 
         private void ParseOutput(object sender, DataReceivedEventArgs e)
@@ -101,6 +103,7 @@ namespace SmoothTranscode
             {
                 if (e.Data.Contains("Time"))
                 {
+                    ProgressUpdate(new EventArgs());
                     GetStringInBetween("Time=", " Bitrate=", e.Data, false, false);
                 }
             }
@@ -109,6 +112,7 @@ namespace SmoothTranscode
                 if (e.Data.Contains("Duration"))
                 {
                     GetStringInBetween("Duration: ", ", start", e.Data, false, false);
+                    ProgressUpdate(new EventArgs());
                 }
             }
         }
@@ -152,10 +156,16 @@ namespace SmoothTranscode
             System.IO.File.Delete(output);
         }
 
-        protected virtual void ffmpegProcess_Exited(object sender, EventArgs e)
+        protected virtual void FfmpegProcessExited(object sender, EventArgs e)
         {
-            if (ConversionEnded != null)
-                ConversionEnded(this, e);
+            if (conversionEnded != null)
+                conversionEnded(this, e);
+        }
+
+        protected virtual void ProgressUpdate(EventArgs e)
+        {
+            if (progressUpdate != null)
+                progressUpdate(this, e);
         }
     }
 }
