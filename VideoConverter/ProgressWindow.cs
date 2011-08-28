@@ -42,7 +42,8 @@ namespace SmoothTranscode
         private void ProgressWindow_Load(object sender, EventArgs e)
         {
             ffmpegConverter.ConvertFile();
-            ffmpegConverter.ConversionEnded += new EventHandler(ConversionEnded);
+            ffmpegConverter.conversionEnded += new EventHandler(ConversionEnded);
+            ffmpegConverter.progressUpdate += new EventHandler(ProgressUpdate);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -54,7 +55,7 @@ namespace SmoothTranscode
         {
             if (!ended)
             {
-                if (MessageBox.Show("Are you sure you want to cancel this conversion?", "Cancel Conversion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                if (MessageBox.Show("Are you sure you want to cancel this conversion?", "Cancel Conversion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                     e.Cancel = true;
                 else
                 {
@@ -71,6 +72,11 @@ namespace SmoothTranscode
             {
                 this.Close();
             });
+        }
+
+        private void ProgressUpdate(object sender, EventArgs e)
+        {
+            MessageBox.Show("it works", "hi", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
