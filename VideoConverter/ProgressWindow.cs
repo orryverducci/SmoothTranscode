@@ -68,7 +68,7 @@ namespace SmoothTranscode
         private void ConversionEnded(object sender, EventArgs e)
         {
             ended = true;
-            BeginInvoke((MethodInvoker) delegate
+            BeginInvoke((MethodInvoker)delegate
             {
                 this.Close();
             });
@@ -76,7 +76,10 @@ namespace SmoothTranscode
 
         private void ProgressUpdate(object sender, EventArgs e)
         {
-            MessageBox.Show("it works", "hi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            BeginInvoke((MethodInvoker)delegate
+            {
+                label1.Text = "it works";
+            });
         }
     }
 }

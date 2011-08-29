@@ -94,25 +94,27 @@ namespace SmoothTranscode
             ffmpegProcess.ErrorDataReceived += new DataReceivedEventHandler(ParseOutput);
             ffmpegProcess.Start();
             ffmpegProcess.BeginErrorReadLine();
-
         }
 
         private void ParseOutput(object sender, DataReceivedEventArgs e)
         {
-            if (duration.HasValue)
+            ProgressUpdate(new EventArgs());
+            if (e.Data != null)
             {
-                if (e.Data.Contains("Time"))
+                if (duration.HasValue)
                 {
-                    ProgressUpdate(new EventArgs());
-                    GetStringInBetween("Time=", " Bitrate=", e.Data, false, false);
+                    if (e.Data.Contains("Time"))
+                    {
+                        GetStringInBetween("Time=", " Bitrate=", e.Data, false, false);
+                    }
                 }
-            }
-            else
-            {
-                if (e.Data.Contains("Duration"))
+                else
                 {
-                    GetStringInBetween("Duration: ", ", start", e.Data, false, false);
-                    ProgressUpdate(new EventArgs());
+                    if (e.Data.Contains("Duration"))
+                    {
+                        GetStringInBetween("Duration: ", ", start", e.Data, false, false);
+                        ProgressUpdate(new EventArgs());
+                    }
                 }
             }
         }
@@ -158,6 +160,7 @@ namespace SmoothTranscode
 
         protected virtual void FfmpegProcessExited(object sender, EventArgs e)
         {
+            ffmpegProcess.CancelErrorRead();
             if (conversionEnded != null)
                 conversionEnded(this, e);
         }
