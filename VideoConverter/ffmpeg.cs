@@ -36,8 +36,9 @@ namespace SmoothTranscode
         private static string arguments;
         private static string output;
         private int? duration = 0;
-		public event EventHandler progressUpdate;
         public event EventHandler conversionEnded;
+        public delegate void ProgressEventHandler(object sender, ProgressEventArgs cmdoutput);
+        public event ProgressEventHandler progressUpdate;
 
         public ffmpeg()
         {
@@ -98,9 +99,9 @@ namespace SmoothTranscode
 
         private void ParseOutput(object sender, DataReceivedEventArgs e)
         {
-            ProgressUpdate(new EventArgs());
             if (e.Data != null)
             {
+                ProgressUpdate(this, new ProgressEventArgs(e.Data));
                 if (duration.HasValue)
                 {
                     if (e.Data.Contains("Time"))
@@ -113,7 +114,6 @@ namespace SmoothTranscode
                     if (e.Data.Contains("Duration"))
                     {
                         GetStringInBetween("Duration: ", ", start", e.Data, false, false);
-                        ProgressUpdate(new EventArgs());
                     }
                 }
             }
@@ -158,6 +158,21 @@ namespace SmoothTranscode
             System.IO.File.Delete(output);
         }
 
+        public class ProgressEventArgs : EventArgs
+        {
+            private string encoderOutput;
+
+            public ProgressEventArgs(string result)
+            {
+                encoderOutput = result;
+            }
+
+            public string EncoderOutput()
+            {
+                return encoderOutput;
+            }
+        } 
+
         protected virtual void FfmpegProcessExited(object sender, EventArgs e)
         {
             ffmpegProcess.CancelErrorRead();
@@ -165,7 +180,7 @@ namespace SmoothTranscode
                 conversionEnded(this, e);
         }
 
-        protected virtual void ProgressUpdate(EventArgs e)
+        protected virtual void ProgressUpdate(object sender, ProgressEventArgs e)
         {
             if (progressUpdate != null)
                 progressUpdate(this, e);

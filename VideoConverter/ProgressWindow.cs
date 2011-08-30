@@ -43,7 +43,7 @@ namespace SmoothTranscode
         {
             ffmpegConverter.ConvertFile();
             ffmpegConverter.conversionEnded += new EventHandler(ConversionEnded);
-            ffmpegConverter.progressUpdate += new EventHandler(ProgressUpdate);
+            ffmpegConverter.progressUpdate += new ffmpeg.ProgressEventHandler(ProgressUpdate);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -74,11 +74,11 @@ namespace SmoothTranscode
             });
         }
 
-        private void ProgressUpdate(object sender, EventArgs e)
+        private void ProgressUpdate(object sender, ffmpeg.ProgressEventArgs e)
         {
             BeginInvoke((MethodInvoker)delegate
             {
-                label1.Text = "it works";
+                label1.Text = e.EncoderOutput();
             });
         }
     }
