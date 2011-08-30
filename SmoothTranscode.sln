@@ -21,6 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		gpl-2.0.txt = gpl-2.0.txt
 		README.md = README.md
 		Release Notes.txt = Release Notes.txt
+		Installer\Setup.nsi = Installer\Setup.nsi
 	EndProjectSection
 EndProject
 Global
