@@ -8,7 +8,7 @@ SmoothTranscode is developed by [Atomic Wasteland](http://www.atomicwasteland.co
 
 Development Environment
 -----------------------
-This project has been developed in Microsoft Visual Studio 2010, using .Net Framework 4 Client Profile.
+This project has been developed in Microsoft Visual Studio 2010, using .Net Framework 4 Client Profile. The installer was developed using [NSIS](http://nsis.sourceforge.net/)
 
 
 License
