@@ -35,7 +35,7 @@ namespace SmoothTranscode
         private static string input;
         private static string arguments;
         private static string output;
-        private int? duration = 0;
+        private string duration;
         public event EventHandler conversionEnded;
         public delegate void ProgressEventHandler(object sender, ProgressEventArgs cmdoutput);
         public event ProgressEventHandler progressUpdate;
@@ -101,19 +101,18 @@ namespace SmoothTranscode
         {
             if (e.Data != null)
             {
-                ProgressUpdate(this, new ProgressEventArgs(e.Data));
-                if (duration.HasValue)
+                if (duration != null)
                 {
-                    if (e.Data.Contains("Time"))
+                    if (e.Data.Contains("time"))
                     {
-                        GetStringInBetween("Time=", " Bitrate=", e.Data, false, false);
+                        ProgressUpdate(this, new ProgressEventArgs(GetStringInBetween("time=", " bitrate=", e.Data, false, false)[0]));
                     }
                 }
                 else
                 {
-                    if (e.Data.Contains("Duration"))
+                    if (e.Data.Contains("duration"))
                     {
-                        GetStringInBetween("Duration: ", ", start", e.Data, false, false);
+                        duration = GetStringInBetween("duration: ", ", start", e.Data, false, false)[0];
                     }
                 }
             }
