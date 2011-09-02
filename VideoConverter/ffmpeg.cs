@@ -25,6 +25,7 @@ using System.Text;
 using System.Threading;
 using System.Diagnostics;
 using System.IO;
+using System.Windows.Forms;
 
 namespace SmoothTranscode
 {
@@ -35,7 +36,7 @@ namespace SmoothTranscode
         private static string input;
         private static string arguments;
         private static string output;
-        private string duration;
+        private int duration = -1;
         public event EventHandler conversionEnded;
         public delegate void ProgressEventHandler(object sender, ProgressEventArgs cmdoutput);
         public event ProgressEventHandler progressUpdate;
@@ -99,20 +100,28 @@ namespace SmoothTranscode
 
         private void ParseOutput(object sender, DataReceivedEventArgs e)
         {
+            int percentage;
+            TimeSpan currentTime;
+            TimeSpan totalTime;
+
             if (e.Data != null)
             {
-                if (duration != null)
+                if (duration != -1)
                 {
                     if (e.Data.Contains("time"))
                     {
-                        ProgressUpdate(this, new ProgressEventArgs(GetStringInBetween("time=", " bitrate=", e.Data)));
+                        TimeSpan.TryParse(GetStringInBetween("time=", " bitrate=", e.Data), out currentTime);
+                        percentage = Convert.ToInt32(currentTime.TotalSeconds);
+                        percentage = percentage * 100 / duration;
+                        ProgressUpdate(this, new ProgressEventArgs(percentage));
                     }
                 }
                 else
                 {
-                    if (e.Data.Contains("duration"))
+                    if (e.Data.Contains("Duration"))
                     {
-                        duration = GetStringInBetween("duration: ", ", start", e.Data);
+                        totalTime = TimeSpan.Parse(GetStringInBetween("Duration: ", ", start", e.Data));
+                        duration = Convert.ToInt32(totalTime.TotalSeconds);
                     }
                 }
             }
@@ -143,14 +152,14 @@ namespace SmoothTranscode
 
         public class ProgressEventArgs : EventArgs
         {
-            private string encoderOutput;
+            private int encoderOutput;
 
-            public ProgressEventArgs(string result)
+            public ProgressEventArgs(int result)
             {
                 encoderOutput = result;
             }
 
-            public string EncoderOutput()
+            public int EncoderOutput()
             {
                 return encoderOutput;
             }
