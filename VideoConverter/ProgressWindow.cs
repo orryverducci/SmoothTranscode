@@ -78,7 +78,9 @@ namespace SmoothTranscode
         {
             BeginInvoke((MethodInvoker)delegate
             {
-                label1.Text = e.EncoderOutput();
+                if (windows7ProgressBar1.Style != ProgressBarStyle.Continuous)
+                    windows7ProgressBar1.Style = ProgressBarStyle.Continuous;
+                windows7ProgressBar1.Value = e.EncoderOutput();
             });
         }
     }

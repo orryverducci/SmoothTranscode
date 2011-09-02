@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProgressWindow));
             this.button1 = new System.Windows.Forms.Button();
             this.windows7ProgressBar1 = new wyDay.Controls.Windows7ProgressBar();
-            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -56,22 +55,12 @@
             this.windows7ProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.windows7ProgressBar1.TabIndex = 2;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 42);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "label1";
-            // 
             // ProgressWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.button1;
             this.ClientSize = new System.Drawing.Size(284, 76);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.windows7ProgressBar1);
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -83,7 +72,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProgressWindow_FormClosing);
             this.Load += new System.EventHandler(this.ProgressWindow_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -91,6 +79,5 @@
 
         private System.Windows.Forms.Button button1;
         private wyDay.Controls.Windows7ProgressBar windows7ProgressBar1;
-        private System.Windows.Forms.Label label1;
     }
 }
