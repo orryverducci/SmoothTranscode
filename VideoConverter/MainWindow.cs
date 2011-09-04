@@ -35,6 +35,7 @@ namespace SmoothTranscode
         private string OutputFile;
         private string Video = String.Empty;
         private string Audio = String.Empty;
+        private string Format = String.Empty;
         private string Arguments;
 
         public MainWindow()
@@ -71,6 +72,52 @@ namespace SmoothTranscode
         #endregion
 
         #region Format Tab
+        private void containerComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (containerComboBox.SelectedItem == "MPEG-4")
+                Format = "mp4";
+            if (containerComboBox.SelectedItem == "MPEG")
+                Format = "mpeg";
+            if (containerComboBox.SelectedItem == "Windows Media")
+                Format = "asf";
+            if (containerComboBox.SelectedItem == "Flash Video")
+                Format = "flv";
+            if (containerComboBox.SelectedItem == "WebM")
+                Format = "webm";
+            if (containerComboBox.SelectedItem == "Matroska")
+                Format = "matroska";
+            if (containerComboBox.SelectedItem == "Ogg")
+                Format = "ogg";
+            if (containerComboBox.SelectedItem == "AVI")
+                Format = "avi";
+            if (containerComboBox.SelectedItem == "Real Media")
+                Format = "rm";
+            if (containerComboBox.SelectedItem == "Quicktime Video")
+                Format = "mov";
+            if (containerComboBox.SelectedItem == "DVD VOB")
+                Format = "dvd";
+            if (containerComboBox.SelectedItem == "DV Video")
+                Format = "dv";
+            if (containerComboBox.SelectedItem == "3GP")
+                Format = "3gp";
+            if (containerComboBox.SelectedItem == "Motion JPEG")
+                Format = "mjpeg";
+            if (containerComboBox.SelectedItem == "Material eXchange Format")
+                Format = "mxf";
+            if (containerComboBox.SelectedItem == "MP3")
+                Format = "mp3";
+            if (containerComboBox.SelectedItem == "MP2")
+                Format = "mp2";
+            if (containerComboBox.SelectedItem == "FLAC")
+                Format = "flac";
+            if (containerComboBox.SelectedItem == "WAV")
+                Format = "wav";
+            if (containerComboBox.SelectedItem == "AIFF")
+                Format = "aiff";
+            if (containerComboBox.SelectedItem == "AMR")
+                Format = "amr";
+        }
+
         private void videoComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (videoComboBox.SelectedItem == "MPEG-1")
@@ -210,6 +257,8 @@ namespace SmoothTranscode
             }
 
             ffmpeg.inputFile = inputTextBox.Text;
+            if (Format != String.Empty)
+                Arguments += "-f " + Format;
             if (Video != String.Empty)
                 Arguments += " -vcodec " + Video;
             if (deinterlaceCheckBox.Checked == true)

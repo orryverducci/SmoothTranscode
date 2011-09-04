@@ -559,25 +559,32 @@
             this.containerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.containerComboBox.FormattingEnabled = true;
             this.containerComboBox.Items.AddRange(new object[] {
-            "MPEG Video",
-            "MPEG-4 Video",
-            "Windows Media Video",
-            "Windows Video (AVI)",
+            "MPEG-4",
+            "MPEG",
+            "Windows Media",
             "Flash Video",
-            "DivX",
-            "XviD",
+            "WebM",
+            "Matroska",
+            "Ogg",
+            "AVI",
             "Real Media",
             "Quicktime Video",
-            "Mobile Video (3GP)",
+            "DVD VOB",
+            "DV Video",
+            "3GP",
             "Motion JPEG",
-            "Matroska",
-            "NUT Video",
-            "Id RoQ",
-            "General eXchange Format"});
+            "Material eXchange Format",
+            "MP3",
+            "MP2",
+            "FLAC",
+            "WAV",
+            "AIFF",
+            "AMR"});
             this.containerComboBox.Location = new System.Drawing.Point(7, 20);
             this.containerComboBox.Name = "containerComboBox";
             this.containerComboBox.Size = new System.Drawing.Size(535, 21);
             this.containerComboBox.TabIndex = 0;
+            this.containerComboBox.SelectedIndexChanged += new System.EventHandler(this.containerComboBox_SelectedIndexChanged);
             // 
             // tabPage3
             // 
