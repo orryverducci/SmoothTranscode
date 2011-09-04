@@ -88,7 +88,7 @@ namespace SmoothTranscode
 
         public void ConvertFile()
         {
-            procInfo.Arguments = "-i \"" + input + "\"" + arguments + " -y \"" + output + "\"";
+            procInfo.Arguments = "-i \"" + input + "\" " + arguments + " -y \"" + output + "\"";
             ffmpegProcess = new Process();
             ffmpegProcess.StartInfo = procInfo;
             ffmpegProcess.EnableRaisingEvents = true;
