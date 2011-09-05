@@ -163,36 +163,30 @@ namespace SmoothTranscode
 
         private void audioComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (audioComboBox.SelectedItem == "MP2")
-                Audio = "mp2";
-            else if (audioComboBox.SelectedItem == "MP3")
+            if (audioComboBox.SelectedItem == "MP3")
                 Audio = "libmp3lame";
+            else if (audioComboBox.SelectedItem == "MP2")
+                Audio = "mp2";
             else if (audioComboBox.SelectedItem == "AAC")
                 Audio = "aac -strict experimental";
             else if (audioComboBox.SelectedItem == "AC3")
                 Audio = "ac3";
-            else if (audioComboBox.SelectedItem == "Vorbis")
+            else if (audioComboBox.SelectedItem == "E-AC3")
+                Audio = "eac3";
+            else if (audioComboBox.SelectedItem == "Ogg Vorbis")
                 Audio = "vorbis";
-            else if (audioComboBox.SelectedItem == "Windows Media Audio Version 1")
-                Audio = "wmav1";
             else if (audioComboBox.SelectedItem == "Windows Media Audio Version 2")
                 Audio = "wmav2";
-            else if (audioComboBox.SelectedItem == "FLAC Lossless")
+            else if (audioComboBox.SelectedItem == "Windows Media Audio Version 1")
+                Audio = "wmav1";
+            else if (audioComboBox.SelectedItem == "Real Audio Version 1")
+                Audio = "real_114";
+            else if (audioComboBox.SelectedItem == "FLAC")
                 Audio = "flac";
-            else if (audioComboBox.SelectedItem == "Sonic")
-                Audio = "sonic";
-            else if (audioComboBox.SelectedItem == "Microsoft ADPCM")
-                Audio = "adpcm_ms";
-            else if (audioComboBox.SelectedItem == "Microsoft IMA ADPCM")
-                Audio = "adpcm_ima_wav";
-            else if (audioComboBox.SelectedItem == "Quicktime IMA ADPCM")
-                Audio = "adpcm_ima_qt";
-            else if (audioComboBox.SelectedItem == "G.726 ADPCM")
-                Audio = "g726";
-            else if (audioComboBox.SelectedItem == "CRI ADX PCM")
-                Audio = "adpcm_adx";
-            else if (audioComboBox.SelectedItem == "Id RoQ DPCM")
-                Audio = "roq_dpcm";
+            else if (audioComboBox.SelectedItem == "Apple Lossless Audio Codec")
+                Audio = "alac";
+            else if (audioComboBox.SelectedItem == "Nellymoser")
+                Audio = "nellymoser";
         }
         #endregion
 

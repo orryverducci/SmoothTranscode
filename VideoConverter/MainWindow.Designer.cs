@@ -328,21 +328,18 @@
             this.audioComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.audioComboBox.FormattingEnabled = true;
             this.audioComboBox.Items.AddRange(new object[] {
-            "MP2",
             "MP3",
+            "MP2",
             "AAC",
             "AC3",
-            "Vorbis",
-            "Windows Media Audio Version 1",
+            "E-AC3",
+            "Ogg Vorbis",
             "Windows Media Audio Version 2",
-            "FLAC Lossless",
-            "Sonic",
-            "Microsoft ADPCM",
-            "Microsoft IMA ADPCM",
-            "Quicktime IMA ADPCM",
-            "G.726 ADPCM",
-            "CRI ADX PCM",
-            "Id RoQ DPCM"});
+            "Windows Media Audio Version 1",
+            "Real Audio Version 1",
+            "FLAC",
+            "Apple Lossless Audio Codec",
+            "Nellymoser"});
             this.audioComboBox.Location = new System.Drawing.Point(83, 17);
             this.audioComboBox.Name = "audioComboBox";
             this.audioComboBox.Size = new System.Drawing.Size(459, 21);
