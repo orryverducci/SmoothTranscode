@@ -76,110 +76,82 @@ namespace SmoothTranscode
         {
             if (containerComboBox.SelectedItem == "MPEG-4")
                 Format = "mp4";
-            if (containerComboBox.SelectedItem == "MPEG")
+            else if (containerComboBox.SelectedItem == "MPEG")
                 Format = "mpeg";
-            if (containerComboBox.SelectedItem == "Windows Media")
+            else if (containerComboBox.SelectedItem == "Windows Media")
                 Format = "asf";
-            if (containerComboBox.SelectedItem == "Flash Video")
+            else if (containerComboBox.SelectedItem == "Flash Video")
                 Format = "flv";
-            if (containerComboBox.SelectedItem == "WebM")
+            else if (containerComboBox.SelectedItem == "WebM")
                 Format = "webm";
-            if (containerComboBox.SelectedItem == "Matroska")
+            else if (containerComboBox.SelectedItem == "Matroska")
                 Format = "matroska";
-            if (containerComboBox.SelectedItem == "Ogg")
+            else if (containerComboBox.SelectedItem == "Ogg")
                 Format = "ogg";
-            if (containerComboBox.SelectedItem == "AVI")
+            else if (containerComboBox.SelectedItem == "AVI")
                 Format = "avi";
-            if (containerComboBox.SelectedItem == "Real Media")
+            else if (containerComboBox.SelectedItem == "Real Media")
                 Format = "rm";
-            if (containerComboBox.SelectedItem == "Quicktime Video")
+            else if (containerComboBox.SelectedItem == "Quicktime Video")
                 Format = "mov";
-            if (containerComboBox.SelectedItem == "DVD VOB")
+            else if (containerComboBox.SelectedItem == "DVD VOB")
                 Format = "dvd";
-            if (containerComboBox.SelectedItem == "DV Video")
+            else if (containerComboBox.SelectedItem == "DV Video")
                 Format = "dv";
-            if (containerComboBox.SelectedItem == "3GP")
+            else if (containerComboBox.SelectedItem == "3GP")
                 Format = "3gp";
-            if (containerComboBox.SelectedItem == "Motion JPEG")
+            else if (containerComboBox.SelectedItem == "Motion JPEG")
                 Format = "mjpeg";
-            if (containerComboBox.SelectedItem == "Material eXchange Format")
+            else if (containerComboBox.SelectedItem == "Material eXchange Format")
                 Format = "mxf";
-            if (containerComboBox.SelectedItem == "MP3")
+            else if (containerComboBox.SelectedItem == "MP3")
                 Format = "mp3";
-            if (containerComboBox.SelectedItem == "MP2")
+            else if (containerComboBox.SelectedItem == "MP2")
                 Format = "mp2";
-            if (containerComboBox.SelectedItem == "FLAC")
+            else if (containerComboBox.SelectedItem == "FLAC")
                 Format = "flac";
-            if (containerComboBox.SelectedItem == "WAV")
+            else if (containerComboBox.SelectedItem == "WAV")
                 Format = "wav";
-            if (containerComboBox.SelectedItem == "AIFF")
+            else if (containerComboBox.SelectedItem == "AIFF")
                 Format = "aiff";
-            if (containerComboBox.SelectedItem == "AMR")
+            else if (containerComboBox.SelectedItem == "AMR")
                 Format = "amr";
         }
 
         private void videoComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (videoComboBox.SelectedItem == "MPEG-1")
-                Video = "mpeg1video";
+            if (videoComboBox.SelectedItem == "MPEG-4")
+                Video = "mpeg4";
             else if (videoComboBox.SelectedItem == "MPEG-2")
                 Video = "mpeg2video";
-            else if (videoComboBox.SelectedItem == "MPEG-4")
-                Video = "mpeg4";
-            else if (videoComboBox.SelectedItem == "Microsoft MPEG-4 Version 1")
-                Video = "msmpeg4";
-            else if (videoComboBox.SelectedItem == "Microsoft MPEG-4 Version 2")
-                Video = "msmpeg4v2";
-            else if (videoComboBox.SelectedItem == "Microsoft MPEG-4 Version 3")
-                Video = "msmpeg4";
-            else if (videoComboBox.SelectedItem == "Windows Media Video 7")
-                Video = "wmv1";
-            else if (videoComboBox.SelectedItem == "Windows Media Video 8")
-                Video = "wmv2";
-            else if (videoComboBox.SelectedItem == "H.261")
-                Video = "h261";
-            else if (videoComboBox.SelectedItem == "H.263")
-                Video = "h263";
+            else if (videoComboBox.SelectedItem == "MPEG-1")
+                Video = "mpeg1video";
             else if (videoComboBox.SelectedItem == "H.264")
                 Video = "libx264";
-            else if (videoComboBox.SelectedItem == "Real Video 1.0")
-                Video = "rv10";
-            else if (videoComboBox.SelectedItem == "Real Video 2.0")
-                Video = "rv20";
-            else if (videoComboBox.SelectedItem == "Motion JPEG")
-                Video = "mjpeg";
-            else if (videoComboBox.SelectedItem == "Motion JPEG (Lossless)")
-                Video = "ljpeg";
-            else if (videoComboBox.SelectedItem == "JPEG-LS")
-                Video = "jpegls";
-            else if (videoComboBox.SelectedItem == "DV")
-                Video = "dvvideo";
-            else if (videoComboBox.SelectedItem == "HuffYUV")
-                Video = "huffyuv";
-            else if (videoComboBox.SelectedItem == "FFmpeg Video 1")
-                Video = "ffv1";
-            else if (videoComboBox.SelectedItem == "Snow")
-                Video = "snow";
-            else if (videoComboBox.SelectedItem == "Asus Version 1")
-                Video = "asv1";
-            else if (videoComboBox.SelectedItem == "Asus Version 2")
-                Video = "asv2";
-            else if (videoComboBox.SelectedItem == "Sorenson Video 1")
-                Video = "svq1";
-            else if (videoComboBox.SelectedItem == "Ogg Theora")
-                Video = "libtheora";
+            else if (videoComboBox.SelectedItem == "H.263")
+                Video = "h263";
+            else if (videoComboBox.SelectedItem == "H.261")
+                Video = "h261";
+            else if (videoComboBox.SelectedItem == "Windows Media Video 8")
+                Video = "wmv2";
+            else if (videoComboBox.SelectedItem == "Windows Media Video 7")
+                Video = "wmv1";
             else if (videoComboBox.SelectedItem == "Flash Video")
                 Video = "flv";
-            else if (videoComboBox.SelectedItem == "Flash Screen Video")
-                Video = "flashsv";
-            else if (videoComboBox.SelectedItem == "Id RoQ")
-                Video = "roqvideo";
-            else if (videoComboBox.SelectedItem == "Apple Animation")
-                Video = "qtrle";
-            else if (videoComboBox.SelectedItem == "ZLIB")
-                Video = "zlib";
-            else if (videoComboBox.SelectedItem == "ZMBV")
-                Video = "zmbv";
+            else if (videoComboBox.SelectedItem == "Real Video 2.0")
+                Video = "rv20";
+            else if (videoComboBox.SelectedItem == "Real Video 1.0")
+                Video = "rv10";
+            else if (videoComboBox.SelectedItem == "Ogg Theora")
+                Video = "libtheora";
+            else if (videoComboBox.SelectedItem == "DV")
+                Video = "dvvideo";
+            else if (videoComboBox.SelectedItem == "XviD")
+                Video = "libxvid";
+            else if (videoComboBox.SelectedItem == "Dirac")
+                Video = "libschroedinger";
+            else if (videoComboBox.SelectedItem == "Motion JPEG")
+                Video = "mjpeg";
             else if (videoComboBox.SelectedItem == "AVID DNxHD")
                 Video = "dnxhd";
         }
