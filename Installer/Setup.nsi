@@ -98,11 +98,12 @@ Section "SmoothTranscode" SecPlayer
   SetOutPath "$INSTDIR"
 
   ;Files
-  File "..\VideoConverter\Bin\debug\SmoothTranscode.exe"
-  File "..\VideoConverter\Bin\debug\ffmpeg.exe"
-  File "..\VideoConverter\Bin\debug\help.dll"
-  File "..\VideoConverter\Bin\debug\LinkLabel2.dll"
-  File "..\VideoConverter\Bin\debug\Renderers.dll"
+  File "..\VideoConverter\Bin\Release\SmoothTranscode.exe"
+  File "..\VideoConverter\Bin\Release\ffmpeg.exe"
+  File "..\VideoConverter\Bin\Release\Help.dll"
+  File "..\VideoConverter\Bin\Release\LinkLabel2.dll"
+  File "..\VideoConverter\Bin\Release\Renderers.dll"
+  File "..\VideoConverter\Bin\Release\Windows7ProgressBar.dll"
 
   ;Create Shortcuts
   CreateShortCut "$SMPROGRAMS\SmoothTranscode.lnk" "$INSTDIR\SmoothTranscode.exe"
@@ -142,9 +143,10 @@ Section "Uninstall"
   ;Files
   Delete "$INSTDIR\SmoothTranscode.exe"
   Delete "$INSTDIR\ffmpeg.exe"
-  Delete "$INSTDIR\help.dll"
+  Delete "$INSTDIR\Help.dll"
   Delete "$INSTDIR\LinkLabel2.dll"
   Delete "$INSTDIR\Renderers.dll"
+  Delete "$INSTDIR\Windows7ProgressBar.dll"
   Delete "$SMPROGRAMS\SmoothTranscode.lnk"
   Delete "$INSTDIR\Uninstall.exe"
 
