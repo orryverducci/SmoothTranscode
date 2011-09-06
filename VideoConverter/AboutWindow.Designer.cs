@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutWindow));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.linkLabel21 = new wyDay.Controls.LinkLabel2();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.okButton = new System.Windows.Forms.Button();
-            this.linkLabel21 = new wyDay.Controls.LinkLabel2();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +55,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(496, 228);
             this.panel1.TabIndex = 0;
+            // 
+            // linkLabel21
+            // 
+            this.linkLabel21.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.linkLabel21.HoverColor = System.Drawing.Color.Empty;
+            this.linkLabel21.Location = new System.Drawing.Point(22, 112);
+            this.linkLabel21.Name = "linkLabel21";
+            this.linkLabel21.RegularColor = System.Drawing.Color.Empty;
+            this.linkLabel21.Size = new System.Drawing.Size(225, 14);
+            this.linkLabel21.TabIndex = 5;
+            this.linkLabel21.Text = "Online at http://www.atomicwasteland.co.uk/";
+            this.linkLabel21.Click += new System.EventHandler(this.linkLabel21_Click);
             // 
             // label4
             // 
@@ -83,7 +95,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Version 0.1";
+            this.label2.Text = "Version 0.2";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label1
@@ -107,18 +119,6 @@
             this.okButton.Text = "OK";
             this.okButton.UseVisualStyleBackColor = true;
             this.okButton.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // linkLabel21
-            // 
-            this.linkLabel21.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.linkLabel21.HoverColor = System.Drawing.Color.Empty;
-            this.linkLabel21.Location = new System.Drawing.Point(22, 112);
-            this.linkLabel21.Name = "linkLabel21";
-            this.linkLabel21.RegularColor = System.Drawing.Color.Empty;
-            this.linkLabel21.Size = new System.Drawing.Size(225, 14);
-            this.linkLabel21.TabIndex = 5;
-            this.linkLabel21.Text = "Online at http://www.atomicwasteland.co.uk/";
-            this.linkLabel21.Click += new System.EventHandler(this.linkLabel21_Click);
             // 
             // AboutWindow
             // 
