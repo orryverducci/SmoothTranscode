@@ -49,7 +49,7 @@
 ;--------------------------------
 ;Install Functions
 Function "desktopshortcut"
-  CreateShortCut "$DESKTOP\SmoothTreanscode.lnk" "$INSTDIR\SmoothTranscode.exe"
+  CreateShortCut "$DESKTOP\SmoothTranscode.lnk" "$INSTDIR\SmoothTranscode.exe"
 FunctionEnd
 
 ;--------------------------------
