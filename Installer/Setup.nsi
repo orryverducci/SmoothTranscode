@@ -17,9 +17,11 @@
 ;  http://www.gnu.org/copyleft/gpl.html
 
 ;--------------------------------
-;Include Modern UI
+;Include Modern UI and .Net Framework Detection
 
   !include "MUI2.nsh"
+  !include "LogicLib.nsh"
+  !include "DotNetVer.nsh"
 
 ;--------------------------------
 ;General
@@ -46,6 +48,9 @@
   VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "1.0.0.0"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductVersion" "0.2.0.0"
 
+  ;Set Compressor
+  SetCompressor lzma
+
 ;--------------------------------
 ;Install Functions
 Function "desktopshortcut"
@@ -64,11 +69,11 @@ FunctionEnd
 ;  !define MUI_UNWELCOMEFINISHPAGE_BITMAP "install.bmp"
   !define MUI_ABORTWARNING
   !define MUI_FINISHPAGE_RUN "$INSTDIR\SmoothTranscode.exe"
+  !define MUI_FINISHPAGE_RUN_NOTCHECKED
   !define MUI_FINISHPAGE_SHOWREADME
   !define MUI_FINISHPAGE_SHOWREADME_FUNCTION "desktopshortcut"
   !define MUI_FINISHPAGE_SHOWREADME_TEXT "Create Desktop Shortcut"
   !define MUI_FINISHPAGE_SHOWREADME_NOTCHECKED
-  !define MUI_FINISHPAGE_RUN_NOTCHECKED
   !define MUI_FINISHPAGE_NOREBOOTSUPPORT
 
 ;--------------------------------
@@ -93,7 +98,7 @@ FunctionEnd
 ;--------------------------------
 ;Installer Sections
 
-Section "SmoothTranscode" SecPlayer
+Section "SmoothTranscode" SecMain
 
   SetOutPath "$INSTDIR"
 
@@ -121,6 +126,12 @@ Section "SmoothTranscode" SecPlayer
   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\SmoothTranscode" "NoModify" 0x00000001
   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\SmoothTranscode" "NoRepair" 0x00000001
 
+  ; .Net Framework Warning
+  ${IfNot} ${HasDotNet4.0}
+    Messagebox MB_OK|MB_ICONEXCLAMATION
+	"SmoothTranscode Setup could not find .Net Framework 4 on your system. You will need to download and install this before you can use SmoothTranscode."
+  ${EndIf}
+
 
 SectionEnd
 
@@ -128,11 +139,11 @@ SectionEnd
 ;Descriptions
 
   ;Language strings
-  LangString DESC_SecPlayer ${LANG_ENGLISH} "SmoothTranscode"
+  LangString DESC_SecMain ${LANG_ENGLISH} "SmoothTranscode"
 
   ;Assign language strings to sections
   !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
-    !insertmacro MUI_DESCRIPTION_TEXT ${SecPlayer} $(DESC_SecPlayer)
+    !insertmacro MUI_DESCRIPTION_TEXT ${SecMain} $(DESC_SecMain)
   !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 ;--------------------------------

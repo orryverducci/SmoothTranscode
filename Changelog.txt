@@ -1,3 +1,8 @@
+0.4
+---
+[NEW] .Net Framework detection added to installer
+[UPDATED] New application icon
+
 0.2
 ---
 Initial release

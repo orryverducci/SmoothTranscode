@@ -18,6 +18,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DBB47E20-42A0-45A7-BE50-6F58F7CE5B4C}"
 	ProjectSection(SolutionItems) = preProject
 		Changelog.txt = Changelog.txt
+		Installer\DotNetVer.nsh = Installer\DotNetVer.nsh
 		gpl-2.0.txt = gpl-2.0.txt
 		README.md = README.md
 		Release Notes.txt = Release Notes.txt
