@@ -149,7 +149,7 @@
             this.encodeButton.Name = "encodeButton";
             this.encodeButton.Size = new System.Drawing.Size(100, 23);
             this.encodeButton.TabIndex = 1;
-            this.encodeButton.Text = "&Convert Video";
+            this.encodeButton.Text = "&Convert";
             this.encodeButton.UseVisualStyleBackColor = true;
             this.encodeButton.Click += new System.EventHandler(this.encodeButton_Click);
             // 
@@ -191,7 +191,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(560, 367);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Input Video";
+            this.tabPage1.Text = "Input";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // groupBox1
