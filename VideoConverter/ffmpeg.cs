@@ -46,7 +46,10 @@ namespace SmoothTranscode
             procInfo = new ProcessStartInfo();
             procInfo.UseShellExecute = false;
             procInfo.RedirectStandardError = true;
-            procInfo.FileName = "ffmpeg.exe";
+            if (IntPtr.Size == 8)
+            	procInfo.FileName = "ffmpeg/ffmpeg-x64.exe";
+            else
+            	procInfo.FileName = "ffmpeg/ffmpeg-x86.exe";
             procInfo.CreateNoWindow = true;
         }
 
