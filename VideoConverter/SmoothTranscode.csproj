@@ -172,7 +172,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ffmpeg.exe">
+    <Content Include="ffmpeg\ffmpeg-x64.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ffmpeg\ffmpeg-x86.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="icon.ico" />
