@@ -136,8 +136,10 @@ namespace SmoothTranscode
                 Video = "wmv2";
             else if (videoComboBox.SelectedItem == "Windows Media Video 7")
                 Video = "wmv1";
-            else if (videoComboBox.SelectedItem == "Flash Video")
+            else if (videoComboBox.SelectedItem == "Flash Video (Sorenson Spark)")
                 Video = "flv";
+            else if (videoComboBox.SelectedItem == "VP8")
+                Video = "libvpx";
             else if (videoComboBox.SelectedItem == "Real Video 2.0")
                 Video = "rv20";
             else if (videoComboBox.SelectedItem == "Real Video 1.0")

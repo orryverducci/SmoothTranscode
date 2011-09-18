@@ -504,6 +504,7 @@
             "Windows Media Video 8",
             "Windows Media Video 7",
             "Flash Video (Sorenson Spark)",
+            "VP8",
             "Real Video 2.0",
             "Real Video 1.0",
             "Ogg Theora",
