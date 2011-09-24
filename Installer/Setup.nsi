@@ -46,7 +46,7 @@
   VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "Copyright © Atomic Wasteland 2011"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "FileDescription" "Installs SmoothTranscode to your computer"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "1.0.0.0"
-  VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductVersion" "0.2.0.0"
+  VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductVersion" "0.3.0.0"
 
   ;Set Compressor
   SetCompressor lzma
@@ -60,13 +60,13 @@ FunctionEnd
 ;--------------------------------
 ;Interface Settings
 
-;  !define MUI_ICON "InstallIcon.ico"
-;  !define MUI_UNICON "InstallIcon.ico"
-;  !define MUI_HEADERIMAGE
-;  !define MUI_HEADERIMAGE_BITMAP "installheader.bmp"
-;  !define MUI_HEADERIMAGE_RIGHT
-;  !define MUI_WELCOMEFINISHPAGE_BITMAP "install.bmp"
-;  !define MUI_UNWELCOMEFINISHPAGE_BITMAP "install.bmp"
+  !define MUI_ICON "install.ico"
+  !define MUI_UNICON "install.ico"
+  !define MUI_HEADERIMAGE
+  !define MUI_HEADERIMAGE_BITMAP "header.bmp"
+  !define MUI_HEADERIMAGE_RIGHT
+  !define MUI_WELCOMEFINISHPAGE_BITMAP "side.bmp"
+  !define MUI_UNWELCOMEFINISHPAGE_BITMAP "side.bmp"
   !define MUI_ABORTWARNING
   !define MUI_FINISHPAGE_RUN "$INSTDIR\SmoothTranscode.exe"
   !define MUI_FINISHPAGE_RUN_NOTCHECKED
