@@ -1,6 +1,6 @@
 ﻿/* 
- *	Copyright (C) 2011 Atomic Wasteland
- *	http://www.atomicwasteland.co.uk/
+ *  Copyright (C) 2011 Atomic Wasteland
+ *  http://www.atomicwasteland.co.uk/
  *
  *  This Program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -23,7 +23,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -33,17 +35,49 @@ namespace SmoothTranscode
     {
         public AboutWindow()
         {
+            this.Font = SystemFonts.MessageBoxFont; // Sets UI font to system font
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Close();
+            Close(); //Closes form
         }
 
         private void linkLabel21_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.atomicwasteland.co.uk/");
+            System.Diagnostics.Process.Start("http://www.atomicwasteland.co.uk/"); // Opens Atomic Wasteland website
+        }
+
+        private void AboutWindow_Load(object sender, EventArgs e)
+        {
+            aboutPanelMenu.Renderer = new MenuRenderer(); // Changes toolstrip renderer to system with a bottom border bug fix
+            // Updates version label with assembly version and formatted text
+            versionLabel.Text = "Version " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString().Remove(3);
+            versionLabel.Font = new Font(versionLabel.Font, FontStyle.Bold);
+            // Display GPL license on the license tab web browser
+            licenseBrowser.Navigate(Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\gpl-2.0-standalone.html");
+        }
+
+        private void aboutButton_Click(object sender, EventArgs e)
+        {
+            hiddenTabsControl.SelectedTab = aboutPage;
+            creditsButton.Checked = false;
+            licenseButton.Checked = false;
+        }
+
+        private void creditsButton_Click(object sender, EventArgs e)
+        {
+            hiddenTabsControl.SelectedTab = creditsPage;
+            aboutButton.Checked = false;
+            licenseButton.Checked = false;
+        }
+
+        private void licenseButton_Click(object sender, EventArgs e)
+        {
+            hiddenTabsControl.SelectedTab = licensePage;
+            aboutButton.Checked = false;
+            creditsButton.Checked = false;
         }
     }
 }

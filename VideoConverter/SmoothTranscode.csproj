@@ -71,6 +71,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HiddenTabsControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="HiddenTabsControl.Designer.cs">
+      <DependentUpon>HiddenTabsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuRenderer.cs" />
     <Compile Include="AboutWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +183,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="ffmpeg\ffmpeg-x86.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gpl-2.0-standalone.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="icon.ico" />
