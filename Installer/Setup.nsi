@@ -1,20 +1,18 @@
 ;  Copyright (C) 2011 Atomic Wasteland
 ;  http://www.atomicwasteland.co.uk/
 ;
-;  This Program is free software; you can redistribute it and/or modify
+;  This Program is free software: you can redistribute it and/or modify
 ;  it under the terms of the GNU General Public License as published by
-;  the Free Software Foundation; either version 2, or (at your option)
-;  any later version.
-;   
-;  This Program is distributed in the hope that it will be useful,
+;  the Free Software Foundation, either version 3 of the License, or
+;  (at your option) any later version.
+;
+;  This program is distributed in the hope that it will be useful,
 ;  but WITHOUT ANY WARRANTY; without even the implied warranty of
-;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 ;  GNU General Public License for more details.
-;   
+;
 ;  You should have received a copy of the GNU General Public License
-;  along with GNU Make; see the file COPYING.  If not, write to
-;  the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA. 
-;  http://www.gnu.org/copyleft/gpl.html
+;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ;--------------------------------
 ;Include Modern UI and .Net Framework Detection
@@ -40,7 +38,7 @@
   RequestExecutionLevel admin
 
   ;Version Information
-  VIProductVersion "0.2.0.0"
+  VIProductVersion "0.3.0.0"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductName" "SmoothTranscode Installer"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "CompanyName" "Atomic Wasteland"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "Copyright © Atomic Wasteland 2011"
@@ -80,7 +78,7 @@ FunctionEnd
 ;Pages
 
   !insertmacro MUI_PAGE_WELCOME
-  !insertmacro MUI_PAGE_LICENSE "../gpl-2.0.txt"
+  !insertmacro MUI_PAGE_LICENSE "../gpl-3.0.txt"
   !insertmacro MUI_PAGE_DIRECTORY
   !insertmacro MUI_PAGE_INSTFILES
   !insertmacro MUI_PAGE_FINISH

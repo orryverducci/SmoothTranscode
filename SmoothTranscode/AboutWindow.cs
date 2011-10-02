@@ -1,21 +1,19 @@
-﻿/* 
+﻿/*
  *  Copyright (C) 2011 Atomic Wasteland
  *  http://www.atomicwasteland.co.uk/
  *
- *  This Program is free software; you can redistribute it and/or modify
+ *  This Program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2, or (at your option)
- *  any later version.
- *   
- *  This Program is distributed in the hope that it will be useful,
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
- *   
+ *
  *  You should have received a copy of the GNU General Public License
- *  along with GNU Make; see the file COPYING.  If not, write to
- *  the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA. 
- *  http://www.gnu.org/copyleft/gpl.html
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
 using System;
@@ -56,7 +54,7 @@ namespace SmoothTranscode
             versionLabel.Text = "Version " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString().Remove(3);
             versionLabel.Font = new Font(versionLabel.Font, FontStyle.Bold);
             // Display GPL license on the license tab web browser
-            licenseBrowser.Navigate(Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\gpl-2.0-standalone.html");
+            licenseBrowser.Navigate(Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\gpl-3.0-standalone.html");
         }
 
         private void aboutButton_Click(object sender, EventArgs e)

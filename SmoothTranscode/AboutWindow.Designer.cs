@@ -243,6 +243,7 @@
             // licenseBrowser
             // 
             this.licenseBrowser.AllowWebBrowserDrop = false;
+            this.licenseBrowser.IsWebBrowserContextMenuEnabled = false;
             this.licenseBrowser.Location = new System.Drawing.Point(0, 0);
             this.licenseBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.licenseBrowser.Name = "licenseBrowser";
