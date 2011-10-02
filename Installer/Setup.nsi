@@ -32,7 +32,7 @@
   BrandingText "SmoothTranscode"
 
   ;Default installation folder
-  InstallDir "$PROGRAMFILES\SmoothTranscode"
+  InstallDir "$PROGRAMFILES64\SmoothTranscode"
 
   ;Request application privileges for Windows Vista/7
   RequestExecutionLevel admin
@@ -101,15 +101,15 @@ Section "SmoothTranscode" SecMain
   SetOutPath "$INSTDIR"
 
   ;Files
-  File "..\VideoConverter\Bin\Release\SmoothTranscode.exe"
-  File "..\VideoConverter\Bin\Release\Help.dll"
-  File "..\VideoConverter\Bin\Release\LinkLabel2.dll"
-  File "..\VideoConverter\Bin\Release\Renderers.dll"
-  File "..\VideoConverter\Bin\Release\Windows7ProgressBar.dll"
+  File "..\SmoothTranscode\Bin\Release\SmoothTranscode.exe"
+  File "..\SmoothTranscode\Bin\Release\Help.dll"
+  File "..\SmoothTranscode\Bin\Release\LinkLabel2.dll"
+  File "..\SmoothTranscode\Bin\Release\Renderers.dll"
+  File "..\SmoothTranscode\Bin\Release\Windows7ProgressBar.dll"
 
   SetOutPath "$INSTDIR\ffmpeg"
-  File "..\VideoConverter\Bin\Release\ffmpeg-x86.exe"
-  File "..\VideoConverter\Bin\Release\ffmpeg-x64.exe"
+  File "..\SmoothTranscode\Bin\Release\ffmpeg\ffmpeg-x86.exe"
+  File "..\SmoothTranscode\Bin\Release\ffmpeg\ffmpeg-x64.exe"
 
   ;Create Shortcuts
   CreateShortCut "$SMPROGRAMS\SmoothTranscode.lnk" "$INSTDIR\SmoothTranscode.exe"
@@ -129,10 +129,8 @@ Section "SmoothTranscode" SecMain
 
   ; .Net Framework Warning
   ${IfNot} ${HasDotNet4.0}
-    Messagebox MB_OK|MB_ICONEXCLAMATION
-	"SmoothTranscode Setup could not find .Net Framework 4 on your system. You will need to download and install this before you can use SmoothTranscode."
+    Messagebox MB_OK|MB_ICONEXCLAMATION "SmoothTranscode Setup could not find .Net Framework 4 on your system. You will need to download and install this before you can use SmoothTranscode."
   ${EndIf}
-
 
 SectionEnd
 
@@ -161,6 +159,7 @@ Section "Uninstall"
   Delete "$INSTDIR\ffmpeg\ffmpeg-x86.exe"
   Delete "$INSTDIR\ffmpeg\ffmpeg-x64.exe"
   Delete "$SMPROGRAMS\SmoothTranscode.lnk"
+  Delete "$DESKTOP\SmoothTranscode.lnk"
   Delete "$INSTDIR\Uninstall.exe"
 
   ;Remove Directories
