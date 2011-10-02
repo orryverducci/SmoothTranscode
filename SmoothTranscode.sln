@@ -1,19 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmoothTranscode", "VideoConverter\SmoothTranscode.csproj", "{2BE418FC-333A-4726-9A38-B5A456D222B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmoothTranscode", "SmoothTranscode\SmoothTranscode.csproj", "{2BE418FC-333A-4726-9A38-B5A456D222B7}"
 	ProjectSection(ProjectDependencies) = postProject
 		{A6468F09-0572-486D-B4DF-8E05E787A70F} = {A6468F09-0572-486D-B4DF-8E05E787A70F}
 		{D57466BE-97D8-41DA-89B5-D43FBF06B18F} = {D57466BE-97D8-41DA-89B5-D43FBF06B18F}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Help", "HelpEngine\Help.csproj", "{A6468F09-0572-486D-B4DF-8E05E787A70F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Help", "Help\Help.csproj", "{A6468F09-0572-486D-B4DF-8E05E787A70F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Renderers", "ClassLibrary1\Renderers.csproj", "{78000272-E0DD-4B99-8DAA-34C1A01F22DB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Renderers", "Renderers\Renderers.csproj", "{78000272-E0DD-4B99-8DAA-34C1A01F22DB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkLabel2", "LinkLabel2\LinkLabel2.csproj", "{D57466BE-97D8-41DA-89B5-D43FBF06B18F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Windows7ProgressBar", "Control\Windows7ProgressBar.csproj", "{7C2CCE0A-A288-4869-A7B7-CC0D18AF3B8C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Windows7ProgressBar", "Windows7ProgressBar\Windows7ProgressBar.csproj", "{7C2CCE0A-A288-4869-A7B7-CC0D18AF3B8C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DBB47E20-42A0-45A7-BE50-6F58F7CE5B4C}"
 	ProjectSection(SolutionItems) = preProject
