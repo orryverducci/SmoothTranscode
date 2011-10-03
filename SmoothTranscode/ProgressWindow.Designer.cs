@@ -29,55 +29,89 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProgressWindow));
-            this.button1 = new System.Windows.Forms.Button();
-            this.windows7ProgressBar1 = new wyDay.Controls.Windows7ProgressBar();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.conversionProgressBar = new wyDay.Controls.Windows7ProgressBar();
+            this.lowerPanel = new System.Windows.Forms.Panel();
+            this.mainLabel = new System.Windows.Forms.Label();
+            this.lowerPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // cancelButton
             // 
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button1.Location = new System.Drawing.Point(197, 41);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Cancel";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cancelButton.Location = new System.Drawing.Point(277, 77);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(88, 25);
+            this.cancelButton.TabIndex = 1;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
-            // windows7ProgressBar1
+            // conversionProgressBar
             // 
-            this.windows7ProgressBar1.ContainerControl = this;
-            this.windows7ProgressBar1.Location = new System.Drawing.Point(12, 12);
-            this.windows7ProgressBar1.Name = "windows7ProgressBar1";
-            this.windows7ProgressBar1.ShowInTaskbar = true;
-            this.windows7ProgressBar1.Size = new System.Drawing.Size(260, 23);
-            this.windows7ProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.windows7ProgressBar1.TabIndex = 2;
+            this.conversionProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.conversionProgressBar.ContainerControl = this;
+            this.conversionProgressBar.Location = new System.Drawing.Point(9, 38);
+            this.conversionProgressBar.Name = "conversionProgressBar";
+            this.conversionProgressBar.ShowInTaskbar = true;
+            this.conversionProgressBar.Size = new System.Drawing.Size(355, 15);
+            this.conversionProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.conversionProgressBar.TabIndex = 2;
+            // 
+            // lowerPanel
+            // 
+            this.lowerPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lowerPanel.BackColor = System.Drawing.SystemColors.Window;
+            this.lowerPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lowerPanel.Controls.Add(this.mainLabel);
+            this.lowerPanel.Controls.Add(this.conversionProgressBar);
+            this.lowerPanel.Location = new System.Drawing.Point(-1, -1);
+            this.lowerPanel.Name = "lowerPanel";
+            this.lowerPanel.Size = new System.Drawing.Size(375, 67);
+            this.lowerPanel.TabIndex = 3;
+            // 
+            // mainLabel
+            // 
+            this.mainLabel.AutoSize = true;
+            this.mainLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(153)))));
+            this.mainLabel.Location = new System.Drawing.Point(5, 7);
+            this.mainLabel.Name = "mainLabel";
+            this.mainLabel.Size = new System.Drawing.Size(115, 13);
+            this.mainLabel.TabIndex = 3;
+            this.mainLabel.Text = "Conversion in Progress";
             // 
             // ProgressWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.button1;
-            this.ClientSize = new System.Drawing.Size(284, 76);
-            this.Controls.Add(this.windows7ProgressBar1);
-            this.Controls.Add(this.button1);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.CancelButton = this.cancelButton;
+            this.ClientSize = new System.Drawing.Size(373, 113);
+            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.lowerPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ProgressWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Conversion in Progress";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProgressWindow_FormClosing);
             this.Load += new System.EventHandler(this.ProgressWindow_Load);
+            this.lowerPanel.ResumeLayout(false);
+            this.lowerPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private wyDay.Controls.Windows7ProgressBar windows7ProgressBar1;
+        private System.Windows.Forms.Button cancelButton;
+        private wyDay.Controls.Windows7ProgressBar conversionProgressBar;
+        private System.Windows.Forms.Panel lowerPanel;
+        private System.Windows.Forms.Label mainLabel;
     }
 }

@@ -34,24 +34,28 @@ namespace SmoothTranscode
 
         public ProgressWindow()
         {
+            this.Font = SystemFonts.MessageBoxFont; // Sets UI font to system font
             InitializeComponent();
         }
 
         private void ProgressWindow_Load(object sender, EventArgs e)
         {
+            // Sets title font
+            mainLabel.Font = new Font(mainLabel.Font.FontFamily, 12, FontStyle.Regular);
+            // Starts conversion and registers progress and completion event handlers
             ffmpegConverter.ConvertFile();
             ffmpegConverter.conversionEnded += new EventHandler(ConversionEnded);
             ffmpegConverter.progressUpdate += new ffmpeg.ProgressEventHandler(ProgressUpdate);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
         private void ProgressWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!ended)
+            if (!ended) // If the conversion has not ended
             {
                 if (MessageBox.Show("Are you sure you want to cancel this conversion?", "Cancel Conversion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                     e.Cancel = true;
@@ -76,9 +80,9 @@ namespace SmoothTranscode
         {
             BeginInvoke((MethodInvoker)delegate
             {
-                if (windows7ProgressBar1.Style != ProgressBarStyle.Continuous)
-                    windows7ProgressBar1.Style = ProgressBarStyle.Continuous;
-                windows7ProgressBar1.Value = e.EncoderOutput();
+                if (conversionProgressBar.Style != ProgressBarStyle.Continuous)
+                    conversionProgressBar.Style = ProgressBarStyle.Continuous;
+                conversionProgressBar.Value = e.EncoderOutput();
             });
         }
     }
