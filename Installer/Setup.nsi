@@ -106,7 +106,7 @@ Section "SmoothTranscode" SecMain
   File "..\SmoothTranscode\Bin\Release\LinkLabel2.dll"
   File "..\SmoothTranscode\Bin\Release\Renderers.dll"
   File "..\SmoothTranscode\Bin\Release\Windows7ProgressBar.dll"
-  File "..\SmoothTranscode\Bin\Release\gpl-3.0-standard.html"
+  File "..\SmoothTranscode\Bin\Release\gpl-3.0-standalone.html"
 
   SetOutPath "$INSTDIR\ffmpeg"
   File "..\SmoothTranscode\Bin\Release\ffmpeg\ffmpeg-x86.exe"
