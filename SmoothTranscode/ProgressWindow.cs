@@ -57,8 +57,10 @@ namespace SmoothTranscode
         {
             if (!ended) // If the conversion has not ended
             {
+                // Check user wishes to cancel conversion, and cancel form close if 'No' response received
                 if (MessageBox.Show("Are you sure you want to cancel this conversion?", "Cancel Conversion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                     e.Cancel = true;
+                // Otherwise cancel conversion
                 else
                 {
                     ffmpegConverter.CancelConversion();
@@ -69,6 +71,7 @@ namespace SmoothTranscode
 
         private void ConversionEnded(object sender, EventArgs e)
         {
+            // Set ended boolean and close form
             ended = true;
             BeginInvoke((MethodInvoker)delegate
             {
@@ -80,8 +83,10 @@ namespace SmoothTranscode
         {
             BeginInvoke((MethodInvoker)delegate
             {
+                // Change from marquee to continuous progress bar
                 if (conversionProgressBar.Style != ProgressBarStyle.Continuous)
                     conversionProgressBar.Style = ProgressBarStyle.Continuous;
+                // Update percentage complete
                 conversionProgressBar.Value = e.EncoderOutput();
             });
         }
