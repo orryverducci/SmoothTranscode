@@ -304,5 +304,13 @@ namespace SmoothTranscode
                 e.Effect = DragDropEffects.Copy;
             }
         }
+
+        private void MainWindow_Load(object sender, EventArgs e)
+        {
+            // Retrieve arguments and set input file if opened with file argument
+            string[] args = Environment.GetCommandLineArgs();
+            if (args.Length == 2)
+                inputTextBox.Text = args[1];
+        }
     }
 }

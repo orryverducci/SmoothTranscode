@@ -2,6 +2,7 @@
 ---
 [NEW] .Net Framework detection added to installer
 [NEW] Full 64 bit support
+[NEW] Support for files opened through Windows Explorer
 [UPDATED] New application icon
 [UPDATED] Refreshed user interface
 [UPDATED] Changed license from GPL v2 to GPL v3

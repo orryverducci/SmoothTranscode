@@ -964,6 +964,7 @@
             this.MaximizeBox = false;
             this.Name = "MainWindow";
             this.Text = "SmoothTranscode Beta";
+            this.Load += new System.EventHandler(this.MainWindow_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainWindow_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainWindow_DragEnter);
             this.mainTabs.ResumeLayout(false);
