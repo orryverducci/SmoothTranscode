@@ -29,11 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            this.encodeButton = new System.Windows.Forms.Button();
+            this.convertButton = new System.Windows.Forms.Button();
             this.aboutButton = new System.Windows.Forms.Button();
             this.mainTabs = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.inputTab = new System.Windows.Forms.TabPage();
             this.inputButton = new System.Windows.Forms.Button();
             this.inputTextBox = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -103,11 +102,10 @@
             this.outputButton = new System.Windows.Forms.Button();
             this.outputTextBox = new System.Windows.Forms.TextBox();
             this.inputFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.button2 = new System.Windows.Forms.Button();
+            this.helpButton = new System.Windows.Forms.Button();
             this.outputFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.mainTabs.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.inputTab.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -142,24 +140,25 @@
             this.groupBox19.SuspendLayout();
             this.SuspendLayout();
             // 
-            // encodeButton
+            // convertButton
             // 
-            this.encodeButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.encodeButton.Location = new System.Drawing.Point(480, 411);
-            this.encodeButton.Name = "encodeButton";
-            this.encodeButton.Size = new System.Drawing.Size(100, 23);
-            this.encodeButton.TabIndex = 1;
-            this.encodeButton.Text = "&Convert";
-            this.encodeButton.UseVisualStyleBackColor = true;
-            this.encodeButton.Click += new System.EventHandler(this.encodeButton_Click);
+            this.convertButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.convertButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.convertButton.Location = new System.Drawing.Point(496, 410);
+            this.convertButton.Name = "convertButton";
+            this.convertButton.Size = new System.Drawing.Size(88, 25);
+            this.convertButton.TabIndex = 1;
+            this.convertButton.Text = "&Convert";
+            this.convertButton.UseVisualStyleBackColor = true;
+            this.convertButton.Click += new System.EventHandler(this.convertButton_Click);
             // 
             // aboutButton
             // 
             this.aboutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.aboutButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.aboutButton.Location = new System.Drawing.Point(12, 411);
+            this.aboutButton.Location = new System.Drawing.Point(8, 410);
             this.aboutButton.Name = "aboutButton";
-            this.aboutButton.Size = new System.Drawing.Size(75, 23);
+            this.aboutButton.Size = new System.Drawing.Size(88, 25);
             this.aboutButton.TabIndex = 2;
             this.aboutButton.Text = "&About";
             this.aboutButton.UseVisualStyleBackColor = true;
@@ -170,47 +169,38 @@
             this.mainTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainTabs.Controls.Add(this.tabPage1);
+            this.mainTabs.Controls.Add(this.inputTab);
             this.mainTabs.Controls.Add(this.tabPage2);
             this.mainTabs.Controls.Add(this.tabPage3);
             this.mainTabs.Controls.Add(this.tabPage4);
             this.mainTabs.Controls.Add(this.tabPage5);
             this.mainTabs.Controls.Add(this.tabPage6);
             this.mainTabs.Controls.Add(this.tabPage7);
-            this.mainTabs.Location = new System.Drawing.Point(12, 12);
+            this.mainTabs.Location = new System.Drawing.Point(9, 12);
             this.mainTabs.Name = "mainTabs";
             this.mainTabs.SelectedIndex = 0;
-            this.mainTabs.Size = new System.Drawing.Size(568, 393);
+            this.mainTabs.Size = new System.Drawing.Size(576, 388);
             this.mainTabs.TabIndex = 0;
             // 
-            // tabPage1
+            // inputTab
             // 
-            this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(560, 367);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Input";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.inputButton);
-            this.groupBox1.Controls.Add(this.inputTextBox);
-            this.groupBox1.Location = new System.Drawing.Point(7, 6);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(547, 48);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Input File";
+            this.inputTab.Controls.Add(this.inputButton);
+            this.inputTab.Controls.Add(this.inputTextBox);
+            this.inputTab.Location = new System.Drawing.Point(4, 22);
+            this.inputTab.Name = "inputTab";
+            this.inputTab.Padding = new System.Windows.Forms.Padding(3);
+            this.inputTab.Size = new System.Drawing.Size(568, 362);
+            this.inputTab.TabIndex = 0;
+            this.inputTab.Text = "Input";
+            this.inputTab.UseVisualStyleBackColor = true;
             // 
             // inputButton
             // 
+            this.inputButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.inputButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.inputButton.Location = new System.Drawing.Point(466, 19);
+            this.inputButton.Location = new System.Drawing.Point(472, 11);
             this.inputButton.Name = "inputButton";
-            this.inputButton.Size = new System.Drawing.Size(75, 22);
+            this.inputButton.Size = new System.Drawing.Size(88, 25);
             this.inputButton.TabIndex = 1;
             this.inputButton.Text = "Browse";
             this.inputButton.UseVisualStyleBackColor = true;
@@ -218,9 +208,12 @@
             // 
             // inputTextBox
             // 
-            this.inputTextBox.Location = new System.Drawing.Point(7, 20);
+            this.inputTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.inputTextBox.Enabled = false;
+            this.inputTextBox.Location = new System.Drawing.Point(9, 12);
             this.inputTextBox.Name = "inputTextBox";
-            this.inputTextBox.Size = new System.Drawing.Size(453, 20);
+            this.inputTextBox.Size = new System.Drawing.Size(455, 20);
             this.inputTextBox.TabIndex = 0;
             // 
             // tabPage2
@@ -231,7 +224,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(560, 367);
+            this.tabPage2.Size = new System.Drawing.Size(568, 362);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Format";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -894,7 +887,7 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(560, 367);
+            this.tabPage7.Size = new System.Drawing.Size(568, 362);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "Output Setup";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -933,16 +926,17 @@
             this.inputFileDialog.RestoreDirectory = true;
             this.inputFileDialog.Title = "Select File to Convert";
             // 
-            // button2
+            // helpButton
             // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button2.Location = new System.Drawing.Point(93, 411);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Help";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.helpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.helpButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.helpButton.Location = new System.Drawing.Point(103, 410);
+            this.helpButton.Name = "helpButton";
+            this.helpButton.Size = new System.Drawing.Size(88, 25);
+            this.helpButton.TabIndex = 3;
+            this.helpButton.Text = "Help";
+            this.helpButton.UseVisualStyleBackColor = true;
+            this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
             // 
             // outputFileDialog
             // 
@@ -955,10 +949,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(592, 446);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.helpButton);
             this.Controls.Add(this.mainTabs);
             this.Controls.Add(this.aboutButton);
-            this.Controls.Add(this.encodeButton);
+            this.Controls.Add(this.convertButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -968,9 +962,8 @@
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainWindow_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainWindow_DragEnter);
             this.mainTabs.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.inputTab.ResumeLayout(false);
+            this.inputTab.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
@@ -1018,11 +1011,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button encodeButton;
+        private System.Windows.Forms.Button convertButton;
         private System.Windows.Forms.Button aboutButton;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage inputTab;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button inputButton;
         private System.Windows.Forms.TextBox inputTextBox;
         private System.Windows.Forms.OpenFileDialog inputFileDialog;
@@ -1053,7 +1045,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox audioTextBox;
         private System.Windows.Forms.ComboBox sampleComboBox;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button helpButton;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.GroupBox groupBox8;

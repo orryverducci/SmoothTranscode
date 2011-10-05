@@ -38,30 +38,58 @@ namespace SmoothTranscode
 
         public MainWindow()
         {
+            this.Font = SystemFonts.MessageBoxFont; // Sets UI font to system font
             InitializeComponent();
         }
 
-        public void FormEnabled(bool Toggle)
+        private void MainWindow_Load(object sender, EventArgs e)
         {
-            mainTabs.Enabled = Toggle;
+            // Retrieve arguments and set input file if opened with file argument
+            string[] args = Environment.GetCommandLineArgs();
+            if (args.Length == 2)
+                inputTextBox.Text = args[1];
+        }
+
+        private void MainWindow_DragEnter(object sender, DragEventArgs e)
+        {
+            // Allows files to be dragged onto the window
+            if (e.Data.GetDataPresent(DataFormats.FileDrop, false) == true)
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+        }
+
+        private void MainWindow_DragDrop(object sender, DragEventArgs e)
+        {
+            // Places the filename of dropped files into the input text box
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+
+            foreach (string file in files)
+            {
+                inputTextBox.Text = file;
+            }
         }
 
         private void aboutButton_Click(object sender, EventArgs e)
         {
+            // Opens the about window
             AboutWindow aboutWindow = new AboutWindow();
             aboutWindow.ShowDialog();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void helpButton_Click(object sender, EventArgs e)
         {
-            Help.Form1 openHelp = new Help.Form1();
-            openHelp.Show();
+            // Opens the help window
+            Help.Form1 helpWindow = new Help.Form1();
+            helpWindow.Show();
         }
 
         #region Input Video Tab
         private void inputButton_Click(object sender, EventArgs e)
         {
+            // File type filters for input dialog
             inputFileDialog.Filter = "All Compatible Formats|*.mpg;*.mpeg;*.ps;*.ts;*.mp4;*.m4v;*.mp3;*.aac;*.m4a;*.m4b;*.wmv;*.wma;*.asf;*.webm;*.mkv;*.mka;*.mks;*.ogv;*.oga;*.ogx;*.ogg;*.spx;*.flac;*.dvr-ms;*.wtv;*.avi;*.flv;*.divx;*.xvid;*.rm;*.ra;*.rv;*.ram;*.mov;*.3gp;*.3g2;*.avs;*.nsv;*.mjp;*.mjpg;*.gfx;*.mfx|MPEG Video (*.mpg; *.mpeg; *.ps; *.ts)|*.mpg;*.mpeg;*.ps;*.ts|MPEG-4 Video (*.mp4; *.m4v)|*.mp4;*.m4v|MP3 Audio (*.mp3)|*.mp3|MP4/AAC Audio (*.aac; *.m4a; *.m4b)|*.aac;*.m4a;*.m4b|Windows Media (*.wmv; *.wma; *.asf)|*.wmv;*.wma;*.asf|WebM (*.webm)|*.webm|Matroska (*.mkv; *.mka; *.mks)|*.mkv;*.mka;*.mks|Ogg (*.ogv; *.oga; *.ogx; *.ogg; *.spx)|*.ogv;*.oga;*.ogx;*.ogg;*.spx|Flac Audio (*.flac)|*.flac|Microsoft Recorded TV Show (*.dvr-ms; *.wtv)|*.dvr-ms,*.wtv|Windows Video (*.avi)|*.avi|Flash Video (*.flv)|*.flv|DivX (*.divx)|*.divx|XviD (*.xvid)|*.xvid|Real Media (*.rm; *.ra; *.rv; *.ram)|*.rm;*.ra;*.rv;*.ram|Quicktime Video (*.mov)|*.mov|Mobile Video (*.3gp; *.3g2)|*.3gp;*.3g2|AVISynth (*.avs)|*.avs|Nullsoft Video (*.nsv)|*.nsv|Motion JPEG (*.mjp; *.mjpg)|*.mjp;*.mjpg|General eXchange Format (*.gxf)|*.gxf|Material eXchange Format (*.mxf)|*.mxf|Any file|*.*";
+            // If file selected, place filename in the input text box
             if (inputFileDialog.ShowDialog() != DialogResult.Cancel)
             {
                 inputTextBox.Text = inputFileDialog.FileName;
@@ -203,7 +231,7 @@ namespace SmoothTranscode
         #endregion
 
         #region Convert Video Button
-        private void encodeButton_Click(object sender, EventArgs e)
+        private void convertButton_Click(object sender, EventArgs e)
         {
             // File checks
             if (inputTextBox.Text == String.Empty || outputTextBox.Text == String.Empty)
@@ -286,31 +314,5 @@ namespace SmoothTranscode
             progressWindow.ShowDialog();
         }
         #endregion
-
-        private void MainWindow_DragDrop(object sender, DragEventArgs e)
-        {
-            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-
-            foreach (string file in files)
-            {
-                inputTextBox.Text = file;
-            }  
-        }
-
-        private void MainWindow_DragEnter(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop, false) == true)
-            {
-                e.Effect = DragDropEffects.Copy;
-            }
-        }
-
-        private void MainWindow_Load(object sender, EventArgs e)
-        {
-            // Retrieve arguments and set input file if opened with file argument
-            string[] args = Environment.GetCommandLineArgs();
-            if (args.Length == 2)
-                inputTextBox.Text = args[1];
-        }
     }
 }
