@@ -84,7 +84,7 @@ namespace SmoothTranscode
             helpWindow.Show();
         }
 
-        #region Input Video Tab
+        #region Input Tab
         private void inputButton_Click(object sender, EventArgs e)
         {
             // File type filters for input dialog
@@ -95,9 +95,7 @@ namespace SmoothTranscode
                 inputTextBox.Text = inputFileDialog.FileName;
             }
         }
-        #endregion
 
-        #region Format Tab
         private void containerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (containerComboBox.SelectedItem == "MPEG-4")
@@ -143,6 +141,53 @@ namespace SmoothTranscode
             else if (containerComboBox.SelectedItem == "AMR")
                 Format = "amr";
         }
+        #endregion
+
+        #region Video Tab
+        private void sameQualRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            cbrTextBox.Enabled = false;
+            cbrLabel.Enabled = false;
+            vbrTextBox.Enabled = false;
+            vbrKbpsLabel.Enabled = false;
+            vbrOptionalLabel.Enabled = false;
+            vbrMinLabel.Enabled = false;
+            vbrMinTextBox.Enabled = false;
+            vbrMaxLabel.Enabled = false;
+            vbrMaxTextBox.Enabled = false;
+            vbrBufferLabel.Enabled = false;
+            vbrBufferTextBox.Enabled = false;
+        }
+
+        private void vbrRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            cbrTextBox.Enabled = false;
+            cbrLabel.Enabled = false;
+            vbrTextBox.Enabled = true;
+            vbrKbpsLabel.Enabled = true;
+            vbrOptionalLabel.Enabled = true;
+            vbrMinLabel.Enabled = true;
+            vbrMinTextBox.Enabled = true;
+            vbrMaxLabel.Enabled = true;
+            vbrMaxTextBox.Enabled = true;
+            vbrBufferLabel.Enabled = true;
+            vbrBufferTextBox.Enabled = true;
+        }
+
+        private void cbrRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            cbrTextBox.Enabled = true;
+            cbrLabel.Enabled = true;
+            vbrTextBox.Enabled = false;
+            vbrKbpsLabel.Enabled = false;
+            vbrOptionalLabel.Enabled = false;
+            vbrMinLabel.Enabled = false;
+            vbrMinTextBox.Enabled = false;
+            vbrMaxLabel.Enabled = false;
+            vbrMaxTextBox.Enabled = false;
+            vbrBufferLabel.Enabled = false;
+            vbrBufferTextBox.Enabled = false;
+        }
 
         private void videoComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -184,7 +229,7 @@ namespace SmoothTranscode
                 Video = "dnxhd";
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void advancedButton_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Advanced video encoding options are not available in this version of SmoothTranscode.", "Feature Not Available", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -259,8 +304,8 @@ namespace SmoothTranscode
                 Arguments += " -deinterlace";
             if (aspectComboBox.Text != String.Empty)
                 Arguments += " -aspect " + aspectComboBox.Text;
-            if (videoTextBox.Text != String.Empty)
-                Arguments += " -b " + videoTextBox.Text + "k";
+            if (cbrTextBox.Text != String.Empty)
+                Arguments += " -b " + cbrTextBox.Text + "k";
             if (widthTextBox.Text != String.Empty && heightTextBox.Text != String.Empty)
                 Arguments += " -s " + widthTextBox.Text + "x" + heightTextBox.Text;
             if (Audio != String.Empty)
