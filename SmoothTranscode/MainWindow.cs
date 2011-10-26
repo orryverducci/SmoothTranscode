@@ -144,6 +144,48 @@ namespace SmoothTranscode
         #endregion
 
         #region Video Tab
+        private void videoCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (videoCheckBox.Checked)
+            {
+                codecSeperator.Enabled = true;
+                videoCodecLabel.Enabled = true;
+                videoComboBox.Enabled = true;
+                advancedButton.Enabled = true;
+                bitratePanel.Enabled = true;
+                resolutionSeperator.Enabled = true;
+                resolutionLabel.Enabled = true;
+                widthTextBox.Enabled = true;
+                xLabel.Enabled = true;
+                heightTextBox.Enabled = true;
+                pixelsLabel.Enabled = true;
+                aspectLabel.Enabled = true;
+                aspectComboBox.Enabled = true;
+                frameRateLabel.Enabled = true;
+                frameRateComboBox.Enabled = true;
+                deinterlaceCheckBox.Enabled = true;
+            }
+            else
+            {
+                codecSeperator.Enabled = false;
+                videoCodecLabel.Enabled = false;
+                videoComboBox.Enabled = false;
+                advancedButton.Enabled = false;
+                bitratePanel.Enabled = false;
+                resolutionSeperator.Enabled = false;
+                resolutionLabel.Enabled = false;
+                widthTextBox.Enabled = false;
+                xLabel.Enabled = false;
+                heightTextBox.Enabled = false;
+                pixelsLabel.Enabled = false;
+                aspectLabel.Enabled = false;
+                aspectComboBox.Enabled = false;
+                frameRateLabel.Enabled = false;
+                frameRateComboBox.Enabled = false;
+                deinterlaceCheckBox.Enabled = false;
+            }
+        }
+
         private void sameQualRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             cbrTextBox.Enabled = false;

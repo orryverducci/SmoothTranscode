@@ -37,7 +37,20 @@
             this.inputButton = new System.Windows.Forms.Button();
             this.inputTextBox = new System.Windows.Forms.TextBox();
             this.videoTab = new System.Windows.Forms.TabPage();
+            this.deinterlaceCheckBox = new System.Windows.Forms.CheckBox();
+            this.aspectComboBox = new System.Windows.Forms.ComboBox();
+            this.pixelsLabel = new System.Windows.Forms.Label();
+            this.aspectLabel = new System.Windows.Forms.Label();
+            this.heightTextBox = new System.Windows.Forms.TextBox();
+            this.xLabel = new System.Windows.Forms.Label();
             this.bitratePanel = new System.Windows.Forms.Panel();
+            this.vbrBufferTextBox = new System.Windows.Forms.TextBox();
+            this.vbrBufferLabel = new System.Windows.Forms.Label();
+            this.vbrMaxTextBox = new System.Windows.Forms.TextBox();
+            this.vbrMaxLabel = new System.Windows.Forms.Label();
+            this.vbrMinLabel = new System.Windows.Forms.Label();
+            this.vbrMinTextBox = new System.Windows.Forms.TextBox();
+            this.vbrOptionalLabel = new System.Windows.Forms.Label();
             this.vbrTextBox = new System.Windows.Forms.TextBox();
             this.vbrKbpsLabel = new System.Windows.Forms.Label();
             this.vbrRadioButton = new System.Windows.Forms.RadioButton();
@@ -45,16 +58,10 @@
             this.sameQualRadioButton = new System.Windows.Forms.RadioButton();
             this.cbrTextBox = new System.Windows.Forms.TextBox();
             this.cbrLabel = new System.Windows.Forms.Label();
-            this.videoComboBox = new System.Windows.Forms.ComboBox();
-            this.videoCheckBox = new System.Windows.Forms.CheckBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.heightTextBox = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.widthTextBox = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.aspectComboBox = new System.Windows.Forms.ComboBox();
-            this.deinterlaceCheckBox = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.videoComboBox = new System.Windows.Forms.ComboBox();
+            this.resolutionLabel = new System.Windows.Forms.Label();
+            this.videoCheckBox = new System.Windows.Forms.CheckBox();
             this.advancedButton = new System.Windows.Forms.Button();
             this.videoCodecLabel = new System.Windows.Forms.Label();
             this.audioTab = new System.Windows.Forms.TabPage();
@@ -109,13 +116,8 @@
             this.inputFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.helpButton = new System.Windows.Forms.Button();
             this.outputFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.vbrOptionalLabel = new System.Windows.Forms.Label();
-            this.vbrMinTextBox = new System.Windows.Forms.TextBox();
-            this.vbrMinLabel = new System.Windows.Forms.Label();
-            this.vbrMaxLabel = new System.Windows.Forms.Label();
-            this.vbrMaxTextBox = new System.Windows.Forms.TextBox();
-            this.vbrBufferTextBox = new System.Windows.Forms.TextBox();
-            this.vbrBufferLabel = new System.Windows.Forms.Label();
+            this.frameRateLabel = new System.Windows.Forms.Label();
+            this.frameRateComboBox = new System.Windows.Forms.ComboBox();
             this.formatSeperator = new SmoothTranscode.Seperator();
             this.resolutionSeperator = new SmoothTranscode.Seperator();
             this.codecSeperator = new SmoothTranscode.Seperator();
@@ -268,17 +270,19 @@
             // 
             // videoTab
             // 
+            this.videoTab.Controls.Add(this.frameRateComboBox);
+            this.videoTab.Controls.Add(this.frameRateLabel);
             this.videoTab.Controls.Add(this.deinterlaceCheckBox);
             this.videoTab.Controls.Add(this.aspectComboBox);
-            this.videoTab.Controls.Add(this.label12);
-            this.videoTab.Controls.Add(this.label2);
+            this.videoTab.Controls.Add(this.pixelsLabel);
+            this.videoTab.Controls.Add(this.aspectLabel);
             this.videoTab.Controls.Add(this.resolutionSeperator);
             this.videoTab.Controls.Add(this.heightTextBox);
-            this.videoTab.Controls.Add(this.label11);
+            this.videoTab.Controls.Add(this.xLabel);
             this.videoTab.Controls.Add(this.bitratePanel);
             this.videoTab.Controls.Add(this.widthTextBox);
             this.videoTab.Controls.Add(this.videoComboBox);
-            this.videoTab.Controls.Add(this.label10);
+            this.videoTab.Controls.Add(this.resolutionLabel);
             this.videoTab.Controls.Add(this.codecSeperator);
             this.videoTab.Controls.Add(this.videoCheckBox);
             this.videoTab.Controls.Add(this.advancedButton);
@@ -290,6 +294,66 @@
             this.videoTab.TabIndex = 1;
             this.videoTab.Text = "Video";
             this.videoTab.UseVisualStyleBackColor = true;
+            // 
+            // deinterlaceCheckBox
+            // 
+            this.deinterlaceCheckBox.AutoSize = true;
+            this.deinterlaceCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.deinterlaceCheckBox.Location = new System.Drawing.Point(210, 333);
+            this.deinterlaceCheckBox.Name = "deinterlaceCheckBox";
+            this.deinterlaceCheckBox.Size = new System.Drawing.Size(86, 18);
+            this.deinterlaceCheckBox.TabIndex = 3;
+            this.deinterlaceCheckBox.Text = "Deinterlace";
+            this.deinterlaceCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // aspectComboBox
+            // 
+            this.aspectComboBox.FormattingEnabled = true;
+            this.aspectComboBox.Items.AddRange(new object[] {
+            "4:3",
+            "16:9",
+            "16:10",
+            "5:4",
+            "221:100",
+            "1:1"});
+            this.aspectComboBox.Location = new System.Drawing.Point(87, 297);
+            this.aspectComboBox.Name = "aspectComboBox";
+            this.aspectComboBox.Size = new System.Drawing.Size(121, 21);
+            this.aspectComboBox.TabIndex = 4;
+            // 
+            // pixelsLabel
+            // 
+            this.pixelsLabel.AutoSize = true;
+            this.pixelsLabel.Location = new System.Drawing.Point(204, 265);
+            this.pixelsLabel.Name = "pixelsLabel";
+            this.pixelsLabel.Size = new System.Drawing.Size(33, 13);
+            this.pixelsLabel.TabIndex = 13;
+            this.pixelsLabel.Text = "pixels";
+            // 
+            // aspectLabel
+            // 
+            this.aspectLabel.AutoSize = true;
+            this.aspectLabel.Location = new System.Drawing.Point(7, 300);
+            this.aspectLabel.Name = "aspectLabel";
+            this.aspectLabel.Size = new System.Drawing.Size(71, 13);
+            this.aspectLabel.TabIndex = 2;
+            this.aspectLabel.Text = "Aspect Ratio:";
+            // 
+            // heightTextBox
+            // 
+            this.heightTextBox.Location = new System.Drawing.Point(149, 262);
+            this.heightTextBox.Name = "heightTextBox";
+            this.heightTextBox.Size = new System.Drawing.Size(50, 20);
+            this.heightTextBox.TabIndex = 12;
+            // 
+            // xLabel
+            // 
+            this.xLabel.AutoSize = true;
+            this.xLabel.Location = new System.Drawing.Point(132, 265);
+            this.xLabel.Name = "xLabel";
+            this.xLabel.Size = new System.Drawing.Size(12, 13);
+            this.xLabel.TabIndex = 11;
+            this.xLabel.Text = "x";
             // 
             // bitratePanel
             // 
@@ -313,6 +377,70 @@
             this.bitratePanel.Name = "bitratePanel";
             this.bitratePanel.Size = new System.Drawing.Size(549, 135);
             this.bitratePanel.TabIndex = 14;
+            // 
+            // vbrBufferTextBox
+            // 
+            this.vbrBufferTextBox.Enabled = false;
+            this.vbrBufferTextBox.Location = new System.Drawing.Point(451, 77);
+            this.vbrBufferTextBox.Name = "vbrBufferTextBox";
+            this.vbrBufferTextBox.Size = new System.Drawing.Size(80, 20);
+            this.vbrBufferTextBox.TabIndex = 24;
+            // 
+            // vbrBufferLabel
+            // 
+            this.vbrBufferLabel.AutoSize = true;
+            this.vbrBufferLabel.Enabled = false;
+            this.vbrBufferLabel.Location = new System.Drawing.Point(382, 80);
+            this.vbrBufferLabel.Name = "vbrBufferLabel";
+            this.vbrBufferLabel.Size = new System.Drawing.Size(61, 13);
+            this.vbrBufferLabel.TabIndex = 23;
+            this.vbrBufferLabel.Text = "Buffer Size:";
+            // 
+            // vbrMaxTextBox
+            // 
+            this.vbrMaxTextBox.Enabled = false;
+            this.vbrMaxTextBox.Location = new System.Drawing.Point(298, 77);
+            this.vbrMaxTextBox.Name = "vbrMaxTextBox";
+            this.vbrMaxTextBox.Size = new System.Drawing.Size(80, 20);
+            this.vbrMaxTextBox.TabIndex = 22;
+            // 
+            // vbrMaxLabel
+            // 
+            this.vbrMaxLabel.AutoSize = true;
+            this.vbrMaxLabel.Enabled = false;
+            this.vbrMaxLabel.Location = new System.Drawing.Point(263, 80);
+            this.vbrMaxLabel.Name = "vbrMaxLabel";
+            this.vbrMaxLabel.Size = new System.Drawing.Size(30, 13);
+            this.vbrMaxLabel.TabIndex = 21;
+            this.vbrMaxLabel.Text = "Max:";
+            // 
+            // vbrMinLabel
+            // 
+            this.vbrMinLabel.AutoSize = true;
+            this.vbrMinLabel.Enabled = false;
+            this.vbrMinLabel.Location = new System.Drawing.Point(143, 80);
+            this.vbrMinLabel.Name = "vbrMinLabel";
+            this.vbrMinLabel.Size = new System.Drawing.Size(27, 13);
+            this.vbrMinLabel.TabIndex = 20;
+            this.vbrMinLabel.Text = "Min:";
+            // 
+            // vbrMinTextBox
+            // 
+            this.vbrMinTextBox.Enabled = false;
+            this.vbrMinTextBox.Location = new System.Drawing.Point(178, 77);
+            this.vbrMinTextBox.Name = "vbrMinTextBox";
+            this.vbrMinTextBox.Size = new System.Drawing.Size(80, 20);
+            this.vbrMinTextBox.TabIndex = 18;
+            // 
+            // vbrOptionalLabel
+            // 
+            this.vbrOptionalLabel.AutoSize = true;
+            this.vbrOptionalLabel.Enabled = false;
+            this.vbrOptionalLabel.Location = new System.Drawing.Point(143, 53);
+            this.vbrOptionalLabel.Name = "vbrOptionalLabel";
+            this.vbrOptionalLabel.Size = new System.Drawing.Size(161, 13);
+            this.vbrOptionalLabel.TabIndex = 17;
+            this.vbrOptionalLabel.Text = "Optional Average Bitrate Options";
             // 
             // vbrTextBox
             // 
@@ -388,6 +516,13 @@
             this.cbrLabel.TabIndex = 7;
             this.cbrLabel.Text = "Kbps";
             // 
+            // widthTextBox
+            // 
+            this.widthTextBox.Location = new System.Drawing.Point(76, 262);
+            this.widthTextBox.Name = "widthTextBox";
+            this.widthTextBox.Size = new System.Drawing.Size(50, 20);
+            this.widthTextBox.TabIndex = 10;
+            // 
             // videoComboBox
             // 
             this.videoComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -419,6 +554,15 @@
             this.videoComboBox.TabIndex = 1;
             this.videoComboBox.SelectedIndexChanged += new System.EventHandler(this.videoComboBox_SelectedIndexChanged);
             // 
+            // resolutionLabel
+            // 
+            this.resolutionLabel.AutoSize = true;
+            this.resolutionLabel.Location = new System.Drawing.Point(6, 265);
+            this.resolutionLabel.Name = "resolutionLabel";
+            this.resolutionLabel.Size = new System.Drawing.Size(60, 13);
+            this.resolutionLabel.TabIndex = 9;
+            this.resolutionLabel.Text = "Resolution:";
+            // 
             // videoCheckBox
             // 
             this.videoCheckBox.AutoSize = true;
@@ -431,82 +575,7 @@
             this.videoCheckBox.TabIndex = 3;
             this.videoCheckBox.Text = "Include Video";
             this.videoCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(204, 265);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(33, 13);
-            this.label12.TabIndex = 13;
-            this.label12.Text = "pixels";
-            // 
-            // heightTextBox
-            // 
-            this.heightTextBox.Location = new System.Drawing.Point(149, 262);
-            this.heightTextBox.Name = "heightTextBox";
-            this.heightTextBox.Size = new System.Drawing.Size(50, 20);
-            this.heightTextBox.TabIndex = 12;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(132, 265);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(12, 13);
-            this.label11.TabIndex = 11;
-            this.label11.Text = "x";
-            // 
-            // widthTextBox
-            // 
-            this.widthTextBox.Location = new System.Drawing.Point(76, 262);
-            this.widthTextBox.Name = "widthTextBox";
-            this.widthTextBox.Size = new System.Drawing.Size(50, 20);
-            this.widthTextBox.TabIndex = 10;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 265);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(60, 13);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "Resolution:";
-            // 
-            // aspectComboBox
-            // 
-            this.aspectComboBox.FormattingEnabled = true;
-            this.aspectComboBox.Items.AddRange(new object[] {
-            "4:3",
-            "16:9",
-            "16:10",
-            "5:4",
-            "221:100",
-            "1:1"});
-            this.aspectComboBox.Location = new System.Drawing.Point(87, 297);
-            this.aspectComboBox.Name = "aspectComboBox";
-            this.aspectComboBox.Size = new System.Drawing.Size(121, 21);
-            this.aspectComboBox.TabIndex = 4;
-            // 
-            // deinterlaceCheckBox
-            // 
-            this.deinterlaceCheckBox.AutoSize = true;
-            this.deinterlaceCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.deinterlaceCheckBox.Location = new System.Drawing.Point(10, 329);
-            this.deinterlaceCheckBox.Name = "deinterlaceCheckBox";
-            this.deinterlaceCheckBox.Size = new System.Drawing.Size(86, 18);
-            this.deinterlaceCheckBox.TabIndex = 3;
-            this.deinterlaceCheckBox.Text = "Deinterlace";
-            this.deinterlaceCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 300);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Aspect Ratio:";
+            this.videoCheckBox.CheckedChanged += new System.EventHandler(this.videoCheckBox_CheckedChanged);
             // 
             // advancedButton
             // 
@@ -1037,69 +1106,30 @@
             this.outputFileDialog.OverwritePrompt = false;
             this.outputFileDialog.RestoreDirectory = true;
             // 
-            // vbrOptionalLabel
+            // frameRateLabel
             // 
-            this.vbrOptionalLabel.AutoSize = true;
-            this.vbrOptionalLabel.Enabled = false;
-            this.vbrOptionalLabel.Location = new System.Drawing.Point(143, 53);
-            this.vbrOptionalLabel.Name = "vbrOptionalLabel";
-            this.vbrOptionalLabel.Size = new System.Drawing.Size(161, 13);
-            this.vbrOptionalLabel.TabIndex = 17;
-            this.vbrOptionalLabel.Text = "Optional Average Bitrate Options";
+            this.frameRateLabel.AutoSize = true;
+            this.frameRateLabel.Location = new System.Drawing.Point(7, 335);
+            this.frameRateLabel.Name = "frameRateLabel";
+            this.frameRateLabel.Size = new System.Drawing.Size(65, 13);
+            this.frameRateLabel.TabIndex = 16;
+            this.frameRateLabel.Text = "Frame Rate:";
             // 
-            // vbrMinTextBox
+            // frameRateComboBox
             // 
-            this.vbrMinTextBox.Enabled = false;
-            this.vbrMinTextBox.Location = new System.Drawing.Point(178, 77);
-            this.vbrMinTextBox.Name = "vbrMinTextBox";
-            this.vbrMinTextBox.Size = new System.Drawing.Size(80, 20);
-            this.vbrMinTextBox.TabIndex = 18;
-            // 
-            // vbrMinLabel
-            // 
-            this.vbrMinLabel.AutoSize = true;
-            this.vbrMinLabel.Enabled = false;
-            this.vbrMinLabel.Location = new System.Drawing.Point(143, 80);
-            this.vbrMinLabel.Name = "vbrMinLabel";
-            this.vbrMinLabel.Size = new System.Drawing.Size(27, 13);
-            this.vbrMinLabel.TabIndex = 20;
-            this.vbrMinLabel.Text = "Min:";
-            // 
-            // vbrMaxLabel
-            // 
-            this.vbrMaxLabel.AutoSize = true;
-            this.vbrMaxLabel.Enabled = false;
-            this.vbrMaxLabel.Location = new System.Drawing.Point(263, 80);
-            this.vbrMaxLabel.Name = "vbrMaxLabel";
-            this.vbrMaxLabel.Size = new System.Drawing.Size(30, 13);
-            this.vbrMaxLabel.TabIndex = 21;
-            this.vbrMaxLabel.Text = "Max:";
-            // 
-            // vbrMaxTextBox
-            // 
-            this.vbrMaxTextBox.Enabled = false;
-            this.vbrMaxTextBox.Location = new System.Drawing.Point(298, 77);
-            this.vbrMaxTextBox.Name = "vbrMaxTextBox";
-            this.vbrMaxTextBox.Size = new System.Drawing.Size(80, 20);
-            this.vbrMaxTextBox.TabIndex = 22;
-            // 
-            // vbrBufferTextBox
-            // 
-            this.vbrBufferTextBox.Enabled = false;
-            this.vbrBufferTextBox.Location = new System.Drawing.Point(451, 77);
-            this.vbrBufferTextBox.Name = "vbrBufferTextBox";
-            this.vbrBufferTextBox.Size = new System.Drawing.Size(80, 20);
-            this.vbrBufferTextBox.TabIndex = 24;
-            // 
-            // vbrBufferLabel
-            // 
-            this.vbrBufferLabel.AutoSize = true;
-            this.vbrBufferLabel.Enabled = false;
-            this.vbrBufferLabel.Location = new System.Drawing.Point(382, 80);
-            this.vbrBufferLabel.Name = "vbrBufferLabel";
-            this.vbrBufferLabel.Size = new System.Drawing.Size(61, 13);
-            this.vbrBufferLabel.TabIndex = 23;
-            this.vbrBufferLabel.Text = "Buffer Size:";
+            this.frameRateComboBox.FormattingEnabled = true;
+            this.frameRateComboBox.Items.AddRange(new object[] {
+            "24",
+            "25",
+            "29.97",
+            "30",
+            "50",
+            "59.94",
+            "60"});
+            this.frameRateComboBox.Location = new System.Drawing.Point(80, 332);
+            this.frameRateComboBox.Name = "frameRateComboBox";
+            this.frameRateComboBox.Size = new System.Drawing.Size(121, 21);
+            this.frameRateComboBox.TabIndex = 17;
             // 
             // formatSeperator
             // 
@@ -1214,7 +1244,7 @@
         private System.Windows.Forms.TabPage tabPage7;
         private System.Windows.Forms.Label videoCodecLabel;
         private System.Windows.Forms.CheckBox deinterlaceCheckBox;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label aspectLabel;
         private System.Windows.Forms.ComboBox videoComboBox;
         private System.Windows.Forms.Label cbrLabel;
         private System.Windows.Forms.TextBox cbrTextBox;
@@ -1255,11 +1285,11 @@
         private System.Windows.Forms.TextBox outputTextBox;
         private System.Windows.Forms.Button outputButton;
         private System.Windows.Forms.SaveFileDialog outputFileDialog;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label pixelsLabel;
         private System.Windows.Forms.TextBox heightTextBox;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label xLabel;
         private System.Windows.Forms.TextBox widthTextBox;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label resolutionLabel;
         private System.Windows.Forms.TabControl mainTabs;
         private System.Windows.Forms.ComboBox containerComboBox;
         private Seperator formatSeperator;
@@ -1290,6 +1320,8 @@
         private System.Windows.Forms.TextBox vbrBufferTextBox;
         private System.Windows.Forms.Label vbrBufferLabel;
         private Seperator resolutionSeperator;
+        private System.Windows.Forms.Label frameRateLabel;
+        private System.Windows.Forms.ComboBox frameRateComboBox;
     }
 }
 
