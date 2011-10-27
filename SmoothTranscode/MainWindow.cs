@@ -96,6 +96,7 @@ namespace SmoothTranscode
             }
         }
 
+        // Sets container to selected option
         private void containerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (containerComboBox.SelectedItem == "MPEG-4")
@@ -146,6 +147,7 @@ namespace SmoothTranscode
         #region Video Tab
         private void videoCheckBox_CheckedChanged(object sender, EventArgs e)
         {
+            // Enable options if video enabled
             if (videoCheckBox.Checked)
             {
                 codecSeperator.Enabled = true;
@@ -165,6 +167,7 @@ namespace SmoothTranscode
                 frameRateComboBox.Enabled = true;
                 deinterlaceCheckBox.Enabled = true;
             }
+            // Otherwise disable options if video disabled
             else
             {
                 codecSeperator.Enabled = false;
@@ -186,6 +189,7 @@ namespace SmoothTranscode
             }
         }
 
+        // Disable bitrate options if same quality selected
         private void sameQualRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             cbrTextBox.Enabled = false;
@@ -201,6 +205,7 @@ namespace SmoothTranscode
             vbrBufferTextBox.Enabled = false;
         }
 
+        // Enable vbr bitrate options and disable others if average bitrate selected
         private void vbrRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             cbrTextBox.Enabled = false;
@@ -216,6 +221,7 @@ namespace SmoothTranscode
             vbrBufferTextBox.Enabled = true;
         }
 
+        // Enable cbr bitrate options and disable others if constant bitrate selected
         private void cbrRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             cbrTextBox.Enabled = true;
@@ -231,6 +237,7 @@ namespace SmoothTranscode
             vbrBufferTextBox.Enabled = false;
         }
 
+        // Sets video codec to selected option
         private void videoComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (videoComboBox.SelectedItem == "MPEG-4")
@@ -271,11 +278,15 @@ namespace SmoothTranscode
                 Video = "dnxhd";
         }
 
+        // Show advanced options dialog for the selected codec
         private void advancedButton_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Advanced video encoding options are not available in this version of SmoothTranscode.", "Feature Not Available", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+        #endregion
 
+        #region Audio Tab
+        //Sets audio codec to selected option
         private void audioComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (audioComboBox.SelectedItem == "MP3")
@@ -320,36 +331,85 @@ namespace SmoothTranscode
         #region Convert Video Button
         private void convertButton_Click(object sender, EventArgs e)
         {
-            // File checks
+            // Checks input and output files are specified
             if (inputTextBox.Text == String.Empty || outputTextBox.Text == String.Empty)
             {
-                MessageBox.Show("Some required fields are missing", "Unable to Convert", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show("You need to set both the input and output file fields.", "Unable to Convert", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Cancel conversion
             }
+            // Checks the input file exists
             if (!System.IO.File.Exists(inputTextBox.Text))
             {
                 MessageBox.Show("The input file does not exist.", "Unable to Convert", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return; // Cancel conversion
             }
+            // Checks bitrate specified when set to vbr
+            if (vbrRadioButton.Checked && vbrTextBox.Text == String.Empty)
+            {
+                MessageBox.Show("You have set to use an average video bitrate but have not specified a bitrate to target.", "Unable to Convert", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Cancel conversion
+            }
+            // Checks vbr buffer size set when max bitrate is specified
+            if (vbrRadioButton.Checked)
+                if (vbrMaxTextBox.Text != String.Empty && vbrBufferTextBox.Text == String.Empty)
+                {
+                    MessageBox.Show("To set a maximum bitrate you need to set a buffer size.", "Unable to Convert", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return; // Cancel conversion
+                }
+            // Checks bitrate specified when set to cbr
+            if (cbrRadioButton.Checked && cbrTextBox.Text == String.Empty)
+            {
+                MessageBox.Show("You have set to use an constant video bitrate but have not specified a bitrate to use.", "Unable to Convert", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Cancel conversion
+            }
+            // Asks for confirmation to overwrite if the output file already exists
             if (System.IO.File.Exists(outputTextBox.Text))
             {
                 if (MessageBox.Show("The output file you have specified already exists. Would you like to overwrite it?", "Overwrite File", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
-                return;
+                    return; // Cancel conversion
             }
 
+            // Create arguments for FFmpeg from options set in UI
+            // Input tab
             ffmpeg.inputFile = inputTextBox.Text;
             if (Format != String.Empty)
                 Arguments += "-f " + Format;
-            if (Video != String.Empty)
-                Arguments += " -vcodec " + Video;
-            if (deinterlaceCheckBox.Checked == true)
-                Arguments += " -deinterlace";
-            if (aspectComboBox.Text != String.Empty)
-                Arguments += " -aspect " + aspectComboBox.Text;
-            if (cbrTextBox.Text != String.Empty)
-                Arguments += " -b " + cbrTextBox.Text + "k";
-            if (widthTextBox.Text != String.Empty && heightTextBox.Text != String.Empty)
-                Arguments += " -s " + widthTextBox.Text + "x" + heightTextBox.Text;
+            // Video tab
+            if (videoCheckBox.Checked) // If video enabled
+            {
+                if (Video != String.Empty)
+                    Arguments += " -vcodec " + Video;
+                if (sameQualRadioButton.Checked)
+                    Arguments += " -sameq";
+                if (vbrRadioButton.Checked)
+                {
+                    Arguments += " -b " + vbrTextBox.Text + "k";
+                    if (vbrMinTextBox.Text != String.Empty)
+                        Arguments += " -minrate" + vbrMinTextBox.Text + "k";
+                    if (vbrMaxTextBox.Text != String.Empty)
+                        Arguments += " -maxrate " + vbrMaxTextBox.Text + "k";
+                    if (vbrBufferTextBox.Text != String.Empty)
+                        Arguments += " -bufsize " + vbrBufferTextBox.Text + "k";
+                }
+                if (cbrRadioButton.Checked)
+                {
+                    Arguments += " -b " + cbrTextBox.Text + "k";
+                    Arguments += " -bufsize 100k";
+                    Arguments += " -minrate" + cbrTextBox.Text + "k";
+                    Arguments += " -maxrate " + cbrTextBox.Text + "k";
+                }
+                if (widthTextBox.Text != String.Empty && heightTextBox.Text != String.Empty)
+                    Arguments += " -s " + widthTextBox.Text + "x" + heightTextBox.Text;
+                if (aspectComboBox.Text != String.Empty)
+                    Arguments += " -aspect " + aspectComboBox.Text;
+                if (frameRateComboBox.Text != String.Empty)
+                    Arguments += " -r " + frameRateComboBox.Text;
+                if (deinterlaceCheckBox.Checked == true)
+                    Arguments += " -deinterlace";
+            }
+            else // Else disable video recording
+                Arguments += " -vn";
+            // Audio Tab
             if (Audio != String.Empty)
                 Arguments += " -acodec " + Audio;
             if (channelsComboBox.Text != String.Empty)
@@ -358,6 +418,7 @@ namespace SmoothTranscode
                 Arguments += " -ab " + audioTextBox.Text + "k";
             if (sampleComboBox.Text != String.Empty)
                 Arguments += " -ar " + sampleComboBox.Text;
+            // Crop tab
             if (croptopUpDown.Value > 0)
                 Arguments += " -croptop " + croptopUpDown.Value;
             if (cropleftUpDown.Value > 0)
@@ -366,6 +427,7 @@ namespace SmoothTranscode
                 Arguments += " -cropright " + croprightUpDown.Value;
             if (cropbottomUpDown.Value > 0)
                 Arguments += " -cropbottom " + cropbottomUpDown.Value;
+            // Pad tab
             if (padtopUpDown.Value > 0)
                 Arguments += " -padtop " + padtopUpDown.Value;
             if (padleftUpDown.Value > 0)
@@ -374,18 +436,20 @@ namespace SmoothTranscode
                 Arguments += " -padright " + padrightUpDown.Value;
             if (padbottomUpDown.Value > 0)
                 Arguments += " -padbottom " + padbottomUpDown.Value;
+            // Start/stop tab
             if (startComboBox.SelectedItem == "Seconds")
                 if (startTextBox.Text != String.Empty)
                     Arguments += " -ss " + startTextBox.Text;
-            else if (startComboBox.SelectedItem == "Frames")
-                if (startTextBox.Text != String.Empty)
-                    Arguments += " -ss " + startTextBox.Text;
+                else if (startComboBox.SelectedItem == "Frames")
+                    if (startTextBox.Text != String.Empty)
+                        Arguments += " -ss " + startTextBox.Text;
             if (endComboBox.SelectedItem == "Seconds")
                 if (endTextBox.Text != String.Empty)
                     Arguments += " -t " + endTextBox.Text;
-            else if (endComboBox.SelectedItem == "Frames")
-                if (endTextBox.Text != String.Empty)
-                    Arguments += " -vframes " + endTextBox.Text;
+                else if (endComboBox.SelectedItem == "Frames")
+                    if (endTextBox.Text != String.Empty)
+                        Arguments += " -vframes " + endTextBox.Text;
+            // Meta data tab
             if (titleTextBox.Text != String.Empty)
                 Arguments += " -title " + "\"" + titleTextBox.Text + "\"";
             if (authorTextBox.Text != String.Empty)
@@ -394,9 +458,12 @@ namespace SmoothTranscode
                 Arguments += " -copyright " + "\"" + copyrightTextBox.Text + "\"";
             if (commentTextBox.Text != String.Empty)
                 Arguments += " -comment " + "\"" + commentTextBox.Text + "\"";
+            //Output tab
             ffmpeg.outputFile = outputTextBox.Text;
 
+            // Pass arguments to FFmpeg
             ffmpeg.procArguments = Arguments;
+            // Open progress window to start conversion
             ProgressWindow progressWindow = new ProgressWindow();
             progressWindow.ShowDialog();
         }
