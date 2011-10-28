@@ -7,6 +7,7 @@
 [NEW] Addition of frame rate setting
 [UPDATED] New application icon
 [UPDATED] Refreshed user interface
+[UPDATED] Start and stop points temporarily removed due to incomplete implementation
 [UPDATED] Changed license from GPL v2 to GPL v3
 
 0.2

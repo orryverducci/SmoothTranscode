@@ -436,19 +436,6 @@ namespace SmoothTranscode
                 Arguments += " -padright " + padrightUpDown.Value;
             if (padbottomUpDown.Value > 0)
                 Arguments += " -padbottom " + padbottomUpDown.Value;
-            // Start/stop tab
-            if (startComboBox.SelectedItem == "Seconds")
-                if (startTextBox.Text != String.Empty)
-                    Arguments += " -ss " + startTextBox.Text;
-                else if (startComboBox.SelectedItem == "Frames")
-                    if (startTextBox.Text != String.Empty)
-                        Arguments += " -ss " + startTextBox.Text;
-            if (endComboBox.SelectedItem == "Seconds")
-                if (endTextBox.Text != String.Empty)
-                    Arguments += " -t " + endTextBox.Text;
-                else if (endComboBox.SelectedItem == "Frames")
-                    if (endTextBox.Text != String.Empty)
-                        Arguments += " -vframes " + endTextBox.Text;
             // Meta data tab
             if (titleTextBox.Text != String.Empty)
                 Arguments += " -title " + "\"" + titleTextBox.Text + "\"";

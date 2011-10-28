@@ -2,6 +2,4 @@ This is an early development release of SmoothTranscode.
 
 Advanced video codec options are currently unavailable.
 
-Start and stop points have not yet been properly implemented and therefore may not work reliably.
-
 SmoothTranscode is not yet able to deal with errors returned by FFmpeg, and therefore treats failed encodes the same as completed ones.
