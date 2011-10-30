@@ -10,6 +10,7 @@
 [UPDATED] Start and stop points temporarily removed due to incomplete implementation
 [UPDATED] Save file dialog now automatically chooses the extension for the selected format
 [UPDATED] Changed license from GPL v2 to GPL v3
+[FIXED] Format setting now works
 
 0.2
 ---
