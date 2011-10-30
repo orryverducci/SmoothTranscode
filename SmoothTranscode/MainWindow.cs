@@ -114,7 +114,7 @@ namespace SmoothTranscode
             else if (containerComboBox.SelectedItem.ToString() == "Flash Video")
             {
                 Format = "flv";
-                outputFileDialog.Filter = "Flash Video (*.flv; *.f4v)|*.flv;*.f4v|Any file|*.*";
+                outputFileDialog.Filter = "Flash Video (*.flv)|*.flv|Any file|*.*";
             }
             else if (containerComboBox.SelectedItem.ToString() == "WebM")
             {
@@ -124,12 +124,12 @@ namespace SmoothTranscode
             else if (containerComboBox.SelectedItem.ToString() == "Matroska")
             {
                 Format = "matroska";
-                outputFileDialog.Filter = "Matroska (*.mkv; *.mka; *.mks)|*.mkv;*.mka;*.mks|Any file|*.*";
+                outputFileDialog.Filter = "Matroska (*.mkv; *.mka)|*.mkv;*.mka|Any file|*.*";
             }
             else if (containerComboBox.SelectedItem.ToString() == "Ogg")
             {
                 Format = "ogg";
-                outputFileDialog.Filter = "Ogg (*.ogv; *.oga; *.ogx; *.ogg; *.spx)|*.ogv;*.oga;*.ogx;*.ogg;*.spx|Any file|*.*";
+                outputFileDialog.Filter = "Ogg (*.ogg; *.ogv; *.oga)|*.ogg;*.ogv;*.oga|Any file|*.*";
             }
             else if (containerComboBox.SelectedItem.ToString() == "AVI")
             {
@@ -159,12 +159,12 @@ namespace SmoothTranscode
             else if (containerComboBox.SelectedItem.ToString() == "3GP")
             {
                 Format = "3gp";
-                outputFileDialog.Filter = "Mobile Video (*.3gp; *.3g2)|*.3gp;*.3g2|Any file|*.*";
+                outputFileDialog.Filter = "Mobile Video (*.3gp)|*.3gp|Any file|*.*";
             }
             else if (containerComboBox.SelectedItem.ToString() == "Motion JPEG")
             {
                 Format = "mjpeg";
-                outputFileDialog.Filter = "Motion JPEG (*.mjp; *.mjpg)|*.mjp;*.mjpg|Any file|*.*";
+                outputFileDialog.Filter = "Motion JPEG (*.mjpg; *.mjp)|*.mjpg;*.mjp|Any file|*.*";
             }
             else if (containerComboBox.SelectedItem.ToString() == "Material eXchange Format")
             {
