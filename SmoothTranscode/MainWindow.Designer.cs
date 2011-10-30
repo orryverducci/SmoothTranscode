@@ -34,7 +34,6 @@
             this.mainTabs = new System.Windows.Forms.TabControl();
             this.inputTab = new System.Windows.Forms.TabPage();
             this.containerComboBox = new System.Windows.Forms.ComboBox();
-            this.formatSeperator = new SmoothTranscode.Seperator();
             this.inputButton = new System.Windows.Forms.Button();
             this.inputTextBox = new System.Windows.Forms.TextBox();
             this.videoTab = new System.Windows.Forms.TabPage();
@@ -44,7 +43,6 @@
             this.aspectComboBox = new System.Windows.Forms.ComboBox();
             this.pixelsLabel = new System.Windows.Forms.Label();
             this.aspectLabel = new System.Windows.Forms.Label();
-            this.resolutionSeperator = new SmoothTranscode.Seperator();
             this.heightTextBox = new System.Windows.Forms.TextBox();
             this.xLabel = new System.Windows.Forms.Label();
             this.bitratePanel = new System.Windows.Forms.Panel();
@@ -65,7 +63,6 @@
             this.widthTextBox = new System.Windows.Forms.TextBox();
             this.videoComboBox = new System.Windows.Forms.ComboBox();
             this.resolutionLabel = new System.Windows.Forms.Label();
-            this.codecSeperator = new SmoothTranscode.Seperator();
             this.videoCheckBox = new System.Windows.Forms.CheckBox();
             this.advancedButton = new System.Windows.Forms.Button();
             this.videoCodecLabel = new System.Windows.Forms.Label();
@@ -114,6 +111,9 @@
             this.inputFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.helpButton = new System.Windows.Forms.Button();
             this.outputFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.formatSeperator = new SmoothTranscode.Seperator();
+            this.resolutionSeperator = new SmoothTranscode.Seperator();
+            this.codecSeperator = new SmoothTranscode.Seperator();
             this.mainTabs.SuspendLayout();
             this.inputTab.SuspendLayout();
             this.videoTab.SuspendLayout();
@@ -210,7 +210,7 @@
             this.containerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.containerComboBox.FormattingEnabled = true;
             this.containerComboBox.Items.AddRange(new object[] {
-            "MPEG-4",
+            "MPEG-4 Video/MP4 Audio",
             "MPEG",
             "Windows Media",
             "Flash Video",
@@ -235,16 +235,7 @@
             this.containerComboBox.Name = "containerComboBox";
             this.containerComboBox.Size = new System.Drawing.Size(550, 21);
             this.containerComboBox.TabIndex = 4;
-            // 
-            // formatSeperator
-            // 
-            this.formatSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.formatSeperator.Label = "File Format";
-            this.formatSeperator.Location = new System.Drawing.Point(6, 47);
-            this.formatSeperator.Name = "formatSeperator";
-            this.formatSeperator.Size = new System.Drawing.Size(553, 15);
-            this.formatSeperator.TabIndex = 5;
+            this.containerComboBox.SelectedIndexChanged += new System.EventHandler(this.containerComboBox_SelectedIndexChanged);
             // 
             // inputButton
             // 
@@ -275,17 +266,17 @@
             this.videoTab.Controls.Add(this.aspectComboBox);
             this.videoTab.Controls.Add(this.pixelsLabel);
             this.videoTab.Controls.Add(this.aspectLabel);
-            this.videoTab.Controls.Add(this.resolutionSeperator);
             this.videoTab.Controls.Add(this.heightTextBox);
             this.videoTab.Controls.Add(this.xLabel);
             this.videoTab.Controls.Add(this.bitratePanel);
             this.videoTab.Controls.Add(this.widthTextBox);
             this.videoTab.Controls.Add(this.videoComboBox);
             this.videoTab.Controls.Add(this.resolutionLabel);
-            this.videoTab.Controls.Add(this.codecSeperator);
             this.videoTab.Controls.Add(this.videoCheckBox);
             this.videoTab.Controls.Add(this.advancedButton);
             this.videoTab.Controls.Add(this.videoCodecLabel);
+            this.videoTab.Controls.Add(this.resolutionSeperator);
+            this.videoTab.Controls.Add(this.codecSeperator);
             this.videoTab.Location = new System.Drawing.Point(4, 22);
             this.videoTab.Name = "videoTab";
             this.videoTab.Padding = new System.Windows.Forms.Padding(3);
@@ -362,16 +353,6 @@
             this.aspectLabel.Size = new System.Drawing.Size(71, 13);
             this.aspectLabel.TabIndex = 2;
             this.aspectLabel.Text = "Aspect Ratio:";
-            // 
-            // resolutionSeperator
-            // 
-            this.resolutionSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.resolutionSeperator.Label = "Resolution and Frame Rate";
-            this.resolutionSeperator.Location = new System.Drawing.Point(6, 238);
-            this.resolutionSeperator.Name = "resolutionSeperator";
-            this.resolutionSeperator.Size = new System.Drawing.Size(553, 15);
-            this.resolutionSeperator.TabIndex = 15;
             // 
             // heightTextBox
             // 
@@ -596,16 +577,6 @@
             this.resolutionLabel.Size = new System.Drawing.Size(60, 13);
             this.resolutionLabel.TabIndex = 9;
             this.resolutionLabel.Text = "Resolution:";
-            // 
-            // codecSeperator
-            // 
-            this.codecSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.codecSeperator.Label = "Codec Options";
-            this.codecSeperator.Location = new System.Drawing.Point(6, 37);
-            this.codecSeperator.Name = "codecSeperator";
-            this.codecSeperator.Size = new System.Drawing.Size(553, 15);
-            this.codecSeperator.TabIndex = 6;
             // 
             // videoCheckBox
             // 
@@ -1058,6 +1029,7 @@
             // 
             // inputFileDialog
             // 
+            this.inputFileDialog.Filter = resources.GetString("inputFileDialog.Filter");
             this.inputFileDialog.RestoreDirectory = true;
             this.inputFileDialog.Title = "Select File to Convert";
             // 
@@ -1075,8 +1047,39 @@
             // 
             // outputFileDialog
             // 
+            this.outputFileDialog.Filter = "Any File|*.*";
             this.outputFileDialog.OverwritePrompt = false;
             this.outputFileDialog.RestoreDirectory = true;
+            // 
+            // formatSeperator
+            // 
+            this.formatSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.formatSeperator.Label = "File Format";
+            this.formatSeperator.Location = new System.Drawing.Point(6, 47);
+            this.formatSeperator.Name = "formatSeperator";
+            this.formatSeperator.Size = new System.Drawing.Size(553, 15);
+            this.formatSeperator.TabIndex = 5;
+            // 
+            // resolutionSeperator
+            // 
+            this.resolutionSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.resolutionSeperator.Label = "Resolution and Frame Rate";
+            this.resolutionSeperator.Location = new System.Drawing.Point(6, 238);
+            this.resolutionSeperator.Name = "resolutionSeperator";
+            this.resolutionSeperator.Size = new System.Drawing.Size(553, 15);
+            this.resolutionSeperator.TabIndex = 15;
+            // 
+            // codecSeperator
+            // 
+            this.codecSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.codecSeperator.Label = "Codec Options";
+            this.codecSeperator.Location = new System.Drawing.Point(6, 37);
+            this.codecSeperator.Name = "codecSeperator";
+            this.codecSeperator.Size = new System.Drawing.Size(553, 15);
+            this.codecSeperator.TabIndex = 6;
             // 
             // MainWindow
             // 

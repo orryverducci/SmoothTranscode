@@ -86,8 +86,6 @@ namespace SmoothTranscode
         #region Input Tab
         private void inputButton_Click(object sender, EventArgs e)
         {
-            // File type filters for input dialog
-            inputFileDialog.Filter = "All Compatible Formats|*.mpg;*.mpeg;*.ps;*.ts;*.mp4;*.m4v;*.mp3;*.aac;*.m4a;*.m4b;*.wmv;*.wma;*.asf;*.webm;*.mkv;*.mka;*.mks;*.ogv;*.oga;*.ogx;*.ogg;*.spx;*.flac;*.dvr-ms;*.wtv;*.avi;*.flv;*.f4v;*.divx;*.xvid;*.rm;*.ra;*.rv;*.ram;*.mov;*.3gp;*.3g2;*.avs;*.nsv;*.mjp;*.mjpg;*.gfx;*.mfx|MPEG Video (*.mpg; *.mpeg; *.ps; *.ts)|*.mpg;*.mpeg;*.ps;*.ts|MPEG-4 Video (*.mp4; *.m4v)|*.mp4;*.m4v|MP3 Audio (*.mp3)|*.mp3|MP4/AAC Audio (*.aac; *.m4a; *.m4b)|*.aac;*.m4a;*.m4b|Windows Media (*.wmv; *.wma; *.asf)|*.wmv;*.wma;*.asf|WebM (*.webm)|*.webm|Matroska (*.mkv; *.mka; *.mks)|*.mkv;*.mka;*.mks|Ogg (*.ogv; *.oga; *.ogx; *.ogg; *.spx)|*.ogv;*.oga;*.ogx;*.ogg;*.spx|Flac Audio (*.flac)|*.flac|Microsoft Recorded TV Show (*.dvr-ms; *.wtv)|*.dvr-ms,*.wtv|Windows Video (*.avi)|*.avi|Flash Video (*.flv; *.f4v)|*.flv;*.f4v|DivX (*.divx)|*.divx|XviD (*.xvid)|*.xvid|Real Media (*.rm; *.ra; *.rv; *.ram)|*.rm;*.ra;*.rv;*.ram|Quicktime Video (*.mov)|*.mov|Mobile Video (*.3gp; *.3g2)|*.3gp;*.3g2|AVISynth (*.avs)|*.avs|Nullsoft Video (*.nsv)|*.nsv|Motion JPEG (*.mjp; *.mjpg)|*.mjp;*.mjpg|General eXchange Format (*.gxf)|*.gxf|Material eXchange Format (*.mxf)|*.mxf|Any file|*.*";
             // If file selected, place filename in the input text box
             if (inputFileDialog.ShowDialog() != DialogResult.Cancel)
             {
@@ -98,48 +96,111 @@ namespace SmoothTranscode
         // Sets container to selected option
         private void containerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (containerComboBox.SelectedItem == "MPEG-4")
+            if (containerComboBox.SelectedItem.ToString() == "MPEG-4 Video/MP4 Audio")
+            {
                 Format = "mp4";
-            else if (containerComboBox.SelectedItem == "MPEG")
+                outputFileDialog.Filter = "MP4 (*.mp4; *.m4v; *.m4a; *.aac)|*.mp4;*.m4v;*.m4a;*.aac|Any file|*.*";
+            }
+            else if (containerComboBox.SelectedItem.ToString() == "MPEG")
+            {
                 Format = "mpeg";
-            else if (containerComboBox.SelectedItem == "Windows Media")
+                outputFileDialog.Filter = "MPEG Video (*.mpg; *.mpeg; *.ps)|*.mpg;*.mpeg;*.ps|Any file|*.*";
+            }
+            else if (containerComboBox.SelectedItem.ToString() == "Windows Media")
+            {
                 Format = "asf";
-            else if (containerComboBox.SelectedItem == "Flash Video")
+                outputFileDialog.Filter = "Windows Media (*.wmv; *.wma; *.asf)|*.wmv;*.wma;*.asf|Any file|*.*";
+            }
+            else if (containerComboBox.SelectedItem.ToString() == "Flash Video")
+            {
                 Format = "flv";
-            else if (containerComboBox.SelectedItem == "WebM")
+                outputFileDialog.Filter = "Flash Video (*.flv; *.f4v)|*.flv;*.f4v|Any file|*.*";
+            }
+            else if (containerComboBox.SelectedItem.ToString() == "WebM")
+            {
                 Format = "webm";
-            else if (containerComboBox.SelectedItem == "Matroska")
+                outputFileDialog.Filter = "WebM (*.webm)|*.webm|Any file|*.*";
+            }
+            else if (containerComboBox.SelectedItem.ToString() == "Matroska")
+            {
                 Format = "matroska";
-            else if (containerComboBox.SelectedItem == "Ogg")
+                outputFileDialog.Filter = "Matroska (*.mkv; *.mka; *.mks)|*.mkv;*.mka;*.mks|Any file|*.*";
+            }
+            else if (containerComboBox.SelectedItem.ToString() == "Ogg")
+            {
                 Format = "ogg";
-            else if (containerComboBox.SelectedItem == "AVI")
+                outputFileDialog.Filter = "Ogg (*.ogv; *.oga; *.ogx; *.ogg; *.spx)|*.ogv;*.oga;*.ogx;*.ogg;*.spx|Any file|*.*";
+            }
+            else if (containerComboBox.SelectedItem.ToString() == "AVI")
+            {
                 Format = "avi";
-            else if (containerComboBox.SelectedItem == "Real Media")
+                outputFileDialog.Filter = "AVI (*.avi)|*.avi|Any file|*.*";
+            }
+            else if (containerComboBox.SelectedItem.ToString() == "Real Media")
+            {
                 Format = "rm";
-            else if (containerComboBox.SelectedItem == "Quicktime Video")
+                outputFileDialog.Filter = "Real Media (*.rm; *.rv; *.ra)|*.rm;*.rv;*.ra|Any file|*.*";
+            }
+            else if (containerComboBox.SelectedItem.ToString() == "Quicktime Video")
+            {
                 Format = "mov";
-            else if (containerComboBox.SelectedItem == "DVD VOB")
+                outputFileDialog.Filter = "Quicktime Video (*.mov)|*.mov|Any file|*.*";
+            }
+            else if (containerComboBox.SelectedItem.ToString() == "DVD VOB")
+            {
                 Format = "dvd";
-            else if (containerComboBox.SelectedItem == "DV Video")
+                outputFileDialog.Filter = "DVD VOB (*.vob)|*.vob|Any file|*.*";
+            }
+            else if (containerComboBox.SelectedItem.ToString() == "DV Video")
+            {
                 Format = "dv";
-            else if (containerComboBox.SelectedItem == "3GP")
+                outputFileDialog.Filter = "DV Video (*.dv)|*.dv|Any file|*.*";
+            }
+            else if (containerComboBox.SelectedItem.ToString() == "3GP")
+            {
                 Format = "3gp";
-            else if (containerComboBox.SelectedItem == "Motion JPEG")
+                outputFileDialog.Filter = "Mobile Video (*.3gp; *.3g2)|*.3gp;*.3g2|Any file|*.*";
+            }
+            else if (containerComboBox.SelectedItem.ToString() == "Motion JPEG")
+            {
                 Format = "mjpeg";
-            else if (containerComboBox.SelectedItem == "Material eXchange Format")
+                outputFileDialog.Filter = "Motion JPEG (*.mjp; *.mjpg)|*.mjp;*.mjpg|Any file|*.*";
+            }
+            else if (containerComboBox.SelectedItem.ToString() == "Material eXchange Format")
+            {
                 Format = "mxf";
-            else if (containerComboBox.SelectedItem == "MP3")
+                outputFileDialog.Filter = "Material eXchange Format (*.mxf)|*.mxf|Any file|*.*";
+            }
+            else if (containerComboBox.SelectedItem.ToString() == "MP3")
+            {
                 Format = "mp3";
-            else if (containerComboBox.SelectedItem == "MP2")
+                outputFileDialog.Filter = "MP3 Audio (*.mp3)|*.mp3|Any file|*.*";
+            }
+            else if (containerComboBox.SelectedItem.ToString() == "MP2")
+            {
                 Format = "mp2";
-            else if (containerComboBox.SelectedItem == "FLAC")
+                outputFileDialog.Filter = "MP2 Audio (*.mp2)|*.mp2|Any file|*.*";
+            }
+            else if (containerComboBox.SelectedItem.ToString() == "FLAC")
+            {
                 Format = "flac";
-            else if (containerComboBox.SelectedItem == "WAV")
+                outputFileDialog.Filter = "Flac Audio (*.flac)|*.flac|Any file|*.*";
+            }
+            else if (containerComboBox.SelectedItem.ToString() == "WAV")
+            {
                 Format = "wav";
-            else if (containerComboBox.SelectedItem == "AIFF")
+                outputFileDialog.Filter = "WAV Audio (*.wav)|*.wav|Any file|*.*";
+            }
+            else if (containerComboBox.SelectedItem.ToString() == "AIFF")
+            {
                 Format = "aiff";
-            else if (containerComboBox.SelectedItem == "AMR")
+                outputFileDialog.Filter = "AIFF Audio (*.aiff; *.aif)|*.aiff;*.aif|Any file|*.*";
+            }
+            else if (containerComboBox.SelectedItem.ToString() == "AMR")
+            {
                 Format = "amr";
+                outputFileDialog.Filter = "AMR Audio (*.amr)|*.amr|Any file|*.*";
+            }
         }
         #endregion
 
@@ -318,7 +379,6 @@ namespace SmoothTranscode
         #region Output Setup Tab
         private void outputButton_Click(object sender, EventArgs e)
         {
-            outputFileDialog.Filter = "MPEG Video (*.mpg; *.mpeg; *.ps)|*.mpg;*.mpeg;*.ps|MPEG-4 Video (*.mp4; *.m4v)|*.mp4;*.m4v|MP3 Audio (*.mp3)|*.mp3|MP4/AAC Audio (*.aac; *.m4a)|*.aac;*.m4a|Windows Media (*.wmv; *.wma; *.asf)|*.wmv;*.wma;*.asf|WebM (*.webm)|*.webm|Matroska (*.mkv; *.mka; *.mks)|*.mkv;*.mka;*.mks|Ogg (*.ogv; *.oga; *.ogx; *.ogg; *.spx)|*.ogv;*.oga;*.ogx;*.ogg;*.spx|Flac Audio (*.flac)|*.flac|Windows Video (*.avi)|*.avi|Flash Video (*.flv; *.f4v)|*.flv;*.f4v|DivX (*.divx)|*.divx|XviD (*.xvid)|*.xvid|Real Media (*.rm; *.rv; *.ra)|*.rm;*.rv;*.ra|Quicktime Video (*.mov)|*.mov|Mobile Video (*.3gp; *.3g2)|*.3gp;*.3g2|Motion JPEG (*.mjp; *.mjpg)|*.mjp;*.mjpg|Any file|*.*";
             if (outputFileDialog.ShowDialog() != DialogResult.Cancel)
             {
                 outputTextBox.Text = outputFileDialog.FileName;
