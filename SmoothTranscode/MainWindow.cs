@@ -30,7 +30,6 @@ namespace SmoothTranscode
 {
     public partial class MainWindow : Form
     {
-        private string OutputFile;
         private string Video = String.Empty;
         private string Audio = String.Empty;
         private string Format = String.Empty;
@@ -322,8 +321,7 @@ namespace SmoothTranscode
             outputFileDialog.Filter = "MPEG Video (*.mpg; *.mpeg; *.ps)|*.mpg;*.mpeg;*.ps|MPEG-4 Video (*.mp4; *.m4v)|*.mp4;*.m4v|MP3 Audio (*.mp3)|*.mp3|MP4/AAC Audio (*.aac; *.m4a)|*.aac;*.m4a|Windows Media (*.wmv; *.wma; *.asf)|*.wmv;*.wma;*.asf|WebM (*.webm)|*.webm|Matroska (*.mkv; *.mka; *.mks)|*.mkv;*.mka;*.mks|Ogg (*.ogv; *.oga; *.ogx; *.ogg; *.spx)|*.ogv;*.oga;*.ogx;*.ogg;*.spx|Flac Audio (*.flac)|*.flac|Windows Video (*.avi)|*.avi|Flash Video (*.flv; *.f4v)|*.flv;*.f4v|DivX (*.divx)|*.divx|XviD (*.xvid)|*.xvid|Real Media (*.rm; *.rv; *.ra)|*.rm;*.rv;*.ra|Quicktime Video (*.mov)|*.mov|Mobile Video (*.3gp; *.3g2)|*.3gp;*.3g2|Motion JPEG (*.mjp; *.mjpg)|*.mjp;*.mjpg|Any file|*.*";
             if (outputFileDialog.ShowDialog() != DialogResult.Cancel)
             {
-                OutputFile = outputFileDialog.FileName;
-                outputTextBox.Text = OutputFile;
+                outputTextBox.Text = outputFileDialog.FileName;
             }
         }
         #endregion
