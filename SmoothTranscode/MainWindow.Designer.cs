@@ -34,6 +34,7 @@
             this.mainTabs = new System.Windows.Forms.TabControl();
             this.inputTab = new System.Windows.Forms.TabPage();
             this.containerComboBox = new System.Windows.Forms.ComboBox();
+            this.formatSeperator = new SmoothTranscode.Seperator();
             this.inputButton = new System.Windows.Forms.Button();
             this.inputTextBox = new System.Windows.Forms.TextBox();
             this.videoTab = new System.Windows.Forms.TabPage();
@@ -66,6 +67,8 @@
             this.videoCheckBox = new System.Windows.Forms.CheckBox();
             this.advancedButton = new System.Windows.Forms.Button();
             this.videoCodecLabel = new System.Windows.Forms.Label();
+            this.resolutionSeperator = new SmoothTranscode.Seperator();
+            this.codecSeperator = new SmoothTranscode.Seperator();
             this.audioTab = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.audioTextBox = new System.Windows.Forms.TextBox();
@@ -111,9 +114,6 @@
             this.inputFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.helpButton = new System.Windows.Forms.Button();
             this.outputFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.formatSeperator = new SmoothTranscode.Seperator();
-            this.resolutionSeperator = new SmoothTranscode.Seperator();
-            this.codecSeperator = new SmoothTranscode.Seperator();
             this.mainTabs.SuspendLayout();
             this.inputTab.SuspendLayout();
             this.videoTab.SuspendLayout();
@@ -236,6 +236,16 @@
             this.containerComboBox.Size = new System.Drawing.Size(550, 21);
             this.containerComboBox.TabIndex = 4;
             this.containerComboBox.SelectedIndexChanged += new System.EventHandler(this.containerComboBox_SelectedIndexChanged);
+            // 
+            // formatSeperator
+            // 
+            this.formatSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.formatSeperator.Label = "File Format";
+            this.formatSeperator.Location = new System.Drawing.Point(6, 47);
+            this.formatSeperator.Name = "formatSeperator";
+            this.formatSeperator.Size = new System.Drawing.Size(553, 15);
+            this.formatSeperator.TabIndex = 5;
             // 
             // inputButton
             // 
@@ -611,6 +621,26 @@
             this.videoCodecLabel.Size = new System.Drawing.Size(41, 13);
             this.videoCodecLabel.TabIndex = 0;
             this.videoCodecLabel.Text = "Codec:";
+            // 
+            // resolutionSeperator
+            // 
+            this.resolutionSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.resolutionSeperator.Label = "Resolution and Frame Rate";
+            this.resolutionSeperator.Location = new System.Drawing.Point(6, 238);
+            this.resolutionSeperator.Name = "resolutionSeperator";
+            this.resolutionSeperator.Size = new System.Drawing.Size(553, 15);
+            this.resolutionSeperator.TabIndex = 15;
+            // 
+            // codecSeperator
+            // 
+            this.codecSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.codecSeperator.Label = "Codec Options";
+            this.codecSeperator.Location = new System.Drawing.Point(6, 37);
+            this.codecSeperator.Name = "codecSeperator";
+            this.codecSeperator.Size = new System.Drawing.Size(553, 15);
+            this.codecSeperator.TabIndex = 6;
             // 
             // audioTab
             // 
@@ -1050,36 +1080,6 @@
             this.outputFileDialog.Filter = "Any File|*.*";
             this.outputFileDialog.OverwritePrompt = false;
             this.outputFileDialog.RestoreDirectory = true;
-            // 
-            // formatSeperator
-            // 
-            this.formatSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.formatSeperator.Label = "File Format";
-            this.formatSeperator.Location = new System.Drawing.Point(6, 47);
-            this.formatSeperator.Name = "formatSeperator";
-            this.formatSeperator.Size = new System.Drawing.Size(553, 15);
-            this.formatSeperator.TabIndex = 5;
-            // 
-            // resolutionSeperator
-            // 
-            this.resolutionSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.resolutionSeperator.Label = "Resolution and Frame Rate";
-            this.resolutionSeperator.Location = new System.Drawing.Point(6, 238);
-            this.resolutionSeperator.Name = "resolutionSeperator";
-            this.resolutionSeperator.Size = new System.Drawing.Size(553, 15);
-            this.resolutionSeperator.TabIndex = 15;
-            // 
-            // codecSeperator
-            // 
-            this.codecSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.codecSeperator.Label = "Codec Options";
-            this.codecSeperator.Location = new System.Drawing.Point(6, 37);
-            this.codecSeperator.Name = "codecSeperator";
-            this.codecSeperator.Size = new System.Drawing.Size(553, 15);
-            this.codecSeperator.TabIndex = 6;
             // 
             // MainWindow
             // 
