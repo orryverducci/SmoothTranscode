@@ -184,7 +184,7 @@ namespace SmoothTranscode
             else if (containerComboBox.SelectedItem.ToString() == "FLAC")
             {
                 Format = "flac";
-                outputFileDialog.Filter = "Flac Audio (*.flac)|*.flac|Any file|*.*";
+                outputFileDialog.Filter = "FLAC Audio (*.flac)|*.flac|Any file|*.*";
             }
             else if (containerComboBox.SelectedItem.ToString() == "WAV")
             {
