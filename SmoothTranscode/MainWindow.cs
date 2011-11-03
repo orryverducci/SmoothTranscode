@@ -376,13 +376,11 @@ namespace SmoothTranscode
         }
         #endregion
 
-        #region Output Setup Tab
+        #region Output Tab
         private void outputButton_Click(object sender, EventArgs e)
         {
             if (outputFileDialog.ShowDialog() != DialogResult.Cancel)
-            {
                 outputTextBox.Text = outputFileDialog.FileName;
-            }
         }
         #endregion
 
