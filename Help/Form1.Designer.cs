@@ -33,7 +33,7 @@
             this.backIcon = new System.Windows.Forms.ToolStripButton();
             this.forwardIcon = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.topicsIcon = new System.Windows.Forms.ToolStripButton();
+            this.contentsIcon = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.searchBox = new System.Windows.Forms.ToolStripComboBox();
             this.searchIcon = new System.Windows.Forms.ToolStripButton();
@@ -48,7 +48,7 @@
             this.backIcon,
             this.forwardIcon,
             this.toolStripSeparator1,
-            this.topicsIcon,
+            this.contentsIcon,
             this.toolStripSeparator2,
             this.searchBox,
             this.searchIcon});
@@ -81,14 +81,14 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // topicsIcon
+            // contentsIcon
             // 
-            this.topicsIcon.Image = ((System.Drawing.Image)(resources.GetObject("topicsIcon.Image")));
-            this.topicsIcon.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.topicsIcon.Name = "topicsIcon";
-            this.topicsIcon.Size = new System.Drawing.Size(62, 22);
-            this.topicsIcon.Tag = "";
-            this.topicsIcon.Text = "Topics";
+            this.contentsIcon.Image = ((System.Drawing.Image)(resources.GetObject("contentsIcon.Image")));
+            this.contentsIcon.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.contentsIcon.Name = "contentsIcon";
+            this.contentsIcon.Size = new System.Drawing.Size(75, 22);
+            this.contentsIcon.Tag = "";
+            this.contentsIcon.Text = "Contents";
             // 
             // toolStripSeparator2
             // 
@@ -145,7 +145,7 @@
         private System.Windows.Forms.ToolStripButton backIcon;
         private System.Windows.Forms.ToolStripButton forwardIcon;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton topicsIcon;
+        private System.Windows.Forms.ToolStripButton contentsIcon;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripComboBox searchBox;
         private System.Windows.Forms.ToolStripButton searchIcon;
