@@ -45,7 +45,7 @@
             this.aspectLabel = new System.Windows.Forms.Label();
             this.heightTextBox = new System.Windows.Forms.TextBox();
             this.xLabel = new System.Windows.Forms.Label();
-            this.bitratePanel = new System.Windows.Forms.Panel();
+            this.videoBitratePanel = new System.Windows.Forms.Panel();
             this.vbrBufferTextBox = new System.Windows.Forms.TextBox();
             this.vbrBufferLabel = new System.Windows.Forms.Label();
             this.vbrMaxTextBox = new System.Windows.Forms.TextBox();
@@ -67,34 +67,37 @@
             this.advancedButton = new System.Windows.Forms.Button();
             this.videoCodecLabel = new System.Windows.Forms.Label();
             this.audioTab = new System.Windows.Forms.TabPage();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.audioTextBox = new System.Windows.Forms.TextBox();
             this.sampleComboBox = new System.Windows.Forms.ComboBox();
+            this.sampleLabel = new System.Windows.Forms.Label();
             this.channelsComboBox = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.audioBitratePanel = new System.Windows.Forms.Panel();
+            this.audioQualTextBox = new System.Windows.Forms.TextBox();
+            this.audioQualRadioButton = new System.Windows.Forms.RadioButton();
+            this.audioBitrateTextBox = new System.Windows.Forms.TextBox();
+            this.audioBitrateRadioButton = new System.Windows.Forms.RadioButton();
+            this.audioKbpsLabel = new System.Windows.Forms.Label();
+            this.audioCheckBox = new System.Windows.Forms.CheckBox();
+            this.channelsLabel = new System.Windows.Forms.Label();
+            this.audioCodecLabel = new System.Windows.Forms.Label();
             this.audioComboBox = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.cropleftUpDown = new System.Windows.Forms.NumericUpDown();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.croprightUpDown = new System.Windows.Forms.NumericUpDown();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.cropbottomUpDown = new System.Windows.Forms.NumericUpDown();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.croptopUpDown = new System.Windows.Forms.NumericUpDown();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.padbottomUpDown = new System.Windows.Forms.NumericUpDown();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.padrightUpDown = new System.Windows.Forms.NumericUpDown();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.padleftUpDown = new System.Windows.Forms.NumericUpDown();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.padtopUpDown = new System.Windows.Forms.NumericUpDown();
+            this.cropTab = new System.Windows.Forms.TabPage();
+            this.cropLeftGroupBox = new System.Windows.Forms.GroupBox();
+            this.cropLeftUpDown = new System.Windows.Forms.NumericUpDown();
+            this.cropRightGroupBox = new System.Windows.Forms.GroupBox();
+            this.cropRightUpDown = new System.Windows.Forms.NumericUpDown();
+            this.cropBottomGroupBox = new System.Windows.Forms.GroupBox();
+            this.cropBottomUpDown = new System.Windows.Forms.NumericUpDown();
+            this.cropTopGroupBox = new System.Windows.Forms.GroupBox();
+            this.cropTopUpDown = new System.Windows.Forms.NumericUpDown();
+            this.padTab = new System.Windows.Forms.TabPage();
+            this.padBottomGroupBox = new System.Windows.Forms.GroupBox();
+            this.padBottomUpDown = new System.Windows.Forms.NumericUpDown();
+            this.padRightGroupBox = new System.Windows.Forms.GroupBox();
+            this.padRightUpDown = new System.Windows.Forms.NumericUpDown();
+            this.padLeftGroupBox = new System.Windows.Forms.GroupBox();
+            this.padLeftUpDown = new System.Windows.Forms.NumericUpDown();
+            this.padTopGroupBox = new System.Windows.Forms.GroupBox();
+            this.padTopUpDown = new System.Windows.Forms.NumericUpDown();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
             this.commentTextBox = new System.Windows.Forms.TextBox();
@@ -113,30 +116,31 @@
             this.formatSeperator = new SmoothTranscode.Seperator();
             this.resolutionSeperator = new SmoothTranscode.Seperator();
             this.codecSeperator = new SmoothTranscode.Seperator();
+            this.channelsSeperator = new SmoothTranscode.Seperator();
             this.mainTabs.SuspendLayout();
             this.inputTab.SuspendLayout();
             this.videoTab.SuspendLayout();
-            this.bitratePanel.SuspendLayout();
+            this.videoBitratePanel.SuspendLayout();
             this.audioTab.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cropleftUpDown)).BeginInit();
-            this.groupBox7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.croprightUpDown)).BeginInit();
-            this.groupBox8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cropbottomUpDown)).BeginInit();
-            this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.croptopUpDown)).BeginInit();
-            this.tabPage4.SuspendLayout();
-            this.groupBox12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.padbottomUpDown)).BeginInit();
-            this.groupBox11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.padrightUpDown)).BeginInit();
-            this.groupBox10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.padleftUpDown)).BeginInit();
-            this.groupBox9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.padtopUpDown)).BeginInit();
+            this.audioBitratePanel.SuspendLayout();
+            this.cropTab.SuspendLayout();
+            this.cropLeftGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cropLeftUpDown)).BeginInit();
+            this.cropRightGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cropRightUpDown)).BeginInit();
+            this.cropBottomGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cropBottomUpDown)).BeginInit();
+            this.cropTopGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cropTopUpDown)).BeginInit();
+            this.padTab.SuspendLayout();
+            this.padBottomGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.padBottomUpDown)).BeginInit();
+            this.padRightGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.padRightUpDown)).BeginInit();
+            this.padLeftGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.padLeftUpDown)).BeginInit();
+            this.padTopGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.padTopUpDown)).BeginInit();
             this.tabPage6.SuspendLayout();
             this.groupBox18.SuspendLayout();
             this.groupBox17.SuspendLayout();
@@ -177,8 +181,8 @@
             this.mainTabs.Controls.Add(this.inputTab);
             this.mainTabs.Controls.Add(this.videoTab);
             this.mainTabs.Controls.Add(this.audioTab);
-            this.mainTabs.Controls.Add(this.tabPage3);
-            this.mainTabs.Controls.Add(this.tabPage4);
+            this.mainTabs.Controls.Add(this.cropTab);
+            this.mainTabs.Controls.Add(this.padTab);
             this.mainTabs.Controls.Add(this.tabPage6);
             this.mainTabs.Controls.Add(this.outputTab);
             this.mainTabs.Location = new System.Drawing.Point(9, 12);
@@ -266,7 +270,7 @@
             this.videoTab.Controls.Add(this.aspectLabel);
             this.videoTab.Controls.Add(this.heightTextBox);
             this.videoTab.Controls.Add(this.xLabel);
-            this.videoTab.Controls.Add(this.bitratePanel);
+            this.videoTab.Controls.Add(this.videoBitratePanel);
             this.videoTab.Controls.Add(this.widthTextBox);
             this.videoTab.Controls.Add(this.videoComboBox);
             this.videoTab.Controls.Add(this.resolutionLabel);
@@ -368,28 +372,28 @@
             this.xLabel.TabIndex = 11;
             this.xLabel.Text = "x";
             // 
-            // bitratePanel
+            // videoBitratePanel
             // 
-            this.bitratePanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.videoBitratePanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.bitratePanel.Controls.Add(this.vbrBufferTextBox);
-            this.bitratePanel.Controls.Add(this.vbrBufferLabel);
-            this.bitratePanel.Controls.Add(this.vbrMaxTextBox);
-            this.bitratePanel.Controls.Add(this.vbrMaxLabel);
-            this.bitratePanel.Controls.Add(this.vbrMinLabel);
-            this.bitratePanel.Controls.Add(this.vbrMinTextBox);
-            this.bitratePanel.Controls.Add(this.vbrOptionalLabel);
-            this.bitratePanel.Controls.Add(this.vbrTextBox);
-            this.bitratePanel.Controls.Add(this.vbrKbpsLabel);
-            this.bitratePanel.Controls.Add(this.vbrRadioButton);
-            this.bitratePanel.Controls.Add(this.cbrRadioButton);
-            this.bitratePanel.Controls.Add(this.sameQualRadioButton);
-            this.bitratePanel.Controls.Add(this.cbrTextBox);
-            this.bitratePanel.Controls.Add(this.cbrLabel);
-            this.bitratePanel.Location = new System.Drawing.Point(10, 94);
-            this.bitratePanel.Name = "bitratePanel";
-            this.bitratePanel.Size = new System.Drawing.Size(549, 135);
-            this.bitratePanel.TabIndex = 14;
+            this.videoBitratePanel.Controls.Add(this.vbrBufferTextBox);
+            this.videoBitratePanel.Controls.Add(this.vbrBufferLabel);
+            this.videoBitratePanel.Controls.Add(this.vbrMaxTextBox);
+            this.videoBitratePanel.Controls.Add(this.vbrMaxLabel);
+            this.videoBitratePanel.Controls.Add(this.vbrMinLabel);
+            this.videoBitratePanel.Controls.Add(this.vbrMinTextBox);
+            this.videoBitratePanel.Controls.Add(this.vbrOptionalLabel);
+            this.videoBitratePanel.Controls.Add(this.vbrTextBox);
+            this.videoBitratePanel.Controls.Add(this.vbrKbpsLabel);
+            this.videoBitratePanel.Controls.Add(this.vbrRadioButton);
+            this.videoBitratePanel.Controls.Add(this.cbrRadioButton);
+            this.videoBitratePanel.Controls.Add(this.sameQualRadioButton);
+            this.videoBitratePanel.Controls.Add(this.cbrTextBox);
+            this.videoBitratePanel.Controls.Add(this.cbrLabel);
+            this.videoBitratePanel.Location = new System.Drawing.Point(10, 94);
+            this.videoBitratePanel.Name = "videoBitratePanel";
+            this.videoBitratePanel.Size = new System.Drawing.Size(549, 135);
+            this.videoBitratePanel.TabIndex = 14;
             // 
             // vbrBufferTextBox
             // 
@@ -592,6 +596,7 @@
             // 
             // advancedButton
             // 
+            this.advancedButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.advancedButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.advancedButton.Location = new System.Drawing.Point(440, 60);
             this.advancedButton.Name = "advancedButton";
@@ -612,7 +617,15 @@
             // 
             // audioTab
             // 
-            this.audioTab.Controls.Add(this.groupBox4);
+            this.audioTab.Controls.Add(this.sampleComboBox);
+            this.audioTab.Controls.Add(this.sampleLabel);
+            this.audioTab.Controls.Add(this.channelsSeperator);
+            this.audioTab.Controls.Add(this.channelsComboBox);
+            this.audioTab.Controls.Add(this.audioBitratePanel);
+            this.audioTab.Controls.Add(this.audioCheckBox);
+            this.audioTab.Controls.Add(this.channelsLabel);
+            this.audioTab.Controls.Add(this.audioCodecLabel);
+            this.audioTab.Controls.Add(this.audioComboBox);
             this.audioTab.Location = new System.Drawing.Point(4, 22);
             this.audioTab.Name = "audioTab";
             this.audioTab.Padding = new System.Windows.Forms.Padding(3);
@@ -620,31 +633,6 @@
             this.audioTab.TabIndex = 7;
             this.audioTab.Text = "Audio";
             this.audioTab.UseVisualStyleBackColor = true;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.audioTextBox);
-            this.groupBox4.Controls.Add(this.sampleComboBox);
-            this.groupBox4.Controls.Add(this.channelsComboBox);
-            this.groupBox4.Controls.Add(this.label9);
-            this.groupBox4.Controls.Add(this.label8);
-            this.groupBox4.Controls.Add(this.label7);
-            this.groupBox4.Controls.Add(this.label6);
-            this.groupBox4.Controls.Add(this.audioComboBox);
-            this.groupBox4.Controls.Add(this.label5);
-            this.groupBox4.Location = new System.Drawing.Point(10, 131);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(548, 101);
-            this.groupBox4.TabIndex = 3;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Audio Setup";
-            // 
-            // audioTextBox
-            // 
-            this.audioTextBox.Location = new System.Drawing.Point(419, 44);
-            this.audioTextBox.Name = "audioTextBox";
-            this.audioTextBox.Size = new System.Drawing.Size(87, 20);
-            this.audioTextBox.TabIndex = 8;
             // 
             // sampleComboBox
             // 
@@ -656,10 +644,19 @@
             "44100",
             "48000",
             "96000"});
-            this.sampleComboBox.Location = new System.Drawing.Point(157, 71);
+            this.sampleComboBox.Location = new System.Drawing.Point(88, 198);
             this.sampleComboBox.Name = "sampleComboBox";
             this.sampleComboBox.Size = new System.Drawing.Size(121, 21);
             this.sampleComboBox.TabIndex = 7;
+            // 
+            // sampleLabel
+            // 
+            this.sampleLabel.AutoSize = true;
+            this.sampleLabel.Location = new System.Drawing.Point(6, 201);
+            this.sampleLabel.Name = "sampleLabel";
+            this.sampleLabel.Size = new System.Drawing.Size(71, 13);
+            this.sampleLabel.TabIndex = 3;
+            this.sampleLabel.Text = "Sample Rate:";
             // 
             // channelsComboBox
             // 
@@ -667,49 +664,111 @@
             this.channelsComboBox.Items.AddRange(new object[] {
             "1",
             "2"});
-            this.channelsComboBox.Location = new System.Drawing.Point(140, 44);
+            this.channelsComboBox.Location = new System.Drawing.Point(72, 163);
             this.channelsComboBox.Name = "channelsComboBox";
             this.channelsComboBox.Size = new System.Drawing.Size(121, 21);
             this.channelsComboBox.TabIndex = 6;
             // 
-            // label9
+            // audioBitratePanel
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(512, 47);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(30, 13);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "kbps";
+            this.audioBitratePanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.audioBitratePanel.Controls.Add(this.audioQualTextBox);
+            this.audioBitratePanel.Controls.Add(this.audioQualRadioButton);
+            this.audioBitratePanel.Controls.Add(this.audioBitrateTextBox);
+            this.audioBitratePanel.Controls.Add(this.audioBitrateRadioButton);
+            this.audioBitratePanel.Controls.Add(this.audioKbpsLabel);
+            this.audioBitratePanel.Location = new System.Drawing.Point(10, 72);
+            this.audioBitratePanel.Name = "audioBitratePanel";
+            this.audioBitratePanel.Size = new System.Drawing.Size(549, 58);
+            this.audioBitratePanel.TabIndex = 5;
             // 
-            // label8
+            // audioQualTextBox
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(373, 47);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(40, 13);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "Bitrate:";
+            this.audioQualTextBox.Enabled = false;
+            this.audioQualTextBox.Location = new System.Drawing.Point(113, 35);
+            this.audioQualTextBox.Name = "audioQualTextBox";
+            this.audioQualTextBox.Size = new System.Drawing.Size(80, 20);
+            this.audioQualTextBox.TabIndex = 10;
             // 
-            // label7
+            // audioQualRadioButton
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(80, 74);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(71, 13);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "Sample Rate:";
+            this.audioQualRadioButton.AutoSize = true;
+            this.audioQualRadioButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.audioQualRadioButton.Location = new System.Drawing.Point(0, 36);
+            this.audioQualRadioButton.Name = "audioQualRadioButton";
+            this.audioQualRadioButton.Size = new System.Drawing.Size(82, 18);
+            this.audioQualRadioButton.TabIndex = 9;
+            this.audioQualRadioButton.Text = "Set Quality";
+            this.audioQualRadioButton.UseVisualStyleBackColor = true;
+            this.audioQualRadioButton.CheckedChanged += new System.EventHandler(this.auidQualRadioButton_CheckedChanged);
             // 
-            // label6
+            // audioBitrateTextBox
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(80, 47);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(54, 13);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Channels:";
+            this.audioBitrateTextBox.Location = new System.Drawing.Point(113, 0);
+            this.audioBitrateTextBox.Name = "audioBitrateTextBox";
+            this.audioBitrateTextBox.Size = new System.Drawing.Size(80, 20);
+            this.audioBitrateTextBox.TabIndex = 8;
+            // 
+            // audioBitrateRadioButton
+            // 
+            this.audioBitrateRadioButton.AutoSize = true;
+            this.audioBitrateRadioButton.Checked = true;
+            this.audioBitrateRadioButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.audioBitrateRadioButton.Location = new System.Drawing.Point(0, 1);
+            this.audioBitrateRadioButton.Name = "audioBitrateRadioButton";
+            this.audioBitrateRadioButton.Size = new System.Drawing.Size(106, 18);
+            this.audioBitrateRadioButton.TabIndex = 0;
+            this.audioBitrateRadioButton.TabStop = true;
+            this.audioBitrateRadioButton.Text = "Constant Bitrate";
+            this.audioBitrateRadioButton.UseVisualStyleBackColor = true;
+            this.audioBitrateRadioButton.CheckedChanged += new System.EventHandler(this.audioBitrateRadioButton_CheckedChanged);
+            // 
+            // audioKbpsLabel
+            // 
+            this.audioKbpsLabel.AutoSize = true;
+            this.audioKbpsLabel.Location = new System.Drawing.Point(201, 3);
+            this.audioKbpsLabel.Name = "audioKbpsLabel";
+            this.audioKbpsLabel.Size = new System.Drawing.Size(31, 13);
+            this.audioKbpsLabel.TabIndex = 5;
+            this.audioKbpsLabel.Text = "Kbps";
+            // 
+            // audioCheckBox
+            // 
+            this.audioCheckBox.AutoSize = true;
+            this.audioCheckBox.Checked = true;
+            this.audioCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.audioCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.audioCheckBox.Location = new System.Drawing.Point(10, 10);
+            this.audioCheckBox.Name = "audioCheckBox";
+            this.audioCheckBox.Size = new System.Drawing.Size(97, 18);
+            this.audioCheckBox.TabIndex = 4;
+            this.audioCheckBox.Text = "Include Audio";
+            this.audioCheckBox.UseVisualStyleBackColor = true;
+            this.audioCheckBox.CheckedChanged += new System.EventHandler(this.audioCheckBox_CheckedChanged);
+            // 
+            // channelsLabel
+            // 
+            this.channelsLabel.AutoSize = true;
+            this.channelsLabel.Location = new System.Drawing.Point(6, 166);
+            this.channelsLabel.Name = "channelsLabel";
+            this.channelsLabel.Size = new System.Drawing.Size(54, 13);
+            this.channelsLabel.TabIndex = 2;
+            this.channelsLabel.Text = "Channels:";
+            // 
+            // audioCodecLabel
+            // 
+            this.audioCodecLabel.AutoSize = true;
+            this.audioCodecLabel.Location = new System.Drawing.Point(6, 42);
+            this.audioCodecLabel.Name = "audioCodecLabel";
+            this.audioCodecLabel.Size = new System.Drawing.Size(41, 13);
+            this.audioCodecLabel.TabIndex = 0;
+            this.audioCodecLabel.Text = "Codec:";
             // 
             // audioComboBox
             // 
+            this.audioComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.audioComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.audioComboBox.FormattingEnabled = true;
             this.audioComboBox.Items.AddRange(new object[] {
@@ -725,183 +784,200 @@
             "FLAC",
             "Apple Lossless Audio Codec",
             "Nellymoser"});
-            this.audioComboBox.Location = new System.Drawing.Point(83, 17);
+            this.audioComboBox.Location = new System.Drawing.Point(51, 38);
             this.audioComboBox.Name = "audioComboBox";
-            this.audioComboBox.Size = new System.Drawing.Size(459, 21);
+            this.audioComboBox.Size = new System.Drawing.Size(508, 21);
             this.audioComboBox.TabIndex = 1;
             // 
-            // label5
+            // cropTab
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 20);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Audio Codec:";
+            this.cropTab.Controls.Add(this.cropLeftGroupBox);
+            this.cropTab.Controls.Add(this.cropRightGroupBox);
+            this.cropTab.Controls.Add(this.cropBottomGroupBox);
+            this.cropTab.Controls.Add(this.cropTopGroupBox);
+            this.cropTab.Location = new System.Drawing.Point(4, 22);
+            this.cropTab.Name = "cropTab";
+            this.cropTab.Padding = new System.Windows.Forms.Padding(3);
+            this.cropTab.Size = new System.Drawing.Size(568, 362);
+            this.cropTab.TabIndex = 2;
+            this.cropTab.Text = "Crop Video";
+            this.cropTab.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
+            // cropLeftGroupBox
             // 
-            this.tabPage3.Controls.Add(this.groupBox6);
-            this.tabPage3.Controls.Add(this.groupBox7);
-            this.tabPage3.Controls.Add(this.groupBox8);
-            this.tabPage3.Controls.Add(this.groupBox5);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(568, 362);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Crop Video";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.cropLeftGroupBox.Controls.Add(this.cropLeftUpDown);
+            this.cropLeftGroupBox.Location = new System.Drawing.Point(6, 112);
+            this.cropLeftGroupBox.Name = "cropLeftGroupBox";
+            this.cropLeftGroupBox.Size = new System.Drawing.Size(200, 100);
+            this.cropLeftGroupBox.TabIndex = 3;
+            this.cropLeftGroupBox.TabStop = false;
+            this.cropLeftGroupBox.Text = "Left";
             // 
-            // groupBox6
+            // cropLeftUpDown
             // 
-            this.groupBox6.Controls.Add(this.cropleftUpDown);
-            this.groupBox6.Location = new System.Drawing.Point(6, 112);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(200, 100);
-            this.groupBox6.TabIndex = 3;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Left";
+            this.cropLeftUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cropLeftUpDown.Location = new System.Drawing.Point(37, 41);
+            this.cropLeftUpDown.Name = "cropLeftUpDown";
+            this.cropLeftUpDown.Size = new System.Drawing.Size(120, 20);
+            this.cropLeftUpDown.TabIndex = 0;
             // 
-            // cropleftUpDown
+            // cropRightGroupBox
             // 
-            this.cropleftUpDown.Location = new System.Drawing.Point(37, 41);
-            this.cropleftUpDown.Name = "cropleftUpDown";
-            this.cropleftUpDown.Size = new System.Drawing.Size(120, 20);
-            this.cropleftUpDown.TabIndex = 0;
+            this.cropRightGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cropRightGroupBox.Controls.Add(this.cropRightUpDown);
+            this.cropRightGroupBox.Location = new System.Drawing.Point(362, 112);
+            this.cropRightGroupBox.Name = "cropRightGroupBox";
+            this.cropRightGroupBox.Size = new System.Drawing.Size(200, 100);
+            this.cropRightGroupBox.TabIndex = 2;
+            this.cropRightGroupBox.TabStop = false;
+            this.cropRightGroupBox.Text = "Right";
             // 
-            // groupBox7
+            // cropRightUpDown
             // 
-            this.groupBox7.Controls.Add(this.croprightUpDown);
-            this.groupBox7.Location = new System.Drawing.Point(354, 112);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(200, 100);
-            this.groupBox7.TabIndex = 2;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Right";
+            this.cropRightUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cropRightUpDown.Location = new System.Drawing.Point(44, 41);
+            this.cropRightUpDown.Name = "cropRightUpDown";
+            this.cropRightUpDown.Size = new System.Drawing.Size(120, 20);
+            this.cropRightUpDown.TabIndex = 0;
             // 
-            // croprightUpDown
+            // cropBottomGroupBox
             // 
-            this.croprightUpDown.Location = new System.Drawing.Point(44, 41);
-            this.croprightUpDown.Name = "croprightUpDown";
-            this.croprightUpDown.Size = new System.Drawing.Size(120, 20);
-            this.croprightUpDown.TabIndex = 0;
+            this.cropBottomGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cropBottomGroupBox.Controls.Add(this.cropBottomUpDown);
+            this.cropBottomGroupBox.Location = new System.Drawing.Point(183, 222);
+            this.cropBottomGroupBox.Name = "cropBottomGroupBox";
+            this.cropBottomGroupBox.Size = new System.Drawing.Size(200, 100);
+            this.cropBottomGroupBox.TabIndex = 1;
+            this.cropBottomGroupBox.TabStop = false;
+            this.cropBottomGroupBox.Text = "Bottom";
             // 
-            // groupBox8
+            // cropBottomUpDown
             // 
-            this.groupBox8.Controls.Add(this.cropbottomUpDown);
-            this.groupBox8.Location = new System.Drawing.Point(183, 218);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(200, 100);
-            this.groupBox8.TabIndex = 1;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Bottom";
+            this.cropBottomUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cropBottomUpDown.Location = new System.Drawing.Point(37, 43);
+            this.cropBottomUpDown.Name = "cropBottomUpDown";
+            this.cropBottomUpDown.Size = new System.Drawing.Size(120, 20);
+            this.cropBottomUpDown.TabIndex = 0;
             // 
-            // cropbottomUpDown
+            // cropTopGroupBox
             // 
-            this.cropbottomUpDown.Location = new System.Drawing.Point(37, 43);
-            this.cropbottomUpDown.Name = "cropbottomUpDown";
-            this.cropbottomUpDown.Size = new System.Drawing.Size(120, 20);
-            this.cropbottomUpDown.TabIndex = 0;
+            this.cropTopGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cropTopGroupBox.Controls.Add(this.cropTopUpDown);
+            this.cropTopGroupBox.Location = new System.Drawing.Point(183, 6);
+            this.cropTopGroupBox.Name = "cropTopGroupBox";
+            this.cropTopGroupBox.Size = new System.Drawing.Size(200, 100);
+            this.cropTopGroupBox.TabIndex = 0;
+            this.cropTopGroupBox.TabStop = false;
+            this.cropTopGroupBox.Text = "Top";
             // 
-            // groupBox5
+            // cropTopUpDown
             // 
-            this.groupBox5.Controls.Add(this.croptopUpDown);
-            this.groupBox5.Location = new System.Drawing.Point(183, 6);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(200, 100);
-            this.groupBox5.TabIndex = 0;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Top";
+            this.cropTopUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cropTopUpDown.Location = new System.Drawing.Point(37, 40);
+            this.cropTopUpDown.Name = "cropTopUpDown";
+            this.cropTopUpDown.Size = new System.Drawing.Size(120, 20);
+            this.cropTopUpDown.TabIndex = 0;
             // 
-            // croptopUpDown
+            // padTab
             // 
-            this.croptopUpDown.Location = new System.Drawing.Point(37, 40);
-            this.croptopUpDown.Name = "croptopUpDown";
-            this.croptopUpDown.Size = new System.Drawing.Size(120, 20);
-            this.croptopUpDown.TabIndex = 0;
+            this.padTab.Controls.Add(this.padBottomGroupBox);
+            this.padTab.Controls.Add(this.padRightGroupBox);
+            this.padTab.Controls.Add(this.padLeftGroupBox);
+            this.padTab.Controls.Add(this.padTopGroupBox);
+            this.padTab.Location = new System.Drawing.Point(4, 22);
+            this.padTab.Name = "padTab";
+            this.padTab.Padding = new System.Windows.Forms.Padding(3);
+            this.padTab.Size = new System.Drawing.Size(568, 362);
+            this.padTab.TabIndex = 3;
+            this.padTab.Text = "Pad Video";
+            this.padTab.UseVisualStyleBackColor = true;
             // 
-            // tabPage4
+            // padBottomGroupBox
             // 
-            this.tabPage4.Controls.Add(this.groupBox12);
-            this.tabPage4.Controls.Add(this.groupBox11);
-            this.tabPage4.Controls.Add(this.groupBox10);
-            this.tabPage4.Controls.Add(this.groupBox9);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(568, 362);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Pad Video";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.padBottomGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.padBottomGroupBox.Controls.Add(this.padBottomUpDown);
+            this.padBottomGroupBox.Location = new System.Drawing.Point(183, 222);
+            this.padBottomGroupBox.Name = "padBottomGroupBox";
+            this.padBottomGroupBox.Size = new System.Drawing.Size(200, 100);
+            this.padBottomGroupBox.TabIndex = 3;
+            this.padBottomGroupBox.TabStop = false;
+            this.padBottomGroupBox.Text = "Bottom";
             // 
-            // groupBox12
+            // padBottomUpDown
             // 
-            this.groupBox12.Controls.Add(this.padbottomUpDown);
-            this.groupBox12.Location = new System.Drawing.Point(183, 218);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(200, 100);
-            this.groupBox12.TabIndex = 3;
-            this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "Bottom";
+            this.padBottomUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.padBottomUpDown.Location = new System.Drawing.Point(37, 43);
+            this.padBottomUpDown.Name = "padBottomUpDown";
+            this.padBottomUpDown.Size = new System.Drawing.Size(120, 20);
+            this.padBottomUpDown.TabIndex = 0;
             // 
-            // padbottomUpDown
+            // padRightGroupBox
             // 
-            this.padbottomUpDown.Location = new System.Drawing.Point(37, 43);
-            this.padbottomUpDown.Name = "padbottomUpDown";
-            this.padbottomUpDown.Size = new System.Drawing.Size(120, 20);
-            this.padbottomUpDown.TabIndex = 0;
+            this.padRightGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.padRightGroupBox.Controls.Add(this.padRightUpDown);
+            this.padRightGroupBox.Location = new System.Drawing.Point(362, 112);
+            this.padRightGroupBox.Name = "padRightGroupBox";
+            this.padRightGroupBox.Size = new System.Drawing.Size(200, 100);
+            this.padRightGroupBox.TabIndex = 2;
+            this.padRightGroupBox.TabStop = false;
+            this.padRightGroupBox.Text = "Right";
             // 
-            // groupBox11
+            // padRightUpDown
             // 
-            this.groupBox11.Controls.Add(this.padrightUpDown);
-            this.groupBox11.Location = new System.Drawing.Point(354, 112);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(200, 100);
-            this.groupBox11.TabIndex = 2;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Right";
+            this.padRightUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.padRightUpDown.Location = new System.Drawing.Point(44, 41);
+            this.padRightUpDown.Name = "padRightUpDown";
+            this.padRightUpDown.Size = new System.Drawing.Size(120, 20);
+            this.padRightUpDown.TabIndex = 0;
             // 
-            // padrightUpDown
+            // padLeftGroupBox
             // 
-            this.padrightUpDown.Location = new System.Drawing.Point(44, 41);
-            this.padrightUpDown.Name = "padrightUpDown";
-            this.padrightUpDown.Size = new System.Drawing.Size(120, 20);
-            this.padrightUpDown.TabIndex = 0;
+            this.padLeftGroupBox.Controls.Add(this.padLeftUpDown);
+            this.padLeftGroupBox.Location = new System.Drawing.Point(6, 112);
+            this.padLeftGroupBox.Name = "padLeftGroupBox";
+            this.padLeftGroupBox.Size = new System.Drawing.Size(200, 100);
+            this.padLeftGroupBox.TabIndex = 1;
+            this.padLeftGroupBox.TabStop = false;
+            this.padLeftGroupBox.Text = "Left";
             // 
-            // groupBox10
+            // padLeftUpDown
             // 
-            this.groupBox10.Controls.Add(this.padleftUpDown);
-            this.groupBox10.Location = new System.Drawing.Point(6, 112);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(200, 100);
-            this.groupBox10.TabIndex = 1;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Left";
+            this.padLeftUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.padLeftUpDown.Location = new System.Drawing.Point(37, 41);
+            this.padLeftUpDown.Name = "padLeftUpDown";
+            this.padLeftUpDown.Size = new System.Drawing.Size(120, 20);
+            this.padLeftUpDown.TabIndex = 0;
             // 
-            // padleftUpDown
+            // padTopGroupBox
             // 
-            this.padleftUpDown.Location = new System.Drawing.Point(37, 41);
-            this.padleftUpDown.Name = "padleftUpDown";
-            this.padleftUpDown.Size = new System.Drawing.Size(120, 20);
-            this.padleftUpDown.TabIndex = 0;
+            this.padTopGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.padTopGroupBox.Controls.Add(this.padTopUpDown);
+            this.padTopGroupBox.Location = new System.Drawing.Point(183, 6);
+            this.padTopGroupBox.Name = "padTopGroupBox";
+            this.padTopGroupBox.Size = new System.Drawing.Size(200, 100);
+            this.padTopGroupBox.TabIndex = 0;
+            this.padTopGroupBox.TabStop = false;
+            this.padTopGroupBox.Text = "Top";
             // 
-            // groupBox9
+            // padTopUpDown
             // 
-            this.groupBox9.Controls.Add(this.padtopUpDown);
-            this.groupBox9.Location = new System.Drawing.Point(183, 6);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(200, 100);
-            this.groupBox9.TabIndex = 0;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Top";
-            // 
-            // padtopUpDown
-            // 
-            this.padtopUpDown.Location = new System.Drawing.Point(37, 40);
-            this.padtopUpDown.Name = "padtopUpDown";
-            this.padtopUpDown.Size = new System.Drawing.Size(120, 20);
-            this.padtopUpDown.TabIndex = 0;
+            this.padTopUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.padTopUpDown.Location = new System.Drawing.Point(37, 40);
+            this.padTopUpDown.Name = "padTopUpDown";
+            this.padTopUpDown.Size = new System.Drawing.Size(120, 20);
+            this.padTopUpDown.TabIndex = 0;
             // 
             // tabPage6
             // 
@@ -1069,6 +1145,16 @@
             this.codecSeperator.Size = new System.Drawing.Size(553, 15);
             this.codecSeperator.TabIndex = 6;
             // 
+            // channelsSeperator
+            // 
+            this.channelsSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.channelsSeperator.Label = "Channels and Sample Rate";
+            this.channelsSeperator.Location = new System.Drawing.Point(6, 139);
+            this.channelsSeperator.Name = "channelsSeperator";
+            this.channelsSeperator.Size = new System.Drawing.Size(553, 15);
+            this.channelsSeperator.TabIndex = 16;
+            // 
             // MainWindow
             // 
             this.AllowDrop = true;
@@ -1092,29 +1178,30 @@
             this.inputTab.PerformLayout();
             this.videoTab.ResumeLayout(false);
             this.videoTab.PerformLayout();
-            this.bitratePanel.ResumeLayout(false);
-            this.bitratePanel.PerformLayout();
+            this.videoBitratePanel.ResumeLayout(false);
+            this.videoBitratePanel.PerformLayout();
             this.audioTab.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cropleftUpDown)).EndInit();
-            this.groupBox7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.croprightUpDown)).EndInit();
-            this.groupBox8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cropbottomUpDown)).EndInit();
-            this.groupBox5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.croptopUpDown)).EndInit();
-            this.tabPage4.ResumeLayout(false);
-            this.groupBox12.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.padbottomUpDown)).EndInit();
-            this.groupBox11.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.padrightUpDown)).EndInit();
-            this.groupBox10.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.padleftUpDown)).EndInit();
-            this.groupBox9.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.padtopUpDown)).EndInit();
+            this.audioTab.PerformLayout();
+            this.audioBitratePanel.ResumeLayout(false);
+            this.audioBitratePanel.PerformLayout();
+            this.cropTab.ResumeLayout(false);
+            this.cropLeftGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cropLeftUpDown)).EndInit();
+            this.cropRightGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cropRightUpDown)).EndInit();
+            this.cropBottomGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cropBottomUpDown)).EndInit();
+            this.cropTopGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cropTopUpDown)).EndInit();
+            this.padTab.ResumeLayout(false);
+            this.padBottomGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.padBottomUpDown)).EndInit();
+            this.padRightGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.padRightUpDown)).EndInit();
+            this.padLeftGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.padLeftUpDown)).EndInit();
+            this.padTopGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.padTopUpDown)).EndInit();
             this.tabPage6.ResumeLayout(false);
             this.groupBox18.ResumeLayout(false);
             this.groupBox18.PerformLayout();
@@ -1139,8 +1226,8 @@
         private System.Windows.Forms.Button inputButton;
         private System.Windows.Forms.TextBox inputTextBox;
         private System.Windows.Forms.OpenFileDialog inputFileDialog;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage cropTab;
+        private System.Windows.Forms.TabPage padTab;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.TabPage outputTab;
         private System.Windows.Forms.Label videoCodecLabel;
@@ -1152,22 +1239,22 @@
         private System.Windows.Forms.ComboBox aspectComboBox;
         private System.Windows.Forms.Button advancedButton;
         private System.Windows.Forms.Button helpButton;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.NumericUpDown cropleftUpDown;
-        private System.Windows.Forms.NumericUpDown croprightUpDown;
-        private System.Windows.Forms.NumericUpDown cropbottomUpDown;
-        private System.Windows.Forms.NumericUpDown croptopUpDown;
-        private System.Windows.Forms.GroupBox groupBox12;
-        private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.NumericUpDown padbottomUpDown;
-        private System.Windows.Forms.NumericUpDown padrightUpDown;
-        private System.Windows.Forms.NumericUpDown padleftUpDown;
-        private System.Windows.Forms.NumericUpDown padtopUpDown;
+        private System.Windows.Forms.GroupBox cropLeftGroupBox;
+        private System.Windows.Forms.GroupBox cropRightGroupBox;
+        private System.Windows.Forms.GroupBox cropBottomGroupBox;
+        private System.Windows.Forms.GroupBox cropTopGroupBox;
+        private System.Windows.Forms.NumericUpDown cropLeftUpDown;
+        private System.Windows.Forms.NumericUpDown cropRightUpDown;
+        private System.Windows.Forms.NumericUpDown cropBottomUpDown;
+        private System.Windows.Forms.NumericUpDown cropTopUpDown;
+        private System.Windows.Forms.GroupBox padBottomGroupBox;
+        private System.Windows.Forms.GroupBox padRightGroupBox;
+        private System.Windows.Forms.GroupBox padLeftGroupBox;
+        private System.Windows.Forms.GroupBox padTopGroupBox;
+        private System.Windows.Forms.NumericUpDown padBottomUpDown;
+        private System.Windows.Forms.NumericUpDown padRightUpDown;
+        private System.Windows.Forms.NumericUpDown padLeftUpDown;
+        private System.Windows.Forms.NumericUpDown padTopUpDown;
         private System.Windows.Forms.GroupBox groupBox15;
         private System.Windows.Forms.TextBox titleTextBox;
         private System.Windows.Forms.GroupBox groupBox18;
@@ -1192,18 +1279,16 @@
         private System.Windows.Forms.RadioButton sameQualRadioButton;
         private System.Windows.Forms.RadioButton vbrRadioButton;
         private System.Windows.Forms.RadioButton cbrRadioButton;
-        private System.Windows.Forms.Panel bitratePanel;
+        private System.Windows.Forms.Panel videoBitratePanel;
         private System.Windows.Forms.TabPage audioTab;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.TextBox audioTextBox;
+        private System.Windows.Forms.TextBox audioBitrateTextBox;
         private System.Windows.Forms.ComboBox sampleComboBox;
         private System.Windows.Forms.ComboBox channelsComboBox;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label audioKbpsLabel;
+        private System.Windows.Forms.Label sampleLabel;
+        private System.Windows.Forms.Label channelsLabel;
         private System.Windows.Forms.ComboBox audioComboBox;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label audioCodecLabel;
         private System.Windows.Forms.TextBox vbrTextBox;
         private System.Windows.Forms.Label vbrKbpsLabel;
         private System.Windows.Forms.Label vbrOptionalLabel;
@@ -1216,6 +1301,12 @@
         private Seperator resolutionSeperator;
         private System.Windows.Forms.Label frameRateLabel;
         private System.Windows.Forms.ComboBox frameRateComboBox;
+        private System.Windows.Forms.CheckBox audioCheckBox;
+        private System.Windows.Forms.Panel audioBitratePanel;
+        private System.Windows.Forms.RadioButton audioBitrateRadioButton;
+        private System.Windows.Forms.TextBox audioQualTextBox;
+        private System.Windows.Forms.RadioButton audioQualRadioButton;
+        private Seperator channelsSeperator;
     }
 }
 

@@ -214,7 +214,7 @@ namespace SmoothTranscode
                 videoCodecLabel.Enabled = true;
                 videoComboBox.Enabled = true;
                 advancedButton.Enabled = true;
-                bitratePanel.Enabled = true;
+                videoBitratePanel.Enabled = true;
                 resolutionSeperator.Enabled = true;
                 resolutionLabel.Enabled = true;
                 widthTextBox.Enabled = true;
@@ -234,7 +234,7 @@ namespace SmoothTranscode
                 videoCodecLabel.Enabled = false;
                 videoComboBox.Enabled = false;
                 advancedButton.Enabled = false;
-                bitratePanel.Enabled = false;
+                videoBitratePanel.Enabled = false;
                 resolutionSeperator.Enabled = false;
                 resolutionLabel.Enabled = false;
                 widthTextBox.Enabled = false;
@@ -346,6 +346,34 @@ namespace SmoothTranscode
         #endregion
 
         #region Audio Tab
+        private void audioCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            // Enable options if audio enabled
+            if (audioCheckBox.Checked)
+            {
+                audioCodecLabel.Enabled = true;
+                audioComboBox.Enabled = true;
+                audioBitratePanel.Enabled = true;
+                channelsSeperator.Enabled = true;
+                channelsLabel.Enabled = true;
+                channelsComboBox.Enabled = true;
+                sampleLabel.Enabled = true;
+                sampleComboBox.Enabled = true;
+            }
+            // Otherwise disable options if audio disabled
+            else
+            {
+                audioCodecLabel.Enabled = false;
+                audioComboBox.Enabled = false;
+                audioBitratePanel.Enabled = false;
+                channelsSeperator.Enabled = false;
+                channelsLabel.Enabled = false;
+                channelsComboBox.Enabled = false;
+                sampleLabel.Enabled = false;
+                sampleComboBox.Enabled = false;
+            }
+        }
+
         //Sets audio codec to selected option
         private void audioComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -373,6 +401,20 @@ namespace SmoothTranscode
                 Audio = "alac";
             else if (audioComboBox.SelectedItem == "Nellymoser")
                 Audio = "nellymoser";
+        }
+
+        // Disable set quality option if constant bitrate is selected
+        private void audioBitrateRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            audioBitrateTextBox.Enabled = true;
+            audioQualTextBox.Enabled = false;
+        }
+
+        // Disable constant bitrate option if set quality is selected
+        private void auidQualRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            audioBitrateTextBox.Enabled = false;
+            audioQualTextBox.Enabled = true;
         }
         #endregion
 
@@ -466,32 +508,45 @@ namespace SmoothTranscode
             else // Else disable video recording
                 Arguments += " -vn";
             // Audio Tab
-            if (Audio != String.Empty)
-                Arguments += " -acodec " + Audio;
-            if (channelsComboBox.Text != String.Empty)
-                Arguments += " -ac " + channelsComboBox.Text;
-            if (audioTextBox.Text != String.Empty)
-                Arguments += " -ab " + audioTextBox.Text + "k";
-            if (sampleComboBox.Text != String.Empty)
-                Arguments += " -ar " + sampleComboBox.Text;
+            if (audioCheckBox.Checked) // If audio enabled
+            {
+                if (Audio != String.Empty)
+                    Arguments += " -acodec " + Audio;
+                if (channelsComboBox.Text != String.Empty)
+                    Arguments += " -ac " + channelsComboBox.Text;
+                if (audioBitrateRadioButton.Checked)
+                {
+                    if (audioBitrateTextBox.Text != String.Empty)
+                        Arguments += " -ab " + audioBitrateTextBox.Text + "k";
+                }
+                if (audioQualRadioButton.Checked)
+                {
+                    if (audioQualTextBox.Text != String.Empty)
+                        Arguments += " -aq " + audioQualTextBox.Text;
+                }
+                if (sampleComboBox.Text != String.Empty)
+                    Arguments += " -ar " + sampleComboBox.Text;
+            }
+            else // Else disable audio recording
+                Arguments += " -an";
             // Crop tab
-            if (croptopUpDown.Value > 0)
-                Arguments += " -croptop " + croptopUpDown.Value;
-            if (cropleftUpDown.Value > 0)
-                Arguments += " -cropleft " + cropleftUpDown.Value;
-            if (croprightUpDown.Value > 0)
-                Arguments += " -cropright " + croprightUpDown.Value;
-            if (cropbottomUpDown.Value > 0)
-                Arguments += " -cropbottom " + cropbottomUpDown.Value;
+            if (cropTopUpDown.Value > 0)
+                Arguments += " -croptop " + cropTopUpDown.Value;
+            if (cropLeftUpDown.Value > 0)
+                Arguments += " -cropleft " + cropLeftUpDown.Value;
+            if (cropRightUpDown.Value > 0)
+                Arguments += " -cropright " + cropRightUpDown.Value;
+            if (cropBottomUpDown.Value > 0)
+                Arguments += " -cropbottom " + cropBottomUpDown.Value;
             // Pad tab
-            if (padtopUpDown.Value > 0)
-                Arguments += " -padtop " + padtopUpDown.Value;
-            if (padleftUpDown.Value > 0)
-                Arguments += " -padleft " + padleftUpDown.Value;
-            if (padrightUpDown.Value > 0)
-                Arguments += " -padright " + padrightUpDown.Value;
-            if (padbottomUpDown.Value > 0)
-                Arguments += " -padbottom " + padbottomUpDown.Value;
+            if (padTopUpDown.Value > 0)
+                Arguments += " -padtop " + padTopUpDown.Value;
+            if (padLeftUpDown.Value > 0)
+                Arguments += " -padleft " + padLeftUpDown.Value;
+            if (padRightUpDown.Value > 0)
+                Arguments += " -padright " + padRightUpDown.Value;
+            if (padBottomUpDown.Value > 0)
+                Arguments += " -padbottom " + padBottomUpDown.Value;
             // Meta data tab
             if (titleTextBox.Text != String.Empty)
                 Arguments += " -title " + "\"" + titleTextBox.Text + "\"";
