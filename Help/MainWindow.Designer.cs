@@ -1,6 +1,6 @@
 ﻿namespace Help
 {
-    partial class Form1
+    partial class MainWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -28,16 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.helpToolStrip = new System.Windows.Forms.ToolStrip();
             this.backIcon = new System.Windows.Forms.ToolStripButton();
             this.forwardIcon = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.contentsIcon = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.searchBox = new System.Windows.Forms.ToolStripComboBox();
-            this.searchIcon = new System.Windows.Forms.ToolStripButton();
             this.helpBrowser = new System.Windows.Forms.WebBrowser();
+            this.helpProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.helpToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,9 +47,7 @@
             this.forwardIcon,
             this.toolStripSeparator1,
             this.contentsIcon,
-            this.toolStripSeparator2,
-            this.searchBox,
-            this.searchIcon});
+            this.helpProgressBar});
             this.helpToolStrip.Location = new System.Drawing.Point(0, 0);
             this.helpToolStrip.Name = "helpToolStrip";
             this.helpToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -90,26 +86,6 @@
             this.contentsIcon.Tag = "";
             this.contentsIcon.Text = "Contents";
             // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // searchBox
-            // 
-            this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(121, 25);
-            this.searchBox.Text = "Search Help";
-            // 
-            // searchIcon
-            // 
-            this.searchIcon.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.searchIcon.Image = ((System.Drawing.Image)(resources.GetObject("searchIcon.Image")));
-            this.searchIcon.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.searchIcon.Name = "searchIcon";
-            this.searchIcon.Size = new System.Drawing.Size(23, 22);
-            this.searchIcon.Text = "Search";
-            // 
             // helpBrowser
             // 
             this.helpBrowser.AllowWebBrowserDrop = false;
@@ -121,14 +97,21 @@
             this.helpBrowser.TabIndex = 1;
             this.helpBrowser.Url = new System.Uri("", System.UriKind.Relative);
             // 
-            // Form1
+            // helpProgressBar
+            // 
+            this.helpProgressBar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.helpProgressBar.Name = "helpProgressBar";
+            this.helpProgressBar.Size = new System.Drawing.Size(100, 22);
+            this.helpProgressBar.Visible = false;
+            // 
+            // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(711, 383);
             this.Controls.Add(this.helpBrowser);
             this.Controls.Add(this.helpToolStrip);
-            this.Name = "Form1";
+            this.Name = "MainWindow";
             this.Text = "Help";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.helpToolStrip.ResumeLayout(false);
@@ -146,9 +129,7 @@
         private System.Windows.Forms.ToolStripButton forwardIcon;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton contentsIcon;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripComboBox searchBox;
-        private System.Windows.Forms.ToolStripButton searchIcon;
+        private System.Windows.Forms.ToolStripProgressBar helpProgressBar;
     }
 }
 

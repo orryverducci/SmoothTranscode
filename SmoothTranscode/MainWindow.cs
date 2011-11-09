@@ -79,7 +79,7 @@ namespace SmoothTranscode
         private void helpButton_Click(object sender, EventArgs e)
         {
             // Opens the help window
-            Help.Form1 helpWindow = new Help.Form1();
+            Help.MainWindow helpWindow = new Help.MainWindow();
             helpWindow.Show();
         }
 
