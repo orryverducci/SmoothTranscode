@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Help
 {
-    class Config
+    public class Config
     {
         private static string baseURL;
         private static string specifiedPage;
