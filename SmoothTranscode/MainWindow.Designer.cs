@@ -98,14 +98,10 @@
             this.padLeftUpDown = new System.Windows.Forms.NumericUpDown();
             this.padTopGroupBox = new System.Windows.Forms.GroupBox();
             this.padTopUpDown = new System.Windows.Forms.NumericUpDown();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.metadataTab = new System.Windows.Forms.TabPage();
             this.commentTextBox = new System.Windows.Forms.TextBox();
-            this.groupBox17 = new System.Windows.Forms.GroupBox();
             this.copyrightTextBox = new System.Windows.Forms.TextBox();
-            this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.authorTextBox = new System.Windows.Forms.TextBox();
-            this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.titleTextBox = new System.Windows.Forms.TextBox();
             this.outputTab = new System.Windows.Forms.TabPage();
             this.outputButton = new System.Windows.Forms.Button();
@@ -117,6 +113,10 @@
             this.resolutionSeperator = new SmoothTranscode.Seperator();
             this.codecSeperator = new SmoothTranscode.Seperator();
             this.channelsSeperator = new SmoothTranscode.Seperator();
+            this.commentSeperator = new SmoothTranscode.Seperator();
+            this.copyrightSeperator = new SmoothTranscode.Seperator();
+            this.authorSeperator = new SmoothTranscode.Seperator();
+            this.titleSeperator = new SmoothTranscode.Seperator();
             this.mainTabs.SuspendLayout();
             this.inputTab.SuspendLayout();
             this.videoTab.SuspendLayout();
@@ -141,11 +141,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.padLeftUpDown)).BeginInit();
             this.padTopGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.padTopUpDown)).BeginInit();
-            this.tabPage6.SuspendLayout();
-            this.groupBox18.SuspendLayout();
-            this.groupBox17.SuspendLayout();
-            this.groupBox16.SuspendLayout();
-            this.groupBox15.SuspendLayout();
+            this.metadataTab.SuspendLayout();
             this.outputTab.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -183,7 +179,7 @@
             this.mainTabs.Controls.Add(this.audioTab);
             this.mainTabs.Controls.Add(this.cropTab);
             this.mainTabs.Controls.Add(this.padTab);
-            this.mainTabs.Controls.Add(this.tabPage6);
+            this.mainTabs.Controls.Add(this.metadataTab);
             this.mainTabs.Controls.Add(this.outputTab);
             this.mainTabs.Location = new System.Drawing.Point(9, 12);
             this.mainTabs.Name = "mainTabs";
@@ -298,7 +294,7 @@
             "50",
             "59.94",
             "60"});
-            this.frameRateComboBox.Location = new System.Drawing.Point(80, 332);
+            this.frameRateComboBox.Location = new System.Drawing.Point(80, 331);
             this.frameRateComboBox.Name = "frameRateComboBox";
             this.frameRateComboBox.Size = new System.Drawing.Size(121, 21);
             this.frameRateComboBox.TabIndex = 17;
@@ -306,7 +302,7 @@
             // frameRateLabel
             // 
             this.frameRateLabel.AutoSize = true;
-            this.frameRateLabel.Location = new System.Drawing.Point(7, 335);
+            this.frameRateLabel.Location = new System.Drawing.Point(7, 334);
             this.frameRateLabel.Name = "frameRateLabel";
             this.frameRateLabel.Size = new System.Drawing.Size(65, 13);
             this.frameRateLabel.TabIndex = 16;
@@ -316,7 +312,7 @@
             // 
             this.deinterlaceCheckBox.AutoSize = true;
             this.deinterlaceCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.deinterlaceCheckBox.Location = new System.Drawing.Point(210, 333);
+            this.deinterlaceCheckBox.Location = new System.Drawing.Point(210, 332);
             this.deinterlaceCheckBox.Name = "deinterlaceCheckBox";
             this.deinterlaceCheckBox.Size = new System.Drawing.Size(86, 18);
             this.deinterlaceCheckBox.TabIndex = 3;
@@ -333,7 +329,7 @@
             "5:4",
             "221:100",
             "1:1"});
-            this.aspectComboBox.Location = new System.Drawing.Point(87, 297);
+            this.aspectComboBox.Location = new System.Drawing.Point(87, 296);
             this.aspectComboBox.Name = "aspectComboBox";
             this.aspectComboBox.Size = new System.Drawing.Size(121, 21);
             this.aspectComboBox.TabIndex = 4;
@@ -341,7 +337,7 @@
             // pixelsLabel
             // 
             this.pixelsLabel.AutoSize = true;
-            this.pixelsLabel.Location = new System.Drawing.Point(204, 265);
+            this.pixelsLabel.Location = new System.Drawing.Point(204, 264);
             this.pixelsLabel.Name = "pixelsLabel";
             this.pixelsLabel.Size = new System.Drawing.Size(33, 13);
             this.pixelsLabel.TabIndex = 13;
@@ -350,7 +346,7 @@
             // aspectLabel
             // 
             this.aspectLabel.AutoSize = true;
-            this.aspectLabel.Location = new System.Drawing.Point(7, 300);
+            this.aspectLabel.Location = new System.Drawing.Point(7, 299);
             this.aspectLabel.Name = "aspectLabel";
             this.aspectLabel.Size = new System.Drawing.Size(71, 13);
             this.aspectLabel.TabIndex = 2;
@@ -358,7 +354,7 @@
             // 
             // heightTextBox
             // 
-            this.heightTextBox.Location = new System.Drawing.Point(149, 262);
+            this.heightTextBox.Location = new System.Drawing.Point(149, 261);
             this.heightTextBox.Name = "heightTextBox";
             this.heightTextBox.Size = new System.Drawing.Size(50, 20);
             this.heightTextBox.TabIndex = 12;
@@ -366,7 +362,7 @@
             // xLabel
             // 
             this.xLabel.AutoSize = true;
-            this.xLabel.Location = new System.Drawing.Point(132, 265);
+            this.xLabel.Location = new System.Drawing.Point(132, 264);
             this.xLabel.Name = "xLabel";
             this.xLabel.Size = new System.Drawing.Size(12, 13);
             this.xLabel.TabIndex = 11;
@@ -390,7 +386,7 @@
             this.videoBitratePanel.Controls.Add(this.sameQualRadioButton);
             this.videoBitratePanel.Controls.Add(this.cbrTextBox);
             this.videoBitratePanel.Controls.Add(this.cbrLabel);
-            this.videoBitratePanel.Location = new System.Drawing.Point(10, 94);
+            this.videoBitratePanel.Location = new System.Drawing.Point(10, 93);
             this.videoBitratePanel.Name = "videoBitratePanel";
             this.videoBitratePanel.Size = new System.Drawing.Size(549, 135);
             this.videoBitratePanel.TabIndex = 14;
@@ -535,7 +531,7 @@
             // 
             // widthTextBox
             // 
-            this.widthTextBox.Location = new System.Drawing.Point(76, 262);
+            this.widthTextBox.Location = new System.Drawing.Point(76, 261);
             this.widthTextBox.Name = "widthTextBox";
             this.widthTextBox.Size = new System.Drawing.Size(50, 20);
             this.widthTextBox.TabIndex = 10;
@@ -565,7 +561,7 @@
             "Dirac",
             "Motion JPEG",
             "AVID DNxHD"});
-            this.videoComboBox.Location = new System.Drawing.Point(51, 61);
+            this.videoComboBox.Location = new System.Drawing.Point(51, 60);
             this.videoComboBox.Name = "videoComboBox";
             this.videoComboBox.Size = new System.Drawing.Size(381, 21);
             this.videoComboBox.TabIndex = 1;
@@ -574,7 +570,7 @@
             // resolutionLabel
             // 
             this.resolutionLabel.AutoSize = true;
-            this.resolutionLabel.Location = new System.Drawing.Point(6, 265);
+            this.resolutionLabel.Location = new System.Drawing.Point(6, 264);
             this.resolutionLabel.Name = "resolutionLabel";
             this.resolutionLabel.Size = new System.Drawing.Size(60, 13);
             this.resolutionLabel.TabIndex = 9;
@@ -586,7 +582,7 @@
             this.videoCheckBox.Checked = true;
             this.videoCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.videoCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.videoCheckBox.Location = new System.Drawing.Point(10, 10);
+            this.videoCheckBox.Location = new System.Drawing.Point(10, 9);
             this.videoCheckBox.Name = "videoCheckBox";
             this.videoCheckBox.Size = new System.Drawing.Size(97, 18);
             this.videoCheckBox.TabIndex = 3;
@@ -598,7 +594,7 @@
             // 
             this.advancedButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.advancedButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.advancedButton.Location = new System.Drawing.Point(440, 60);
+            this.advancedButton.Location = new System.Drawing.Point(440, 59);
             this.advancedButton.Name = "advancedButton";
             this.advancedButton.Size = new System.Drawing.Size(120, 25);
             this.advancedButton.TabIndex = 8;
@@ -609,7 +605,7 @@
             // videoCodecLabel
             // 
             this.videoCodecLabel.AutoSize = true;
-            this.videoCodecLabel.Location = new System.Drawing.Point(6, 65);
+            this.videoCodecLabel.Location = new System.Drawing.Point(6, 64);
             this.videoCodecLabel.Name = "videoCodecLabel";
             this.videoCodecLabel.Size = new System.Drawing.Size(41, 13);
             this.videoCodecLabel.TabIndex = 0;
@@ -619,13 +615,13 @@
             // 
             this.audioTab.Controls.Add(this.sampleComboBox);
             this.audioTab.Controls.Add(this.sampleLabel);
-            this.audioTab.Controls.Add(this.channelsSeperator);
             this.audioTab.Controls.Add(this.channelsComboBox);
             this.audioTab.Controls.Add(this.audioBitratePanel);
             this.audioTab.Controls.Add(this.audioCheckBox);
             this.audioTab.Controls.Add(this.channelsLabel);
             this.audioTab.Controls.Add(this.audioCodecLabel);
             this.audioTab.Controls.Add(this.audioComboBox);
+            this.audioTab.Controls.Add(this.channelsSeperator);
             this.audioTab.Location = new System.Drawing.Point(4, 22);
             this.audioTab.Name = "audioTab";
             this.audioTab.Padding = new System.Windows.Forms.Padding(3);
@@ -644,7 +640,7 @@
             "44100",
             "48000",
             "96000"});
-            this.sampleComboBox.Location = new System.Drawing.Point(88, 198);
+            this.sampleComboBox.Location = new System.Drawing.Point(88, 197);
             this.sampleComboBox.Name = "sampleComboBox";
             this.sampleComboBox.Size = new System.Drawing.Size(121, 21);
             this.sampleComboBox.TabIndex = 7;
@@ -652,7 +648,7 @@
             // sampleLabel
             // 
             this.sampleLabel.AutoSize = true;
-            this.sampleLabel.Location = new System.Drawing.Point(6, 201);
+            this.sampleLabel.Location = new System.Drawing.Point(6, 200);
             this.sampleLabel.Name = "sampleLabel";
             this.sampleLabel.Size = new System.Drawing.Size(71, 13);
             this.sampleLabel.TabIndex = 3;
@@ -664,7 +660,7 @@
             this.channelsComboBox.Items.AddRange(new object[] {
             "1",
             "2"});
-            this.channelsComboBox.Location = new System.Drawing.Point(72, 163);
+            this.channelsComboBox.Location = new System.Drawing.Point(72, 162);
             this.channelsComboBox.Name = "channelsComboBox";
             this.channelsComboBox.Size = new System.Drawing.Size(121, 21);
             this.channelsComboBox.TabIndex = 6;
@@ -678,7 +674,7 @@
             this.audioBitratePanel.Controls.Add(this.audioBitrateTextBox);
             this.audioBitratePanel.Controls.Add(this.audioBitrateRadioButton);
             this.audioBitratePanel.Controls.Add(this.audioKbpsLabel);
-            this.audioBitratePanel.Location = new System.Drawing.Point(10, 72);
+            this.audioBitratePanel.Location = new System.Drawing.Point(10, 71);
             this.audioBitratePanel.Name = "audioBitratePanel";
             this.audioBitratePanel.Size = new System.Drawing.Size(549, 58);
             this.audioBitratePanel.TabIndex = 5;
@@ -739,7 +735,7 @@
             this.audioCheckBox.Checked = true;
             this.audioCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.audioCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.audioCheckBox.Location = new System.Drawing.Point(10, 10);
+            this.audioCheckBox.Location = new System.Drawing.Point(10, 9);
             this.audioCheckBox.Name = "audioCheckBox";
             this.audioCheckBox.Size = new System.Drawing.Size(97, 18);
             this.audioCheckBox.TabIndex = 4;
@@ -750,7 +746,7 @@
             // channelsLabel
             // 
             this.channelsLabel.AutoSize = true;
-            this.channelsLabel.Location = new System.Drawing.Point(6, 166);
+            this.channelsLabel.Location = new System.Drawing.Point(6, 165);
             this.channelsLabel.Name = "channelsLabel";
             this.channelsLabel.Size = new System.Drawing.Size(54, 13);
             this.channelsLabel.TabIndex = 2;
@@ -759,7 +755,7 @@
             // audioCodecLabel
             // 
             this.audioCodecLabel.AutoSize = true;
-            this.audioCodecLabel.Location = new System.Drawing.Point(6, 42);
+            this.audioCodecLabel.Location = new System.Drawing.Point(6, 41);
             this.audioCodecLabel.Name = "audioCodecLabel";
             this.audioCodecLabel.Size = new System.Drawing.Size(41, 13);
             this.audioCodecLabel.TabIndex = 0;
@@ -784,7 +780,7 @@
             "FLAC",
             "Apple Lossless Audio Codec",
             "Nellymoser"});
-            this.audioComboBox.Location = new System.Drawing.Point(51, 38);
+            this.audioComboBox.Location = new System.Drawing.Point(51, 37);
             this.audioComboBox.Name = "audioComboBox";
             this.audioComboBox.Size = new System.Drawing.Size(508, 21);
             this.audioComboBox.TabIndex = 1;
@@ -979,86 +975,58 @@
             this.padTopUpDown.Size = new System.Drawing.Size(120, 20);
             this.padTopUpDown.TabIndex = 0;
             // 
-            // tabPage6
+            // metadataTab
             // 
-            this.tabPage6.Controls.Add(this.groupBox18);
-            this.tabPage6.Controls.Add(this.groupBox17);
-            this.tabPage6.Controls.Add(this.groupBox16);
-            this.tabPage6.Controls.Add(this.groupBox15);
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(568, 362);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "Meta Data";
-            this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // groupBox18
-            // 
-            this.groupBox18.Controls.Add(this.commentTextBox);
-            this.groupBox18.Location = new System.Drawing.Point(6, 160);
-            this.groupBox18.Name = "groupBox18";
-            this.groupBox18.Size = new System.Drawing.Size(548, 46);
-            this.groupBox18.TabIndex = 3;
-            this.groupBox18.TabStop = false;
-            this.groupBox18.Text = "Comment";
+            this.metadataTab.Controls.Add(this.commentSeperator);
+            this.metadataTab.Controls.Add(this.commentTextBox);
+            this.metadataTab.Controls.Add(this.copyrightSeperator);
+            this.metadataTab.Controls.Add(this.copyrightTextBox);
+            this.metadataTab.Controls.Add(this.authorSeperator);
+            this.metadataTab.Controls.Add(this.authorTextBox);
+            this.metadataTab.Controls.Add(this.titleTextBox);
+            this.metadataTab.Controls.Add(this.titleSeperator);
+            this.metadataTab.Location = new System.Drawing.Point(4, 22);
+            this.metadataTab.Name = "metadataTab";
+            this.metadataTab.Padding = new System.Windows.Forms.Padding(3);
+            this.metadataTab.Size = new System.Drawing.Size(568, 362);
+            this.metadataTab.TabIndex = 5;
+            this.metadataTab.Text = "Meta Data";
+            this.metadataTab.UseVisualStyleBackColor = true;
             // 
             // commentTextBox
             // 
-            this.commentTextBox.Location = new System.Drawing.Point(6, 19);
+            this.commentTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.commentTextBox.Location = new System.Drawing.Point(9, 201);
             this.commentTextBox.Name = "commentTextBox";
-            this.commentTextBox.Size = new System.Drawing.Size(536, 20);
+            this.commentTextBox.Size = new System.Drawing.Size(550, 20);
             this.commentTextBox.TabIndex = 0;
-            // 
-            // groupBox17
-            // 
-            this.groupBox17.Controls.Add(this.copyrightTextBox);
-            this.groupBox17.Location = new System.Drawing.Point(6, 109);
-            this.groupBox17.Name = "groupBox17";
-            this.groupBox17.Size = new System.Drawing.Size(548, 45);
-            this.groupBox17.TabIndex = 2;
-            this.groupBox17.TabStop = false;
-            this.groupBox17.Text = "Copyright";
             // 
             // copyrightTextBox
             // 
-            this.copyrightTextBox.Location = new System.Drawing.Point(6, 19);
+            this.copyrightTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.copyrightTextBox.Location = new System.Drawing.Point(9, 145);
             this.copyrightTextBox.Name = "copyrightTextBox";
-            this.copyrightTextBox.Size = new System.Drawing.Size(536, 20);
+            this.copyrightTextBox.Size = new System.Drawing.Size(550, 20);
             this.copyrightTextBox.TabIndex = 0;
-            // 
-            // groupBox16
-            // 
-            this.groupBox16.Controls.Add(this.authorTextBox);
-            this.groupBox16.Location = new System.Drawing.Point(6, 58);
-            this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(548, 45);
-            this.groupBox16.TabIndex = 1;
-            this.groupBox16.TabStop = false;
-            this.groupBox16.Text = "Author";
             // 
             // authorTextBox
             // 
-            this.authorTextBox.Location = new System.Drawing.Point(6, 19);
+            this.authorTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.authorTextBox.Location = new System.Drawing.Point(9, 89);
             this.authorTextBox.Name = "authorTextBox";
-            this.authorTextBox.Size = new System.Drawing.Size(536, 20);
+            this.authorTextBox.Size = new System.Drawing.Size(550, 20);
             this.authorTextBox.TabIndex = 0;
-            // 
-            // groupBox15
-            // 
-            this.groupBox15.Controls.Add(this.titleTextBox);
-            this.groupBox15.Location = new System.Drawing.Point(6, 6);
-            this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(548, 46);
-            this.groupBox15.TabIndex = 0;
-            this.groupBox15.TabStop = false;
-            this.groupBox15.Text = "Title";
             // 
             // titleTextBox
             // 
-            this.titleTextBox.Location = new System.Drawing.Point(6, 19);
+            this.titleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.titleTextBox.Location = new System.Drawing.Point(9, 33);
             this.titleTextBox.Name = "titleTextBox";
-            this.titleTextBox.Size = new System.Drawing.Size(536, 20);
+            this.titleTextBox.Size = new System.Drawing.Size(550, 20);
             this.titleTextBox.TabIndex = 0;
             // 
             // outputTab
@@ -1075,6 +1043,7 @@
             // 
             // outputButton
             // 
+            this.outputButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.outputButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.outputButton.Location = new System.Drawing.Point(472, 11);
             this.outputButton.Name = "outputButton";
@@ -1086,6 +1055,8 @@
             // 
             // outputTextBox
             // 
+            this.outputTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.outputTextBox.Location = new System.Drawing.Point(9, 12);
             this.outputTextBox.Name = "outputTextBox";
             this.outputTextBox.Size = new System.Drawing.Size(455, 20);
@@ -1130,7 +1101,7 @@
             this.resolutionSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.resolutionSeperator.Label = "Resolution and Frame Rate";
-            this.resolutionSeperator.Location = new System.Drawing.Point(6, 238);
+            this.resolutionSeperator.Location = new System.Drawing.Point(6, 237);
             this.resolutionSeperator.Name = "resolutionSeperator";
             this.resolutionSeperator.Size = new System.Drawing.Size(553, 15);
             this.resolutionSeperator.TabIndex = 15;
@@ -1140,7 +1111,7 @@
             this.codecSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.codecSeperator.Label = "Codec Options";
-            this.codecSeperator.Location = new System.Drawing.Point(6, 37);
+            this.codecSeperator.Location = new System.Drawing.Point(6, 36);
             this.codecSeperator.Name = "codecSeperator";
             this.codecSeperator.Size = new System.Drawing.Size(553, 15);
             this.codecSeperator.TabIndex = 6;
@@ -1150,10 +1121,50 @@
             this.channelsSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.channelsSeperator.Label = "Channels and Sample Rate";
-            this.channelsSeperator.Location = new System.Drawing.Point(6, 139);
+            this.channelsSeperator.Location = new System.Drawing.Point(6, 138);
             this.channelsSeperator.Name = "channelsSeperator";
             this.channelsSeperator.Size = new System.Drawing.Size(553, 15);
             this.channelsSeperator.TabIndex = 16;
+            // 
+            // commentSeperator
+            // 
+            this.commentSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.commentSeperator.Label = "Comment";
+            this.commentSeperator.Location = new System.Drawing.Point(6, 177);
+            this.commentSeperator.Name = "commentSeperator";
+            this.commentSeperator.Size = new System.Drawing.Size(553, 15);
+            this.commentSeperator.TabIndex = 9;
+            // 
+            // copyrightSeperator
+            // 
+            this.copyrightSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.copyrightSeperator.Label = "Copyright";
+            this.copyrightSeperator.Location = new System.Drawing.Point(6, 121);
+            this.copyrightSeperator.Name = "copyrightSeperator";
+            this.copyrightSeperator.Size = new System.Drawing.Size(553, 15);
+            this.copyrightSeperator.TabIndex = 8;
+            // 
+            // authorSeperator
+            // 
+            this.authorSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.authorSeperator.Label = "Author";
+            this.authorSeperator.Location = new System.Drawing.Point(6, 65);
+            this.authorSeperator.Name = "authorSeperator";
+            this.authorSeperator.Size = new System.Drawing.Size(553, 15);
+            this.authorSeperator.TabIndex = 7;
+            // 
+            // titleSeperator
+            // 
+            this.titleSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.titleSeperator.Label = "Title";
+            this.titleSeperator.Location = new System.Drawing.Point(6, 9);
+            this.titleSeperator.Name = "titleSeperator";
+            this.titleSeperator.Size = new System.Drawing.Size(553, 15);
+            this.titleSeperator.TabIndex = 6;
             // 
             // MainWindow
             // 
@@ -1202,15 +1213,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.padLeftUpDown)).EndInit();
             this.padTopGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.padTopUpDown)).EndInit();
-            this.tabPage6.ResumeLayout(false);
-            this.groupBox18.ResumeLayout(false);
-            this.groupBox18.PerformLayout();
-            this.groupBox17.ResumeLayout(false);
-            this.groupBox17.PerformLayout();
-            this.groupBox16.ResumeLayout(false);
-            this.groupBox16.PerformLayout();
-            this.groupBox15.ResumeLayout(false);
-            this.groupBox15.PerformLayout();
+            this.metadataTab.ResumeLayout(false);
+            this.metadataTab.PerformLayout();
             this.outputTab.ResumeLayout(false);
             this.outputTab.PerformLayout();
             this.ResumeLayout(false);
@@ -1228,7 +1232,7 @@
         private System.Windows.Forms.OpenFileDialog inputFileDialog;
         private System.Windows.Forms.TabPage cropTab;
         private System.Windows.Forms.TabPage padTab;
-        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.TabPage metadataTab;
         private System.Windows.Forms.TabPage outputTab;
         private System.Windows.Forms.Label videoCodecLabel;
         private System.Windows.Forms.CheckBox deinterlaceCheckBox;
@@ -1255,13 +1259,9 @@
         private System.Windows.Forms.NumericUpDown padRightUpDown;
         private System.Windows.Forms.NumericUpDown padLeftUpDown;
         private System.Windows.Forms.NumericUpDown padTopUpDown;
-        private System.Windows.Forms.GroupBox groupBox15;
         private System.Windows.Forms.TextBox titleTextBox;
-        private System.Windows.Forms.GroupBox groupBox18;
         private System.Windows.Forms.TextBox commentTextBox;
-        private System.Windows.Forms.GroupBox groupBox17;
         private System.Windows.Forms.TextBox copyrightTextBox;
-        private System.Windows.Forms.GroupBox groupBox16;
         private System.Windows.Forms.TextBox authorTextBox;
         private System.Windows.Forms.TextBox outputTextBox;
         private System.Windows.Forms.Button outputButton;
@@ -1307,6 +1307,10 @@
         private System.Windows.Forms.TextBox audioQualTextBox;
         private System.Windows.Forms.RadioButton audioQualRadioButton;
         private Seperator channelsSeperator;
+        private Seperator titleSeperator;
+        private Seperator authorSeperator;
+        private Seperator copyrightSeperator;
+        private Seperator commentSeperator;
     }
 }
 
