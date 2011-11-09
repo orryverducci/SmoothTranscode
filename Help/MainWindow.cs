@@ -33,13 +33,68 @@ namespace Help
         public MainWindow()
         {
             InitializeComponent();
+            // Handle browser events indicating if the user can go back and fowards
+            helpBrowser.CanGoBackChanged += new EventHandler(helpBrowser_CanGoBackChanged);
+            helpBrowser.CanGoForwardChanged += new EventHandler(helpBrowser_CanGoForwardChanged);
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void MainWindow_Load(object sender, EventArgs e)
         {
-            // Goto a blank HTML page
-            helpBrowser.Navigate("about:Nothing to see here...for now anyways.");
+            // Apply toolstrip style
             helpToolStrip.Renderer = new Renderers.AeroRenderer();
+            // Open specified page
+            helpBrowser.Navigate(Help.Config.url + Help.Config.page);
+        }
+
+        // Displays progress bar when loading page
+        private void helpBrowser_Navigating(object sender, WebBrowserNavigatingEventArgs e)
+        {
+            helpProgressBar.Visible = true;
+            helpProgressBar.Value = 0;
+        }
+
+        // Updates progress bar as page loads
+        private void helpBrowser_ProgressChanged(object sender, WebBrowserProgressChangedEventArgs e)
+        {
+            helpProgressBar.Maximum = Convert.ToInt32(e.MaximumProgress) + 1;
+            helpProgressBar.Value = Convert.ToInt32(e.CurrentProgress) + 1; //Adds 1 to prevent error when -1 (complete) is returned
+
+        }
+
+        // Hides progress bar when page loading is complete
+        private void helpBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            helpProgressBar.Visible = false;
+        }
+
+        // Goes back 1 page
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            helpBrowser.GoBack();
+        }
+
+        // Goes forward 1 page
+        private void forwardButton_Click(object sender, EventArgs e)
+        {
+            helpBrowser.GoForward();
+        }
+
+        // Open contents page
+        private void contentsButton_Click(object sender, EventArgs e)
+        {
+            helpBrowser.Navigate(Help.Config.url);
+        }
+
+        // Enables and disabled the back button as required
+        private void helpBrowser_CanGoBackChanged(object sender, EventArgs e)
+        {
+            backButton.Enabled = helpBrowser.CanGoBack;
+        }
+
+        // Enables and disabled the forward button as required
+        private void helpBrowser_CanGoForwardChanged(object sender, EventArgs e)
+        {
+            forwardButton.Enabled = helpBrowser.CanGoForward;
         }
     }
 }

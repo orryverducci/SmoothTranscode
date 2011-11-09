@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.helpToolStrip = new System.Windows.Forms.ToolStrip();
-            this.backIcon = new System.Windows.Forms.ToolStripButton();
-            this.forwardIcon = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.contentsIcon = new System.Windows.Forms.ToolStripButton();
-            this.helpBrowser = new System.Windows.Forms.WebBrowser();
+            this.backButton = new System.Windows.Forms.ToolStripButton();
+            this.forwardButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.contentsButton = new System.Windows.Forms.ToolStripButton();
             this.helpProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.helpBrowser = new System.Windows.Forms.WebBrowser();
             this.helpToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,10 +43,10 @@
             // 
             this.helpToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.helpToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.backIcon,
-            this.forwardIcon,
-            this.toolStripSeparator1,
-            this.contentsIcon,
+            this.backButton,
+            this.forwardButton,
+            this.toolStripSeparator,
+            this.contentsButton,
             this.helpProgressBar});
             this.helpToolStrip.Location = new System.Drawing.Point(0, 0);
             this.helpToolStrip.Name = "helpToolStrip";
@@ -54,37 +54,51 @@
             this.helpToolStrip.Size = new System.Drawing.Size(711, 25);
             this.helpToolStrip.TabIndex = 0;
             // 
-            // backIcon
+            // backButton
             // 
-            this.backIcon.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.backIcon.Image = ((System.Drawing.Image)(resources.GetObject("backIcon.Image")));
-            this.backIcon.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.backIcon.Name = "backIcon";
-            this.backIcon.Size = new System.Drawing.Size(23, 22);
-            this.backIcon.Text = "Back";
+            this.backButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.backButton.Enabled = false;
+            this.backButton.Image = ((System.Drawing.Image)(resources.GetObject("backButton.Image")));
+            this.backButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(23, 22);
+            this.backButton.Text = "Back";
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
-            // forwardIcon
+            // forwardButton
             // 
-            this.forwardIcon.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.forwardIcon.Image = ((System.Drawing.Image)(resources.GetObject("forwardIcon.Image")));
-            this.forwardIcon.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.forwardIcon.Name = "forwardIcon";
-            this.forwardIcon.Size = new System.Drawing.Size(23, 22);
-            this.forwardIcon.Text = "Forward";
+            this.forwardButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.forwardButton.Enabled = false;
+            this.forwardButton.Image = ((System.Drawing.Image)(resources.GetObject("forwardButton.Image")));
+            this.forwardButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.forwardButton.Name = "forwardButton";
+            this.forwardButton.Size = new System.Drawing.Size(23, 22);
+            this.forwardButton.Text = "Forward";
+            this.forwardButton.Click += new System.EventHandler(this.forwardButton_Click);
             // 
-            // toolStripSeparator1
+            // toolStripSeparator
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator.Name = "toolStripSeparator";
+            this.toolStripSeparator.Size = new System.Drawing.Size(6, 25);
             // 
-            // contentsIcon
+            // contentsButton
             // 
-            this.contentsIcon.Image = ((System.Drawing.Image)(resources.GetObject("contentsIcon.Image")));
-            this.contentsIcon.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.contentsIcon.Name = "contentsIcon";
-            this.contentsIcon.Size = new System.Drawing.Size(75, 22);
-            this.contentsIcon.Tag = "";
-            this.contentsIcon.Text = "Contents";
+            this.contentsButton.Image = ((System.Drawing.Image)(resources.GetObject("contentsButton.Image")));
+            this.contentsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.contentsButton.Name = "contentsButton";
+            this.contentsButton.Size = new System.Drawing.Size(75, 22);
+            this.contentsButton.Tag = "";
+            this.contentsButton.Text = "Contents";
+            this.contentsButton.Click += new System.EventHandler(this.contentsButton_Click);
+            // 
+            // helpProgressBar
+            // 
+            this.helpProgressBar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.helpProgressBar.Name = "helpProgressBar";
+            this.helpProgressBar.Size = new System.Drawing.Size(100, 22);
+            this.helpProgressBar.Step = 1;
+            this.helpProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.helpProgressBar.Visible = false;
             // 
             // helpBrowser
             // 
@@ -96,13 +110,9 @@
             this.helpBrowser.Size = new System.Drawing.Size(711, 358);
             this.helpBrowser.TabIndex = 1;
             this.helpBrowser.Url = new System.Uri("", System.UriKind.Relative);
-            // 
-            // helpProgressBar
-            // 
-            this.helpProgressBar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.helpProgressBar.Name = "helpProgressBar";
-            this.helpProgressBar.Size = new System.Drawing.Size(100, 22);
-            this.helpProgressBar.Visible = false;
+            this.helpBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.helpBrowser_DocumentCompleted);
+            this.helpBrowser.Navigating += new System.Windows.Forms.WebBrowserNavigatingEventHandler(this.helpBrowser_Navigating);
+            this.helpBrowser.ProgressChanged += new System.Windows.Forms.WebBrowserProgressChangedEventHandler(this.helpBrowser_ProgressChanged);
             // 
             // MainWindow
             // 
@@ -113,7 +123,7 @@
             this.Controls.Add(this.helpToolStrip);
             this.Name = "MainWindow";
             this.Text = "Help";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.MainWindow_Load);
             this.helpToolStrip.ResumeLayout(false);
             this.helpToolStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -125,10 +135,10 @@
 
         private System.Windows.Forms.ToolStrip helpToolStrip;
         private System.Windows.Forms.WebBrowser helpBrowser;
-        private System.Windows.Forms.ToolStripButton backIcon;
-        private System.Windows.Forms.ToolStripButton forwardIcon;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton contentsIcon;
+        private System.Windows.Forms.ToolStripButton backButton;
+        private System.Windows.Forms.ToolStripButton forwardButton;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
+        private System.Windows.Forms.ToolStripButton contentsButton;
         private System.Windows.Forms.ToolStripProgressBar helpProgressBar;
     }
 }
