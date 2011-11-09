@@ -78,6 +78,8 @@ namespace SmoothTranscode
 
         private void helpButton_Click(object sender, EventArgs e)
         {
+            // Sets contents URL for the help window
+            Help.Config.url = "http://www.atomicwasteland.co.uk/support/smoothtranscode/";
             // Opens the help window
             Help.MainWindow helpWindow = new Help.MainWindow();
             helpWindow.Show();
