@@ -40,8 +40,9 @@ namespace Help
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            // Apply toolstrip style
-            helpToolStrip.Renderer = new Renderers.AeroRenderer();
+            // Apply toolstrip style on Vista and above
+            if (System.Environment.OSVersion.Version.Major > 5)
+                helpToolStrip.Renderer = new Renderers.AeroRenderer();
             // Open specified page
             helpBrowser.Navigate(Help.Config.url + Help.Config.page);
         }

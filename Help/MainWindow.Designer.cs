@@ -121,6 +121,7 @@
             this.ClientSize = new System.Drawing.Size(711, 383);
             this.Controls.Add(this.helpBrowser);
             this.Controls.Add(this.helpToolStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainWindow";
             this.Text = "Help";
             this.Load += new System.EventHandler(this.MainWindow_Load);
