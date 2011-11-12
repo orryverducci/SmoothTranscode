@@ -10,6 +10,9 @@ namespace Help
         private static string baseURL;
         private static string specifiedPage;
 
+        /// <summary>
+        /// The base URL containing the contents page
+        /// </summary>
         public static string url
         {
             get
@@ -22,6 +25,9 @@ namespace Help
             }
         }
 
+        /// <summary>
+        /// The suffix of the specific help page, placed after the base URL
+        /// </summary>
         public static string page
         {
             get
