@@ -95,113 +95,166 @@ namespace SmoothTranscode
             }
         }
 
-        // Sets container to selected option
+        // Sets container to selected option and updates codec lists to valid options
         private void containerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (containerComboBox.SelectedItem.ToString() == "MPEG-4 Video/MP4 Audio")
             {
                 Format = "mp4";
                 outputFileDialog.Filter = "MP4 (*.mp4; *.m4v; *.m4a; *.aac)|*.mp4;*.m4v;*.m4a;*.aac|Any file|*.*";
+                videoComboBox.Items.Clear();
+                videoComboBox.Items.AddRange(new string[] { "H.264", "MPEG-4", "MPEG-2", "Dirac" });
+                audioComboBox.Items.Clear();
+                audioComboBox.Items.AddRange(new string[] { "MP3", "AAC", "AC3", "E-AC3", "Apple Lossless Audio Codec" });
             }
             else if (containerComboBox.SelectedItem.ToString() == "MPEG")
             {
                 Format = "mpeg";
                 outputFileDialog.Filter = "MPEG Video (*.mpg; *.mpeg; *.ps)|*.mpg;*.mpeg;*.ps|Any file|*.*";
+                videoComboBox.Items.Clear();
+                videoComboBox.Items.AddRange(new string[] { "MPEG-2", "MPEG-1" });
+                audioComboBox.Items.Clear();
+                audioComboBox.Items.AddRange(new string[] { "MP3", "MP2" });
             }
             else if (containerComboBox.SelectedItem.ToString() == "Windows Media")
             {
                 Format = "asf";
                 outputFileDialog.Filter = "Windows Media (*.wmv; *.wma; *.asf)|*.wmv;*.wma;*.asf|Any file|*.*";
+                videoComboBox.Items.Clear();
+                videoComboBox.Items.AddRange(new string[] { "Windows Media Video 8", "Windows Media Video 7", "MPEG-2" });
+                audioComboBox.Items.Clear();
+                audioComboBox.Items.AddRange(new string[] { "Windows Media Audio Version 2", "Windows Media Audio Version 1", "MP3" });
             }
             else if (containerComboBox.SelectedItem.ToString() == "Flash Video")
             {
                 Format = "flv";
                 outputFileDialog.Filter = "Flash Video (*.flv)|*.flv|Any file|*.*";
+                videoComboBox.Items.Clear();
+                videoComboBox.Items.AddRange(new string[] { "H.264", "Flash Video (Sorenson Spark)" });
+                audioComboBox.Items.Clear();
+                audioComboBox.Items.AddRange(new string[] { "MP3", "AAC", "Nellymoser" });
             }
             else if (containerComboBox.SelectedItem.ToString() == "WebM")
             {
                 Format = "webm";
                 outputFileDialog.Filter = "WebM (*.webm)|*.webm|Any file|*.*";
+                videoComboBox.Items.Clear();
+                videoComboBox.Items.AddRange(new string[] { "VP8" });
+                audioComboBox.Items.Clear();
+                audioComboBox.Items.AddRange(new string[] { "Ogg Vorbis" });
             }
             else if (containerComboBox.SelectedItem.ToString() == "Matroska")
             {
                 Format = "matroska";
                 outputFileDialog.Filter = "Matroska (*.mkv; *.mka)|*.mkv;*.mka|Any file|*.*";
+                videoComboBox.Items.Clear();
+                videoComboBox.Items.AddRange(new string[] { "H.264", "MPEG-4", "MPEG-2", "XviD", "VP8", "Ogg Theora", "Dirac" });
+                audioComboBox.Items.Clear();
+                audioComboBox.Items.AddRange(new string[] { "MP3", "MP2", "AAC", "AC3", "E-AC3", "Ogg Vorbis", "FLAC" });
             }
             else if (containerComboBox.SelectedItem.ToString() == "Ogg")
             {
                 Format = "ogg";
                 outputFileDialog.Filter = "Ogg (*.ogg; *.ogv; *.oga)|*.ogg;*.ogv;*.oga|Any file|*.*";
+                videoComboBox.Items.Clear();
+                videoComboBox.Items.AddRange(new string[] { "Ogg Theora", "Dirac" });
+                audioComboBox.Items.Clear();
+                audioComboBox.Items.AddRange(new string[] { "Ogg Vorbis", "FLAC" });
             }
             else if (containerComboBox.SelectedItem.ToString() == "AVI")
             {
                 Format = "avi";
                 outputFileDialog.Filter = "AVI (*.avi)|*.avi|Any file|*.*";
+                videoComboBox.Items.Clear();
+                videoComboBox.Items.AddRange(new string[] { "XviD", "H.264", "MPEG-4", "MPEG-2", "Dirac" });
+                audioComboBox.Items.Clear();
+                audioComboBox.Items.AddRange(new string[] { "MP3", "MP2", "AAC", "AC3", "E-AC3" });
             }
             else if (containerComboBox.SelectedItem.ToString() == "Real Media")
             {
                 Format = "rm";
                 outputFileDialog.Filter = "Real Media (*.rm; *.rv; *.ra)|*.rm;*.rv;*.ra|Any file|*.*";
+                videoComboBox.Items.Clear();
+                videoComboBox.Items.AddRange(new string[] { "Real Video 2.0", "Real Video 1.0" });
+                audioComboBox.Items.Clear();
+                audioComboBox.Items.AddRange(new string[] { "Real Audio Version 1", "AAC", "Ogg Vorbis" });
             }
             else if (containerComboBox.SelectedItem.ToString() == "Quicktime Video")
             {
                 Format = "mov";
                 outputFileDialog.Filter = "Quicktime Video (*.mov)|*.mov|Any file|*.*";
+                videoComboBox.Items.Clear();
+                videoComboBox.Items.AddRange(new string[] { "H.264" });
+                audioComboBox.Items.Clear();
+                audioComboBox.Items.AddRange(new string[] { "MP3", "AAC", "Apple Lossless Audio Codec" });
             }
             else if (containerComboBox.SelectedItem.ToString() == "DVD VOB")
             {
                 Format = "dvd";
                 outputFileDialog.Filter = "DVD VOB (*.vob)|*.vob|Any file|*.*";
+                videoComboBox.Items.Clear();
+                videoComboBox.Items.AddRange(new string[] { "MPEG-2" });
+                audioComboBox.Items.Clear();
+                audioComboBox.Items.AddRange(new string[] { "MP2", "AC3", "E-AC3" });
             }
             else if (containerComboBox.SelectedItem.ToString() == "DV Video")
             {
                 Format = "dv";
                 outputFileDialog.Filter = "DV Video (*.dv)|*.dv|Any file|*.*";
+                videoComboBox.Items.Clear();
+                videoComboBox.Items.AddRange(new string[] { "DV Video" });
+                audioComboBox.Items.Clear();
+                audioComboBox.Items.AddRange(new string[] { "MP2" });
             }
             else if (containerComboBox.SelectedItem.ToString() == "3GP")
             {
                 Format = "3gp";
                 outputFileDialog.Filter = "Mobile Video (*.3gp)|*.3gp|Any file|*.*";
-            }
-            else if (containerComboBox.SelectedItem.ToString() == "Motion JPEG")
-            {
-                Format = "mjpeg";
-                outputFileDialog.Filter = "Motion JPEG (*.mjpg; *.mjp)|*.mjpg;*.mjp|Any file|*.*";
+                videoComboBox.Items.Clear();
+                videoComboBox.Items.AddRange(new string[] { "H.264", "H.263" });
+                audioComboBox.Items.Clear();
+                audioComboBox.Items.AddRange(new string[] { "AAC" });
             }
             else if (containerComboBox.SelectedItem.ToString() == "Material eXchange Format")
             {
                 Format = "mxf";
                 outputFileDialog.Filter = "Material eXchange Format (*.mxf)|*.mxf|Any file|*.*";
+                videoComboBox.Items.Clear();
+                videoComboBox.Items.AddRange(new string[] { "H.264", "MPEG-4", "MPEG-2", "DV Video", "Dirac", "AVID DNxHD" });
+                audioComboBox.Items.Clear();
+                audioComboBox.Items.AddRange(new string[] { "MP2", "AAC", "AC3", "E-AC3", "MP3" });
             }
             else if (containerComboBox.SelectedItem.ToString() == "MP3")
             {
                 Format = "mp3";
                 outputFileDialog.Filter = "MP3 Audio (*.mp3)|*.mp3|Any file|*.*";
+                videoComboBox.Items.Clear();
+                audioComboBox.Items.Clear();
+                audioComboBox.Items.AddRange(new string[] { "MP3" });
             }
             else if (containerComboBox.SelectedItem.ToString() == "MP2")
             {
                 Format = "mp2";
                 outputFileDialog.Filter = "MP2 Audio (*.mp2)|*.mp2|Any file|*.*";
+                videoComboBox.Items.Clear();
+                audioComboBox.Items.Clear();
+                audioComboBox.Items.AddRange(new string[] { "MP2" });
             }
             else if (containerComboBox.SelectedItem.ToString() == "FLAC")
             {
                 Format = "flac";
                 outputFileDialog.Filter = "FLAC Audio (*.flac)|*.flac|Any file|*.*";
+                videoComboBox.Items.Clear();
+                audioComboBox.Items.Clear();
+                audioComboBox.Items.AddRange(new string[] { "FLAC" });
             }
             else if (containerComboBox.SelectedItem.ToString() == "WAV")
             {
                 Format = "wav";
                 outputFileDialog.Filter = "WAV Audio (*.wav)|*.wav|Any file|*.*";
-            }
-            else if (containerComboBox.SelectedItem.ToString() == "AIFF")
-            {
-                Format = "aiff";
-                outputFileDialog.Filter = "AIFF Audio (*.aiff; *.aif)|*.aiff;*.aif|Any file|*.*";
-            }
-            else if (containerComboBox.SelectedItem.ToString() == "AMR")
-            {
-                Format = "amr";
-                outputFileDialog.Filter = "AMR Audio (*.amr)|*.amr|Any file|*.*";
+                videoComboBox.Items.Clear();
+                audioComboBox.Items.Clear();
+                audioComboBox.Items.AddRange(new string[] { "PCM 16bit", "PCM 24bit", "PCM 32bit" });
             }
         }
         #endregion
@@ -302,41 +355,37 @@ namespace SmoothTranscode
         // Sets video codec to selected option
         private void videoComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (videoComboBox.SelectedItem == "MPEG-4")
+            if (videoComboBox.SelectedItem.ToString() == "MPEG-4")
                 Video = "mpeg4";
-            else if (videoComboBox.SelectedItem == "MPEG-2")
+            else if (videoComboBox.SelectedItem.ToString() == "MPEG-2")
                 Video = "mpeg2video";
-            else if (videoComboBox.SelectedItem == "MPEG-1")
+            else if (videoComboBox.SelectedItem.ToString() == "MPEG-1")
                 Video = "mpeg1video";
-            else if (videoComboBox.SelectedItem == "H.264")
+            else if (videoComboBox.SelectedItem.ToString() == "H.264")
                 Video = "libx264";
-            else if (videoComboBox.SelectedItem == "H.263")
+            else if (videoComboBox.SelectedItem.ToString() == "H.263")
                 Video = "h263";
-            else if (videoComboBox.SelectedItem == "H.261")
-                Video = "h261";
-            else if (videoComboBox.SelectedItem == "Windows Media Video 8")
+            else if (videoComboBox.SelectedItem.ToString() == "Windows Media Video 8")
                 Video = "wmv2";
-            else if (videoComboBox.SelectedItem == "Windows Media Video 7")
+            else if (videoComboBox.SelectedItem.ToString() == "Windows Media Video 7")
                 Video = "wmv1";
-            else if (videoComboBox.SelectedItem == "Flash Video (Sorenson Spark)")
+            else if (videoComboBox.SelectedItem.ToString() == "Flash Video (Sorenson Spark)")
                 Video = "flv";
-            else if (videoComboBox.SelectedItem == "VP8")
+            else if (videoComboBox.SelectedItem.ToString() == "VP8")
                 Video = "libvpx";
-            else if (videoComboBox.SelectedItem == "Real Video 2.0")
+            else if (videoComboBox.SelectedItem.ToString() == "Real Video 2.0")
                 Video = "rv20";
-            else if (videoComboBox.SelectedItem == "Real Video 1.0")
+            else if (videoComboBox.SelectedItem.ToString() == "Real Video 1.0")
                 Video = "rv10";
-            else if (videoComboBox.SelectedItem == "Ogg Theora")
+            else if (videoComboBox.SelectedItem.ToString() == "Ogg Theora")
                 Video = "libtheora";
-            else if (videoComboBox.SelectedItem == "DV")
+            else if (videoComboBox.SelectedItem.ToString() == "DV")
                 Video = "dvvideo";
-            else if (videoComboBox.SelectedItem == "XviD")
+            else if (videoComboBox.SelectedItem.ToString() == "XviD")
                 Video = "libxvid";
-            else if (videoComboBox.SelectedItem == "Dirac")
+            else if (videoComboBox.SelectedItem.ToString() == "Dirac")
                 Video = "libschroedinger";
-            else if (videoComboBox.SelectedItem == "Motion JPEG")
-                Video = "mjpeg";
-            else if (videoComboBox.SelectedItem == "AVID DNxHD")
+            else if (videoComboBox.SelectedItem.ToString() == "AVID DNxHD")
                 Video = "dnxhd";
         }
 
@@ -379,30 +428,36 @@ namespace SmoothTranscode
         //Sets audio codec to selected option
         private void audioComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (audioComboBox.SelectedItem == "MP3")
+            if (audioComboBox.SelectedItem.ToString() == "MP3")
                 Audio = "libmp3lame";
-            else if (audioComboBox.SelectedItem == "MP2")
+            else if (audioComboBox.SelectedItem.ToString() == "MP2")
                 Audio = "mp2";
-            else if (audioComboBox.SelectedItem == "AAC")
+            else if (audioComboBox.SelectedItem.ToString() == "AAC")
                 Audio = "aac -strict experimental";
-            else if (audioComboBox.SelectedItem == "AC3")
+            else if (audioComboBox.SelectedItem.ToString() == "AC3")
                 Audio = "ac3";
-            else if (audioComboBox.SelectedItem == "E-AC3")
+            else if (audioComboBox.SelectedItem.ToString() == "E-AC3")
                 Audio = "eac3";
-            else if (audioComboBox.SelectedItem == "Ogg Vorbis")
+            else if (audioComboBox.SelectedItem.ToString() == "Ogg Vorbis")
                 Audio = "vorbis";
-            else if (audioComboBox.SelectedItem == "Windows Media Audio Version 2")
+            else if (audioComboBox.SelectedItem.ToString() == "Windows Media Audio Version 2")
                 Audio = "wmav2";
-            else if (audioComboBox.SelectedItem == "Windows Media Audio Version 1")
+            else if (audioComboBox.SelectedItem.ToString() == "Windows Media Audio Version 1")
                 Audio = "wmav1";
-            else if (audioComboBox.SelectedItem == "Real Audio Version 1")
+            else if (audioComboBox.SelectedItem.ToString() == "Real Audio Version 1")
                 Audio = "real_114";
-            else if (audioComboBox.SelectedItem == "FLAC")
+            else if (audioComboBox.SelectedItem.ToString() == "FLAC")
                 Audio = "flac";
-            else if (audioComboBox.SelectedItem == "Apple Lossless Audio Codec")
+            else if (audioComboBox.SelectedItem.ToString() == "Apple Lossless Audio Codec")
                 Audio = "alac";
-            else if (audioComboBox.SelectedItem == "Nellymoser")
+            else if (audioComboBox.SelectedItem.ToString() == "Nellymoser")
                 Audio = "nellymoser";
+            else if (audioComboBox.SelectedItem.ToString() == "PCM 16bit")
+                Audio = "pcm_s16le";
+            else if (audioComboBox.SelectedItem.ToString() == "PCM 24bit")
+                Audio = "pcm_s24le";
+            else if (audioComboBox.SelectedItem.ToString() == "PCM 32bit")
+                Audio = "pcm_s32le";
         }
 
         // Disable set quality option if constant bitrate is selected
@@ -428,7 +483,7 @@ namespace SmoothTranscode
         }
         #endregion
 
-        #region Convert Video Button
+        #region Convert Button
         private void convertButton_Click(object sender, EventArgs e)
         {
             // Checks input and output files are specified
