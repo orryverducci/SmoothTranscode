@@ -33,7 +33,9 @@ namespace SmoothTranscode
         private string Video = String.Empty;
         private string Audio = String.Empty;
         private string Format = String.Empty;
+        private string Advanced = String.Empty;
         private string Arguments;
+        X264Window advancedX264Window = new X264Window();
 
         public MainWindow()
         {
@@ -352,47 +354,97 @@ namespace SmoothTranscode
             vbrBufferTextBox.Enabled = false;
         }
 
-        // Sets video codec to selected option
+        // Sets video codec to selected option and enables or disables advanced options
         private void videoComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (videoComboBox.SelectedItem.ToString() == "MPEG-4")
+            {
                 Video = "mpeg4";
+                advancedButton.Enabled = false;
+            }
             else if (videoComboBox.SelectedItem.ToString() == "MPEG-2")
+            {
                 Video = "mpeg2video";
+                advancedButton.Enabled = false;
+            }
             else if (videoComboBox.SelectedItem.ToString() == "MPEG-1")
+            {
                 Video = "mpeg1video";
+                advancedButton.Enabled = false;
+            }
             else if (videoComboBox.SelectedItem.ToString() == "H.264")
+            {
                 Video = "libx264";
+                advancedButton.Enabled = true;
+            }
             else if (videoComboBox.SelectedItem.ToString() == "H.263")
+            {
                 Video = "h263";
+                advancedButton.Enabled = false;
+            }
             else if (videoComboBox.SelectedItem.ToString() == "Windows Media Video 8")
+            {
                 Video = "wmv2";
+                advancedButton.Enabled = false;
+            }
             else if (videoComboBox.SelectedItem.ToString() == "Windows Media Video 7")
+            {
                 Video = "wmv1";
+                advancedButton.Enabled = false;
+            }
             else if (videoComboBox.SelectedItem.ToString() == "Flash Video (Sorenson Spark)")
+            {
                 Video = "flv";
+                advancedButton.Enabled = false;
+            }
             else if (videoComboBox.SelectedItem.ToString() == "VP8")
+            {
                 Video = "libvpx";
+                advancedButton.Enabled = false;
+            }
             else if (videoComboBox.SelectedItem.ToString() == "Real Video 2.0")
+            {
                 Video = "rv20";
+                advancedButton.Enabled = false;
+            }
             else if (videoComboBox.SelectedItem.ToString() == "Real Video 1.0")
+            {
                 Video = "rv10";
+                advancedButton.Enabled = false;
+            }
             else if (videoComboBox.SelectedItem.ToString() == "Ogg Theora")
+            {
                 Video = "libtheora";
+                advancedButton.Enabled = false;
+            }
             else if (videoComboBox.SelectedItem.ToString() == "DV")
+            {
                 Video = "dvvideo";
+                advancedButton.Enabled = false;
+            }
             else if (videoComboBox.SelectedItem.ToString() == "XviD")
+            {
                 Video = "libxvid";
+                advancedButton.Enabled = false;
+            }
             else if (videoComboBox.SelectedItem.ToString() == "Dirac")
+            {
                 Video = "libschroedinger";
+                advancedButton.Enabled = false;
+            }
             else if (videoComboBox.SelectedItem.ToString() == "AVID DNxHD")
+            {
                 Video = "dnxhd";
+                advancedButton.Enabled = false;
+            }
         }
 
         // Show advanced options dialog for the selected codec
         private void advancedButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Advanced video encoding options are not available in this version of SmoothTranscode.", "Feature Not Available", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (videoComboBox.SelectedItem.ToString() == "H.264")
+                if (advancedX264Window.ShowDialog() == DialogResult.OK)
+                    Advanced = advancedX264Window.AdvancedArguments;
         }
         #endregion
 
@@ -561,6 +613,8 @@ namespace SmoothTranscode
                     Arguments += " -r " + frameRateComboBox.Text;
                 if (deinterlaceCheckBox.Checked == true)
                     Arguments += " -deinterlace";
+                if (Advanced != String.Empty)
+                    Arguments += " " + Advanced;
             }
             else // Else disable video recording
                 Arguments += " -vn";

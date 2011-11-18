@@ -584,6 +584,7 @@
             // advancedButton
             // 
             this.advancedButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.advancedButton.Enabled = false;
             this.advancedButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.advancedButton.Location = new System.Drawing.Point(440, 59);
             this.advancedButton.Name = "advancedButton";

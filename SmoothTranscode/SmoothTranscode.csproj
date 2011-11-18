@@ -104,6 +104,12 @@
     <Compile Include="Seperator.Designer.cs">
       <DependentUpon>Seperator.cs</DependentUpon>
     </Compile>
+    <Compile Include="X264Window.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="X264Window.designer.cs">
+      <DependentUpon>X264Window.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AboutWindow.resx">
       <DependentUpon>AboutWindow.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -128,6 +134,9 @@
     </Compile>
     <EmbeddedResource Include="Seperator.resx">
       <DependentUpon>Seperator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="x264Window.resx">
+      <DependentUpon>X264Window.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
