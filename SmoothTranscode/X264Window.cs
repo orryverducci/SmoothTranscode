@@ -11,7 +11,7 @@ namespace SmoothTranscode
 {
     public partial class X264Window : Form
     {
-        private string Arguments;
+        private string Arguments = String.Empty;
 
         public string AdvancedArguments
         {
@@ -34,7 +34,7 @@ namespace SmoothTranscode
         /// <returns>String to add to options argument</returns>
         private string addString(string setting)
         {
-            if (Arguments == "-x264opts ")
+            if (Arguments != String.Empty)
                 return setting;
             else
                 return ":" + setting;
@@ -42,23 +42,29 @@ namespace SmoothTranscode
 
         private void okButton_Click(object sender, EventArgs e)
         {
-            Arguments = "-x264opts ";
-            if (tuningComboBox.SelectedItem.ToString() == "Film")
-                Arguments += addString("tune=film");
-            else if (tuningComboBox.SelectedItem.ToString() == "Animation")
-                Arguments += addString("tune=animation");
-            else if (tuningComboBox.SelectedItem.ToString() == "Grain")
-                Arguments += addString("tune=grain");
-            else if (tuningComboBox.SelectedItem.ToString() == "Still Image")
-                Arguments += addString("tune=stillimage");
-            else if (tuningComboBox.SelectedItem.ToString() == "PSNR")
-                Arguments += addString("tune=psnr");
-            else if (tuningComboBox.SelectedItem.ToString() == "SSIM")
-                Arguments += addString("tune=ssim");
-            else if (tuningComboBox.SelectedItem.ToString() == "Fast Decode")
-                Arguments += addString("tune=fastdecode");
-            else if (tuningComboBox.SelectedItem.ToString() == "Zero Latency")
-                Arguments += addString("tune=zerolatency");
+            // Set tuning setting
+            if (tuningComboBox.SelectedIndex > -1)
+            {
+                if (tuningComboBox.SelectedItem.ToString() == "Film")
+                    Arguments += addString("tune=film");
+                else if (tuningComboBox.SelectedItem.ToString() == "Animation")
+                    Arguments += addString("tune=animation");
+                else if (tuningComboBox.SelectedItem.ToString() == "Grain")
+                    Arguments += addString("tune=grain");
+                else if (tuningComboBox.SelectedItem.ToString() == "Still Image")
+                    Arguments += addString("tune=stillimage");
+                else if (tuningComboBox.SelectedItem.ToString() == "PSNR")
+                    Arguments += addString("tune=psnr");
+                else if (tuningComboBox.SelectedItem.ToString() == "SSIM")
+                    Arguments += addString("tune=ssim");
+                else if (tuningComboBox.SelectedItem.ToString() == "Fast Decode")
+                    Arguments += addString("tune=fastdecode");
+                else if (tuningComboBox.SelectedItem.ToString() == "Zero Latency")
+                    Arguments += addString("tune=zerolatency");
+            }
+            // Add prefix if neccessary
+            if (Arguments != String.Empty)
+                Arguments = "-x264opts " + Arguments;
         }
     }
 }
