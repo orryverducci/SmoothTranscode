@@ -5,12 +5,15 @@
 [NEW] Support for files opened through Windows Explorer
 [NEW] Addition of various bitrate settings (Same Quality, VBR and CBR)
 [NEW] Addition of frame rate setting
+[NEW] Addition of advanced options for H.264
 [UPDATED] New application icon
 [UPDATED] Refreshed user interface
 [UPDATED] Start and stop points temporarily removed due to incomplete implementation
 [UPDATED] Save file dialog now automatically chooses the extension for the selected format
+[UPDATED] Codec lists now change to show only codecs compatible with the selected container
 [UPDATED] Changed license from GPL v2 to GPL v3
 [FIXED] Format setting now works
+[FIXED] Encodes after first encode no longer fail
 
 0.2
 ---
