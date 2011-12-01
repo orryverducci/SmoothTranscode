@@ -38,13 +38,13 @@
   RequestExecutionLevel admin
 
   ;Version Information
-  VIProductVersion "0.3.0.0"
+  VIProductVersion "0.4.0.0"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductName" "SmoothTranscode Installer"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "CompanyName" "Atomic Wasteland"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "Copyright © Atomic Wasteland 2011"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "FileDescription" "Installs SmoothTranscode to your computer"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "1.0.0.0"
-  VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductVersion" "0.3.0.0"
+  VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductVersion" "0.4.0.0"
 
   ;Set Compressor
   SetCompressor lzma
