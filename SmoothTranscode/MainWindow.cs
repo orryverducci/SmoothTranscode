@@ -49,6 +49,10 @@ namespace SmoothTranscode
             string[] args = Environment.GetCommandLineArgs();
             if (args.Length == 2)
                 inputTextBox.Text = args[1];
+            // Default Combo Box Values
+            deinterlacingComboBox.SelectedIndex = 0; // Off
+            scalingComboBox.SelectedIndex = 1; // Fast Bilinear
+            denoiseComboBox.SelectedIndex = 0; // Off
         }
 
         private void MainWindow_DragEnter(object sender, DragEventArgs e)
