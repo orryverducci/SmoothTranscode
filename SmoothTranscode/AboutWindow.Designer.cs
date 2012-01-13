@@ -206,7 +206,7 @@
             this.copyrightLabel.Name = "copyrightLabel";
             this.copyrightLabel.Size = new System.Drawing.Size(281, 13);
             this.copyrightLabel.TabIndex = 2;
-            this.copyrightLabel.Text = "Copyright © 2011 Atomic Wasteland. All Rights Reserved.";
+            this.copyrightLabel.Text = "Copyright © 2012 Atomic Wasteland. All Rights Reserved.";
             // 
             // creditsPage
             // 

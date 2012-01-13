@@ -38,13 +38,13 @@
   RequestExecutionLevel admin
 
   ;Version Information
-  VIProductVersion "0.4.0.0"
+  VIProductVersion "0.5.0.0"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductName" "SmoothTranscode Installer"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "CompanyName" "Atomic Wasteland"
-  VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "Copyright © Atomic Wasteland 2011"
+  VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "Copyright © Atomic Wasteland 2012"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "FileDescription" "Installs SmoothTranscode to your computer"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "1.0.0.0"
-  VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductVersion" "0.4.0.0"
+  VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductVersion" "0.5.0.0"
 
   ;Set Compressor
   SetCompressor lzma
@@ -122,7 +122,7 @@ Section "SmoothTranscode" SecMain
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\SmoothTranscode" "DisplayIcon" "$INSTDIR\SmoothTranscode.exe,0"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\SmoothTranscode" "URLInfoAbout" "http://www.atomicwasteland.co.uk/"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\SmoothTranscode" "URLUpdateInfo" "http://www.atomicwasteland.co.uk/software/smoothtranscode"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\SmoothTranscode" "DisplayVersion" "0.2"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\SmoothTranscode" "DisplayVersion" "0.5"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\SmoothTranscode" "InstallLocation" "$INSTDIR"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\SmoothTranscode" "Publisher" "Atomic Wasteland"
   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\SmoothTranscode" "NoModify" 0x00000001
