@@ -1,5 +1,5 @@
 ﻿/*
- *  Copyright (C) 2011 Atomic Wasteland
+ *  Copyright (C) 2012 Atomic Wasteland
  *  http://www.atomicwasteland.co.uk/
  *
  *  This Program is free software: you can redistribute it and/or modify
