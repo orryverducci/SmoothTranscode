@@ -1196,8 +1196,7 @@
             "FFmpeg Standard",
             "Yadif",
             "Yadif (Double Framerate)",
-            "McDeint",
-            "McDeint (Double Framerate)"});
+            "MCDeint (Double Framerate)"});
             this.deinterlacingComboBox.Location = new System.Drawing.Point(139, 25);
             this.deinterlacingComboBox.Name = "deinterlacingComboBox";
             this.deinterlacingComboBox.Size = new System.Drawing.Size(121, 21);
