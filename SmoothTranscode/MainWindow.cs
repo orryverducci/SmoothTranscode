@@ -623,6 +623,15 @@ namespace SmoothTranscode
             }
             else // Else disable video recording
                 Arguments += " -vn";
+            // Post Processing Tab
+            if (deinterlaceComboBox.SelectedItem.ToString() == "FFmpeg Standard")
+                Arguments += " -deinterlace";
+            else if (deinterlaceComboBox.SelectedItem.ToString() == "Yadif")
+                Arguments += " -vf \"yadif=0:-1:0\"";
+            else if (deinterlaceComboBox.SelectedItem.ToString() == "Yadif (Double Framerate)")
+                Arguments += " -vf \"yadif=1:-1:0\"";
+            else if (deinterlaceComboBox.SelectedItem.ToString() == "MCDeint (Double Framerate)")
+                Arguments += " -vf \"yadif=1:-1:0,mp=mcdeint=2:1:10\"";
             // Audio Tab
             if (audioCheckBox.Checked) // If audio enabled
             {
