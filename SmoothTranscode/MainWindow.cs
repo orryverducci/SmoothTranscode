@@ -625,13 +625,34 @@ namespace SmoothTranscode
                 Arguments += " -vn";
             // Post Processing Tab
             if (deinterlaceComboBox.SelectedItem.ToString() == "FFmpeg Standard")
-                Arguments += " -deinterlace";
-            else if (deinterlaceComboBox.SelectedItem.ToString() == "Yadif")
-                Arguments += " -vf \"yadif=0:-1:0\"";
-            else if (deinterlaceComboBox.SelectedItem.ToString() == "Yadif (Double Framerate)")
-                Arguments += " -vf \"yadif=1:-1:0\"";
-            else if (deinterlaceComboBox.SelectedItem.ToString() == "MCDeint (Double Framerate)")
-                Arguments += " -vf \"yadif=1:-1:0,mp=mcdeint=2:1:10\"";
+                    Arguments += " -deinterlace";
+            if ((deinterlaceComboBox.SelectedItem.ToString() != "Off" && deinterlaceComboBox.SelectedItem.ToString() != "FFmpeg Standard") || denoiseComboBox.SelectedItem.ToString() != "Off")
+            {
+                Arguments += " -vf \"";
+                if (deinterlaceComboBox.SelectedItem.ToString() == "Yadif")
+                    Arguments += "yadif=0:-1:0";
+                else if (deinterlaceComboBox.SelectedItem.ToString() == "Yadif (Double Framerate)")
+                    Arguments += "yadif=1:-1:0";
+                else if (deinterlaceComboBox.SelectedItem.ToString() == "MCDeint (Double Framerate)")
+                    Arguments += "yadif=1:-1:0,mp=mcdeint=2:1:10";
+                if ((deinterlaceComboBox.SelectedItem.ToString() != "Off" && deinterlaceComboBox.SelectedItem.ToString() != "FFmpeg Standard") && denoiseComboBox.SelectedItem.ToString() != "Off")
+                     Arguments += ",";
+                if (denoiseComboBox.SelectedItem.ToString() == "On")
+                    Arguments += "hqdn3d";
+                Arguments += "\"";
+            }
+            if (scalingComboBox.SelectedItem.ToString() == "Nearest Neighbor")
+                Arguments += " -sws_flags neighbor";
+            else if (scalingComboBox.SelectedItem.ToString() == "Bilinear")
+                Arguments += " -sws_flags bilinear";
+            else if (scalingComboBox.SelectedItem.ToString() == "Bicubic")
+                Arguments += " -sws_flags bicubic";
+            else if (scalingComboBox.SelectedItem.ToString() == "Sinc")
+                Arguments += " -sws_flags sinc";
+            else if (scalingComboBox.SelectedItem.ToString() == "Lanczos")
+                Arguments += " -sws_flags lanczos";
+            else if (scalingComboBox.SelectedItem.ToString() == "Spline")
+                Arguments += " -sws_flags spline";
             // Audio Tab
             if (audioCheckBox.Checked) // If audio enabled
             {
