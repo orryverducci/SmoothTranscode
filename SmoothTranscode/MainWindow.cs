@@ -592,7 +592,7 @@ namespace SmoothTranscode
                 if (Video != String.Empty)
                     Arguments += " -vcodec " + Video;
                 if (sameQualRadioButton.Checked)
-                    Arguments += " -sameq";
+                    Arguments += " -same_quant";
                 if (vbrRadioButton.Checked)
                 {
                     Arguments += " -b:v " + vbrTextBox.Text + "k";
