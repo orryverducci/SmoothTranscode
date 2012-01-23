@@ -595,7 +595,7 @@ namespace SmoothTranscode
                     Arguments += " -sameq";
                 if (vbrRadioButton.Checked)
                 {
-                    Arguments += " -b " + vbrTextBox.Text + "k";
+                    Arguments += " -b:v " + vbrTextBox.Text + "k";
                     if (vbrMinTextBox.Text != String.Empty)
                         Arguments += " -minrate" + vbrMinTextBox.Text + "k";
                     if (vbrMaxTextBox.Text != String.Empty)
@@ -605,7 +605,7 @@ namespace SmoothTranscode
                 }
                 if (cbrRadioButton.Checked)
                 {
-                    Arguments += " -b " + cbrTextBox.Text + "k";
+                    Arguments += " -b:v " + cbrTextBox.Text + "k";
                     Arguments += " -bufsize 100k";
                     Arguments += " -minrate" + cbrTextBox.Text + "k";
                     Arguments += " -maxrate " + cbrTextBox.Text + "k";
@@ -663,7 +663,7 @@ namespace SmoothTranscode
                 if (audioBitrateRadioButton.Checked)
                 {
                     if (audioBitrateTextBox.Text != String.Empty)
-                        Arguments += " -ab " + audioBitrateTextBox.Text + "k";
+                        Arguments += " -b:a " + audioBitrateTextBox.Text + "k";
                 }
                 if (audioQualRadioButton.Checked)
                 {
