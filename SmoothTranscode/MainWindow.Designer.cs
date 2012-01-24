@@ -1225,7 +1225,9 @@
             this.denoiseComboBox.FormattingEnabled = true;
             this.denoiseComboBox.Items.AddRange(new object[] {
             "Off",
-            "On"});
+            "Weak",
+            "Medium",
+            "Strong"});
             this.denoiseComboBox.Location = new System.Drawing.Point(139, 112);
             this.denoiseComboBox.Name = "denoiseComboBox";
             this.denoiseComboBox.Size = new System.Drawing.Size(121, 21);
