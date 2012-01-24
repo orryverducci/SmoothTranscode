@@ -641,8 +641,12 @@ namespace SmoothTranscode
                 addVideoFilter("yadif=1:-1:0");
             else if (deinterlaceComboBox.SelectedItem.ToString() == "MCDeint (Double Framerate)")
                 addVideoFilter("yadif=1:-1:0,mp=mcdeint=2:1:10");
-            if (denoiseComboBox.SelectedItem.ToString() == "On")
-                addVideoFilter("hqdn3d");
+            if (denoiseComboBox.SelectedItem.ToString() == "Weak")
+                addVideoFilter("hqdn3d=2:1:2:3");
+            else if (denoiseComboBox.SelectedItem.ToString() == "Medium")
+                addVideoFilter("hqdn3d=3:2:2:3");
+            else if (denoiseComboBox.SelectedItem.ToString() == "Strong")
+                addVideoFilter("hqdn3d=7:7:5:5");
             if (scalingComboBox.SelectedItem.ToString() == "Nearest Neighbor")
                 Arguments += " -sws_flags neighbor";
             else if (scalingComboBox.SelectedItem.ToString() == "Bilinear")
