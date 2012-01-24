@@ -34,6 +34,7 @@ namespace SmoothTranscode
         private string Audio = String.Empty;
         private string Format = String.Empty;
         private string Advanced = String.Empty;
+        private string VideoFilters = String.Empty;
         private string Arguments;
         X264Window advancedX264Window = new X264Window();
 
@@ -540,6 +541,14 @@ namespace SmoothTranscode
         #endregion
 
         #region Convert Button
+        private void addVideoFilter(string vf)
+        {
+            if (VideoFilters == String.Empty)
+                VideoFilters = vf;
+            else
+                VideoFilters += "," + vf;
+        }
+        
         private void convertButton_Click(object sender, EventArgs e)
         {
             // Checks input and output files are specified
@@ -625,22 +634,15 @@ namespace SmoothTranscode
                 Arguments += " -vn";
             // Post Processing Tab
             if (deinterlaceComboBox.SelectedItem.ToString() == "FFmpeg Standard")
-                    Arguments += " -deinterlace";
-            if ((deinterlaceComboBox.SelectedItem.ToString() != "Off" && deinterlaceComboBox.SelectedItem.ToString() != "FFmpeg Standard") || denoiseComboBox.SelectedItem.ToString() != "Off")
-            {
-                Arguments += " -vf \"";
-                if (deinterlaceComboBox.SelectedItem.ToString() == "Yadif")
-                    Arguments += "yadif=0:-1:0";
-                else if (deinterlaceComboBox.SelectedItem.ToString() == "Yadif (Double Framerate)")
-                    Arguments += "yadif=1:-1:0";
-                else if (deinterlaceComboBox.SelectedItem.ToString() == "MCDeint (Double Framerate)")
-                    Arguments += "yadif=1:-1:0,mp=mcdeint=2:1:10";
-                if ((deinterlaceComboBox.SelectedItem.ToString() != "Off" && deinterlaceComboBox.SelectedItem.ToString() != "FFmpeg Standard") && denoiseComboBox.SelectedItem.ToString() != "Off")
-                     Arguments += ",";
-                if (denoiseComboBox.SelectedItem.ToString() == "On")
-                    Arguments += "hqdn3d";
-                Arguments += "\"";
-            }
+                addVideoFilter(" -deinterlace");
+            if (deinterlaceComboBox.SelectedItem.ToString() == "Yadif")
+                addVideoFilter("yadif=0:-1:0");
+            else if (deinterlaceComboBox.SelectedItem.ToString() == "Yadif (Double Framerate)")
+                addVideoFilter("yadif=1:-1:0");
+            else if (deinterlaceComboBox.SelectedItem.ToString() == "MCDeint (Double Framerate)")
+                addVideoFilter("yadif=1:-1:0,mp=mcdeint=2:1:10");
+            if (denoiseComboBox.SelectedItem.ToString() == "On")
+                addVideoFilter("hqdn3d");
             if (scalingComboBox.SelectedItem.ToString() == "Nearest Neighbor")
                 Arguments += " -sws_flags neighbor";
             else if (scalingComboBox.SelectedItem.ToString() == "Bilinear")
@@ -693,6 +695,9 @@ namespace SmoothTranscode
                 Arguments += " -padright " + padRightUpDown.Value;
             if (padBottomUpDown.Value > 0)
                 Arguments += " -padbottom " + padBottomUpDown.Value;
+            // Add Video Filters from Post Processing, Pad and Crop
+            if (VideoFilters != String.Empty)
+                Arguments += " -vf \"" + VideoFilters + "\"";
             // Meta data tab
             if (titleTextBox.Text != String.Empty)
                 Arguments += " -title " + "\"" + titleTextBox.Text + "\"";
