@@ -54,6 +54,7 @@ namespace SmoothTranscode
             deinterlacingComboBox.SelectedIndex = 0; // Off
             scalingComboBox.SelectedIndex = 1; // Fast Bilinear
             denoiseComboBox.SelectedIndex = 0; // Off
+            deblockingComboBox.SelectedIndex = 0; //Off
         }
 
         private void MainWindow_DragEnter(object sender, DragEventArgs e)
@@ -641,12 +642,6 @@ namespace SmoothTranscode
                 addVideoFilter("yadif=1:-1:0");
             else if (deinterlacingComboBox.SelectedItem.ToString() == "MCDeint (Double Framerate)")
                 addVideoFilter("yadif=1:-1:0,mp=mcdeint=2:1:10");
-            if (denoiseComboBox.SelectedItem.ToString() == "Weak")
-                addVideoFilter("hqdn3d=2:1:2:3");
-            else if (denoiseComboBox.SelectedItem.ToString() == "Medium")
-                addVideoFilter("hqdn3d=3:2:2:3");
-            else if (denoiseComboBox.SelectedItem.ToString() == "Strong")
-                addVideoFilter("hqdn3d=7:7:5:5");
             if (scalingComboBox.SelectedItem.ToString() == "Nearest Neighbor")
                 Arguments += " -sws_flags neighbor";
             else if (scalingComboBox.SelectedItem.ToString() == "Bilinear")
@@ -659,6 +654,14 @@ namespace SmoothTranscode
                 Arguments += " -sws_flags lanczos";
             else if (scalingComboBox.SelectedItem.ToString() == "Spline")
                 Arguments += " -sws_flags spline";
+            if (denoiseComboBox.SelectedItem.ToString() == "Weak")
+                addVideoFilter("hqdn3d=2:1:2:3");
+            else if (denoiseComboBox.SelectedItem.ToString() == "Medium")
+                addVideoFilter("hqdn3d=3:2:2:3");
+            else if (denoiseComboBox.SelectedItem.ToString() == "Strong")
+                addVideoFilter("hqdn3d=7:7:5:5");
+            if (deblockingComboBox.SelectedItem.ToString() == "On")
+                addVideoFilter("mp=pp7");
             // Audio Tab
             if (audioCheckBox.Checked) // If audio enabled
             {
