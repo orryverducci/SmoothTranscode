@@ -288,7 +288,7 @@ namespace SmoothTranscode
                 aspectComboBox.Enabled = true;
                 frameRateLabel.Enabled = true;
                 frameRateComboBox.Enabled = true;
-                deinterlaceCheckBox.Enabled = true;
+                interlaceCheckBox.Enabled = true;
             }
             // Otherwise disable options if video disabled
             else
@@ -308,7 +308,7 @@ namespace SmoothTranscode
                 aspectComboBox.Enabled = false;
                 frameRateLabel.Enabled = false;
                 frameRateComboBox.Enabled = false;
-                deinterlaceCheckBox.Enabled = false;
+                interlaceCheckBox.Enabled = false;
             }
         }
 
@@ -626,8 +626,8 @@ namespace SmoothTranscode
                     Arguments += " -aspect " + aspectComboBox.Text;
                 if (frameRateComboBox.Text != String.Empty)
                     Arguments += " -r " + frameRateComboBox.Text;
-                if (deinterlaceCheckBox.Checked == true)
-                    Arguments += " -deinterlace";
+                if (interlaceCheckBox.Checked == true)
+                    Arguments += " -ilme";
                 if (Advanced != String.Empty)
                     Arguments += " " + Advanced;
             }
