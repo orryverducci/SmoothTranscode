@@ -34,6 +34,7 @@
             this.mainTabs = new System.Windows.Forms.TabControl();
             this.inputTab = new System.Windows.Forms.TabPage();
             this.containerComboBox = new System.Windows.Forms.ComboBox();
+            this.formatSeperator = new SmoothTranscode.Seperator();
             this.inputButton = new System.Windows.Forms.Button();
             this.inputTextBox = new System.Windows.Forms.TextBox();
             this.videoTab = new System.Windows.Forms.TabPage();
@@ -66,7 +67,11 @@
             this.videoCheckBox = new System.Windows.Forms.CheckBox();
             this.advancedButton = new System.Windows.Forms.Button();
             this.videoCodecLabel = new System.Windows.Forms.Label();
+            this.resolutionSeperator = new SmoothTranscode.Seperator();
+            this.codecSeperator = new SmoothTranscode.Seperator();
             this.processingTab = new System.Windows.Forms.TabPage();
+            this.deblockingLabel = new System.Windows.Forms.Label();
+            this.deblockingComboBox = new System.Windows.Forms.ComboBox();
             this.denoiseComboBox = new System.Windows.Forms.ComboBox();
             this.scalingComboBox = new System.Windows.Forms.ComboBox();
             this.deinterlacingComboBox = new System.Windows.Forms.ComboBox();
@@ -87,6 +92,7 @@
             this.channelsLabel = new System.Windows.Forms.Label();
             this.audioCodecLabel = new System.Windows.Forms.Label();
             this.audioComboBox = new System.Windows.Forms.ComboBox();
+            this.channelsSeperator = new SmoothTranscode.Seperator();
             this.cropTab = new System.Windows.Forms.TabPage();
             this.cropLeftGroupBox = new System.Windows.Forms.GroupBox();
             this.cropLeftUpDown = new System.Windows.Forms.NumericUpDown();
@@ -106,26 +112,20 @@
             this.padTopGroupBox = new System.Windows.Forms.GroupBox();
             this.padTopUpDown = new System.Windows.Forms.NumericUpDown();
             this.metadataTab = new System.Windows.Forms.TabPage();
+            this.commentSeperator = new SmoothTranscode.Seperator();
             this.commentTextBox = new System.Windows.Forms.TextBox();
             this.copyrightTextBox = new System.Windows.Forms.TextBox();
             this.authorTextBox = new System.Windows.Forms.TextBox();
             this.titleTextBox = new System.Windows.Forms.TextBox();
+            this.copyrightSeperator = new SmoothTranscode.Seperator();
+            this.authorSeperator = new SmoothTranscode.Seperator();
+            this.titleSeperator = new SmoothTranscode.Seperator();
             this.outputTab = new System.Windows.Forms.TabPage();
             this.outputButton = new System.Windows.Forms.Button();
             this.outputTextBox = new System.Windows.Forms.TextBox();
             this.inputFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.helpButton = new System.Windows.Forms.Button();
             this.outputFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.deblockingComboBox = new System.Windows.Forms.ComboBox();
-            this.deblockingLabel = new System.Windows.Forms.Label();
-            this.formatSeperator = new SmoothTranscode.Seperator();
-            this.resolutionSeperator = new SmoothTranscode.Seperator();
-            this.codecSeperator = new SmoothTranscode.Seperator();
-            this.channelsSeperator = new SmoothTranscode.Seperator();
-            this.commentSeperator = new SmoothTranscode.Seperator();
-            this.copyrightSeperator = new SmoothTranscode.Seperator();
-            this.authorSeperator = new SmoothTranscode.Seperator();
-            this.titleSeperator = new SmoothTranscode.Seperator();
             this.mainTabs.SuspendLayout();
             this.inputTab.SuspendLayout();
             this.videoTab.SuspendLayout();
@@ -246,6 +246,16 @@
             this.containerComboBox.TabIndex = 4;
             this.containerComboBox.SelectedIndexChanged += new System.EventHandler(this.containerComboBox_SelectedIndexChanged);
             // 
+            // formatSeperator
+            // 
+            this.formatSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.formatSeperator.Label = "File Format";
+            this.formatSeperator.Location = new System.Drawing.Point(6, 47);
+            this.formatSeperator.Name = "formatSeperator";
+            this.formatSeperator.Size = new System.Drawing.Size(553, 15);
+            this.formatSeperator.TabIndex = 5;
+            // 
             // inputButton
             // 
             this.inputButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -262,6 +272,7 @@
             // 
             this.inputTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.inputTextBox.Enabled = false;
             this.inputTextBox.Location = new System.Drawing.Point(9, 12);
             this.inputTextBox.Name = "inputTextBox";
             this.inputTextBox.Size = new System.Drawing.Size(455, 20);
@@ -604,6 +615,26 @@
             this.videoCodecLabel.TabIndex = 0;
             this.videoCodecLabel.Text = "Codec:";
             // 
+            // resolutionSeperator
+            // 
+            this.resolutionSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.resolutionSeperator.Label = "Resolution and Frame Rate";
+            this.resolutionSeperator.Location = new System.Drawing.Point(6, 237);
+            this.resolutionSeperator.Name = "resolutionSeperator";
+            this.resolutionSeperator.Size = new System.Drawing.Size(553, 15);
+            this.resolutionSeperator.TabIndex = 15;
+            // 
+            // codecSeperator
+            // 
+            this.codecSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.codecSeperator.Label = "Codec Options";
+            this.codecSeperator.Location = new System.Drawing.Point(6, 36);
+            this.codecSeperator.Name = "codecSeperator";
+            this.codecSeperator.Size = new System.Drawing.Size(553, 15);
+            this.codecSeperator.TabIndex = 6;
+            // 
             // processingTab
             // 
             this.processingTab.Controls.Add(this.deblockingLabel);
@@ -621,6 +652,27 @@
             this.processingTab.TabIndex = 8;
             this.processingTab.Text = "Post Processing";
             this.processingTab.UseVisualStyleBackColor = true;
+            // 
+            // deblockingLabel
+            // 
+            this.deblockingLabel.AutoSize = true;
+            this.deblockingLabel.Location = new System.Drawing.Point(27, 162);
+            this.deblockingLabel.Name = "deblockingLabel";
+            this.deblockingLabel.Size = new System.Drawing.Size(64, 13);
+            this.deblockingLabel.TabIndex = 7;
+            this.deblockingLabel.Text = "Deblocking:";
+            // 
+            // deblockingComboBox
+            // 
+            this.deblockingComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.deblockingComboBox.FormattingEnabled = true;
+            this.deblockingComboBox.Items.AddRange(new object[] {
+            "Off",
+            "On"});
+            this.deblockingComboBox.Location = new System.Drawing.Point(139, 159);
+            this.deblockingComboBox.Name = "deblockingComboBox";
+            this.deblockingComboBox.Size = new System.Drawing.Size(121, 21);
+            this.deblockingComboBox.TabIndex = 6;
             // 
             // denoiseComboBox
             // 
@@ -856,6 +908,16 @@
             this.audioComboBox.Size = new System.Drawing.Size(508, 21);
             this.audioComboBox.TabIndex = 1;
             // 
+            // channelsSeperator
+            // 
+            this.channelsSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.channelsSeperator.Label = "Channels and Sample Rate";
+            this.channelsSeperator.Location = new System.Drawing.Point(6, 138);
+            this.channelsSeperator.Name = "channelsSeperator";
+            this.channelsSeperator.Size = new System.Drawing.Size(553, 15);
+            this.channelsSeperator.TabIndex = 16;
+            // 
             // cropTab
             // 
             this.cropTab.Controls.Add(this.cropLeftGroupBox);
@@ -1064,6 +1126,16 @@
             this.metadataTab.Text = "Meta Data";
             this.metadataTab.UseVisualStyleBackColor = true;
             // 
+            // commentSeperator
+            // 
+            this.commentSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.commentSeperator.Label = "Comment";
+            this.commentSeperator.Location = new System.Drawing.Point(6, 177);
+            this.commentSeperator.Name = "commentSeperator";
+            this.commentSeperator.Size = new System.Drawing.Size(553, 15);
+            this.commentSeperator.TabIndex = 9;
+            // 
             // commentTextBox
             // 
             this.commentTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1100,134 +1172,6 @@
             this.titleTextBox.Size = new System.Drawing.Size(550, 20);
             this.titleTextBox.TabIndex = 0;
             // 
-            // outputTab
-            // 
-            this.outputTab.Controls.Add(this.outputButton);
-            this.outputTab.Controls.Add(this.outputTextBox);
-            this.outputTab.Location = new System.Drawing.Point(4, 22);
-            this.outputTab.Name = "outputTab";
-            this.outputTab.Padding = new System.Windows.Forms.Padding(3);
-            this.outputTab.Size = new System.Drawing.Size(568, 362);
-            this.outputTab.TabIndex = 6;
-            this.outputTab.Text = "Output";
-            this.outputTab.UseVisualStyleBackColor = true;
-            // 
-            // outputButton
-            // 
-            this.outputButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.outputButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.outputButton.Location = new System.Drawing.Point(472, 11);
-            this.outputButton.Name = "outputButton";
-            this.outputButton.Size = new System.Drawing.Size(88, 25);
-            this.outputButton.TabIndex = 1;
-            this.outputButton.Text = "Browse";
-            this.outputButton.UseVisualStyleBackColor = true;
-            this.outputButton.Click += new System.EventHandler(this.outputButton_Click);
-            // 
-            // outputTextBox
-            // 
-            this.outputTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.outputTextBox.Location = new System.Drawing.Point(9, 12);
-            this.outputTextBox.Name = "outputTextBox";
-            this.outputTextBox.Size = new System.Drawing.Size(455, 20);
-            this.outputTextBox.TabIndex = 0;
-            // 
-            // inputFileDialog
-            // 
-            this.inputFileDialog.Filter = resources.GetString("inputFileDialog.Filter");
-            this.inputFileDialog.RestoreDirectory = true;
-            this.inputFileDialog.Title = "Select File to Convert";
-            // 
-            // helpButton
-            // 
-            this.helpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.helpButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.helpButton.Location = new System.Drawing.Point(103, 410);
-            this.helpButton.Name = "helpButton";
-            this.helpButton.Size = new System.Drawing.Size(88, 25);
-            this.helpButton.TabIndex = 3;
-            this.helpButton.Text = "Help";
-            this.helpButton.UseVisualStyleBackColor = true;
-            this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
-            // 
-            // outputFileDialog
-            // 
-            this.outputFileDialog.Filter = "Any File|*.*";
-            this.outputFileDialog.OverwritePrompt = false;
-            this.outputFileDialog.RestoreDirectory = true;
-            // 
-            // deblockingComboBox
-            // 
-            this.deblockingComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.deblockingComboBox.FormattingEnabled = true;
-            this.deblockingComboBox.Items.AddRange(new object[] {
-            "Off",
-            "On"});
-            this.deblockingComboBox.Location = new System.Drawing.Point(139, 159);
-            this.deblockingComboBox.Name = "deblockingComboBox";
-            this.deblockingComboBox.Size = new System.Drawing.Size(121, 21);
-            this.deblockingComboBox.TabIndex = 6;
-            // 
-            // deblockingLabel
-            // 
-            this.deblockingLabel.AutoSize = true;
-            this.deblockingLabel.Location = new System.Drawing.Point(27, 162);
-            this.deblockingLabel.Name = "deblockingLabel";
-            this.deblockingLabel.Size = new System.Drawing.Size(64, 13);
-            this.deblockingLabel.TabIndex = 7;
-            this.deblockingLabel.Text = "Deblocking:";
-            // 
-            // formatSeperator
-            // 
-            this.formatSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.formatSeperator.Label = "File Format";
-            this.formatSeperator.Location = new System.Drawing.Point(6, 47);
-            this.formatSeperator.Name = "formatSeperator";
-            this.formatSeperator.Size = new System.Drawing.Size(553, 15);
-            this.formatSeperator.TabIndex = 5;
-            // 
-            // resolutionSeperator
-            // 
-            this.resolutionSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.resolutionSeperator.Label = "Resolution and Frame Rate";
-            this.resolutionSeperator.Location = new System.Drawing.Point(6, 237);
-            this.resolutionSeperator.Name = "resolutionSeperator";
-            this.resolutionSeperator.Size = new System.Drawing.Size(553, 15);
-            this.resolutionSeperator.TabIndex = 15;
-            // 
-            // codecSeperator
-            // 
-            this.codecSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.codecSeperator.Label = "Codec Options";
-            this.codecSeperator.Location = new System.Drawing.Point(6, 36);
-            this.codecSeperator.Name = "codecSeperator";
-            this.codecSeperator.Size = new System.Drawing.Size(553, 15);
-            this.codecSeperator.TabIndex = 6;
-            // 
-            // channelsSeperator
-            // 
-            this.channelsSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.channelsSeperator.Label = "Channels and Sample Rate";
-            this.channelsSeperator.Location = new System.Drawing.Point(6, 138);
-            this.channelsSeperator.Name = "channelsSeperator";
-            this.channelsSeperator.Size = new System.Drawing.Size(553, 15);
-            this.channelsSeperator.TabIndex = 16;
-            // 
-            // commentSeperator
-            // 
-            this.commentSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.commentSeperator.Label = "Comment";
-            this.commentSeperator.Location = new System.Drawing.Point(6, 177);
-            this.commentSeperator.Name = "commentSeperator";
-            this.commentSeperator.Size = new System.Drawing.Size(553, 15);
-            this.commentSeperator.TabIndex = 9;
-            // 
             // copyrightSeperator
             // 
             this.copyrightSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1257,6 +1201,64 @@
             this.titleSeperator.Name = "titleSeperator";
             this.titleSeperator.Size = new System.Drawing.Size(553, 15);
             this.titleSeperator.TabIndex = 6;
+            // 
+            // outputTab
+            // 
+            this.outputTab.Controls.Add(this.outputButton);
+            this.outputTab.Controls.Add(this.outputTextBox);
+            this.outputTab.Location = new System.Drawing.Point(4, 22);
+            this.outputTab.Name = "outputTab";
+            this.outputTab.Padding = new System.Windows.Forms.Padding(3);
+            this.outputTab.Size = new System.Drawing.Size(568, 362);
+            this.outputTab.TabIndex = 6;
+            this.outputTab.Text = "Output";
+            this.outputTab.UseVisualStyleBackColor = true;
+            // 
+            // outputButton
+            // 
+            this.outputButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.outputButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.outputButton.Location = new System.Drawing.Point(472, 11);
+            this.outputButton.Name = "outputButton";
+            this.outputButton.Size = new System.Drawing.Size(88, 25);
+            this.outputButton.TabIndex = 1;
+            this.outputButton.Text = "Browse";
+            this.outputButton.UseVisualStyleBackColor = true;
+            this.outputButton.Click += new System.EventHandler(this.outputButton_Click);
+            // 
+            // outputTextBox
+            // 
+            this.outputTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.outputTextBox.Enabled = false;
+            this.outputTextBox.Location = new System.Drawing.Point(9, 12);
+            this.outputTextBox.Name = "outputTextBox";
+            this.outputTextBox.Size = new System.Drawing.Size(455, 20);
+            this.outputTextBox.TabIndex = 0;
+            // 
+            // inputFileDialog
+            // 
+            this.inputFileDialog.Filter = resources.GetString("inputFileDialog.Filter");
+            this.inputFileDialog.RestoreDirectory = true;
+            this.inputFileDialog.Title = "Select File to Convert";
+            // 
+            // helpButton
+            // 
+            this.helpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.helpButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.helpButton.Location = new System.Drawing.Point(103, 410);
+            this.helpButton.Name = "helpButton";
+            this.helpButton.Size = new System.Drawing.Size(88, 25);
+            this.helpButton.TabIndex = 3;
+            this.helpButton.Text = "Help";
+            this.helpButton.UseVisualStyleBackColor = true;
+            this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
+            // 
+            // outputFileDialog
+            // 
+            this.outputFileDialog.Filter = "Any File|*.*";
+            this.outputFileDialog.OverwritePrompt = false;
+            this.outputFileDialog.RestoreDirectory = true;
             // 
             // MainWindow
             // 
