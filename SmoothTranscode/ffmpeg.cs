@@ -29,8 +29,10 @@ namespace SmoothTranscode
 {
     public class ffmpeg
     {
-        private ProcessStartInfo procInfo;
-        public Process ffmpegProcess;
+        private ProcessStartInfo ffmpegProcInfo;
+        private ProcessStartInfo ffprobeProcInfo;
+        private Process ffmpegProcess;
+        private Process ffprobeProcess;
         private static string input;
         private static string arguments;
         private static string output;
@@ -41,14 +43,24 @@ namespace SmoothTranscode
 
         public ffmpeg()
         {
-            procInfo = new ProcessStartInfo();
-            procInfo.UseShellExecute = false;
-            procInfo.RedirectStandardError = true;
+            //FFmpeg process settings
+            ffmpegProcInfo = new ProcessStartInfo();
+            ffmpegProcInfo.UseShellExecute = false;
+            ffmpegProcInfo.RedirectStandardError = true;
             if (IntPtr.Size == 8)
-            	procInfo.FileName = "ffmpeg/ffmpeg-x64.exe";
+            	ffmpegProcInfo.FileName = "ffmpeg/ffmpeg-x64.exe";
             else
-            	procInfo.FileName = "ffmpeg/ffmpeg-x86.exe";
-            procInfo.CreateNoWindow = true;
+            	ffmpegProcInfo.FileName = "ffmpeg/ffmpeg-x86.exe";
+            ffmpegProcInfo.CreateNoWindow = true;
+            //FFprobe process settings
+            ffprobeProcInfo = new ProcessStartInfo();
+            ffprobeProcInfo.UseShellExecute = false;
+            ffprobeProcInfo.RedirectStandardError = true;
+            if (IntPtr.Size == 8)
+                ffmpegProcInfo.FileName = "ffmpeg/ffprobe-x64.exe";
+            else
+                ffmpegProcInfo.FileName = "ffmpeg/ffprobe-x86.exe";
+            ffprobeProcInfo.CreateNoWindow = true;
         }
 
         public static string inputFile
@@ -89,9 +101,9 @@ namespace SmoothTranscode
 
         public void ConvertFile()
         {
-            procInfo.Arguments = "-i \"" + input + "\" " + arguments + " -y \"" + output + "\"";
+            ffmpegProcInfo.Arguments = "-i \"" + input + "\" " + arguments + " -y \"" + output + "\"";
             ffmpegProcess = new Process();
-            ffmpegProcess.StartInfo = procInfo;
+            ffmpegProcess.StartInfo = ffmpegProcInfo;
             ffmpegProcess.EnableRaisingEvents = true;
             ffmpegProcess.Exited += new EventHandler(FfmpegProcessExited);
             ffmpegProcess.ErrorDataReceived += new DataReceivedEventHandler(ParseOutput);
