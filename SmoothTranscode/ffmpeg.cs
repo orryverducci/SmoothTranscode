@@ -98,6 +98,18 @@ namespace SmoothTranscode
                 output = value;
             }
         }
+        
+        public void GetInfo()
+        {
+            ffprobeProcInfo.Arguments = "-print_format xml -i \"" + input + "\"";
+            ffprobeProcess = new Process();
+            ffprobeProcess.StartInfo = ffmpegProcInfo;
+            ffprobeProcess.EnableRaisingEvents = true;
+            //ffprobeProcess.Exited += new EventHandler(FfprobeProcessExited);
+            //ffprobeProcess.ErrorDataReceived += new DataReceivedEventHandler(PopulateInfo);
+            //ffprobeProcess.Start();
+            //ffprobeProcess.BeginErrorReadLine();
+        }
 
         public void ConvertFile()
         {
