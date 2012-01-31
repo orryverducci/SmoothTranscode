@@ -47,7 +47,7 @@ namespace SmoothTranscode
             ffmpegProcInfo = new ProcessStartInfo();
             ffmpegProcInfo.UseShellExecute = false;
             ffmpegProcInfo.RedirectStandardError = true;
-            if (IntPtr.Size == 8)
+            if (IntPtr.Size == 8) //If running on 64-bit system
             	ffmpegProcInfo.FileName = "ffmpeg/ffmpeg-x64.exe";
             else
             	ffmpegProcInfo.FileName = "ffmpeg/ffmpeg-x86.exe";
@@ -56,7 +56,7 @@ namespace SmoothTranscode
             ffprobeProcInfo = new ProcessStartInfo();
             ffprobeProcInfo.UseShellExecute = false;
             ffprobeProcInfo.RedirectStandardError = true;
-            if (IntPtr.Size == 8)
+            if (IntPtr.Size == 8) //If running on 64-bit system
                 ffmpegProcInfo.FileName = "ffmpeg/ffprobe-x64.exe";
             else
                 ffmpegProcInfo.FileName = "ffmpeg/ffprobe-x86.exe";
@@ -118,12 +118,12 @@ namespace SmoothTranscode
             ffmpegProcess.StartInfo = ffmpegProcInfo;
             ffmpegProcess.EnableRaisingEvents = true;
             ffmpegProcess.Exited += new EventHandler(FfmpegProcessExited);
-            ffmpegProcess.ErrorDataReceived += new DataReceivedEventHandler(ParseOutput);
+            ffmpegProcess.ErrorDataReceived += new DataReceivedEventHandler(ParseProgress);
             ffmpegProcess.Start();
             ffmpegProcess.BeginErrorReadLine();
         }
 
-        private void ParseOutput(object sender, DataReceivedEventArgs e)
+        private void ParseProgress(object sender, DataReceivedEventArgs e)
         {
             int percentage;
             TimeSpan currentTime;
