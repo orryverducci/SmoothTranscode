@@ -101,7 +101,7 @@ namespace SmoothTranscode
         
         public void GetInfo()
         {
-            ffprobeProcInfo.Arguments = "-print_format xml -i \"" + input + "\"";
+            ffprobeProcInfo.Arguments = "-print_format xml -show_streams -i \"" + input + "\"";
             ffprobeProcess = new Process();
             ffprobeProcess.StartInfo = ffmpegProcInfo;
             ffprobeProcess.EnableRaisingEvents = true;
