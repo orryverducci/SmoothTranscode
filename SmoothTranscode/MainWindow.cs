@@ -106,10 +106,10 @@ namespace SmoothTranscode
         // Sets container to selected option and updates codec lists to valid options
         private void containerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (containerComboBox.SelectedItem.ToString() == "MPEG-4 Video/MP4 Audio")
+            if (containerComboBox.SelectedItem.ToString() == "MPEG-4")
             {
                 Format = "mp4";
-                outputFileDialog.Filter = "MP4 (*.mp4; *.m4v; *.m4a; *.aac)|*.mp4;*.m4v;*.m4a;*.aac|Any file|*.*";
+                outputFileDialog.Filter = "MP4 Video (*.mp4; *.m4v)|*.mp4;*.m4v|Any file|*.*";
                 videoComboBox.Items.Clear();
                 videoComboBox.Items.AddRange(new string[] { "H.264", "MPEG-4", "MPEG-2", "Dirac" });
                 audioComboBox.Items.Clear();
@@ -247,6 +247,14 @@ namespace SmoothTranscode
                 videoComboBox.Items.Clear();
                 audioComboBox.Items.Clear();
                 audioComboBox.Items.AddRange(new string[] { "MP2" });
+            }
+            else if (containerComboBox.SelectedItem.ToString() == "AAC")
+            {
+                Format = "mp3";
+                outputFileDialog.Filter = "AAC Audio (*.m4a; *.aac)|*.m4a;*.aac|Any file|*.*";
+                videoComboBox.Items.Clear();
+                audioComboBox.Items.Clear();
+                audioComboBox.Items.AddRange(new string[] { "AAC" });
             }
             else if (containerComboBox.SelectedItem.ToString() == "FLAC")
             {

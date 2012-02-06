@@ -34,6 +34,7 @@
             this.mainTabs = new System.Windows.Forms.TabControl();
             this.inputTab = new System.Windows.Forms.TabPage();
             this.containerComboBox = new System.Windows.Forms.ComboBox();
+            this.formatSeperator = new SmoothTranscode.Seperator();
             this.inputButton = new System.Windows.Forms.Button();
             this.inputTextBox = new System.Windows.Forms.TextBox();
             this.videoTab = new System.Windows.Forms.TabPage();
@@ -66,6 +67,8 @@
             this.videoCheckBox = new System.Windows.Forms.CheckBox();
             this.advancedButton = new System.Windows.Forms.Button();
             this.videoCodecLabel = new System.Windows.Forms.Label();
+            this.resolutionSeperator = new SmoothTranscode.Seperator();
+            this.codecSeperator = new SmoothTranscode.Seperator();
             this.processingTab = new System.Windows.Forms.TabPage();
             this.deblockingLabel = new System.Windows.Forms.Label();
             this.deblockingComboBox = new System.Windows.Forms.ComboBox();
@@ -89,6 +92,7 @@
             this.channelsLabel = new System.Windows.Forms.Label();
             this.audioCodecLabel = new System.Windows.Forms.Label();
             this.audioComboBox = new System.Windows.Forms.ComboBox();
+            this.channelsSeperator = new SmoothTranscode.Seperator();
             this.cropTab = new System.Windows.Forms.TabPage();
             this.cropLeftGroupBox = new System.Windows.Forms.GroupBox();
             this.cropLeftUpDown = new System.Windows.Forms.NumericUpDown();
@@ -108,24 +112,20 @@
             this.padTopGroupBox = new System.Windows.Forms.GroupBox();
             this.padTopUpDown = new System.Windows.Forms.NumericUpDown();
             this.metadataTab = new System.Windows.Forms.TabPage();
+            this.commentSeperator = new SmoothTranscode.Seperator();
             this.commentTextBox = new System.Windows.Forms.TextBox();
             this.copyrightTextBox = new System.Windows.Forms.TextBox();
             this.authorTextBox = new System.Windows.Forms.TextBox();
             this.titleTextBox = new System.Windows.Forms.TextBox();
+            this.copyrightSeperator = new SmoothTranscode.Seperator();
+            this.authorSeperator = new SmoothTranscode.Seperator();
+            this.titleSeperator = new SmoothTranscode.Seperator();
             this.outputTab = new System.Windows.Forms.TabPage();
             this.outputButton = new System.Windows.Forms.Button();
             this.outputTextBox = new System.Windows.Forms.TextBox();
             this.inputFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.helpButton = new System.Windows.Forms.Button();
             this.outputFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.formatSeperator = new SmoothTranscode.Seperator();
-            this.resolutionSeperator = new SmoothTranscode.Seperator();
-            this.codecSeperator = new SmoothTranscode.Seperator();
-            this.channelsSeperator = new SmoothTranscode.Seperator();
-            this.commentSeperator = new SmoothTranscode.Seperator();
-            this.copyrightSeperator = new SmoothTranscode.Seperator();
-            this.authorSeperator = new SmoothTranscode.Seperator();
-            this.titleSeperator = new SmoothTranscode.Seperator();
             this.mainTabs.SuspendLayout();
             this.inputTab.SuspendLayout();
             this.videoTab.SuspendLayout();
@@ -219,7 +219,7 @@
             this.containerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.containerComboBox.FormattingEnabled = true;
             this.containerComboBox.Items.AddRange(new object[] {
-            "MPEG-4 Video/MP4 Audio",
+            "MPEG-4",
             "MPEG",
             "Windows Media",
             "Flash Video",
@@ -236,6 +236,7 @@
             "Material eXchange Format",
             "MP3",
             "MP2",
+            "AAC",
             "FLAC",
             "WAV",
             "AIFF",
@@ -245,6 +246,16 @@
             this.containerComboBox.Size = new System.Drawing.Size(550, 21);
             this.containerComboBox.TabIndex = 4;
             this.containerComboBox.SelectedIndexChanged += new System.EventHandler(this.containerComboBox_SelectedIndexChanged);
+            // 
+            // formatSeperator
+            // 
+            this.formatSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.formatSeperator.Label = "File Format";
+            this.formatSeperator.Location = new System.Drawing.Point(6, 47);
+            this.formatSeperator.Name = "formatSeperator";
+            this.formatSeperator.Size = new System.Drawing.Size(553, 15);
+            this.formatSeperator.TabIndex = 5;
             // 
             // inputButton
             // 
@@ -605,6 +616,26 @@
             this.videoCodecLabel.TabIndex = 0;
             this.videoCodecLabel.Text = "Codec:";
             // 
+            // resolutionSeperator
+            // 
+            this.resolutionSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.resolutionSeperator.Label = "Resolution and Frame Rate";
+            this.resolutionSeperator.Location = new System.Drawing.Point(6, 237);
+            this.resolutionSeperator.Name = "resolutionSeperator";
+            this.resolutionSeperator.Size = new System.Drawing.Size(553, 15);
+            this.resolutionSeperator.TabIndex = 15;
+            // 
+            // codecSeperator
+            // 
+            this.codecSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.codecSeperator.Label = "Codec Options";
+            this.codecSeperator.Location = new System.Drawing.Point(6, 36);
+            this.codecSeperator.Name = "codecSeperator";
+            this.codecSeperator.Size = new System.Drawing.Size(553, 15);
+            this.codecSeperator.TabIndex = 6;
+            // 
             // processingTab
             // 
             this.processingTab.Controls.Add(this.deblockingLabel);
@@ -878,6 +909,16 @@
             this.audioComboBox.Size = new System.Drawing.Size(508, 21);
             this.audioComboBox.TabIndex = 1;
             // 
+            // channelsSeperator
+            // 
+            this.channelsSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.channelsSeperator.Label = "Channels and Sample Rate";
+            this.channelsSeperator.Location = new System.Drawing.Point(6, 138);
+            this.channelsSeperator.Name = "channelsSeperator";
+            this.channelsSeperator.Size = new System.Drawing.Size(553, 15);
+            this.channelsSeperator.TabIndex = 16;
+            // 
             // cropTab
             // 
             this.cropTab.Controls.Add(this.cropLeftGroupBox);
@@ -1086,6 +1127,16 @@
             this.metadataTab.Text = "Meta Data";
             this.metadataTab.UseVisualStyleBackColor = true;
             // 
+            // commentSeperator
+            // 
+            this.commentSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.commentSeperator.Label = "Comment";
+            this.commentSeperator.Location = new System.Drawing.Point(6, 177);
+            this.commentSeperator.Name = "commentSeperator";
+            this.commentSeperator.Size = new System.Drawing.Size(553, 15);
+            this.commentSeperator.TabIndex = 9;
+            // 
             // commentTextBox
             // 
             this.commentTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1121,6 +1172,36 @@
             this.titleTextBox.Name = "titleTextBox";
             this.titleTextBox.Size = new System.Drawing.Size(550, 20);
             this.titleTextBox.TabIndex = 0;
+            // 
+            // copyrightSeperator
+            // 
+            this.copyrightSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.copyrightSeperator.Label = "Copyright";
+            this.copyrightSeperator.Location = new System.Drawing.Point(6, 121);
+            this.copyrightSeperator.Name = "copyrightSeperator";
+            this.copyrightSeperator.Size = new System.Drawing.Size(553, 15);
+            this.copyrightSeperator.TabIndex = 8;
+            // 
+            // authorSeperator
+            // 
+            this.authorSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.authorSeperator.Label = "Author";
+            this.authorSeperator.Location = new System.Drawing.Point(6, 65);
+            this.authorSeperator.Name = "authorSeperator";
+            this.authorSeperator.Size = new System.Drawing.Size(553, 15);
+            this.authorSeperator.TabIndex = 7;
+            // 
+            // titleSeperator
+            // 
+            this.titleSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.titleSeperator.Label = "Title";
+            this.titleSeperator.Location = new System.Drawing.Point(6, 9);
+            this.titleSeperator.Name = "titleSeperator";
+            this.titleSeperator.Size = new System.Drawing.Size(553, 15);
+            this.titleSeperator.TabIndex = 6;
             // 
             // outputTab
             // 
@@ -1179,86 +1260,6 @@
             this.outputFileDialog.Filter = "Any File|*.*";
             this.outputFileDialog.OverwritePrompt = false;
             this.outputFileDialog.RestoreDirectory = true;
-            // 
-            // formatSeperator
-            // 
-            this.formatSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.formatSeperator.Label = "File Format";
-            this.formatSeperator.Location = new System.Drawing.Point(6, 47);
-            this.formatSeperator.Name = "formatSeperator";
-            this.formatSeperator.Size = new System.Drawing.Size(553, 15);
-            this.formatSeperator.TabIndex = 5;
-            // 
-            // resolutionSeperator
-            // 
-            this.resolutionSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.resolutionSeperator.Label = "Resolution and Frame Rate";
-            this.resolutionSeperator.Location = new System.Drawing.Point(6, 237);
-            this.resolutionSeperator.Name = "resolutionSeperator";
-            this.resolutionSeperator.Size = new System.Drawing.Size(553, 15);
-            this.resolutionSeperator.TabIndex = 15;
-            // 
-            // codecSeperator
-            // 
-            this.codecSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.codecSeperator.Label = "Codec Options";
-            this.codecSeperator.Location = new System.Drawing.Point(6, 36);
-            this.codecSeperator.Name = "codecSeperator";
-            this.codecSeperator.Size = new System.Drawing.Size(553, 15);
-            this.codecSeperator.TabIndex = 6;
-            // 
-            // channelsSeperator
-            // 
-            this.channelsSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.channelsSeperator.Label = "Channels and Sample Rate";
-            this.channelsSeperator.Location = new System.Drawing.Point(6, 138);
-            this.channelsSeperator.Name = "channelsSeperator";
-            this.channelsSeperator.Size = new System.Drawing.Size(553, 15);
-            this.channelsSeperator.TabIndex = 16;
-            // 
-            // commentSeperator
-            // 
-            this.commentSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.commentSeperator.Label = "Comment";
-            this.commentSeperator.Location = new System.Drawing.Point(6, 177);
-            this.commentSeperator.Name = "commentSeperator";
-            this.commentSeperator.Size = new System.Drawing.Size(553, 15);
-            this.commentSeperator.TabIndex = 9;
-            // 
-            // copyrightSeperator
-            // 
-            this.copyrightSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.copyrightSeperator.Label = "Copyright";
-            this.copyrightSeperator.Location = new System.Drawing.Point(6, 121);
-            this.copyrightSeperator.Name = "copyrightSeperator";
-            this.copyrightSeperator.Size = new System.Drawing.Size(553, 15);
-            this.copyrightSeperator.TabIndex = 8;
-            // 
-            // authorSeperator
-            // 
-            this.authorSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.authorSeperator.Label = "Author";
-            this.authorSeperator.Location = new System.Drawing.Point(6, 65);
-            this.authorSeperator.Name = "authorSeperator";
-            this.authorSeperator.Size = new System.Drawing.Size(553, 15);
-            this.authorSeperator.TabIndex = 7;
-            // 
-            // titleSeperator
-            // 
-            this.titleSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.titleSeperator.Label = "Title";
-            this.titleSeperator.Location = new System.Drawing.Point(6, 9);
-            this.titleSeperator.Name = "titleSeperator";
-            this.titleSeperator.Size = new System.Drawing.Size(553, 15);
-            this.titleSeperator.TabIndex = 6;
             // 
             // MainWindow
             // 
