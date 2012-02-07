@@ -203,6 +203,12 @@
     <Content Include="ffmpeg\ffmpeg-x86.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="ffmpeg\ffprobe-x64.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ffmpeg\ffprobe-x86.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="gpl-3.0-standalone.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

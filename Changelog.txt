@@ -1,6 +1,8 @@
 0.6
 ---
 [NEW] Post processing options (deinterlacing, denoise, scaling)
+[NEW] Framerate and bitrate details during conversion
+[NEW] Added interlaced video output option
 
 0.4
 ---

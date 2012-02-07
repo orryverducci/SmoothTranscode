@@ -86,8 +86,9 @@ namespace SmoothTranscode
                 // Change from marquee to continuous progress bar
                 if (conversionProgressBar.Style != ProgressBarStyle.Continuous)
                     conversionProgressBar.Style = ProgressBarStyle.Continuous;
-                // Update percentage complete
-                conversionProgressBar.Value = e.EncoderOutput();
+                // Update progress
+                conversionProgressBar.Value = e.Percentage();
+                detailsLabel.Text = "Frames per Second: " + e.FPS() + " - Current Bitrate: " + e.Bitrate();
             });
         }
     }

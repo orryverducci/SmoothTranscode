@@ -57,9 +57,9 @@ namespace SmoothTranscode
             ffprobeProcInfo.UseShellExecute = false;
             ffprobeProcInfo.RedirectStandardError = true;
             if (IntPtr.Size == 8) //If running on 64-bit system
-                ffmpegProcInfo.FileName = "ffmpeg/ffprobe-x64.exe";
+                ffprobeProcInfo.FileName = "ffmpeg/ffprobe-x64.exe";
             else
-                ffmpegProcInfo.FileName = "ffmpeg/ffprobe-x86.exe";
+                ffprobeProcInfo.FileName = "ffmpeg/ffprobe-x86.exe";
             ffprobeProcInfo.CreateNoWindow = true;
         }
 
@@ -126,6 +126,8 @@ namespace SmoothTranscode
         private void ParseProgress(object sender, DataReceivedEventArgs e)
         {
             int percentage;
+            string fps;
+            string bitrate;
             TimeSpan currentTime;
             TimeSpan totalTime;
 
@@ -135,10 +137,17 @@ namespace SmoothTranscode
                 {
                     if (e.Data.Contains("time"))
                     {
+                        //Percentage
                         TimeSpan.TryParse(GetStringInBetween("time=", " bitrate=", e.Data), out currentTime);
                         percentage = Convert.ToInt32(currentTime.TotalSeconds);
                         percentage = percentage * 100 / duration;
-                        ProgressUpdate(this, new ProgressEventArgs(percentage));
+                        //Frames per second
+                        fps = GetStringInBetween("fps=", " q=", e.Data).Trim();
+                        //Bitrate
+                        bitrate = GetStringInBetween("bitrate=", "its/s", e.Data).Trim();
+                        bitrate += "/s";
+                        //Update progress
+                        ProgressUpdate(this, new ProgressEventArgs(percentage, fps, bitrate));
                     }
                 }
                 else
@@ -177,16 +186,30 @@ namespace SmoothTranscode
 
         public class ProgressEventArgs : EventArgs
         {
-            private int encoderOutput;
+            private int percentageOutput;
+            private string fpsOutput;
+            private string bitrateOutput;
 
-            public ProgressEventArgs(int result)
+            public ProgressEventArgs(int percentage, string fps, string bitrate)
             {
-                encoderOutput = result;
+                percentageOutput = percentage;
+                fpsOutput = fps;
+                bitrateOutput = bitrate;
             }
 
-            public int EncoderOutput()
+            public int Percentage()
             {
-                return encoderOutput;
+                return percentageOutput;
+            }
+
+            public string FPS()
+            {
+                return fpsOutput;
+            }
+
+            public string Bitrate()
+            {
+                return bitrateOutput;
             }
         } 
 
