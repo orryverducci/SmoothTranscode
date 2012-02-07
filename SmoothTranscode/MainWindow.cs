@@ -635,7 +635,7 @@ namespace SmoothTranscode
                 if (frameRateComboBox.Text != String.Empty)
                     Arguments += " -r " + frameRateComboBox.Text;
                 if (interlaceCheckBox.Checked == true)
-                    Arguments += " -ilme";
+                    Arguments += " -flags +ilme+ildct";
                 if (Advanced != String.Empty)
                     Arguments += " " + Advanced;
             }
