@@ -104,6 +104,12 @@
     <Compile Include="Seperator.Designer.cs">
       <DependentUpon>Seperator.cs</DependentUpon>
     </Compile>
+    <Compile Include="VP8Window.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VP8Window.Designer.cs">
+      <DependentUpon>VP8Window.cs</DependentUpon>
+    </Compile>
     <Compile Include="X264Window.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,9 @@
     </Compile>
     <EmbeddedResource Include="Seperator.resx">
       <DependentUpon>Seperator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VP8Window.resx">
+      <DependentUpon>VP8Window.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="x264Window.resx">
       <DependentUpon>X264Window.cs</DependentUpon>

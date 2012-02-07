@@ -3,6 +3,7 @@
 [NEW] Post processing options (deinterlacing, denoise, scaling)
 [NEW] Framerate and bitrate details during conversion
 [NEW] Added interlaced video output option
+[NEW] Advanced options for VP8
 
 0.4
 ---

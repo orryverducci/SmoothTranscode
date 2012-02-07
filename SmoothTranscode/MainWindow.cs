@@ -37,6 +37,7 @@ namespace SmoothTranscode
         private string VideoFilters = String.Empty;
         private string Arguments;
         X264Window advancedX264Window = new X264Window();
+        VP8Window advancedVP8Window = new VP8Window();
 
         public MainWindow()
         {
@@ -414,7 +415,7 @@ namespace SmoothTranscode
             else if (videoComboBox.SelectedItem.ToString() == "VP8")
             {
                 Video = "libvpx";
-                advancedButton.Enabled = false;
+                advancedButton.Enabled = true;
             }
             else if (videoComboBox.SelectedItem.ToString() == "Real Video 2.0")
             {
@@ -457,8 +458,13 @@ namespace SmoothTranscode
         private void advancedButton_Click(object sender, EventArgs e)
         {
             if (videoComboBox.SelectedItem.ToString() == "H.264")
+            {
                 if (advancedX264Window.ShowDialog() == DialogResult.OK)
                     Advanced = advancedX264Window.AdvancedArguments;
+            }
+            else if (videoComboBox.SelectedItem.ToString() == "VP8")
+                if (advancedVP8Window.ShowDialog() == DialogResult.OK)
+                    Advanced = advancedVP8Window.AdvancedArguments;
         }
         #endregion
 
