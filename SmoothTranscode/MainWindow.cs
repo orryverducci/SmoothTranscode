@@ -335,6 +335,7 @@ namespace SmoothTranscode
             vbrMaxTextBox.Enabled = false;
             vbrBufferLabel.Enabled = false;
             vbrBufferTextBox.Enabled = false;
+            twoPassCheckBox.Enabled = false;
         }
 
         // Enable vbr bitrate options and disable others if average bitrate selected
@@ -351,6 +352,7 @@ namespace SmoothTranscode
             vbrMaxTextBox.Enabled = true;
             vbrBufferLabel.Enabled = true;
             vbrBufferTextBox.Enabled = true;
+            twoPassCheckBox.Enabled = true;
         }
 
         // Enable cbr bitrate options and disable others if constant bitrate selected
@@ -367,6 +369,7 @@ namespace SmoothTranscode
             vbrMaxTextBox.Enabled = false;
             vbrBufferLabel.Enabled = false;
             vbrBufferTextBox.Enabled = false;
+            twoPassCheckBox.Enabled = true;
         }
 
         // Sets video codec to selected option and enables or disables advanced options
@@ -730,6 +733,10 @@ namespace SmoothTranscode
                 Arguments += " -comment " + "\"" + commentTextBox.Text + "\"";
             //Output tab
             ffmpeg.outputFile = outputTextBox.Text;
+            if (twoPassCheckBox.Enabled && twoPassCheckBox.Checked)
+                ffmpeg.twoPass = true;
+            else
+                ffmpeg.twoPass = false;
 
             // Pass arguments to FFmpeg
             ffmpeg.procArguments = Arguments;

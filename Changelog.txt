@@ -4,6 +4,7 @@
 [NEW] Framerate and bitrate details during conversion
 [NEW] Added interlaced video output option
 [NEW] Advanced options for VP8
+[NEW] Added 2 pass encoding
 
 0.4
 ---

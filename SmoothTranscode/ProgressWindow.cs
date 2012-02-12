@@ -88,7 +88,10 @@ namespace SmoothTranscode
                     conversionProgressBar.Style = ProgressBarStyle.Continuous;
                 // Update progress
                 conversionProgressBar.Value = e.Percentage();
-                detailsLabel.Text = "Frames per Second: " + e.FPS() + " - Current Bitrate: " + e.Bitrate();
+                if (ffmpeg.twoPass)
+                    detailsLabel.Text = "Frames per Second: " + e.FPS() + " - Current Bitrate: " + e.Bitrate() + " - Pass: " + e.Pass().ToString();
+                else
+                    detailsLabel.Text = "Frames per Second: " + e.FPS() + " - Current Bitrate: " + e.Bitrate();
             });
         }
     }

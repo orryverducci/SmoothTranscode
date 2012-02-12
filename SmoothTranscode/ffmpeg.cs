@@ -35,8 +35,10 @@ namespace SmoothTranscode
         private Process ffprobeProcess;
         private static string input;
         private static string arguments;
+        private static bool twopass;
         private static string output;
         private int duration = -1;
+        private int pass = 1;
         public event EventHandler conversionEnded;
         public delegate void ProgressEventHandler(object sender, ProgressEventArgs cmdoutput);
         public event ProgressEventHandler progressUpdate;
@@ -87,6 +89,18 @@ namespace SmoothTranscode
             }
         }
 
+        public static bool twoPass
+        {
+            get
+            {
+                return twopass;
+            }
+            set
+            {
+                twopass = value;
+            }
+        }
+
         public static string outputFile
         {
             get
@@ -113,7 +127,10 @@ namespace SmoothTranscode
 
         public void ConvertFile()
         {
-            ffmpegProcInfo.Arguments = "-i \"" + input + "\" " + arguments + " -y \"" + output + "\"";
+            if (twopass)
+                ffmpegProcInfo.Arguments = "-i \"" + input + "\" -pass " + pass.ToString() + " " + arguments + " -y \"" + output + "\"";
+            else
+                ffmpegProcInfo.Arguments = "-i \"" + input + "\" " + arguments + " -y \"" + output + "\"";
             ffmpegProcess = new Process();
             ffmpegProcess.StartInfo = ffmpegProcInfo;
             ffmpegProcess.EnableRaisingEvents = true;
@@ -141,13 +158,18 @@ namespace SmoothTranscode
                         TimeSpan.TryParse(GetStringInBetween("time=", " bitrate=", e.Data), out currentTime);
                         percentage = Convert.ToInt32(currentTime.TotalSeconds);
                         percentage = percentage * 100 / duration;
+                        if (twopass)
+                            if (pass == 1)
+                                percentage = percentage / 2;
+                            else
+                                percentage = (percentage / 2) + 50;
                         //Frames per second
                         fps = GetStringInBetween("fps=", " q=", e.Data).Trim();
                         //Bitrate
                         bitrate = GetStringInBetween("bitrate=", "its/s", e.Data).Trim();
                         bitrate += "/s";
                         //Update progress
-                        ProgressUpdate(this, new ProgressEventArgs(percentage, fps, bitrate));
+                        ProgressUpdate(this, new ProgressEventArgs(percentage, fps, bitrate, pass));
                     }
                 }
                 else
@@ -189,12 +211,14 @@ namespace SmoothTranscode
             private int percentageOutput;
             private string fpsOutput;
             private string bitrateOutput;
+            private int passOutput;
 
-            public ProgressEventArgs(int percentage, string fps, string bitrate)
+            public ProgressEventArgs(int percentage, string fps, string bitrate, int pass)
             {
                 percentageOutput = percentage;
                 fpsOutput = fps;
                 bitrateOutput = bitrate;
+                passOutput = pass;
             }
 
             public int Percentage()
@@ -211,13 +235,24 @@ namespace SmoothTranscode
             {
                 return bitrateOutput;
             }
+
+            public int Pass()
+            {
+                return passOutput;
+            }
         } 
 
         protected virtual void FfmpegProcessExited(object sender, EventArgs e)
         {
             ffmpegProcess.CancelErrorRead();
-            if (conversionEnded != null)
-                conversionEnded(this, e);
+            if (twopass && pass == 1)
+            {
+                pass = 2;
+                ConvertFile();
+            }
+            else
+                if (conversionEnded != null)
+                    conversionEnded(this, e);
         }
 
         protected virtual void ProgressUpdate(object sender, ProgressEventArgs e)
