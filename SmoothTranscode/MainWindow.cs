@@ -608,7 +608,9 @@ namespace SmoothTranscode
             }
 
             // Create arguments for FFmpeg from options set in UI
-            Arguments = ""; // Clear any existing arguments
+            // Clear any existing arguments
+            Arguments = "";
+            VideoFilters = String.Empty;
             // Input tab
             ffmpeg.inputFile = inputTextBox.Text;
             if (Format != String.Empty)
