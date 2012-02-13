@@ -624,7 +624,7 @@ namespace SmoothTranscode
                 {
                     Arguments += " -b:v " + vbrTextBox.Text + "k";
                     if (vbrMinTextBox.Text != String.Empty)
-                        Arguments += " -minrate" + vbrMinTextBox.Text + "k";
+                        Arguments += " -minrate " + vbrMinTextBox.Text + "k";
                     if (vbrMaxTextBox.Text != String.Empty)
                         Arguments += " -maxrate " + vbrMaxTextBox.Text + "k";
                     if (vbrBufferTextBox.Text != String.Empty)
@@ -634,7 +634,7 @@ namespace SmoothTranscode
                 {
                     Arguments += " -b:v " + cbrTextBox.Text + "k";
                     Arguments += " -bufsize 100k";
-                    Arguments += " -minrate" + cbrTextBox.Text + "k";
+                    Arguments += " -minrate " + cbrTextBox.Text + "k";
                     Arguments += " -maxrate " + cbrTextBox.Text + "k";
                 }
                 if (widthTextBox.Text != String.Empty && heightTextBox.Text != String.Empty)
