@@ -6,6 +6,7 @@
 [NEW] Advanced options for VP8
 [NEW] Added 2 pass encoding
 [FIXED] Encodes fail when set to CBR, or VBR with a minimum bitrate specified
+[FIXED] Encodes fail when H.264 Advanced Options are set
 
 0.4
 ---

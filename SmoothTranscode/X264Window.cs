@@ -86,7 +86,7 @@ namespace SmoothTranscode
         /// <returns>String to add to options argument</returns>
         private string addString(string setting)
         {
-            if (Arguments != String.Empty)
+            if (Arguments == String.Empty)
                 return setting;
             else
                 return ":" + setting;
@@ -94,26 +94,8 @@ namespace SmoothTranscode
 
         private void okButton_Click(object sender, EventArgs e)
         {
-            // Set tuning setting
-            if (tuningComboBox.SelectedIndex > -1) // Check item is selected
-            {
-                if (tuningComboBox.SelectedItem.ToString() == "Film")
-                    Arguments = "tune=film";
-                else if (tuningComboBox.SelectedItem.ToString() == "Animation")
-                    Arguments = "tune=animation";
-                else if (tuningComboBox.SelectedItem.ToString() == "Grain")
-                    Arguments = "tune=grain";
-                else if (tuningComboBox.SelectedItem.ToString() == "Still Image")
-                    Arguments = "tune=stillimage";
-                else if (tuningComboBox.SelectedItem.ToString() == "PSNR")
-                    Arguments = "tune=psnr";
-                else if (tuningComboBox.SelectedItem.ToString() == "SSIM")
-                    Arguments = "tune=ssim";
-                else if (tuningComboBox.SelectedItem.ToString() == "Fast Decode")
-                    Arguments = "tune=fastdecode";
-                else if (tuningComboBox.SelectedItem.ToString() == "Zero Latency")
-                    Arguments = "tune=zerolatency";
-            }
+            //Clear existing arguments
+            Arguments = String.Empty;
             // Set CABAC setting
             if (cabacCheckBox.Checked == false)
                 Arguments += addString("no-cabac");
@@ -210,6 +192,26 @@ namespace SmoothTranscode
             // Add prefix if neccessary
             if (Arguments != String.Empty)
                 Arguments = "-x264opts " + Arguments;
+            // Set tuning setting
+            if (tuningComboBox.SelectedIndex > -1) // Check item is selected
+            {
+                if (tuningComboBox.SelectedItem.ToString() == "Film")
+                    Arguments += " -tune film";
+                else if (tuningComboBox.SelectedItem.ToString() == "Animation")
+                    Arguments += " -tune animation";
+                else if (tuningComboBox.SelectedItem.ToString() == "Grain")
+                    Arguments += " -tune grain";
+                else if (tuningComboBox.SelectedItem.ToString() == "Still Image")
+                    Arguments += " -tune stillimage";
+                else if (tuningComboBox.SelectedItem.ToString() == "PSNR")
+                    Arguments += " -tune psnr";
+                else if (tuningComboBox.SelectedItem.ToString() == "SSIM")
+                    Arguments += " -tune ssim";
+                else if (tuningComboBox.SelectedItem.ToString() == "Fast Decode")
+                    Arguments += " -tune fastdecode";
+                else if (tuningComboBox.SelectedItem.ToString() == "Zero Latency")
+                    Arguments += " -tune zerolatency";
+            }
         }
     }
 }
