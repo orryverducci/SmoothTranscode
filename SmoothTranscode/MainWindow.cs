@@ -107,6 +107,7 @@ namespace SmoothTranscode
         // Sets container to selected option and updates codec lists to valid options
         private void containerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            advancedButton.Enabled = false; // Disable advanced button if enabled
             if (containerComboBox.SelectedItem.ToString() == "MPEG-4")
             {
                 Format = "mp4";
@@ -285,7 +286,8 @@ namespace SmoothTranscode
                 codecSeperator.Enabled = true;
                 videoCodecLabel.Enabled = true;
                 videoComboBox.Enabled = true;
-                advancedButton.Enabled = true;
+                if (videoComboBox.SelectedIndex != -1 && (videoComboBox.SelectedItem.ToString() == "H.264" || videoComboBox.SelectedItem.ToString() == "VP8"))
+                    advancedButton.Enabled = true;
                 videoBitratePanel.Enabled = true;
                 resolutionSeperator.Enabled = true;
                 resolutionLabel.Enabled = true;
