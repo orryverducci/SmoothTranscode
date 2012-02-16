@@ -34,6 +34,7 @@ namespace SmoothTranscode
         private Process ffprobeProcess;
         private static string input;
         private static string arguments;
+        private static string infoXML = "";
         private static bool twopass;
         private static string output;
         private int duration = -1;
@@ -41,6 +42,8 @@ namespace SmoothTranscode
         public event EventHandler conversionEnded;
         public delegate void ProgressEventHandler(object sender, ProgressEventArgs cmdoutput);
         public event ProgressEventHandler progressUpdate;
+        public delegate void InfoEventHandler(object sender, InfoEventArgs cmdoutput);
+        public event InfoEventHandler infoRetrieved;
 
         public ffmpeg()
         {
@@ -56,7 +59,7 @@ namespace SmoothTranscode
             //FFprobe process settings
             ffprobeProcInfo = new ProcessStartInfo();
             ffprobeProcInfo.UseShellExecute = false;
-            ffprobeProcInfo.RedirectStandardError = true;
+            ffprobeProcInfo.RedirectStandardOutput = true;
             if (IntPtr.Size == 8) //If running on 64-bit system
                 ffprobeProcInfo.FileName = "ffmpeg/ffprobe-x64.exe";
             else
@@ -116,12 +119,42 @@ namespace SmoothTranscode
         {
             ffprobeProcInfo.Arguments = "-print_format xml -show_streams -i \"" + input + "\"";
             ffprobeProcess = new Process();
-            ffprobeProcess.StartInfo = ffmpegProcInfo;
+            ffprobeProcess.StartInfo = ffprobeProcInfo;
             ffprobeProcess.EnableRaisingEvents = true;
-            //ffprobeProcess.Exited += new EventHandler(FfprobeProcessExited);
-            //ffprobeProcess.ErrorDataReceived += new DataReceivedEventHandler(PopulateInfo);
-            //ffprobeProcess.Start();
-            //ffprobeProcess.BeginErrorReadLine();
+            ffprobeProcess.Exited += new EventHandler(FfprobeProcessExited);
+            ffprobeProcess.OutputDataReceived += new DataReceivedEventHandler(PopulateInfo);
+            ffprobeProcess.Start();
+            ffprobeProcess.BeginOutputReadLine();
+        }
+
+        private void PopulateInfo(object sender, DataReceivedEventArgs e)
+        {
+            if (e.Data != null)
+            {
+                infoXML += e.Data;
+            }
+        }
+
+        public class InfoEventArgs : EventArgs
+        {
+            private string xmlOutput;
+
+            public InfoEventArgs(string xml)
+            {
+                xmlOutput = xml;
+            }
+
+            public string XML()
+            {
+                return xmlOutput;
+            }
+        } 
+
+        protected virtual void FfprobeProcessExited(object sender, EventArgs e)
+        {
+            ffprobeProcess.CancelOutputRead();
+            if (infoRetrieved != null)
+                infoRetrieved(this, new InfoEventArgs(infoXML));
         }
 
         public void ConvertFile()
