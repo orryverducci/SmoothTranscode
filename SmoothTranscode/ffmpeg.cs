@@ -19,6 +19,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.XML;
 using System.Text;
 using System.Threading;
 using System.Diagnostics;
@@ -35,6 +36,7 @@ namespace SmoothTranscode
         private static string input;
         private static string arguments;
         private static string infoXML = "";
+        private static XDocument inputInfo;
         private static bool twopass;
         private static string output;
         private int duration = -1;
@@ -153,6 +155,7 @@ namespace SmoothTranscode
         protected virtual void FfprobeProcessExited(object sender, EventArgs e)
         {
             ffprobeProcess.CancelOutputRead();
+            inputInfo = XDocument.Parse(infoXML);
             if (infoRetrieved != null)
                 infoRetrieved(this, new InfoEventArgs(infoXML));
         }
