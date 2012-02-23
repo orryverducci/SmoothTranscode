@@ -23,20 +23,15 @@ using System.Text;
 using System.Threading;
 using System.Diagnostics;
 using System.IO;
-using System.Xml.Linq;
 
 namespace SmoothTranscode
 {
     public class ffmpeg
     {
         private ProcessStartInfo ffmpegProcInfo;
-        private ProcessStartInfo ffprobeProcInfo;
         private Process ffmpegProcess;
-        private Process ffprobeProcess;
         private static string input;
         private static string arguments;
-        private static string infoXML = "";
-        private static XDocument inputInfo;
         private static bool twopass;
         private static string output;
         private int duration = -1;
@@ -44,8 +39,6 @@ namespace SmoothTranscode
         public event EventHandler conversionEnded;
         public delegate void ProgressEventHandler(object sender, ProgressEventArgs cmdoutput);
         public event ProgressEventHandler progressUpdate;
-        public delegate void InfoEventHandler(object sender, InfoEventArgs cmdoutput);
-        public event InfoEventHandler infoRetrieved;
 
         public ffmpeg()
         {
@@ -58,15 +51,6 @@ namespace SmoothTranscode
             else
             	ffmpegProcInfo.FileName = "ffmpeg/ffmpeg-x86.exe";
             ffmpegProcInfo.CreateNoWindow = true;
-            //FFprobe process settings
-            ffprobeProcInfo = new ProcessStartInfo();
-            ffprobeProcInfo.UseShellExecute = false;
-            ffprobeProcInfo.RedirectStandardOutput = true;
-            if (IntPtr.Size == 8) //If running on 64-bit system
-                ffprobeProcInfo.FileName = "ffmpeg/ffprobe-x64.exe";
-            else
-                ffprobeProcInfo.FileName = "ffmpeg/ffprobe-x86.exe";
-            ffprobeProcInfo.CreateNoWindow = true;
         }
 
         public static string inputFile
@@ -115,49 +99,6 @@ namespace SmoothTranscode
             {
                 output = value;
             }
-        }
-        
-        public void GetInfo()
-        {
-            ffprobeProcInfo.Arguments = "-print_format xml -show_streams -i \"" + input + "\"";
-            ffprobeProcess = new Process();
-            ffprobeProcess.StartInfo = ffprobeProcInfo;
-            ffprobeProcess.EnableRaisingEvents = true;
-            ffprobeProcess.Exited += new EventHandler(FfprobeProcessExited);
-            ffprobeProcess.OutputDataReceived += new DataReceivedEventHandler(PopulateInfo);
-            ffprobeProcess.Start();
-            ffprobeProcess.BeginOutputReadLine();
-        }
-
-        private void PopulateInfo(object sender, DataReceivedEventArgs e)
-        {
-            if (e.Data != null)
-            {
-                infoXML += e.Data;
-            }
-        }
-
-        public class InfoEventArgs : EventArgs
-        {
-            private string xmlOutput;
-
-            public InfoEventArgs(string xml)
-            {
-                xmlOutput = xml;
-            }
-
-            public string XML()
-            {
-                return xmlOutput;
-            }
-        } 
-
-        protected virtual void FfprobeProcessExited(object sender, EventArgs e)
-        {
-            ffprobeProcess.CancelOutputRead();
-            inputInfo = XDocument.Parse(infoXML);
-            if (infoRetrieved != null)
-                infoRetrieved(this, new InfoEventArgs(infoXML));
         }
 
         public void ConvertFile()
