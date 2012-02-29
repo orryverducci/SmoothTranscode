@@ -30,7 +30,6 @@ namespace SmoothTranscode
         private ProcessStartInfo ffprobeProcInfo;
         private Process ffprobeProcess;
         private static string infoXML = "";
-        private static XDocument inputInfo;
         public delegate void InfoEventHandler(object sender, InfoEventArgs cmdoutput);
         public event InfoEventHandler infoRetrieved;
 
@@ -47,7 +46,7 @@ namespace SmoothTranscode
             ffprobeProcInfo.CreateNoWindow = true;
         }
 
-        public void GetInfo()
+        public void GetInfo(string input)
         {
             ffprobeProcInfo.Arguments = "-print_format xml -show_streams -i \"" + input + "\"";
             ffprobeProcess = new Process();
@@ -69,6 +68,8 @@ namespace SmoothTranscode
 
         public class InfoEventArgs : EventArgs
         {
+            XDocument inputInfo = XDocument.Parse(infoXML);
+
             public string videoCodec()
             {
                 var codec = from node in inputInfo.Descendants("stream")
@@ -195,7 +196,6 @@ namespace SmoothTranscode
         protected virtual void FfprobeProcessExited(object sender, EventArgs e)
         {
             ffprobeProcess.CancelOutputRead();
-            inputInfo = XDocument.Parse(infoXML);
             if (infoRetrieved != null)
                 infoRetrieved(this, new InfoEventArgs());
         }
