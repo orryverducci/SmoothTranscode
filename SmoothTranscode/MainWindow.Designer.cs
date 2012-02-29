@@ -33,6 +33,16 @@
             this.aboutButton = new System.Windows.Forms.Button();
             this.mainTabs = new System.Windows.Forms.TabControl();
             this.inputTab = new System.Windows.Forms.TabPage();
+            this.sampleInfoLabel = new System.Windows.Forms.Label();
+            this.channelsInfoLabel = new System.Windows.Forms.Label();
+            this.audioCodecInfoLabel = new System.Windows.Forms.Label();
+            this.audioInfoLabel = new System.Windows.Forms.Label();
+            this.fpsInfoLabel = new System.Windows.Forms.Label();
+            this.aspectInfoLabel = new System.Windows.Forms.Label();
+            this.resInfoLabel = new System.Windows.Forms.Label();
+            this.videoCodecInfoLabel = new System.Windows.Forms.Label();
+            this.videoInfoLabel = new System.Windows.Forms.Label();
+            this.formatInfoLabel = new System.Windows.Forms.Label();
             this.containerComboBox = new System.Windows.Forms.ComboBox();
             this.inputButton = new System.Windows.Forms.Button();
             this.inputTextBox = new System.Windows.Forms.TextBox();
@@ -113,12 +123,14 @@
             this.authorTextBox = new System.Windows.Forms.TextBox();
             this.titleTextBox = new System.Windows.Forms.TextBox();
             this.outputTab = new System.Windows.Forms.TabPage();
+            this.twoPassCheckBox = new System.Windows.Forms.CheckBox();
             this.outputButton = new System.Windows.Forms.Button();
             this.outputTextBox = new System.Windows.Forms.TextBox();
             this.inputFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.helpButton = new System.Windows.Forms.Button();
             this.outputFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.twoPassCheckBox = new System.Windows.Forms.CheckBox();
+            this.audioKhzLabel = new System.Windows.Forms.Label();
+            this.infoSeperator = new SmoothTranscode.Seperator();
             this.formatSeperator = new SmoothTranscode.Seperator();
             this.resolutionSeperator = new SmoothTranscode.Seperator();
             this.codecSeperator = new SmoothTranscode.Seperator();
@@ -201,6 +213,17 @@
             // 
             // inputTab
             // 
+            this.inputTab.Controls.Add(this.sampleInfoLabel);
+            this.inputTab.Controls.Add(this.channelsInfoLabel);
+            this.inputTab.Controls.Add(this.audioCodecInfoLabel);
+            this.inputTab.Controls.Add(this.audioInfoLabel);
+            this.inputTab.Controls.Add(this.fpsInfoLabel);
+            this.inputTab.Controls.Add(this.aspectInfoLabel);
+            this.inputTab.Controls.Add(this.resInfoLabel);
+            this.inputTab.Controls.Add(this.videoCodecInfoLabel);
+            this.inputTab.Controls.Add(this.videoInfoLabel);
+            this.inputTab.Controls.Add(this.formatInfoLabel);
+            this.inputTab.Controls.Add(this.infoSeperator);
             this.inputTab.Controls.Add(this.containerComboBox);
             this.inputTab.Controls.Add(this.formatSeperator);
             this.inputTab.Controls.Add(this.inputButton);
@@ -212,6 +235,96 @@
             this.inputTab.TabIndex = 0;
             this.inputTab.Text = "Input";
             this.inputTab.UseVisualStyleBackColor = true;
+            // 
+            // sampleInfoLabel
+            // 
+            this.sampleInfoLabel.AutoSize = true;
+            this.sampleInfoLabel.Location = new System.Drawing.Point(6, 257);
+            this.sampleInfoLabel.Name = "sampleInfoLabel";
+            this.sampleInfoLabel.Size = new System.Drawing.Size(71, 13);
+            this.sampleInfoLabel.TabIndex = 16;
+            this.sampleInfoLabel.Text = "Sample Rate:";
+            // 
+            // channelsInfoLabel
+            // 
+            this.channelsInfoLabel.AutoSize = true;
+            this.channelsInfoLabel.Location = new System.Drawing.Point(6, 236);
+            this.channelsInfoLabel.Name = "channelsInfoLabel";
+            this.channelsInfoLabel.Size = new System.Drawing.Size(54, 13);
+            this.channelsInfoLabel.TabIndex = 15;
+            this.channelsInfoLabel.Text = "Channels:";
+            // 
+            // audioCodecInfoLabel
+            // 
+            this.audioCodecInfoLabel.AutoSize = true;
+            this.audioCodecInfoLabel.Location = new System.Drawing.Point(6, 214);
+            this.audioCodecInfoLabel.Name = "audioCodecInfoLabel";
+            this.audioCodecInfoLabel.Size = new System.Drawing.Size(41, 13);
+            this.audioCodecInfoLabel.TabIndex = 14;
+            this.audioCodecInfoLabel.Text = "Codec:";
+            // 
+            // audioInfoLabel
+            // 
+            this.audioInfoLabel.AutoSize = true;
+            this.audioInfoLabel.Location = new System.Drawing.Point(6, 193);
+            this.audioInfoLabel.Name = "audioInfoLabel";
+            this.audioInfoLabel.Size = new System.Drawing.Size(34, 13);
+            this.audioInfoLabel.TabIndex = 13;
+            this.audioInfoLabel.Text = "Audio";
+            // 
+            // fpsInfoLabel
+            // 
+            this.fpsInfoLabel.AutoSize = true;
+            this.fpsInfoLabel.Location = new System.Drawing.Point(6, 172);
+            this.fpsInfoLabel.Name = "fpsInfoLabel";
+            this.fpsInfoLabel.Size = new System.Drawing.Size(65, 13);
+            this.fpsInfoLabel.TabIndex = 12;
+            this.fpsInfoLabel.Text = "Frame Rate:";
+            // 
+            // aspectInfoLabel
+            // 
+            this.aspectInfoLabel.AutoSize = true;
+            this.aspectInfoLabel.Location = new System.Drawing.Point(6, 151);
+            this.aspectInfoLabel.Name = "aspectInfoLabel";
+            this.aspectInfoLabel.Size = new System.Drawing.Size(71, 13);
+            this.aspectInfoLabel.TabIndex = 11;
+            this.aspectInfoLabel.Text = "Aspect Ratio:";
+            // 
+            // resInfoLabel
+            // 
+            this.resInfoLabel.AutoSize = true;
+            this.resInfoLabel.Location = new System.Drawing.Point(6, 130);
+            this.resInfoLabel.Name = "resInfoLabel";
+            this.resInfoLabel.Size = new System.Drawing.Size(60, 13);
+            this.resInfoLabel.TabIndex = 10;
+            this.resInfoLabel.Text = "Resolution:";
+            // 
+            // videoCodecInfoLabel
+            // 
+            this.videoCodecInfoLabel.AutoSize = true;
+            this.videoCodecInfoLabel.Location = new System.Drawing.Point(6, 109);
+            this.videoCodecInfoLabel.Name = "videoCodecInfoLabel";
+            this.videoCodecInfoLabel.Size = new System.Drawing.Size(41, 13);
+            this.videoCodecInfoLabel.TabIndex = 9;
+            this.videoCodecInfoLabel.Text = "Codec:";
+            // 
+            // videoInfoLabel
+            // 
+            this.videoInfoLabel.AutoSize = true;
+            this.videoInfoLabel.Location = new System.Drawing.Point(6, 88);
+            this.videoInfoLabel.Name = "videoInfoLabel";
+            this.videoInfoLabel.Size = new System.Drawing.Size(34, 13);
+            this.videoInfoLabel.TabIndex = 8;
+            this.videoInfoLabel.Text = "Video";
+            // 
+            // formatInfoLabel
+            // 
+            this.formatInfoLabel.AutoSize = true;
+            this.formatInfoLabel.Location = new System.Drawing.Point(6, 67);
+            this.formatInfoLabel.Name = "formatInfoLabel";
+            this.formatInfoLabel.Size = new System.Drawing.Size(42, 13);
+            this.formatInfoLabel.TabIndex = 7;
+            this.formatInfoLabel.Text = "Format:";
             // 
             // containerComboBox
             // 
@@ -242,7 +355,7 @@
             "WAV",
             "AIFF",
             "AMR"});
-            this.containerComboBox.Location = new System.Drawing.Point(9, 71);
+            this.containerComboBox.Location = new System.Drawing.Point(9, 302);
             this.containerComboBox.Name = "containerComboBox";
             this.containerComboBox.Size = new System.Drawing.Size(550, 21);
             this.containerComboBox.TabIndex = 4;
@@ -721,6 +834,7 @@
             // 
             // audioTab
             // 
+            this.audioTab.Controls.Add(this.audioKhzLabel);
             this.audioTab.Controls.Add(this.sampleComboBox);
             this.audioTab.Controls.Add(this.sampleLabel);
             this.audioTab.Controls.Add(this.channelsComboBox);
@@ -1137,6 +1251,18 @@
             this.outputTab.Text = "Output";
             this.outputTab.UseVisualStyleBackColor = true;
             // 
+            // twoPassCheckBox
+            // 
+            this.twoPassCheckBox.AutoSize = true;
+            this.twoPassCheckBox.Enabled = false;
+            this.twoPassCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.twoPassCheckBox.Location = new System.Drawing.Point(10, 44);
+            this.twoPassCheckBox.Name = "twoPassCheckBox";
+            this.twoPassCheckBox.Size = new System.Drawing.Size(134, 18);
+            this.twoPassCheckBox.TabIndex = 2;
+            this.twoPassCheckBox.Text = "Use 2 Pass Encoding";
+            this.twoPassCheckBox.UseVisualStyleBackColor = true;
+            // 
             // outputButton
             // 
             this.outputButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1183,24 +1309,31 @@
             this.outputFileDialog.OverwritePrompt = false;
             this.outputFileDialog.RestoreDirectory = true;
             // 
-            // twoPassCheckBox
+            // audioKhzLabel
             // 
-            this.twoPassCheckBox.AutoSize = true;
-            this.twoPassCheckBox.Enabled = false;
-            this.twoPassCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.twoPassCheckBox.Location = new System.Drawing.Point(10, 44);
-            this.twoPassCheckBox.Name = "twoPassCheckBox";
-            this.twoPassCheckBox.Size = new System.Drawing.Size(134, 18);
-            this.twoPassCheckBox.TabIndex = 2;
-            this.twoPassCheckBox.Text = "Use 2 Pass Encoding";
-            this.twoPassCheckBox.UseVisualStyleBackColor = true;
+            this.audioKhzLabel.AutoSize = true;
+            this.audioKhzLabel.Location = new System.Drawing.Point(213, 200);
+            this.audioKhzLabel.Name = "audioKhzLabel";
+            this.audioKhzLabel.Size = new System.Drawing.Size(27, 13);
+            this.audioKhzLabel.TabIndex = 17;
+            this.audioKhzLabel.Text = "KHz";
+            // 
+            // infoSeperator
+            // 
+            this.infoSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.infoSeperator.Label = "Input File Information";
+            this.infoSeperator.Location = new System.Drawing.Point(6, 47);
+            this.infoSeperator.Name = "infoSeperator";
+            this.infoSeperator.Size = new System.Drawing.Size(553, 15);
+            this.infoSeperator.TabIndex = 6;
             // 
             // formatSeperator
             // 
             this.formatSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.formatSeperator.Label = "File Format";
-            this.formatSeperator.Location = new System.Drawing.Point(6, 47);
+            this.formatSeperator.Label = "Output File Format";
+            this.formatSeperator.Location = new System.Drawing.Point(6, 278);
             this.formatSeperator.Name = "formatSeperator";
             this.formatSeperator.Size = new System.Drawing.Size(553, 15);
             this.formatSeperator.TabIndex = 5;
@@ -1432,6 +1565,18 @@
         private System.Windows.Forms.Label deblockingLabel;
         private System.Windows.Forms.ComboBox deblockingComboBox;
         private System.Windows.Forms.CheckBox twoPassCheckBox;
+        private Seperator infoSeperator;
+        private System.Windows.Forms.Label videoInfoLabel;
+        private System.Windows.Forms.Label formatInfoLabel;
+        private System.Windows.Forms.Label audioInfoLabel;
+        private System.Windows.Forms.Label fpsInfoLabel;
+        private System.Windows.Forms.Label aspectInfoLabel;
+        private System.Windows.Forms.Label resInfoLabel;
+        private System.Windows.Forms.Label videoCodecInfoLabel;
+        private System.Windows.Forms.Label sampleInfoLabel;
+        private System.Windows.Forms.Label channelsInfoLabel;
+        private System.Windows.Forms.Label audioCodecInfoLabel;
+        private System.Windows.Forms.Label audioKhzLabel;
     }
 }
 

@@ -5,6 +5,7 @@
 [NEW] Added interlaced video output option
 [NEW] Advanced options for VP8
 [NEW] Added 2 pass encoding
+[NEW] Displays information about the input file
 [FIXED] Encodes fail when set to CBR, or VBR with a minimum bitrate specified
 [FIXED] Encodes fail when H.264 Advanced Options are set
 [FIXED] Advanced Options button no longer enables itself when it shouldn't be

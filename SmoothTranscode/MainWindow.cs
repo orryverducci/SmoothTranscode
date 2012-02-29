@@ -38,6 +38,7 @@ namespace SmoothTranscode
         private string Arguments;
         X264Window advancedX264Window = new X264Window();
         VP8Window advancedVP8Window = new VP8Window();
+        ffprobe ffmpegInfo = new ffprobe();
 
         public MainWindow()
         {
@@ -56,6 +57,11 @@ namespace SmoothTranscode
             scalingComboBox.SelectedIndex = 1; // Fast Bilinear
             denoiseComboBox.SelectedIndex = 0; // Off
             deblockingComboBox.SelectedIndex = 0; //Off
+            // Set bold fonts
+            videoInfoLabel.Font = new Font(videoInfoLabel.Font.FontFamily, videoInfoLabel.Font.Size, FontStyle.Bold);
+            audioInfoLabel.Font = new Font(audioInfoLabel.Font.FontFamily, audioInfoLabel.Font.Size, FontStyle.Bold);
+            // Set info event handlers
+            ffmpegInfo.infoRetrieved += new ffprobe.InfoEventHandler(UpdateInfo);
         }
 
         private void MainWindow_DragEnter(object sender, DragEventArgs e)
@@ -75,6 +81,8 @@ namespace SmoothTranscode
             foreach (string file in files)
             {
                 inputTextBox.Text = file;
+                ffmpeg.inputFile = inputTextBox.Text;
+                ffmpegInfo.GetInfo(inputTextBox.Text);
             }
         }
 
@@ -100,8 +108,26 @@ namespace SmoothTranscode
             // If file selected, place filename in the input text box
             if (inputFileDialog.ShowDialog() != DialogResult.Cancel)
             {
+                
                 inputTextBox.Text = inputFileDialog.FileName;
+                ffmpeg.inputFile = inputTextBox.Text;
+                ffmpegInfo.GetInfo(inputTextBox.Text);
             }
+        }
+
+        private void UpdateInfo(object sender, ffprobe.InfoEventArgs e)
+        {
+            BeginInvoke((MethodInvoker)delegate
+            {
+                formatInfoLabel.Text = "Format: " + e.format();
+                videoCodecInfoLabel.Text = "Codec: " + e.videoCodec();
+                resInfoLabel.Text = "Resolution: " + e.resolution();
+                aspectInfoLabel.Text = "Aspect Ratio: " + e.aspectRatio();
+                fpsInfoLabel.Text = "Frame Rate: " + e.frameRate().TrimEnd('/', '1');
+                audioCodecInfoLabel.Text = "Codec: " + e.audioCodec();
+                channelsInfoLabel.Text = "Channels: " + e.channels();
+                sampleInfoLabel.Text = "Sample Rate: " + e.sampleRate() + " KHz";
+            });
         }
 
         // Sets container to selected option and updates codec lists to valid options
@@ -577,12 +603,6 @@ namespace SmoothTranscode
                 MessageBox.Show("You need to set both the input and output file fields.", "Unable to Convert", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return; // Cancel conversion
             }
-            // Checks the input file exists
-            if (!System.IO.File.Exists(inputTextBox.Text))
-            {
-                MessageBox.Show("The input file does not exist.", "Unable to Convert", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; // Cancel conversion
-            }
             // Checks bitrate specified when set to vbr
             if (vbrRadioButton.Checked && vbrTextBox.Text == String.Empty)
             {
@@ -613,8 +633,6 @@ namespace SmoothTranscode
             // Clear any existing arguments
             Arguments = "";
             VideoFilters = String.Empty;
-            // Input tab
-            ffmpeg.inputFile = inputTextBox.Text;
             if (Format != String.Empty)
                 Arguments += "-f " + Format;
             // Video tab
