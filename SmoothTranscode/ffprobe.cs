@@ -48,7 +48,7 @@ namespace SmoothTranscode
 
         public void GetInfo(string input)
         {
-            ffprobeProcInfo.Arguments = "-print_format xml -show_streams -i \"" + input + "\"";
+            ffprobeProcInfo.Arguments = "-print_format xml -show_streams -show_format -i \"" + input + "\"";
             ffprobeProcess = new Process();
             ffprobeProcess.StartInfo = ffprobeProcInfo;
             ffprobeProcess.EnableRaisingEvents = true;
@@ -69,6 +69,21 @@ namespace SmoothTranscode
         public class InfoEventArgs : EventArgs
         {
             XDocument inputInfo = XDocument.Parse(infoXML);
+
+            public string format()
+            {
+                var codec = from node in inputInfo.Descendants("format")
+                            select (string)node.Attribute("format_long_name");
+                string result = String.Empty;
+
+                foreach (var node in codec)
+                {
+                    if (result == String.Empty)
+                        result = node;
+                }
+
+                return result;
+            }
 
             public string videoCodec()
             {
