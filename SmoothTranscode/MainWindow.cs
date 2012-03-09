@@ -728,10 +728,9 @@ namespace SmoothTranscode
             }
             else // Else disable audio recording
                 Arguments += " -an";
-            // Crop tab
+            // Crop and Pad tab
             if (cropTopUpDown.Value > 0 || cropLeftUpDown.Value > 0 || cropRightUpDown.Value > 0 || cropBottomUpDown.Value > 0)
                 addVideoFilter("crop=" + (Width - cropLeftUpDown.Value - cropRightUpDown.Value) + ":" + (Height - cropTopUpDown.Value - cropBottomUpDown.Value) + ":" + cropTopUpDown.Value + ":" + cropLeftUpDown.Value);
-            // Pad tab
             if (padTopUpDown.Value > 0)
                 Arguments += " -padtop " + padTopUpDown.Value;
             if (padLeftUpDown.Value > 0)
