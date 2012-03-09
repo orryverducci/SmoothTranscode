@@ -36,6 +36,8 @@ namespace SmoothTranscode
         private string Advanced = String.Empty;
         private string VideoFilters = String.Empty;
         private string Arguments;
+        private int Width;
+        private int Height;
         X264Window advancedX264Window = new X264Window();
         VP8Window advancedVP8Window = new VP8Window();
         ffprobe ffmpegInfo = new ffprobe();
@@ -122,11 +124,14 @@ namespace SmoothTranscode
                 formatInfoLabel.Text = "Format: " + e.format();
                 videoCodecInfoLabel.Text = "Codec: " + e.videoCodec();
                 resInfoLabel.Text = "Resolution: " + e.resolution();
+                int resIndex = e.resolution().LastIndexOf("x");
+                Width = Convert.ToInt16(e.resolution().Substring(0, resIndex));
+                Height = Convert.ToInt16(e.resolution().Substring(resIndex + 1));
                 aspectInfoLabel.Text = "Aspect Ratio: " + e.aspectRatio();
                 fpsInfoLabel.Text = "Frame Rate: " + e.frameRate().TrimEnd('/', '1');
                 audioCodecInfoLabel.Text = "Codec: " + e.audioCodec();
                 channelsInfoLabel.Text = "Channels: " + e.channels();
-                sampleInfoLabel.Text = "Sample Rate: " + e.sampleRate() + " KHz";
+                sampleInfoLabel.Text = "Sample Rate: " + e.sampleRate() + " kHz";
             });
         }
 
@@ -724,14 +729,8 @@ namespace SmoothTranscode
             else // Else disable audio recording
                 Arguments += " -an";
             // Crop tab
-            if (cropTopUpDown.Value > 0)
-                Arguments += " -croptop " + cropTopUpDown.Value;
-            if (cropLeftUpDown.Value > 0)
-                Arguments += " -cropleft " + cropLeftUpDown.Value;
-            if (cropRightUpDown.Value > 0)
-                Arguments += " -cropright " + cropRightUpDown.Value;
-            if (cropBottomUpDown.Value > 0)
-                Arguments += " -cropbottom " + cropBottomUpDown.Value;
+            if (cropTopUpDown.Value > 0 || cropLeftUpDown.Value > 0 || cropRightUpDown.Value > 0 || cropBottomUpDown.Value > 0)
+                addVideoFilter("crop=" + (Width - cropLeftUpDown.Value - cropRightUpDown.Value) + ":" + (Height - cropTopUpDown.Value - cropBottomUpDown.Value) + ":" + cropTopUpDown.Value + ":" + cropLeftUpDown.Value);
             // Pad tab
             if (padTopUpDown.Value > 0)
                 Arguments += " -padtop " + padTopUpDown.Value;
