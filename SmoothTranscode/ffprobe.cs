@@ -118,7 +118,7 @@ namespace SmoothTranscode
                         widthStr = node;
                 }
 
-                foreach (var node in width)
+                foreach (var node in height)
                 {
                     if (heightStr == String.Empty)
                         heightStr = node;
