@@ -166,6 +166,17 @@
         KlSA8/zRh9ABIDUG+1JpAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="creditsLabel.Text" xml:space="preserve">
+    <value>Developed by:
+Orry Verducci
+
+Thanks to the developers of these external libraries used in this software:
+
+FFmpeg - Copyright © 2000-2012 the FFmpeg developers
+Windows 7 Progress Bar and LinkLabel2 - Copyright © Wyatt O'Day
+WindowsVistaRenderer - Copyright © Jose Menendez Póo
+Fugue Icons - Copyright © Yusuke Kamiyamane</value>
+  </data>
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAZAAAAAjCAYAAAC6llyjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -265,16 +276,5 @@
   </data>
   <data name="licenseLabel.Text" xml:space="preserve">
     <value>This Program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</value>
-  </data>
-  <data name="creditsLabel.Text" xml:space="preserve">
-    <value>Developed by:
-Orry Verducci
-
-Thanks to the developers of these external libraries used in this software:
-
-FFmpeg - Copyright © 2000-2012 the FFmpeg developers
-Windows 7 Progress Bar and LinkLabel2 - Copyright © Wyatt O'Day
-WindowsVistaRenderer - Copyright © Jose Menendez Póo
-Fugue Icons - Copyright © Yusuke Kamiyamane</value>
   </data>
 </root>

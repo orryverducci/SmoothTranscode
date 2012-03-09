@@ -146,6 +146,7 @@
             // 
             // aboutPage
             // 
+            this.aboutPage.BackgroundImage = global::SmoothTranscode.Properties.Resources.square_bg;
             this.aboutPage.Controls.Add(this.pictureBox1);
             this.aboutPage.Controls.Add(this.LinkLabel);
             this.aboutPage.Controls.Add(this.versionLabel);
@@ -211,6 +212,7 @@
             // creditsPage
             // 
             this.creditsPage.AutoScroll = true;
+            this.creditsPage.BackgroundImage = global::SmoothTranscode.Properties.Resources.square_bg;
             this.creditsPage.Controls.Add(this.creditsLabel);
             this.creditsPage.Location = new System.Drawing.Point(4, 22);
             this.creditsPage.Name = "creditsPage";
