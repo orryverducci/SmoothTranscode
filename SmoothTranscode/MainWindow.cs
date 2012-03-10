@@ -121,12 +121,18 @@ namespace SmoothTranscode
             {
                 formatInfoLabel.Text = "Format: " + e.format();
                 videoCodecInfoLabel.Text = "Codec: " + e.videoCodec();
-                resInfoLabel.Text = "Resolution: " + e.resolution();
+                if (e.width() != String.Empty)
+                    resInfoLabel.Text = "Resolution: " + e.width() + "x" + e.height();
+                else
+                    resInfoLabel.Text = "Resolution: ";
                 aspectInfoLabel.Text = "Aspect Ratio: " + e.aspectRatio();
                 fpsInfoLabel.Text = "Frame Rate: " + e.frameRate().TrimEnd('/', '1');
                 audioCodecInfoLabel.Text = "Codec: " + e.audioCodec();
                 channelsInfoLabel.Text = "Channels: " + e.channels();
-                sampleInfoLabel.Text = "Sample Rate: " + e.sampleRate() + " kHz";
+                if (e.sampleRate() != String.Empty)
+                    sampleInfoLabel.Text = "Sample Rate: " + e.sampleRate() + " kHz";
+                else
+                    sampleInfoLabel.Text = "Sample Rate: ";
             });
         }
 

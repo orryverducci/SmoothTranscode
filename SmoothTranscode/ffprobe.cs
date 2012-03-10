@@ -102,30 +102,36 @@ namespace SmoothTranscode
                 return result;
             }
 
-            public string resolution()
+            public string width()
             {
                 var width = from node in inputInfo.Descendants("stream")
-                            where (string)node.Attribute("codec_type") == "video"
-                            select (string)node.Attribute("width");
-                var height = from node in inputInfo.Descendants("stream")
                              where (string)node.Attribute("codec_type") == "video"
-                             select (string)node.Attribute("height");
-                string widthStr = String.Empty;
-                string heightStr = String.Empty;
+                             select (string)node.Attribute("width");
+                string result = String.Empty;
 
                 foreach (var node in width)
                 {
-                    if (widthStr == String.Empty)
-                        widthStr = node;
+                    if (result == String.Empty)
+                        result = node;
                 }
+
+                return result;
+            }
+
+            public string height()
+            {
+                var height = from node in inputInfo.Descendants("stream")
+                             where (string)node.Attribute("codec_type") == "video"
+                             select (string)node.Attribute("height");
+                string result = String.Empty;
 
                 foreach (var node in height)
                 {
-                    if (heightStr == String.Empty)
-                        heightStr = node;
+                    if (result == String.Empty)
+                        result = node;
                 }
 
-                return widthStr + "x" + heightStr;
+                return result;
             }
 
             public string aspectRatio()
