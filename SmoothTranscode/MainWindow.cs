@@ -730,15 +730,9 @@ namespace SmoothTranscode
                 Arguments += " -an";
             // Crop and Pad tab
             if (cropTopUpDown.Value > 0 || cropLeftUpDown.Value > 0 || cropRightUpDown.Value > 0 || cropBottomUpDown.Value > 0)
-                addVideoFilter("crop=" + (Width - cropLeftUpDown.Value - cropRightUpDown.Value) + ":" + (Height - cropTopUpDown.Value - cropBottomUpDown.Value) + ":" + cropTopUpDown.Value + ":" + cropLeftUpDown.Value);
-            if (padTopUpDown.Value > 0)
-                Arguments += " -padtop " + padTopUpDown.Value;
-            if (padLeftUpDown.Value > 0)
-                Arguments += " -padleft " + padLeftUpDown.Value;
-            if (padRightUpDown.Value > 0)
-                Arguments += " -padright " + padRightUpDown.Value;
-            if (padBottomUpDown.Value > 0)
-                Arguments += " -padbottom " + padBottomUpDown.Value;
+                addVideoFilter("crop=" + (Width - cropLeftUpDown.Value - cropRightUpDown.Value).ToString() + ":" + (Height - cropTopUpDown.Value - cropBottomUpDown.Value).ToString() + ":" + cropTopUpDown.Value.ToString() + ":" + cropLeftUpDown.Value.ToString());
+            if (padTopUpDown.Value > 0 || padLeftUpDown.Value > 0 || padRightUpDown.Value > 0 || padBottomUpDown.Value > 0)
+                addVideoFilter("pad=in_w+" + (padLeftUpDown.Value + padRightUpDown.Value).ToString() + ":in_h" + (padTopUpDown.Value + padBottomUpDown.Value).ToString() + ":" + padLeftUpDown.Value + ":" + padTopUpDown.Value);
             // Add Video Filters from Post Processing, Pad and Crop
             if (VideoFilters != String.Empty)
                 Arguments += " -vf \"" + VideoFilters + "\"";
