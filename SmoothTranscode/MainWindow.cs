@@ -36,8 +36,6 @@ namespace SmoothTranscode
         private string Advanced = String.Empty;
         private string VideoFilters = String.Empty;
         private string Arguments;
-        private int Width;
-        private int Height;
         X264Window advancedX264Window = new X264Window();
         VP8Window advancedVP8Window = new VP8Window();
         ffprobe ffmpegInfo = new ffprobe();
@@ -124,9 +122,6 @@ namespace SmoothTranscode
                 formatInfoLabel.Text = "Format: " + e.format();
                 videoCodecInfoLabel.Text = "Codec: " + e.videoCodec();
                 resInfoLabel.Text = "Resolution: " + e.resolution();
-                int resIndex = e.resolution().LastIndexOf("x");
-                Width = Convert.ToInt16(e.resolution().Substring(0, resIndex));
-                Height = Convert.ToInt16(e.resolution().Substring(resIndex + 1));
                 aspectInfoLabel.Text = "Aspect Ratio: " + e.aspectRatio();
                 fpsInfoLabel.Text = "Frame Rate: " + e.frameRate().TrimEnd('/', '1');
                 audioCodecInfoLabel.Text = "Codec: " + e.audioCodec();
@@ -730,9 +725,9 @@ namespace SmoothTranscode
                 Arguments += " -an";
             // Crop and Pad tab
             if (cropTopUpDown.Value > 0 || cropLeftUpDown.Value > 0 || cropRightUpDown.Value > 0 || cropBottomUpDown.Value > 0)
-                addVideoFilter("crop=" + (Width - cropLeftUpDown.Value - cropRightUpDown.Value).ToString() + ":" + (Height - cropTopUpDown.Value - cropBottomUpDown.Value).ToString() + ":" + cropLeftUpDown.Value.ToString() + ":" + cropTopUpDown.Value.ToString());
+                addVideoFilter("crop=in_w-" + (cropLeftUpDown.Value + cropRightUpDown.Value).ToString() + ":in_h-" + (cropTopUpDown.Value + cropBottomUpDown.Value).ToString() + ":" + cropLeftUpDown.Value.ToString() + ":" + cropTopUpDown.Value.ToString());
             if (padTopUpDown.Value > 0 || padLeftUpDown.Value > 0 || padRightUpDown.Value > 0 || padBottomUpDown.Value > 0)
-                addVideoFilter("pad=in_w+" + (padLeftUpDown.Value + padRightUpDown.Value).ToString() + ":in_h" + (padTopUpDown.Value + padBottomUpDown.Value).ToString() + ":" + padLeftUpDown.Value.ToString() + ":" + padTopUpDown.Value.ToString());
+                addVideoFilter("pad=in_w+" + (padLeftUpDown.Value + padRightUpDown.Value).ToString() + ":in_h+" + (padTopUpDown.Value + padBottomUpDown.Value).ToString() + ":" + padLeftUpDown.Value.ToString() + ":" + padTopUpDown.Value.ToString());
             // Add Video Filters from Post Processing, Pad and Crop
             if (VideoFilters != String.Empty)
                 Arguments += " -vf \"" + VideoFilters + "\"";
