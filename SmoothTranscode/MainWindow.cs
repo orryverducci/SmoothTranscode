@@ -125,14 +125,20 @@ namespace SmoothTranscode
                     resInfoLabel.Text = "Resolution: " + e.width() + "x" + e.height();
                 else
                     resInfoLabel.Text = "Resolution: ";
+                widthTextBox.Text = e.width();
+                heightTextBox.Text = e.height();
                 aspectInfoLabel.Text = "Aspect Ratio: " + e.aspectRatio();
+                aspectComboBox.Text = e.aspectRatio();
                 fpsInfoLabel.Text = "Frame Rate: " + e.frameRate().TrimEnd('/', '1');
+                frameRateComboBox.Text = e.frameRate().TrimEnd('/', '1');
                 audioCodecInfoLabel.Text = "Codec: " + e.audioCodec();
                 channelsInfoLabel.Text = "Channels: " + e.channels();
+                channelsComboBox.Text = e.channels();
                 if (e.sampleRate() != String.Empty)
                     sampleInfoLabel.Text = "Sample Rate: " + e.sampleRate() + " kHz";
                 else
                     sampleInfoLabel.Text = "Sample Rate: ";
+                sampleComboBox.Text = e.sampleRate();
             });
         }
 
