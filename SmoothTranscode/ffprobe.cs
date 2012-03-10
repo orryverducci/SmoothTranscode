@@ -48,6 +48,7 @@ namespace SmoothTranscode
 
         public void GetInfo(string input)
         {
+            infoXML = String.Empty;
             ffprobeProcInfo.Arguments = "-print_format xml -show_streams -show_format -i \"" + input + "\"";
             ffprobeProcess = new Process();
             ffprobeProcess.StartInfo = ffprobeProcInfo;
