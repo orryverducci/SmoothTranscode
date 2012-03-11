@@ -91,7 +91,10 @@ namespace SmoothTranscode
                 if (ffmpeg.twoPass)
                     detailsLabel.Text = "Frames per Second: " + e.FPS() + " - Current Bitrate: " + e.Bitrate() + " - Pass: " + e.Pass().ToString();
                 else
-                    detailsLabel.Text = "Frames per Second: " + e.FPS() + " - Current Bitrate: " + e.Bitrate();
+                    if (e.FPS() != String.Empty)
+                        detailsLabel.Text = "Frames per Second: " + e.FPS() + " - Current Bitrate: " + e.Bitrate();
+                    else
+                        detailsLabel.Text = "Current Bitrate: " + e.Bitrate();
             });
         }
     }
