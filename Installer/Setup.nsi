@@ -111,6 +111,8 @@ Section "SmoothTranscode" SecMain
   SetOutPath "$INSTDIR\ffmpeg"
   File "..\SmoothTranscode\Bin\Release\ffmpeg\ffmpeg-x86.exe"
   File "..\SmoothTranscode\Bin\Release\ffmpeg\ffmpeg-x64.exe"
+  File "..\SmoothTranscode\Bin\Release\ffmpeg\ffprobe-x86.exe"
+  File "..\SmoothTranscode\Bin\Release\ffmpeg\ffprobe-x64.exe"
 
   ;Create Shortcuts
   CreateShortCut "$SMPROGRAMS\SmoothTranscode.lnk" "$INSTDIR\SmoothTranscode.exe"
@@ -159,6 +161,8 @@ Section "Uninstall"
   Delete "$INSTDIR\Windows7ProgressBar.dll"
   Delete "$INSTDIR\ffmpeg\ffmpeg-x86.exe"
   Delete "$INSTDIR\ffmpeg\ffmpeg-x64.exe"
+  Delete "$INSTDIR\ffmpeg\ffprobe-x86.exe"
+  Delete "$INSTDIR\ffmpeg\ffprobe-x64.exe"
   Delete "$SMPROGRAMS\SmoothTranscode.lnk"
   Delete "$DESKTOP\SmoothTranscode.lnk"
   Delete "$INSTDIR\Uninstall.exe"
