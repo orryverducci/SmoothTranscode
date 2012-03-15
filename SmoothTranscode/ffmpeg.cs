@@ -39,6 +39,7 @@ namespace SmoothTranscode
         public event EventHandler conversionEnded;
         public delegate void ProgressEventHandler(object sender, ProgressEventArgs cmdoutput);
         public event ProgressEventHandler progressUpdate;
+        private logger logging = new logger();
 
         public ffmpeg()
         {
@@ -103,10 +104,13 @@ namespace SmoothTranscode
 
         public void ConvertFile()
         {
+            string argument;
             if (twopass)
-                ffmpegProcInfo.Arguments = "-i \"" + input + "\" -pass " + pass.ToString() + " " + arguments + " -y \"" + output + "\"";
+                argument = "-i \"" + input + "\" -pass " + pass.ToString() + " " + arguments + " -y \"" + output + "\"";
             else
-                ffmpegProcInfo.Arguments = "-i \"" + input + "\" " + arguments + " -y \"" + output + "\"";
+                argument = "-i \"" + input + "\" " + arguments + " -y \"" + output + "\"";
+            logging.log("Encoding parameters: " + argument);
+            ffmpegProcInfo.Arguments = argument;
             ffmpegProcess = new Process();
             ffmpegProcess.StartInfo = ffmpegProcInfo;
             ffmpegProcess.EnableRaisingEvents = true;
@@ -126,6 +130,7 @@ namespace SmoothTranscode
 
             if (e.Data != null)
             {
+                logging.log(e.Data);
                 if (duration != -1)
                 {
                     if (e.Data.Contains("time"))
@@ -180,6 +185,8 @@ namespace SmoothTranscode
             ffmpegProcess.Kill();
             Thread.Sleep(500);
             System.IO.File.Delete(output);
+            logging.log("Encode Cancelled");
+            logging.finishLog();
         }
 
         public class ProgressEventArgs : EventArgs
@@ -227,8 +234,11 @@ namespace SmoothTranscode
                 ConvertFile();
             }
             else
+            {
+                logging.finishLog();
                 if (conversionEnded != null)
                     conversionEnded(this, e);
+            }
         }
 
         protected virtual void ProgressUpdate(object sender, ProgressEventArgs e)

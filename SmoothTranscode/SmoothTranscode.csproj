@@ -78,6 +78,7 @@
     <Compile Include="HiddenTabsControl.Designer.cs">
       <DependentUpon>HiddenTabsControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="logger.cs" />
     <Compile Include="MenuRenderer.cs" />
     <Compile Include="AboutWindow.cs">
       <SubType>Form</SubType>
