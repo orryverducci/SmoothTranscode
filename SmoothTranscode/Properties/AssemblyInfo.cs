@@ -7,7 +7,7 @@ using System.Resources;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("SmoothTranscode")]
-[assembly: AssemblyDescription("Convert videos between different formats")]
+[assembly: AssemblyDescription("Convert video and audio files between formats")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Atomic Wasteland")]
 [assembly: AssemblyProduct("SmoothTranscode")]
@@ -33,6 +33,6 @@ using System.Resources;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.6.0.0")]
-[assembly: AssemblyFileVersion("0.6.0.0")]
+[assembly: AssemblyVersion("0.7.0.0")]
+[assembly: AssemblyFileVersion("0.7.0.0")]
 [assembly: NeutralResourcesLanguageAttribute("en-GB")]
