@@ -135,7 +135,7 @@ namespace SmoothTranscode
                 channelsInfoLabel.Text = "Channels: " + e.channels();
                 channelsComboBox.Text = e.channels();
                 if (e.sampleRate() != String.Empty)
-                    sampleInfoLabel.Text = "Sample Rate: " + e.sampleRate() + " kHz";
+                    sampleInfoLabel.Text = "Sample Rate: " + e.sampleRate() + " Hz";
                 else
                     sampleInfoLabel.Text = "Sample Rate: ";
                 sampleComboBox.Text = e.sampleRate();
