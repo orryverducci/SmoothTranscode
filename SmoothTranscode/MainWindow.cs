@@ -685,8 +685,6 @@ namespace SmoothTranscode
             else // Else disable video recording
                 Arguments += " -vn";
             // Post Processing Tab
-            if (deinterlacingComboBox.SelectedItem.ToString() == "FFmpeg Standard")
-                addVideoFilter(" -deinterlace");
             if (deinterlacingComboBox.SelectedItem.ToString() == "Yadif")
                 addVideoFilter("yadif=0:-1:0");
             else if (deinterlacingComboBox.SelectedItem.ToString() == "Yadif (Double Framerate)")

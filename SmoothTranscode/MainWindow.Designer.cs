@@ -787,7 +787,6 @@
             this.deinterlacingComboBox.FormattingEnabled = true;
             this.deinterlacingComboBox.Items.AddRange(new object[] {
             "Off",
-            "FFmpeg Standard",
             "Yadif",
             "Yadif (Double Framerate)",
             "MCDeint (Double Framerate)"});
