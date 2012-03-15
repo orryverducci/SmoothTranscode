@@ -129,8 +129,8 @@ namespace SmoothTranscode
                 heightTextBox.Text = e.height();
                 aspectInfoLabel.Text = "Aspect Ratio: " + e.aspectRatio();
                 aspectComboBox.Text = e.aspectRatio();
-                fpsInfoLabel.Text = "Frame Rate: " + e.frameRate().TrimEnd('/', '1');
-                frameRateComboBox.Text = e.frameRate().TrimEnd('/', '1');
+                fpsInfoLabel.Text = "Frame Rate: " + e.frameRate() + " frames per second";
+                frameRateComboBox.Text = e.frameRate();
                 audioCodecInfoLabel.Text = "Codec: " + e.audioCodec();
                 channelsInfoLabel.Text = "Channels: " + e.channels();
                 channelsComboBox.Text = e.channels();

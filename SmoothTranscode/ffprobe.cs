@@ -155,15 +155,19 @@ namespace SmoothTranscode
                 var rate = from node in inputInfo.Descendants("stream")
                            where (string)node.Attribute("codec_type") == "video"
                            select (string)node.Attribute("r_frame_rate");
-                string result = String.Empty;
+                string resultString = String.Empty;
+                float result;
 
                 foreach (var node in rate)
                 {
-                    if (result == String.Empty)
-                        result = node;
+                    if (resultString == String.Empty)
+                        resultString = node;
                 }
 
-                return result;
+                string[] values = resultString.Split('/');
+                result = Convert.ToSingle(values[0]) / Convert.ToSingle(values[1]);
+
+                return result.ToString();
             }
 
             public string audioCodec()

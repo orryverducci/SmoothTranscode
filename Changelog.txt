@@ -1,3 +1,7 @@
+0.8
+---
+[FIXED] Now properly displays frame rates with decimals
+
 0.6
 ---
 [NEW] Post processing options (deinterlacing, denoise, scaling)
