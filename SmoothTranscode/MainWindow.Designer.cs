@@ -993,6 +993,7 @@
             this.audioComboBox.Name = "audioComboBox";
             this.audioComboBox.Size = new System.Drawing.Size(508, 21);
             this.audioComboBox.TabIndex = 1;
+            this.audioComboBox.SelectedIndexChanged += new System.EventHandler(this.audioComboBox_SelectedIndexChanged);
             // 
             // cropPadTab
             // 

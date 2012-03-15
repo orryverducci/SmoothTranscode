@@ -4,6 +4,7 @@
 [FIXED] Now properly displays frame rates with decimals
 [FIXED] Crash on opening file with invalid characters contained in metadata
 [FIXED] Changed references to sample rate units from kHz to Hz
+[FIXED] Audio codec option now works
 
 0.6
 ---
