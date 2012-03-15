@@ -1,6 +1,7 @@
 0.8
 ---
 [FIXED] Now properly displays frame rates with decimals
+[FIXED] Crash on opening file with invalid characters contained in metadata
 
 0.6
 ---

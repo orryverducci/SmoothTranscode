@@ -67,10 +67,31 @@ namespace SmoothTranscode
             }
         }
 
+        private static string StripNonValidXMLCharacters(string textIn)
+        {
+            StringBuilder textOut = new StringBuilder();
+            char current;
+
+            if (textIn == null || textIn == string.Empty)
+                return string.Empty;
+
+            for (int i = 0; i < textIn.Length; i++)
+            {
+                current = textIn[i];
+
+                if ((current == 0x9 || current == 0xA || current == 0xD) || ((current >= 0x20) && (current <= 0xD7FF)) || ((current >= 0xE000) && (current <= 0xFFFD)))
+                {
+                    textOut.Append(current);
+                }
+            }
+
+            return textOut.ToString();
+        } 
+
         public class InfoEventArgs : EventArgs
         {
-            XDocument inputInfo = XDocument.Parse(infoXML);
-
+            XDocument inputInfo = XDocument.Parse(StripNonValidXMLCharacters(infoXML));
+            
             public string format()
             {
                 var codec = from node in inputInfo.Descendants("format")
