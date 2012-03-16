@@ -36,6 +36,7 @@ namespace SmoothTranscode
         private string Advanced = String.Empty;
         private string VideoFilters = String.Empty;
         private string Arguments;
+        private string fps;
         X264Window advancedX264Window = new X264Window();
         VP8Window advancedVP8Window = new VP8Window();
         ffprobe ffmpegInfo = new ffprobe();
@@ -130,6 +131,7 @@ namespace SmoothTranscode
                 aspectInfoLabel.Text = "Aspect Ratio: " + e.aspectRatio();
                 aspectComboBox.Text = e.aspectRatio();
                 fpsInfoLabel.Text = "Frame Rate: " + e.frameRate() + " frames per second";
+                fps = e.frameRate();
                 frameRateComboBox.Text = e.frameRate();
                 audioCodecInfoLabel.Text = "Codec: " + e.audioCodec();
                 channelsInfoLabel.Text = "Channels: " + e.channels();
@@ -670,7 +672,7 @@ namespace SmoothTranscode
                 if (cbrRadioButton.Checked)
                 {
                     Arguments += " -b:v " + cbrTextBox.Text + "k";
-                    Arguments += " -bufsize 100k";
+                    Arguments += " -bufsize " + (Convert.ToInt16(cbrTextBox.Text) / Convert.ToInt16(fps)).ToString() + "k";
                     Arguments += " -minrate " + cbrTextBox.Text + "k";
                     Arguments += " -maxrate " + cbrTextBox.Text + "k";
                 }
