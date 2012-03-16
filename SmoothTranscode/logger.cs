@@ -29,7 +29,8 @@ namespace SmoothTranscode
 
         public logger()
         {
-            logFile = new System.IO.StreamWriter("encode.log");
+            string appDataFolder = Environment.GetEnvironmentVariable("LocalAppData");
+            logFile = new System.IO.StreamWriter(appDataFolder + "\\SmoothTranscode\\encode.log");
             log("Version: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString().Remove(3));
             if (IntPtr.Size == 8) //If running on 64-bit system
                 log("Architecture: 64 bit");
