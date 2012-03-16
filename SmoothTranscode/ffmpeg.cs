@@ -185,7 +185,6 @@ namespace SmoothTranscode
             ffmpegProcess.Kill();
             Thread.Sleep(500);
             System.IO.File.Delete(output);
-            logging.log("Encode Cancelled");
             logging.finishLog();
         }
 
