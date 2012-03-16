@@ -1,10 +1,12 @@
 0.8
 ---
 [NEW] Output logging for support use
+[UPDATED] FFmpeg Standard Deinterlace removed (now considered deprecated)
 [FIXED] Now properly displays frame rates with decimals
 [FIXED] Crash on opening file with invalid characters contained in metadata
 [FIXED] Changed references to sample rate units from kHz to Hz
 [FIXED] Audio codec option now works
+[FIXED] 2 pass encoding checkbox no longer incorrectly enables itself when video is enabled
 
 0.6
 ---

@@ -338,6 +338,8 @@ namespace SmoothTranscode
                 frameRateLabel.Enabled = true;
                 frameRateComboBox.Enabled = true;
                 interlaceCheckBox.Enabled = true;
+                if (vbrRadioButton.Checked || cbrRadioButton.Checked)
+                    twoPassCheckBox.Enabled = true;
             }
             // Otherwise disable options if video disabled
             else
@@ -358,6 +360,7 @@ namespace SmoothTranscode
                 frameRateLabel.Enabled = false;
                 frameRateComboBox.Enabled = false;
                 interlaceCheckBox.Enabled = false;
+                twoPassCheckBox.Enabled = false;
             }
         }
 
