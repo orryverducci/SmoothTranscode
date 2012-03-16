@@ -677,7 +677,7 @@ namespace SmoothTranscode
                     Arguments += " -maxrate " + cbrTextBox.Text + "k";
                 }
                 if (widthTextBox.Text != String.Empty && heightTextBox.Text != String.Empty)
-                    Arguments += " -s " + widthTextBox.Text + "x" + heightTextBox.Text;
+                    addVideoFilter("scale=" + widthTextBox.Text + ":" + heightTextBox.Text + ":-1");
                 if (aspectComboBox.Text != String.Empty)
                     Arguments += " -aspect " + aspectComboBox.Text;
                 if (frameRateComboBox.Text != String.Empty)
