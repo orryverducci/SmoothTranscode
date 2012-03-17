@@ -117,9 +117,6 @@ Section "SmoothTranscode" SecMain
   ;Create Shortcuts
   CreateShortCut "$SMPROGRAMS\SmoothTranscode.lnk" "$INSTDIR\SmoothTranscode.exe"
 
-  ;Create appdata folder
-  CreateDirectory "$LOCALAPPDATA\SmoothTranscode"
-
   ;Create uninstaller
   WriteUninstaller "$INSTDIR\Uninstall.exe"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\SmoothTranscode" "DisplayName" "SmoothTranscode"
