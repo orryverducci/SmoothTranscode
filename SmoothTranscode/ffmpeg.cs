@@ -106,7 +106,7 @@ namespace SmoothTranscode
         {
             string argument;
             if (twopass)
-                argument = "-i \"" + input + "\" -pass " + pass.ToString() + " " + arguments + " -y \"" + output + "\"";
+                argument = "-i \"" + input + "\" -pass " + pass.ToString() + " -passlogfile \"" + Environment.GetEnvironmentVariable("LocalAppData") + "\\SmoothTranscode\\ffmpeg2pass\" " + arguments + " -y \"" + output + "\"";
             else
                 argument = "-i \"" + input + "\" " + arguments + " -y \"" + output + "\"";
             logging.log("Encoding parameters: " + argument);

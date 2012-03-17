@@ -8,6 +8,7 @@
 [FIXED] Changed references to sample rate units from kHz to Hz
 [FIXED] Audio codec option now works
 [FIXED] 2 pass encoding checkbox no longer incorrectly enables itself when video is enabled
+[FIXED] 2 pass encoding fails on Windows Vista and newer
 
 0.6
 ---
