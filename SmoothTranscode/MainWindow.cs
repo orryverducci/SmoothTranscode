@@ -672,7 +672,7 @@ namespace SmoothTranscode
                 if (cbrRadioButton.Checked)
                 {
                     Arguments += " -b:v " + cbrTextBox.Text + "k";
-                    Arguments += " -bufsize 1000k";
+                    Arguments += " -bufsize " + (Convert.ToInt16(cbrTextBox.Text) / 4) + "k";
                     Arguments += " -minrate " + cbrTextBox.Text + "k";
                     Arguments += " -maxrate " + cbrTextBox.Text + "k";
                 }
