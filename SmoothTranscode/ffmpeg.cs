@@ -139,19 +139,22 @@ namespace SmoothTranscode
                         //Percentage
                         TimeSpan.TryParse(GetStringInBetween("time=", " bitrate=", e.Data), out currentTime);
                         percentage = Convert.ToInt32(currentTime.TotalSeconds);
-                        percentage = percentage * 100 / duration;
-                        if (twopass)
-                            if (pass == 1)
-                                percentage = percentage / 2;
-                            else
-                                percentage = (percentage / 2) + 50;
-                        //Frames per second
-                        fps = GetStringInBetween("fps=", " q=", e.Data).Trim();
-                        //Bitrate
-                        bitrate = GetStringInBetween("bitrate=", "its/s", e.Data).Trim();
-                        bitrate += "/s";
-                        //Update progress
-                        ProgressUpdate(this, new ProgressEventArgs(percentage, fps, bitrate, pass));
+                        if (percentage != 0)
+                        {
+                            percentage = percentage * 100 / duration;
+                            if (twopass)
+                                if (pass == 1)
+                                    percentage = percentage / 2;
+                                else
+                                    percentage = (percentage / 2) + 50;
+                            //Frames per second
+                            fps = GetStringInBetween("fps=", " q=", e.Data).Trim();
+                            //Bitrate
+                            bitrate = GetStringInBetween("bitrate=", "its/s", e.Data).Trim();
+                            bitrate += "/s";
+                            //Update progress
+                            ProgressUpdate(this, new ProgressEventArgs(percentage, fps, bitrate, pass));
+                        }
                     }
                 }
                 else
