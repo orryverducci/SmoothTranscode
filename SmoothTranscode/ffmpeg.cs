@@ -36,6 +36,7 @@ namespace SmoothTranscode
         private static string output;
         private int duration = -1;
         private int pass = 1;
+        private bool cancelled = false;
         public event EventHandler conversionEnded;
         public delegate void ProgressEventHandler(object sender, ProgressEventArgs cmdoutput);
         public event ProgressEventHandler progressUpdate;
@@ -182,6 +183,7 @@ namespace SmoothTranscode
 		
         public void CancelConversion()
         {
+            cancelled = true;
             ffmpegProcess.Kill();
             Thread.Sleep(500);
             System.IO.File.Delete(output);
@@ -227,7 +229,7 @@ namespace SmoothTranscode
         protected virtual void FfmpegProcessExited(object sender, EventArgs e)
         {
             ffmpegProcess.CancelErrorRead();
-            if (twopass && pass == 1)
+            if (twopass && pass == 1 && !cancelled)
             {
                 pass = 2;
                 ConvertFile();
