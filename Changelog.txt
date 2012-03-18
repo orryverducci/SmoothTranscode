@@ -3,6 +3,7 @@
 [NEW] Output logging for support use
 [UPDATED] FFmpeg Standard Deinterlace removed (now considered deprecated)
 [UPDATED] Tweaks to CBR buffer encoding parameters
+[UPDATED] Audio bitrate options now disabled for lossless codecs
 [FIXED] Now properly displays frame rates with decimals
 [FIXED] Crash on opening file with invalid characters contained in metadata
 [FIXED] Changed references to sample rate units from kHz to Hz

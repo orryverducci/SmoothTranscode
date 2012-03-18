@@ -549,35 +549,80 @@ namespace SmoothTranscode
         private void audioComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (audioComboBox.SelectedItem.ToString() == "MP3")
+            {
                 Audio = "libmp3lame";
+                audioBitratePanel.Enabled = true;
+            }
             else if (audioComboBox.SelectedItem.ToString() == "MP2")
+            {
                 Audio = "mp2";
+                audioBitratePanel.Enabled = true;
+            }
             else if (audioComboBox.SelectedItem.ToString() == "AAC")
+            {
                 Audio = "aac -strict experimental";
+                audioBitratePanel.Enabled = true;
+            }
             else if (audioComboBox.SelectedItem.ToString() == "AC3")
+            {
                 Audio = "ac3";
+                audioBitratePanel.Enabled = true;
+            }
             else if (audioComboBox.SelectedItem.ToString() == "E-AC3")
+            {
                 Audio = "eac3";
+                audioBitratePanel.Enabled = true;
+            }
             else if (audioComboBox.SelectedItem.ToString() == "Ogg Vorbis")
+            {
                 Audio = "vorbis";
+                audioBitratePanel.Enabled = true;
+            }
             else if (audioComboBox.SelectedItem.ToString() == "Windows Media Audio Version 2")
+            {
                 Audio = "wmav2";
+                audioBitratePanel.Enabled = true;
+            }
             else if (audioComboBox.SelectedItem.ToString() == "Windows Media Audio Version 1")
+            {
                 Audio = "wmav1";
+                audioBitratePanel.Enabled = true;
+            }
             else if (audioComboBox.SelectedItem.ToString() == "Real Audio Version 1")
+            {
                 Audio = "real_114";
+                audioBitratePanel.Enabled = true;
+            }
             else if (audioComboBox.SelectedItem.ToString() == "FLAC")
+            {
                 Audio = "flac";
+                audioBitratePanel.Enabled = false;
+            }
             else if (audioComboBox.SelectedItem.ToString() == "Apple Lossless Audio Codec")
+            {
                 Audio = "alac";
+                audioBitratePanel.Enabled = false;
+            }
             else if (audioComboBox.SelectedItem.ToString() == "Nellymoser")
+            {
                 Audio = "nellymoser";
+                audioBitratePanel.Enabled = true;
+            }
             else if (audioComboBox.SelectedItem.ToString() == "PCM 16bit")
+            {
                 Audio = "pcm_s16le";
+                audioBitratePanel.Enabled = false;
+            }
             else if (audioComboBox.SelectedItem.ToString() == "PCM 24bit")
+            {
                 Audio = "pcm_s24le";
+                audioBitratePanel.Enabled = false;
+            }
             else if (audioComboBox.SelectedItem.ToString() == "PCM 32bit")
+            {
                 Audio = "pcm_s32le";
+                audioBitratePanel.Enabled = false;
+            }
         }
 
         // Disable set quality option if constant bitrate is selected
@@ -723,12 +768,12 @@ namespace SmoothTranscode
                     Arguments += " -acodec " + Audio;
                 if (channelsComboBox.Text != String.Empty)
                     Arguments += " -ac " + channelsComboBox.Text;
-                if (audioBitrateRadioButton.Checked)
+                if (audioBitrateRadioButton.Checked && audioBitratePanel.Enabled)
                 {
                     if (audioBitrateTextBox.Text != String.Empty)
                         Arguments += " -b:a " + audioBitrateTextBox.Text + "k";
                 }
-                if (audioQualRadioButton.Checked)
+                if (audioQualRadioButton.Checked && audioBitratePanel.Enabled)
                 {
                     if (audioQualTextBox.Text != String.Empty)
                         Arguments += " -aq " + audioQualTextBox.Text;
