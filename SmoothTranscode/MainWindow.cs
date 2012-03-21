@@ -730,8 +730,10 @@ namespace SmoothTranscode
                     Arguments += " -aspect " + aspectComboBox.Text;
                 if (frameRateComboBox.Text != String.Empty)
                     Arguments += " -r " + frameRateComboBox.Text;
-                if (interlaceCheckBox.Checked == true)
+                if (interlaceCheckBox.Checked)
                     Arguments += " -flags +ilme+ildct";
+                if ((Convert.ToSingle(frameRateComboBox.Text) == (Convert.ToSingle(fps) / 2)) && interlaceCheckBox.Checked)
+                    addVideoFilter("tinterlace=4");
                 if (Advanced != String.Empty)
                     Arguments += " " + Advanced;
             }
