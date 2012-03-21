@@ -314,6 +314,9 @@ namespace SmoothTranscode
                 audioComboBox.Items.Clear();
                 audioComboBox.Items.AddRange(new string[] { "PCM 16bit", "PCM 24bit", "PCM 32bit" });
             }
+            if (videoComboBox.Items.Count > 0)
+                videoComboBox.SelectedIndex = 0;
+            audioComboBox.SelectedIndex = 0;
         }
         #endregion
 
