@@ -141,9 +141,17 @@ namespace SmoothTranscode
                 heightTextBox.Text = e.height();
                 aspectInfoLabel.Text = "Aspect Ratio: " + e.aspectRatio();
                 aspectComboBox.Text = e.aspectRatio();
-                fpsInfoLabel.Text = "Frame Rate: " + e.frameRate() + " frames per second";
+                if (e.frameRate() != "0")
+                {
+                    fpsInfoLabel.Text = "Frame Rate: " + e.frameRate() + " frames per second";
+                    frameRateComboBox.Text = e.frameRate();
+                }
+                else
+                {
+                    fpsInfoLabel.Text = "Frame Rate:";
+                    frameRateComboBox.Text = String.Empty;
+                }
                 fps = e.frameRate();
-                frameRateComboBox.Text = e.frameRate();
                 audioCodecInfoLabel.Text = "Codec: " + e.audioCodec();
                 if (e.audioCodec() != String.Empty)
                     audioCheckBox.Enabled = true;

@@ -185,8 +185,14 @@ namespace SmoothTranscode
                         resultString = node;
                 }
 
-                string[] values = resultString.Split('/');
-                result = Convert.ToSingle(values[0]) / Convert.ToSingle(values[1]);
+                if (resultString != String.Empty)
+                {
+                    string[] values = resultString.Split('/');
+                    result = Convert.ToSingle(values[0]) / Convert.ToSingle(values[1]);
+                }
+                else
+                    result = 0;
+
 
                 return result.ToString();
             }
