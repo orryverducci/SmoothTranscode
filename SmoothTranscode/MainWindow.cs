@@ -152,6 +152,7 @@ namespace SmoothTranscode
             {
                 Format = "mp4";
                 outputFileDialog.Filter = "MP4 Video (*.mp4; *.m4v)|*.mp4;*.m4v|Any file|*.*";
+                videoCheckBox.Enabled = true;
                 videoComboBox.Items.Clear();
                 videoComboBox.Items.AddRange(new string[] { "H.264", "MPEG-4", "MPEG-2", "Dirac" });
                 audioComboBox.Items.Clear();
@@ -161,6 +162,7 @@ namespace SmoothTranscode
             {
                 Format = "mpeg";
                 outputFileDialog.Filter = "MPEG Video (*.mpg; *.mpeg; *.ps)|*.mpg;*.mpeg;*.ps|Any file|*.*";
+                videoCheckBox.Enabled = true;
                 videoComboBox.Items.Clear();
                 videoComboBox.Items.AddRange(new string[] { "MPEG-2", "MPEG-1" });
                 audioComboBox.Items.Clear();
@@ -170,6 +172,7 @@ namespace SmoothTranscode
             {
                 Format = "asf";
                 outputFileDialog.Filter = "Windows Media (*.wmv; *.wma; *.asf)|*.wmv;*.wma;*.asf|Any file|*.*";
+                videoCheckBox.Enabled = true;
                 videoComboBox.Items.Clear();
                 videoComboBox.Items.AddRange(new string[] { "Windows Media Video 8", "Windows Media Video 7", "MPEG-2" });
                 audioComboBox.Items.Clear();
@@ -179,6 +182,7 @@ namespace SmoothTranscode
             {
                 Format = "flv";
                 outputFileDialog.Filter = "Flash Video (*.flv)|*.flv|Any file|*.*";
+                videoCheckBox.Enabled = true;
                 videoComboBox.Items.Clear();
                 videoComboBox.Items.AddRange(new string[] { "H.264", "Flash Video (Sorenson Spark)" });
                 audioComboBox.Items.Clear();
@@ -188,6 +192,7 @@ namespace SmoothTranscode
             {
                 Format = "webm";
                 outputFileDialog.Filter = "WebM (*.webm)|*.webm|Any file|*.*";
+                videoCheckBox.Enabled = true;
                 videoComboBox.Items.Clear();
                 videoComboBox.Items.AddRange(new string[] { "VP8" });
                 audioComboBox.Items.Clear();
@@ -197,6 +202,7 @@ namespace SmoothTranscode
             {
                 Format = "matroska";
                 outputFileDialog.Filter = "Matroska (*.mkv; *.mka)|*.mkv;*.mka|Any file|*.*";
+                videoCheckBox.Enabled = true;
                 videoComboBox.Items.Clear();
                 videoComboBox.Items.AddRange(new string[] { "H.264", "MPEG-4", "MPEG-2", "XviD", "VP8", "Ogg Theora", "Dirac" });
                 audioComboBox.Items.Clear();
@@ -206,6 +212,7 @@ namespace SmoothTranscode
             {
                 Format = "ogg";
                 outputFileDialog.Filter = "Ogg (*.ogg; *.ogv; *.oga)|*.ogg;*.ogv;*.oga|Any file|*.*";
+                videoCheckBox.Enabled = true;
                 videoComboBox.Items.Clear();
                 videoComboBox.Items.AddRange(new string[] { "Ogg Theora", "Dirac" });
                 audioComboBox.Items.Clear();
@@ -215,6 +222,7 @@ namespace SmoothTranscode
             {
                 Format = "avi";
                 outputFileDialog.Filter = "AVI (*.avi)|*.avi|Any file|*.*";
+                videoCheckBox.Enabled = true;
                 videoComboBox.Items.Clear();
                 videoComboBox.Items.AddRange(new string[] { "XviD", "H.264", "MPEG-4", "MPEG-2", "Dirac" });
                 audioComboBox.Items.Clear();
@@ -224,6 +232,7 @@ namespace SmoothTranscode
             {
                 Format = "rm";
                 outputFileDialog.Filter = "Real Media (*.rm; *.rv; *.ra)|*.rm;*.rv;*.ra|Any file|*.*";
+                videoCheckBox.Enabled = true;
                 videoComboBox.Items.Clear();
                 videoComboBox.Items.AddRange(new string[] { "Real Video 2.0", "Real Video 1.0" });
                 audioComboBox.Items.Clear();
@@ -233,6 +242,7 @@ namespace SmoothTranscode
             {
                 Format = "mov";
                 outputFileDialog.Filter = "Quicktime Video (*.mov)|*.mov|Any file|*.*";
+                videoCheckBox.Enabled = true;
                 videoComboBox.Items.Clear();
                 videoComboBox.Items.AddRange(new string[] { "H.264" });
                 audioComboBox.Items.Clear();
@@ -242,6 +252,7 @@ namespace SmoothTranscode
             {
                 Format = "dvd";
                 outputFileDialog.Filter = "DVD VOB (*.vob)|*.vob|Any file|*.*";
+                videoCheckBox.Enabled = true;
                 videoComboBox.Items.Clear();
                 videoComboBox.Items.AddRange(new string[] { "MPEG-2" });
                 audioComboBox.Items.Clear();
@@ -251,6 +262,7 @@ namespace SmoothTranscode
             {
                 Format = "dv";
                 outputFileDialog.Filter = "DV Video (*.dv)|*.dv|Any file|*.*";
+                videoCheckBox.Enabled = true;
                 videoComboBox.Items.Clear();
                 videoComboBox.Items.AddRange(new string[] { "DV Video" });
                 audioComboBox.Items.Clear();
@@ -260,6 +272,7 @@ namespace SmoothTranscode
             {
                 Format = "3gp";
                 outputFileDialog.Filter = "Mobile Video (*.3gp)|*.3gp|Any file|*.*";
+                videoCheckBox.Enabled = true;
                 videoComboBox.Items.Clear();
                 videoComboBox.Items.AddRange(new string[] { "H.264", "H.263" });
                 audioComboBox.Items.Clear();
@@ -269,6 +282,7 @@ namespace SmoothTranscode
             {
                 Format = "mxf";
                 outputFileDialog.Filter = "Material eXchange Format (*.mxf)|*.mxf|Any file|*.*";
+                videoCheckBox.Enabled = true;
                 videoComboBox.Items.Clear();
                 videoComboBox.Items.AddRange(new string[] { "H.264", "MPEG-4", "MPEG-2", "DV Video", "Dirac", "AVID DNxHD" });
                 audioComboBox.Items.Clear();
@@ -278,6 +292,7 @@ namespace SmoothTranscode
             {
                 Format = "mp3";
                 outputFileDialog.Filter = "MP3 Audio (*.mp3)|*.mp3|Any file|*.*";
+                videoCheckBox.Enabled = false;
                 videoComboBox.Items.Clear();
                 audioComboBox.Items.Clear();
                 audioComboBox.Items.AddRange(new string[] { "MP3" });
@@ -286,6 +301,7 @@ namespace SmoothTranscode
             {
                 Format = "mp2";
                 outputFileDialog.Filter = "MP2 Audio (*.mp2)|*.mp2|Any file|*.*";
+                videoCheckBox.Enabled = false;
                 videoComboBox.Items.Clear();
                 audioComboBox.Items.Clear();
                 audioComboBox.Items.AddRange(new string[] { "MP2" });
@@ -294,6 +310,7 @@ namespace SmoothTranscode
             {
                 Format = "mp3";
                 outputFileDialog.Filter = "AAC Audio (*.m4a; *.aac)|*.m4a;*.aac|Any file|*.*";
+                videoCheckBox.Enabled = false;
                 videoComboBox.Items.Clear();
                 audioComboBox.Items.Clear();
                 audioComboBox.Items.AddRange(new string[] { "AAC" });
@@ -302,6 +319,7 @@ namespace SmoothTranscode
             {
                 Format = "flac";
                 outputFileDialog.Filter = "FLAC Audio (*.flac)|*.flac|Any file|*.*";
+                videoCheckBox.Enabled = false;
                 videoComboBox.Items.Clear();
                 audioComboBox.Items.Clear();
                 audioComboBox.Items.AddRange(new string[] { "FLAC" });
@@ -310,6 +328,7 @@ namespace SmoothTranscode
             {
                 Format = "wav";
                 outputFileDialog.Filter = "WAV Audio (*.wav)|*.wav|Any file|*.*";
+                videoCheckBox.Enabled = false;
                 videoComboBox.Items.Clear();
                 audioComboBox.Items.Clear();
                 audioComboBox.Items.AddRange(new string[] { "PCM 16bit", "PCM 24bit", "PCM 32bit" });
@@ -701,7 +720,7 @@ namespace SmoothTranscode
             if (Format != String.Empty)
                 Arguments += "-f " + Format;
             // Video tab
-            if (videoCheckBox.Checked) // If video enabled
+            if (videoCheckBox.Enabled && videoCheckBox.Checked) // If video enabled
             {
                 if (Video != String.Empty)
                     Arguments += " -vcodec " + Video;
