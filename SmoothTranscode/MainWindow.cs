@@ -853,13 +853,15 @@ namespace SmoothTranscode
                 Arguments += " -vf \"" + VideoFilters + "\"";
             // Meta data tab
             if (titleTextBox.Text != String.Empty)
-                Arguments += " -title " + "\"" + titleTextBox.Text + "\"";
+                Arguments += " -metadata title=\"" + titleTextBox.Text + "\"";
             if (authorTextBox.Text != String.Empty)
-                Arguments += " -author " + "\"" + authorTextBox.Text + "\"";
+                Arguments += " -metadata author=\"" + authorTextBox.Text + "\"";
+            if (authorTextBox.Text != String.Empty)
+                Arguments += " -metadata album=\"" + albumTextBox.Text + "\"";
             if (copyrightTextBox.Text != String.Empty)
-                Arguments += " -copyright " + "\"" + copyrightTextBox.Text + "\"";
+                Arguments += " -metadata copyright=\"" + copyrightTextBox.Text + "\"";
             if (commentTextBox.Text != String.Empty)
-                Arguments += " -comment " + "\"" + commentTextBox.Text + "\"";
+                Arguments += " -metadata comment=\"" + commentTextBox.Text + "\"";
             //Output tab
             ffmpeg.outputFile = outputTextBox.Text;
             if (twoPassCheckBox.Enabled && twoPassCheckBox.Checked)

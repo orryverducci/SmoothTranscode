@@ -129,6 +129,7 @@
             this.inputFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.helpButton = new System.Windows.Forms.Button();
             this.outputFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.albumTextBox = new System.Windows.Forms.TextBox();
             this.infoSeperator = new SmoothTranscode.Seperator();
             this.formatSeperator = new SmoothTranscode.Seperator();
             this.resolutionSeperator = new SmoothTranscode.Seperator();
@@ -136,6 +137,7 @@
             this.channelsSeperator = new SmoothTranscode.Seperator();
             this.padSeperator = new SmoothTranscode.Seperator();
             this.cropSeperator = new SmoothTranscode.Seperator();
+            this.albumSeperator = new SmoothTranscode.Seperator();
             this.commentSeperator = new SmoothTranscode.Seperator();
             this.copyrightSeperator = new SmoothTranscode.Seperator();
             this.authorSeperator = new SmoothTranscode.Seperator();
@@ -1168,6 +1170,8 @@
             // 
             // metadataTab
             // 
+            this.metadataTab.Controls.Add(this.albumTextBox);
+            this.metadataTab.Controls.Add(this.albumSeperator);
             this.metadataTab.Controls.Add(this.commentSeperator);
             this.metadataTab.Controls.Add(this.commentTextBox);
             this.metadataTab.Controls.Add(this.copyrightTextBox);
@@ -1188,16 +1192,18 @@
             // 
             this.commentTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.commentTextBox.Location = new System.Drawing.Point(9, 201);
+            this.commentTextBox.Location = new System.Drawing.Point(9, 257);
+            this.commentTextBox.Multiline = true;
             this.commentTextBox.Name = "commentTextBox";
-            this.commentTextBox.Size = new System.Drawing.Size(550, 20);
+            this.commentTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.commentTextBox.Size = new System.Drawing.Size(550, 90);
             this.commentTextBox.TabIndex = 0;
             // 
             // copyrightTextBox
             // 
             this.copyrightTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.copyrightTextBox.Location = new System.Drawing.Point(9, 145);
+            this.copyrightTextBox.Location = new System.Drawing.Point(9, 201);
             this.copyrightTextBox.Name = "copyrightTextBox";
             this.copyrightTextBox.Size = new System.Drawing.Size(550, 20);
             this.copyrightTextBox.TabIndex = 0;
@@ -1291,6 +1297,15 @@
             this.outputFileDialog.OverwritePrompt = false;
             this.outputFileDialog.RestoreDirectory = true;
             // 
+            // albumTextBox
+            // 
+            this.albumTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.albumTextBox.Location = new System.Drawing.Point(9, 145);
+            this.albumTextBox.Name = "albumTextBox";
+            this.albumTextBox.Size = new System.Drawing.Size(550, 20);
+            this.albumTextBox.TabIndex = 11;
+            // 
             // infoSeperator
             // 
             this.infoSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1361,12 +1376,22 @@
             this.cropSeperator.Size = new System.Drawing.Size(553, 15);
             this.cropSeperator.TabIndex = 7;
             // 
+            // albumSeperator
+            // 
+            this.albumSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.albumSeperator.Label = "Album";
+            this.albumSeperator.Location = new System.Drawing.Point(6, 121);
+            this.albumSeperator.Name = "albumSeperator";
+            this.albumSeperator.Size = new System.Drawing.Size(553, 15);
+            this.albumSeperator.TabIndex = 10;
+            // 
             // commentSeperator
             // 
             this.commentSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.commentSeperator.Label = "Comment";
-            this.commentSeperator.Location = new System.Drawing.Point(6, 177);
+            this.commentSeperator.Location = new System.Drawing.Point(6, 233);
             this.commentSeperator.Name = "commentSeperator";
             this.commentSeperator.Size = new System.Drawing.Size(553, 15);
             this.commentSeperator.TabIndex = 9;
@@ -1376,7 +1401,7 @@
             this.copyrightSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.copyrightSeperator.Label = "Copyright";
-            this.copyrightSeperator.Location = new System.Drawing.Point(6, 121);
+            this.copyrightSeperator.Location = new System.Drawing.Point(6, 177);
             this.copyrightSeperator.Name = "copyrightSeperator";
             this.copyrightSeperator.Size = new System.Drawing.Size(553, 15);
             this.copyrightSeperator.TabIndex = 8;
@@ -1385,7 +1410,7 @@
             // 
             this.authorSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.authorSeperator.Label = "Author";
+            this.authorSeperator.Label = "Author/Artist";
             this.authorSeperator.Location = new System.Drawing.Point(6, 65);
             this.authorSeperator.Name = "authorSeperator";
             this.authorSeperator.Size = new System.Drawing.Size(553, 15);
@@ -1563,6 +1588,8 @@
         private System.Windows.Forms.NumericUpDown padBottomUpDown;
         private System.Windows.Forms.Label padTopLabel;
         private System.Windows.Forms.NumericUpDown padTopUpDown;
+        private System.Windows.Forms.TextBox albumTextBox;
+        private Seperator albumSeperator;
     }
 }
 
