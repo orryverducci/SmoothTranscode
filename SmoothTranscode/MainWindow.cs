@@ -180,6 +180,11 @@ namespace SmoothTranscode
                 videoComboBox.Items.AddRange(new string[] { "H.264", "MPEG-4", "MPEG-2", "Dirac" });
                 audioComboBox.Items.Clear();
                 audioComboBox.Items.AddRange(new string[] { "MP3", "AAC", "AC3", "E-AC3", "Apple Lossless Audio Codec" });
+                titleTextBox.Enabled = true;
+                authorTextBox.Enabled = true;
+                albumTextBox.Enabled = false;
+                copyrightTextBox.Enabled = true;
+                commentTextBox.Enabled = true;
             }
             else if (containerComboBox.SelectedItem.ToString() == "MPEG")
             {
@@ -191,6 +196,11 @@ namespace SmoothTranscode
                 videoComboBox.Items.AddRange(new string[] { "MPEG-2", "MPEG-1" });
                 audioComboBox.Items.Clear();
                 audioComboBox.Items.AddRange(new string[] { "MP3", "MP2" });
+                titleTextBox.Enabled = true;
+                authorTextBox.Enabled = true;
+                albumTextBox.Enabled = false;
+                copyrightTextBox.Enabled = true;
+                commentTextBox.Enabled = true;
             }
             else if (containerComboBox.SelectedItem.ToString() == "Windows Media")
             {
@@ -202,6 +212,11 @@ namespace SmoothTranscode
                 videoComboBox.Items.AddRange(new string[] { "Windows Media Video 8", "Windows Media Video 7", "MPEG-2" });
                 audioComboBox.Items.Clear();
                 audioComboBox.Items.AddRange(new string[] { "Windows Media Audio Version 2", "Windows Media Audio Version 1", "MP3" });
+                titleTextBox.Enabled = true;
+                authorTextBox.Enabled = true;
+                albumTextBox.Enabled = false;
+                copyrightTextBox.Enabled = true;
+                commentTextBox.Enabled = true;
             }
             else if (containerComboBox.SelectedItem.ToString() == "Flash Video")
             {
@@ -213,6 +228,11 @@ namespace SmoothTranscode
                 videoComboBox.Items.AddRange(new string[] { "H.264", "Flash Video (Sorenson Spark)" });
                 audioComboBox.Items.Clear();
                 audioComboBox.Items.AddRange(new string[] { "MP3", "AAC", "Nellymoser" });
+                titleTextBox.Enabled = true;
+                authorTextBox.Enabled = true;
+                albumTextBox.Enabled = false;
+                copyrightTextBox.Enabled = true;
+                commentTextBox.Enabled = true;
             }
             else if (containerComboBox.SelectedItem.ToString() == "WebM")
             {
@@ -224,6 +244,11 @@ namespace SmoothTranscode
                 videoComboBox.Items.AddRange(new string[] { "VP8" });
                 audioComboBox.Items.Clear();
                 audioComboBox.Items.AddRange(new string[] { "Ogg Vorbis" });
+                titleTextBox.Enabled = true;
+                authorTextBox.Enabled = true;
+                albumTextBox.Enabled = false;
+                copyrightTextBox.Enabled = true;
+                commentTextBox.Enabled = true;
             }
             else if (containerComboBox.SelectedItem.ToString() == "Matroska")
             {
@@ -235,6 +260,11 @@ namespace SmoothTranscode
                 videoComboBox.Items.AddRange(new string[] { "H.264", "MPEG-4", "MPEG-2", "XviD", "VP8", "Ogg Theora", "Dirac" });
                 audioComboBox.Items.Clear();
                 audioComboBox.Items.AddRange(new string[] { "MP3", "MP2", "AAC", "AC3", "E-AC3", "Ogg Vorbis", "FLAC" });
+                titleTextBox.Enabled = true;
+                authorTextBox.Enabled = true;
+                albumTextBox.Enabled = false;
+                copyrightTextBox.Enabled = true;
+                commentTextBox.Enabled = true;
             }
             else if (containerComboBox.SelectedItem.ToString() == "Ogg")
             {
@@ -246,6 +276,11 @@ namespace SmoothTranscode
                 videoComboBox.Items.AddRange(new string[] { "Ogg Theora", "Dirac" });
                 audioComboBox.Items.Clear();
                 audioComboBox.Items.AddRange(new string[] { "Ogg Vorbis", "FLAC" });
+                titleTextBox.Enabled = true;
+                authorTextBox.Enabled = true;
+                albumTextBox.Enabled = false;
+                copyrightTextBox.Enabled = true;
+                commentTextBox.Enabled = true;
             }
             else if (containerComboBox.SelectedItem.ToString() == "AVI")
             {
@@ -257,6 +292,11 @@ namespace SmoothTranscode
                 videoComboBox.Items.AddRange(new string[] { "XviD", "H.264", "MPEG-4", "MPEG-2", "Dirac" });
                 audioComboBox.Items.Clear();
                 audioComboBox.Items.AddRange(new string[] { "MP3", "MP2", "AAC", "AC3", "E-AC3" });
+                titleTextBox.Enabled = true;
+                authorTextBox.Enabled = true;
+                albumTextBox.Enabled = false;
+                copyrightTextBox.Enabled = true;
+                commentTextBox.Enabled = true;
             }
             else if (containerComboBox.SelectedItem.ToString() == "Real Media")
             {
@@ -268,6 +308,11 @@ namespace SmoothTranscode
                 videoComboBox.Items.AddRange(new string[] { "Real Video 2.0", "Real Video 1.0" });
                 audioComboBox.Items.Clear();
                 audioComboBox.Items.AddRange(new string[] { "Real Audio Version 1", "AAC", "Ogg Vorbis" });
+                titleTextBox.Enabled = true;
+                authorTextBox.Enabled = true;
+                albumTextBox.Enabled = false;
+                copyrightTextBox.Enabled = true;
+                commentTextBox.Enabled = true;
             }
             else if (containerComboBox.SelectedItem.ToString() == "Quicktime Video")
             {
@@ -279,6 +324,11 @@ namespace SmoothTranscode
                 videoComboBox.Items.AddRange(new string[] { "H.264" });
                 audioComboBox.Items.Clear();
                 audioComboBox.Items.AddRange(new string[] { "MP3", "AAC", "Apple Lossless Audio Codec" });
+                titleTextBox.Enabled = true;
+                authorTextBox.Enabled = true;
+                albumTextBox.Enabled = false;
+                copyrightTextBox.Enabled = true;
+                commentTextBox.Enabled = true;
             }
             else if (containerComboBox.SelectedItem.ToString() == "DVD VOB")
             {
@@ -290,6 +340,11 @@ namespace SmoothTranscode
                 videoComboBox.Items.AddRange(new string[] { "MPEG-2" });
                 audioComboBox.Items.Clear();
                 audioComboBox.Items.AddRange(new string[] { "MP2", "AC3", "E-AC3" });
+                titleTextBox.Enabled = false;
+                authorTextBox.Enabled = false;
+                albumTextBox.Enabled = false;
+                copyrightTextBox.Enabled = false;
+                commentTextBox.Enabled = false;
             }
             else if (containerComboBox.SelectedItem.ToString() == "DV Video")
             {
@@ -301,6 +356,11 @@ namespace SmoothTranscode
                 videoComboBox.Items.AddRange(new string[] { "DV Video" });
                 audioComboBox.Items.Clear();
                 audioComboBox.Items.AddRange(new string[] { "MP2" });
+                titleTextBox.Enabled = false;
+                authorTextBox.Enabled = false;
+                albumTextBox.Enabled = false;
+                copyrightTextBox.Enabled = false;
+                commentTextBox.Enabled = false;
             }
             else if (containerComboBox.SelectedItem.ToString() == "3GP")
             {
@@ -312,6 +372,11 @@ namespace SmoothTranscode
                 videoComboBox.Items.AddRange(new string[] { "H.264", "H.263" });
                 audioComboBox.Items.Clear();
                 audioComboBox.Items.AddRange(new string[] { "AAC" });
+                titleTextBox.Enabled = false;
+                authorTextBox.Enabled = false;
+                albumTextBox.Enabled = false;
+                copyrightTextBox.Enabled = false;
+                commentTextBox.Enabled = false;
             }
             else if (containerComboBox.SelectedItem.ToString() == "Material eXchange Format")
             {
@@ -323,6 +388,11 @@ namespace SmoothTranscode
                 videoComboBox.Items.AddRange(new string[] { "H.264", "MPEG-4", "MPEG-2", "DV Video", "Dirac", "AVID DNxHD" });
                 audioComboBox.Items.Clear();
                 audioComboBox.Items.AddRange(new string[] { "MP2", "AAC", "AC3", "E-AC3", "MP3" });
+                titleTextBox.Enabled = false;
+                authorTextBox.Enabled = false;
+                albumTextBox.Enabled = false;
+                copyrightTextBox.Enabled = false;
+                commentTextBox.Enabled = false;
             }
             else if (containerComboBox.SelectedItem.ToString() == "MP3")
             {
@@ -332,6 +402,11 @@ namespace SmoothTranscode
                 videoComboBox.Items.Clear();
                 audioComboBox.Items.Clear();
                 audioComboBox.Items.AddRange(new string[] { "MP3" });
+                titleTextBox.Enabled = true;
+                authorTextBox.Enabled = true;
+                albumTextBox.Enabled = true;
+                copyrightTextBox.Enabled = true;
+                commentTextBox.Enabled = true;
             }
             else if (containerComboBox.SelectedItem.ToString() == "MP2")
             {
@@ -341,6 +416,11 @@ namespace SmoothTranscode
                 videoComboBox.Items.Clear();
                 audioComboBox.Items.Clear();
                 audioComboBox.Items.AddRange(new string[] { "MP2" });
+                titleTextBox.Enabled = true;
+                authorTextBox.Enabled = true;
+                albumTextBox.Enabled = true;
+                copyrightTextBox.Enabled = true;
+                commentTextBox.Enabled = true;
             }
             else if (containerComboBox.SelectedItem.ToString() == "AAC")
             {
@@ -350,6 +430,11 @@ namespace SmoothTranscode
                 videoComboBox.Items.Clear();
                 audioComboBox.Items.Clear();
                 audioComboBox.Items.AddRange(new string[] { "AAC" });
+                titleTextBox.Enabled = true;
+                authorTextBox.Enabled = true;
+                albumTextBox.Enabled = true;
+                copyrightTextBox.Enabled = true;
+                commentTextBox.Enabled = true;
             }
             else if (containerComboBox.SelectedItem.ToString() == "FLAC")
             {
@@ -359,6 +444,11 @@ namespace SmoothTranscode
                 videoComboBox.Items.Clear();
                 audioComboBox.Items.Clear();
                 audioComboBox.Items.AddRange(new string[] { "FLAC" });
+                titleTextBox.Enabled = true;
+                authorTextBox.Enabled = true;
+                albumTextBox.Enabled = true;
+                copyrightTextBox.Enabled = true;
+                commentTextBox.Enabled = true;
             }
             else if (containerComboBox.SelectedItem.ToString() == "WAV")
             {
@@ -368,6 +458,11 @@ namespace SmoothTranscode
                 videoComboBox.Items.Clear();
                 audioComboBox.Items.Clear();
                 audioComboBox.Items.AddRange(new string[] { "PCM 16bit", "PCM 24bit", "PCM 32bit" });
+                titleTextBox.Enabled = false;
+                authorTextBox.Enabled = false;
+                albumTextBox.Enabled = false;
+                copyrightTextBox.Enabled = false;
+                commentTextBox.Enabled = false;
             }
             if (videoComboBox.Items.Count > 0)
                 videoComboBox.SelectedIndex = 0;
@@ -852,15 +947,15 @@ namespace SmoothTranscode
             if (VideoFilters != String.Empty)
                 Arguments += " -vf \"" + VideoFilters + "\"";
             // Meta data tab
-            if (titleTextBox.Text != String.Empty)
+            if (titleTextBox.Text != String.Empty && titleTextBox.Enabled)
                 Arguments += " -metadata title=\"" + titleTextBox.Text + "\"";
-            if (authorTextBox.Text != String.Empty)
+            if (authorTextBox.Text != String.Empty && authorTextBox.Enabled)
                 Arguments += " -metadata author=\"" + authorTextBox.Text + "\"";
-            if (authorTextBox.Text != String.Empty)
+            if (authorTextBox.Text != String.Empty && authorTextBox.Enabled)
                 Arguments += " -metadata album=\"" + albumTextBox.Text + "\"";
-            if (copyrightTextBox.Text != String.Empty)
+            if (copyrightTextBox.Text != String.Empty && copyrightTextBox.Enabled)
                 Arguments += " -metadata copyright=\"" + copyrightTextBox.Text + "\"";
-            if (commentTextBox.Text != String.Empty)
+            if (commentTextBox.Text != String.Empty && commentTextBox.Enabled)
                 Arguments += " -metadata comment=\"" + commentTextBox.Text + "\"";
             //Output tab
             ffmpeg.outputFile = outputTextBox.Text;
