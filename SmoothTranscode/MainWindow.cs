@@ -779,16 +779,12 @@ namespace SmoothTranscode
                     Arguments += " -minrate " + cbrTextBox.Text + "k";
                     Arguments += " -maxrate " + cbrTextBox.Text + "k";
                 }
-                if (widthTextBox.Text != String.Empty && heightTextBox.Text != String.Empty)
-                    addVideoFilter("scale=" + widthTextBox.Text + ":" + heightTextBox.Text + ":-1");
                 if (aspectComboBox.Text != String.Empty)
                     Arguments += " -aspect " + aspectComboBox.Text;
                 if (frameRateComboBox.Text != String.Empty)
                     Arguments += " -r " + frameRateComboBox.Text;
                 if (interlaceCheckBox.Checked)
                     Arguments += " -flags +ilme+ildct";
-                if ((Convert.ToSingle(frameRateComboBox.Text) == (Convert.ToSingle(fps) / 2)) && interlaceCheckBox.Checked)
-                    addVideoFilter("tinterlace=4");
                 if (Advanced != String.Empty)
                     Arguments += " " + Advanced;
             }
@@ -848,7 +844,11 @@ namespace SmoothTranscode
                 addVideoFilter("crop=in_w-" + (cropLeftUpDown.Value + cropRightUpDown.Value).ToString() + ":in_h-" + (cropTopUpDown.Value + cropBottomUpDown.Value).ToString() + ":" + cropLeftUpDown.Value.ToString() + ":" + cropTopUpDown.Value.ToString());
             if (padTopUpDown.Value > 0 || padLeftUpDown.Value > 0 || padRightUpDown.Value > 0 || padBottomUpDown.Value > 0)
                 addVideoFilter("pad=in_w+" + (padLeftUpDown.Value + padRightUpDown.Value).ToString() + ":in_h+" + (padTopUpDown.Value + padBottomUpDown.Value).ToString() + ":" + padLeftUpDown.Value.ToString() + ":" + padTopUpDown.Value.ToString());
-            // Add Video Filters from Post Processing, Pad and Crop
+            // Add Video Filters from Video, Post Processing, Pad and Crop
+            if (widthTextBox.Text != String.Empty && heightTextBox.Text != String.Empty)
+                addVideoFilter("scale=" + widthTextBox.Text + ":" + heightTextBox.Text + ":-1");
+            if ((Convert.ToSingle(frameRateComboBox.Text) == (Convert.ToSingle(fps) / 2)) && interlaceCheckBox.Checked)
+                addVideoFilter("tinterlace=4");
             if (VideoFilters != String.Empty)
                 Arguments += " -vf \"" + VideoFilters + "\"";
             // Meta data tab
