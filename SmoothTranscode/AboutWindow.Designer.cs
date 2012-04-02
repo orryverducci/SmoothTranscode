@@ -37,7 +37,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.hiddenTabsControl = new SmoothTranscode.HiddenTabsControl();
             this.aboutPage = new System.Windows.Forms.TabPage();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.LinkLabel = new wyDay.Controls.LinkLabel2();
             this.versionLabel = new System.Windows.Forms.Label();
             this.licenseLabel = new System.Windows.Forms.Label();
@@ -50,7 +50,7 @@
             this.panel1.SuspendLayout();
             this.hiddenTabsControl.SuspendLayout();
             this.aboutPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.creditsPage.SuspendLayout();
             this.licensePage.SuspendLayout();
             this.SuspendLayout();
@@ -147,7 +147,7 @@
             // aboutPage
             // 
             this.aboutPage.BackgroundImage = global::SmoothTranscode.Properties.Resources.square_bg;
-            this.aboutPage.Controls.Add(this.pictureBox1);
+            this.aboutPage.Controls.Add(this.logoPictureBox);
             this.aboutPage.Controls.Add(this.LinkLabel);
             this.aboutPage.Controls.Add(this.versionLabel);
             this.aboutPage.Controls.Add(this.licenseLabel);
@@ -160,14 +160,14 @@
             this.aboutPage.Text = "About";
             this.aboutPage.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
+            // logoPictureBox
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(44, 25);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(400, 35);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
+            this.logoPictureBox.Image = global::SmoothTranscode.Properties.Resources.Logo;
+            this.logoPictureBox.Location = new System.Drawing.Point(44, 25);
+            this.logoPictureBox.Name = "logoPictureBox";
+            this.logoPictureBox.Size = new System.Drawing.Size(400, 35);
+            this.logoPictureBox.TabIndex = 6;
+            this.logoPictureBox.TabStop = false;
             // 
             // LinkLabel
             // 
@@ -279,7 +279,7 @@
             this.hiddenTabsControl.ResumeLayout(false);
             this.aboutPage.ResumeLayout(false);
             this.aboutPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             this.creditsPage.ResumeLayout(false);
             this.creditsPage.PerformLayout();
             this.licensePage.ResumeLayout(false);
@@ -297,7 +297,7 @@
         private HiddenTabsControl hiddenTabsControl;
         private System.Windows.Forms.TabPage aboutPage;
         private System.Windows.Forms.TabPage creditsPage;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox logoPictureBox;
         private wyDay.Controls.LinkLabel2 LinkLabel;
         private System.Windows.Forms.Label versionLabel;
         private System.Windows.Forms.Label licenseLabel;

@@ -60,6 +60,13 @@ namespace SmoothTranscode.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap Logo {
+            get {
+                object obj = ResourceManager.GetObject("Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap square_bg {
             get {
                 object obj = ResourceManager.GetObject("square_bg", resourceCulture);
