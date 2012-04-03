@@ -3,6 +3,7 @@
 [NEW] Output logging for support use
 [NEW] Interlaces video when interlaced output is enabled and the frame rate is half the input
 [NEW] Ability to trim input
+[NEW] Interlace aware scaling
 [UPDATED] FFmpeg Standard Deinterlace removed (now considered deprecated)
 [UPDATED] Tweaks to CBR buffer encoding parameters
 [UPDATED] Audio bitrate options now disabled for lossless codecs
