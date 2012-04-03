@@ -117,7 +117,13 @@
             this.cropBottomUpDown = new System.Windows.Forms.NumericUpDown();
             this.cropTopLabel = new System.Windows.Forms.Label();
             this.cropTopUpDown = new System.Windows.Forms.NumericUpDown();
+            this.trimTab = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.trimStartLabel = new System.Windows.Forms.Label();
+            this.trimEndTextBox = new System.Windows.Forms.TextBox();
+            this.trimStartTextBox = new System.Windows.Forms.TextBox();
             this.metadataTab = new System.Windows.Forms.TabPage();
+            this.albumTextBox = new System.Windows.Forms.TextBox();
             this.commentTextBox = new System.Windows.Forms.TextBox();
             this.copyrightTextBox = new System.Windows.Forms.TextBox();
             this.authorTextBox = new System.Windows.Forms.TextBox();
@@ -129,7 +135,6 @@
             this.inputFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.helpButton = new System.Windows.Forms.Button();
             this.outputFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.albumTextBox = new System.Windows.Forms.TextBox();
             this.infoSeperator = new SmoothTranscode.Seperator();
             this.formatSeperator = new SmoothTranscode.Seperator();
             this.resolutionSeperator = new SmoothTranscode.Seperator();
@@ -137,6 +142,8 @@
             this.channelsSeperator = new SmoothTranscode.Seperator();
             this.padSeperator = new SmoothTranscode.Seperator();
             this.cropSeperator = new SmoothTranscode.Seperator();
+            this.timEndSeperator = new SmoothTranscode.Seperator();
+            this.trimStartSeperator = new SmoothTranscode.Seperator();
             this.albumSeperator = new SmoothTranscode.Seperator();
             this.commentSeperator = new SmoothTranscode.Seperator();
             this.copyrightSeperator = new SmoothTranscode.Seperator();
@@ -158,6 +165,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cropLeftUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cropBottomUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cropTopUpDown)).BeginInit();
+            this.trimTab.SuspendLayout();
             this.metadataTab.SuspendLayout();
             this.outputTab.SuspendLayout();
             this.SuspendLayout();
@@ -196,6 +204,7 @@
             this.mainTabs.Controls.Add(this.processingTab);
             this.mainTabs.Controls.Add(this.audioTab);
             this.mainTabs.Controls.Add(this.cropPadTab);
+            this.mainTabs.Controls.Add(this.trimTab);
             this.mainTabs.Controls.Add(this.metadataTab);
             this.mainTabs.Controls.Add(this.outputTab);
             this.mainTabs.Location = new System.Drawing.Point(9, 12);
@@ -1168,15 +1177,66 @@
             this.cropTopUpDown.Size = new System.Drawing.Size(120, 20);
             this.cropTopUpDown.TabIndex = 0;
             // 
+            // trimTab
+            // 
+            this.trimTab.Controls.Add(this.label1);
+            this.trimTab.Controls.Add(this.trimStartLabel);
+            this.trimTab.Controls.Add(this.trimEndTextBox);
+            this.trimTab.Controls.Add(this.trimStartTextBox);
+            this.trimTab.Controls.Add(this.timEndSeperator);
+            this.trimTab.Controls.Add(this.trimStartSeperator);
+            this.trimTab.Location = new System.Drawing.Point(4, 22);
+            this.trimTab.Name = "trimTab";
+            this.trimTab.Size = new System.Drawing.Size(568, 362);
+            this.trimTab.TabIndex = 9;
+            this.trimTab.Text = "Trim";
+            this.trimTab.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(513, 92);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(47, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "seconds";
+            // 
+            // trimStartLabel
+            // 
+            this.trimStartLabel.AutoSize = true;
+            this.trimStartLabel.Location = new System.Drawing.Point(513, 36);
+            this.trimStartLabel.Name = "trimStartLabel";
+            this.trimStartLabel.Size = new System.Drawing.Size(47, 13);
+            this.trimStartLabel.TabIndex = 12;
+            this.trimStartLabel.Text = "seconds";
+            // 
+            // trimEndTextBox
+            // 
+            this.trimEndTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.trimEndTextBox.Location = new System.Drawing.Point(9, 89);
+            this.trimEndTextBox.Name = "trimEndTextBox";
+            this.trimEndTextBox.Size = new System.Drawing.Size(499, 20);
+            this.trimEndTextBox.TabIndex = 9;
+            // 
+            // trimStartTextBox
+            // 
+            this.trimStartTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.trimStartTextBox.Location = new System.Drawing.Point(9, 33);
+            this.trimStartTextBox.Name = "trimStartTextBox";
+            this.trimStartTextBox.Size = new System.Drawing.Size(499, 20);
+            this.trimStartTextBox.TabIndex = 8;
+            // 
             // metadataTab
             // 
             this.metadataTab.Controls.Add(this.albumTextBox);
-            this.metadataTab.Controls.Add(this.albumSeperator);
-            this.metadataTab.Controls.Add(this.commentSeperator);
             this.metadataTab.Controls.Add(this.commentTextBox);
             this.metadataTab.Controls.Add(this.copyrightTextBox);
             this.metadataTab.Controls.Add(this.authorTextBox);
             this.metadataTab.Controls.Add(this.titleTextBox);
+            this.metadataTab.Controls.Add(this.albumSeperator);
+            this.metadataTab.Controls.Add(this.commentSeperator);
             this.metadataTab.Controls.Add(this.copyrightSeperator);
             this.metadataTab.Controls.Add(this.authorSeperator);
             this.metadataTab.Controls.Add(this.titleSeperator);
@@ -1187,6 +1247,15 @@
             this.metadataTab.TabIndex = 5;
             this.metadataTab.Text = "Meta Data";
             this.metadataTab.UseVisualStyleBackColor = true;
+            // 
+            // albumTextBox
+            // 
+            this.albumTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.albumTextBox.Location = new System.Drawing.Point(9, 145);
+            this.albumTextBox.Name = "albumTextBox";
+            this.albumTextBox.Size = new System.Drawing.Size(550, 20);
+            this.albumTextBox.TabIndex = 11;
             // 
             // commentTextBox
             // 
@@ -1297,15 +1366,6 @@
             this.outputFileDialog.OverwritePrompt = false;
             this.outputFileDialog.RestoreDirectory = true;
             // 
-            // albumTextBox
-            // 
-            this.albumTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.albumTextBox.Location = new System.Drawing.Point(9, 145);
-            this.albumTextBox.Name = "albumTextBox";
-            this.albumTextBox.Size = new System.Drawing.Size(550, 20);
-            this.albumTextBox.TabIndex = 11;
-            // 
             // infoSeperator
             // 
             this.infoSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1375,6 +1435,26 @@
             this.cropSeperator.Name = "cropSeperator";
             this.cropSeperator.Size = new System.Drawing.Size(553, 15);
             this.cropSeperator.TabIndex = 7;
+            // 
+            // timEndSeperator
+            // 
+            this.timEndSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.timEndSeperator.Label = "Finish After";
+            this.timEndSeperator.Location = new System.Drawing.Point(6, 65);
+            this.timEndSeperator.Name = "timEndSeperator";
+            this.timEndSeperator.Size = new System.Drawing.Size(553, 15);
+            this.timEndSeperator.TabIndex = 11;
+            // 
+            // trimStartSeperator
+            // 
+            this.trimStartSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.trimStartSeperator.Label = "Start At";
+            this.trimStartSeperator.Location = new System.Drawing.Point(6, 9);
+            this.trimStartSeperator.Name = "trimStartSeperator";
+            this.trimStartSeperator.Size = new System.Drawing.Size(553, 15);
+            this.trimStartSeperator.TabIndex = 10;
             // 
             // albumSeperator
             // 
@@ -1467,6 +1547,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.cropLeftUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cropBottomUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cropTopUpDown)).EndInit();
+            this.trimTab.ResumeLayout(false);
+            this.trimTab.PerformLayout();
             this.metadataTab.ResumeLayout(false);
             this.metadataTab.PerformLayout();
             this.outputTab.ResumeLayout(false);
@@ -1590,6 +1672,13 @@
         private System.Windows.Forms.NumericUpDown padTopUpDown;
         private System.Windows.Forms.TextBox albumTextBox;
         private Seperator albumSeperator;
+        private System.Windows.Forms.TabPage trimTab;
+        private System.Windows.Forms.TextBox trimEndTextBox;
+        private System.Windows.Forms.TextBox trimStartTextBox;
+        private Seperator timEndSeperator;
+        private Seperator trimStartSeperator;
+        private System.Windows.Forms.Label trimStartLabel;
+        private System.Windows.Forms.Label label1;
     }
 }
 

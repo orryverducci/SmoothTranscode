@@ -951,6 +951,11 @@ namespace SmoothTranscode
                 addVideoFilter("tinterlace=4");
             if (VideoFilters != String.Empty)
                 Arguments += " -vf \"" + VideoFilters + "\"";
+            // Trim tab
+            if (trimStartTextBox.Text != String.Empty)
+                Arguments += " -ss " + trimStartTextBox.Text;
+            if (trimEndTextBox.Text != String.Empty)
+                Arguments += " -t " + trimEndTextBox.Text;
             // Meta data tab
             if (titleTextBox.Text != String.Empty && titleTextBox.Enabled)
                 Arguments += " -metadata title=\"" + titleTextBox.Text + "\"";
