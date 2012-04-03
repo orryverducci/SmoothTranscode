@@ -244,6 +244,86 @@ namespace SmoothTranscode
 
                 return result;
             }
+
+            public string metadataTitle()
+            {
+                var title = from node in inputInfo.Descendants("tag")
+                            where (string)node.Attribute("key") == "title"
+                            select (string)node.Attribute("value");
+                string result = String.Empty;
+
+                foreach (var node in title)
+                {
+                    if (result == String.Empty)
+                        result = node;
+                }
+
+                return result;
+            }
+
+            public string metadataArtist()
+            {
+                var artist = from node in inputInfo.Descendants("tag")
+                            where (string)node.Attribute("key") == "artist"
+                            select (string)node.Attribute("value");
+                string result = String.Empty;
+
+                foreach (var node in artist)
+                {
+                    if (result == String.Empty)
+                        result = node;
+                }
+
+                return result;
+            }
+
+            public string metadataAlbum()
+            {
+                var album = from node in inputInfo.Descendants("tag")
+                            where (string)node.Attribute("key") == "album"
+                            select (string)node.Attribute("value");
+                string result = String.Empty;
+
+                foreach (var node in album)
+                {
+                    if (result == String.Empty)
+                        result = node;
+                }
+
+                return result;
+            }
+
+            public string metadataCopyright()
+            {
+                var copyright = from node in inputInfo.Descendants("tag")
+                            where (string)node.Attribute("key") == "copyright"
+                            select (string)node.Attribute("value");
+                string result = String.Empty;
+
+                foreach (var node in copyright)
+                {
+                    if (result == String.Empty)
+                        result = node;
+                }
+
+                return result;
+            }
+
+            public string metadataComment()
+            {
+                var comment = from node in inputInfo.Descendants("tag")
+                            where (string)node.Attribute("key") == "comment"
+                            select (string)node.Attribute("value");
+                string result = String.Empty;
+
+                foreach (var node in comment)
+                {
+                    if (result == String.Empty)
+                        result = node;
+                }
+
+                return result;
+            }
         }
 
         protected virtual void FfprobeProcessExited(object sender, EventArgs e)

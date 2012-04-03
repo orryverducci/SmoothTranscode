@@ -164,6 +164,11 @@ namespace SmoothTranscode
                 else
                     sampleInfoLabel.Text = "Sample Rate: ";
                 sampleComboBox.Text = e.sampleRate();
+                titleTextBox.Text = e.metadataTitle();
+                authorTextBox.Text = e.metadataArtist();
+                albumTextBox.Text = e.metadataAlbum();
+                copyrightTextBox.Text = e.metadataCopyright();
+                commentTextBox.Text = e.metadataComment();
             });
         }
 
@@ -950,7 +955,7 @@ namespace SmoothTranscode
             if (titleTextBox.Text != String.Empty && titleTextBox.Enabled)
                 Arguments += " -metadata title=\"" + titleTextBox.Text + "\"";
             if (authorTextBox.Text != String.Empty && authorTextBox.Enabled)
-                Arguments += " -metadata author=\"" + authorTextBox.Text + "\"";
+                Arguments += " -metadata artist=\"" + authorTextBox.Text + "\"";
             if (authorTextBox.Text != String.Empty && authorTextBox.Enabled)
                 Arguments += " -metadata album=\"" + albumTextBox.Text + "\"";
             if (copyrightTextBox.Text != String.Empty && copyrightTextBox.Enabled)
