@@ -44,7 +44,7 @@ namespace SmoothTranscode
             mainLabel.Font = new Font(mainLabel.Font.FontFamily, 12, FontStyle.Regular);
             // Starts conversion and registers progress and completion event handlers
             ffmpegConverter.ConvertFile();
-            ffmpegConverter.conversionEnded += new EventHandler(ConversionEnded);
+            ffmpegConverter.conversionEnded += new ffmpeg.FinishedEventHandler(ConversionEnded);
             ffmpegConverter.progressUpdate += new ffmpeg.ProgressEventHandler(ProgressUpdate);
         }
 
@@ -69,10 +69,12 @@ namespace SmoothTranscode
             }
         }
 
-        private void ConversionEnded(object sender, EventArgs e)
+        private void ConversionEnded(object sender, ffmpeg.FinishedEventArgs e)
         {
             // Set ended boolean and close form
             ended = true;
+            if (e.Error())
+                MessageBox.Show(e.ErrorOutput(), "Unable to Convert", MessageBoxButtons.OK, MessageBoxIcon.Error);
             BeginInvoke((MethodInvoker)delegate
             {
                 this.Close();

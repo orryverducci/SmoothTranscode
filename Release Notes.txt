@@ -1,3 +1,1 @@
 This is an early development release of SmoothTranscode.
-
-SmoothTranscode is not yet able to deal with errors returned by FFmpeg, and therefore treats failed encodes the same as completed ones.

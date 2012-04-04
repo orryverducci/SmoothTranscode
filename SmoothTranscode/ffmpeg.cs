@@ -36,8 +36,11 @@ namespace SmoothTranscode
         private static string output;
         private int duration = -1;
         private int pass = 1;
+        private int percentage;
+        private string ffmpegOutput;
         private bool cancelled = false;
-        public event EventHandler conversionEnded;
+        public delegate void FinishedEventHandler(object sender, FinishedEventArgs cmdoutput);
+        public event FinishedEventHandler conversionEnded;
         public delegate void ProgressEventHandler(object sender, ProgressEventArgs cmdoutput);
         public event ProgressEventHandler progressUpdate;
         private logger logging = new logger();
@@ -123,7 +126,6 @@ namespace SmoothTranscode
 
         private void ParseProgress(object sender, DataReceivedEventArgs e)
         {
-            int percentage;
             string fps;
             string bitrate;
             TimeSpan currentTime;
@@ -131,6 +133,7 @@ namespace SmoothTranscode
 
             if (e.Data != null)
             {
+                ffmpegOutput = e.Data;
                 logging.log(e.Data);
                 if (duration != -1)
                 {
@@ -231,6 +234,7 @@ namespace SmoothTranscode
 
         protected virtual void FfmpegProcessExited(object sender, EventArgs e)
         {
+            Thread.Sleep(500);
             ffmpegProcess.CancelErrorRead();
             if (twopass && pass == 1 && !cancelled)
             {
@@ -240,10 +244,39 @@ namespace SmoothTranscode
             else
             {
                 logging.finishLog();
+                
+                    // error = ffmpegOutput;
                 if (conversionEnded != null)
-                    conversionEnded(this, e);
+                {
+                    if (percentage < 100 && !cancelled)
+                        conversionEnded(this, new FinishedEventArgs(true, ffmpegOutput));
+                    else
+                        conversionEnded(this, new FinishedEventArgs(false, ""));
+                }
             }
         }
+
+        public class FinishedEventArgs : EventArgs
+        {
+            private bool error;
+            private string errorOutput;
+
+            public FinishedEventArgs(bool isError, string cmdOutput)
+            {
+                error = isError;
+                errorOutput = cmdOutput;
+            }
+
+            public bool Error()
+            {
+                return error;
+            }
+
+            public string ErrorOutput()
+            {
+                return errorOutput;
+            }
+        } 
 
         protected virtual void ProgressUpdate(object sender, ProgressEventArgs e)
         {
