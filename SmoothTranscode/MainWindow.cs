@@ -947,8 +947,9 @@ namespace SmoothTranscode
             // Add Video Filters from Video, Post Processing, Pad and Crop
             if (widthTextBox.Text != String.Empty && heightTextBox.Text != String.Empty)
                 addVideoFilter("scale=" + widthTextBox.Text + ":" + heightTextBox.Text + ":interl=-1");
-            if ((Convert.ToSingle(frameRateComboBox.Text) == (Convert.ToSingle(fps) / 2)) && interlaceCheckBox.Checked)
-                addVideoFilter("tinterlace=4");
+            if (fps == "")
+                if ((Convert.ToSingle(frameRateComboBox.Text) == (Convert.ToSingle(fps) / 2)) && interlaceCheckBox.Checked)
+                    addVideoFilter("tinterlace=4");
             if (VideoFilters != String.Empty)
                 Arguments += " -vf \"" + VideoFilters + "\"";
             // Trim tab
