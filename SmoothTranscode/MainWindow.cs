@@ -38,6 +38,8 @@ namespace SmoothTranscode
         private string Arguments;
         private string fps;
         private bool videoPresent;
+        private bool resolutionChanged = false;
+        private decimal aspectRatio;
         X264Window advancedX264Window = new X264Window();
         VP8Window advancedVP8Window = new VP8Window();
         ffprobe ffmpegInfo = new ffprobe();
@@ -137,8 +139,10 @@ namespace SmoothTranscode
                     resInfoLabel.Text = "Resolution: " + e.width() + "x" + e.height();
                 else
                     resInfoLabel.Text = "Resolution: ";
+                resolutionChanged = true;
                 widthTextBox.Text = e.width();
                 heightTextBox.Text = e.height();
+                resolutionChanged = false;
                 aspectInfoLabel.Text = "Aspect Ratio: " + e.aspectRatio();
                 aspectComboBox.Text = e.aspectRatio();
                 if (e.frameRate() != "0")
@@ -493,6 +497,7 @@ namespace SmoothTranscode
                 xLabel.Enabled = true;
                 heightTextBox.Enabled = true;
                 pixelsLabel.Enabled = true;
+                maintainAspectCheckBox.Enabled = true;
                 aspectLabel.Enabled = true;
                 aspectComboBox.Enabled = true;
                 frameRateLabel.Enabled = true;
@@ -515,6 +520,7 @@ namespace SmoothTranscode
                 xLabel.Enabled = false;
                 heightTextBox.Enabled = false;
                 pixelsLabel.Enabled = false;
+                maintainAspectCheckBox.Enabled = false;
                 aspectLabel.Enabled = false;
                 aspectComboBox.Enabled = false;
                 frameRateLabel.Enabled = false;
@@ -671,6 +677,51 @@ namespace SmoothTranscode
             else if (videoComboBox.SelectedItem.ToString() == "VP8")
                 if (advancedVP8Window.ShowDialog() == DialogResult.OK)
                     Advanced = advancedVP8Window.AdvancedArguments;
+        }
+
+        private void resolutionTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void widthTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (maintainAspectCheckBox.Checked && !resolutionChanged)
+            {
+                resolutionChanged = true;
+                if (widthTextBox.Text != String.Empty)
+                    heightTextBox.Text = Convert.ToInt32(Convert.ToDecimal(widthTextBox.Text) / aspectRatio).ToString();
+                else
+                    heightTextBox.Text = "0";
+                resolutionChanged = false;
+            }
+        }
+
+        private void heightTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (maintainAspectCheckBox.Checked && !resolutionChanged)
+            {
+                resolutionChanged = true;
+                if (heightTextBox.Text != String.Empty)
+                    widthTextBox.Text = Convert.ToInt32(Convert.ToDecimal(heightTextBox.Text) * aspectRatio).ToString();
+                else
+                    widthTextBox.Text = "0";
+                resolutionChanged = false;
+            }
+        }
+
+        private void maintainAspectCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (maintainAspectCheckBox.Checked)
+            {
+                if ((widthTextBox.Text != String.Empty && widthTextBox.Text != "0") || (heightTextBox.Text != String.Empty && heightTextBox.Text != "0"))
+                    aspectRatio = Convert.ToDecimal(widthTextBox.Text) / Convert.ToDecimal(heightTextBox.Text);
+                else
+                    aspectRatio = 1;
+            }
         }
         #endregion
 

@@ -5,6 +5,7 @@
 [NEW] Ability to trim input
 [NEW] Interlace aware scaling
 [NEW] Now displays error messages explaining why conversions have failed
+[NEW] Resolution maintain aspect ratio checkbox
 [UPDATED] FFmpeg Standard Deinterlace removed (now considered deprecated)
 [UPDATED] Tweaks to CBR buffer encoding parameters
 [UPDATED] Audio bitrate options now disabled for lossless codecs
