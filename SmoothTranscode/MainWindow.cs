@@ -1019,7 +1019,7 @@ namespace SmoothTranscode
             if (fps == "")
                 if ((Convert.ToSingle(frameRateComboBox.Text) == (Convert.ToSingle(fps) / 2)) && interlaceCheckBox.Checked)
                     addVideoFilter("tinterlace=4");
-            if (VideoFilters != String.Empty)
+            if (VideoFilters != String.Empty && videoPresent)
                 Arguments += " -vf \"" + VideoFilters + "\"";
             // Trim tab
             if (trimStartTextBox.Text != String.Empty)
