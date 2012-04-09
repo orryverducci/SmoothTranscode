@@ -124,38 +124,56 @@ namespace SmoothTranscode
             BeginInvoke((MethodInvoker)delegate
             {
                 formatInfoLabel.Text = "Format: " + e.format();
-                videoCodecInfoLabel.Text = "Codec: " + e.videoCodec();
-                if (e.videoCodec() != String.Empty)
+                if (e.frameRate() != "90000") // If not album art
                 {
-                    videoPresent = true;
-                    containerComboBox.SelectedIndex = 0; // Default to MPEG4
+                    videoCodecInfoLabel.Text = "Codec: " + e.videoCodec();
+                    if (e.videoCodec() != String.Empty)
+                    {
+                        videoPresent = true;
+                        containerComboBox.SelectedIndex = 0; // Default to MPEG4
+                    }
+                    else
+                    {
+                        videoPresent = false;
+                        containerComboBox.SelectedIndex = 15; // Default to MP3
+                    }
+                    if (e.width() != String.Empty)
+                        resInfoLabel.Text = "Resolution: " + e.width() + "x" + e.height();
+                    else
+                        resInfoLabel.Text = "Resolution:";
+                    resolutionChanged = true;
+                    widthTextBox.Text = e.width();
+                    heightTextBox.Text = e.height();
+                    resolutionChanged = false;
+                    aspectInfoLabel.Text = "Aspect Ratio: " + e.aspectRatio();
+                    aspectComboBox.Text = e.aspectRatio();
+                    if (e.frameRate() != "0")
+                    {
+                        fpsInfoLabel.Text = "Frame Rate: " + e.frameRate() + " frames per second";
+                        frameRateComboBox.Text = e.frameRate();
+                    }
+                    else
+                    {
+                        fpsInfoLabel.Text = "Frame Rate:";
+                        frameRateComboBox.Text = String.Empty;
+                    }
+                    fps = e.frameRate();
                 }
                 else
                 {
                     videoPresent = false;
                     containerComboBox.SelectedIndex = 15; // Default to MP3
-                }
-                if (e.width() != String.Empty)
-                    resInfoLabel.Text = "Resolution: " + e.width() + "x" + e.height();
-                else
+                    videoCodecInfoLabel.Text = "Codec: ";
                     resInfoLabel.Text = "Resolution: ";
-                resolutionChanged = true;
-                widthTextBox.Text = e.width();
-                heightTextBox.Text = e.height();
-                resolutionChanged = false;
-                aspectInfoLabel.Text = "Aspect Ratio: " + e.aspectRatio();
-                aspectComboBox.Text = e.aspectRatio();
-                if (e.frameRate() != "0")
-                {
-                    fpsInfoLabel.Text = "Frame Rate: " + e.frameRate() + " frames per second";
-                    frameRateComboBox.Text = e.frameRate();
-                }
-                else
-                {
+                    resolutionChanged = true;
+                    widthTextBox.Text = String.Empty;
+                    heightTextBox.Text = String.Empty;
+                    resolutionChanged = false;
+                    aspectInfoLabel.Text = "Aspect Ratio: ";
+                    aspectComboBox.Text = String.Empty;
                     fpsInfoLabel.Text = "Frame Rate:";
                     frameRateComboBox.Text = String.Empty;
                 }
-                fps = e.frameRate();
                 audioCodecInfoLabel.Text = "Codec: " + e.audioCodec();
                 if (e.audioCodec() != String.Empty)
                     audioCheckBox.Enabled = true;
