@@ -1012,7 +1012,7 @@ namespace SmoothTranscode
             if (cropTopUpDown.Value > 0 || cropLeftUpDown.Value > 0 || cropRightUpDown.Value > 0 || cropBottomUpDown.Value > 0)
                 addVideoFilter("crop=in_w-" + (cropLeftUpDown.Value + cropRightUpDown.Value).ToString() + ":in_h-" + (cropTopUpDown.Value + cropBottomUpDown.Value).ToString() + ":" + cropLeftUpDown.Value.ToString() + ":" + cropTopUpDown.Value.ToString());
             if (padTopUpDown.Value > 0 || padLeftUpDown.Value > 0 || padRightUpDown.Value > 0 || padBottomUpDown.Value > 0)
-                addVideoFilter("pad=in_w+" + (padLeftUpDown.Value + padRightUpDown.Value).ToString() + ":in_h+" + (padTopUpDown.Value + padBottomUpDown.Value).ToString() + ":" + padLeftUpDown.Value.ToString() + ":" + padTopUpDown.Value.ToString());
+                addVideoFilter("pad=in_w+" + (padLeftUpDown.Value + padRightUpDown.Value).ToString() + ":in_h+" + (padTopUpDown.Value + padBottomUpDown.Value).ToString() + ":" + padLeftUpDown.Value.ToString() + ":" + padTopUpDown.Value.ToString() + ":0x" + padColourComboBox.SelectedColor.R.ToString("X2") + padColourComboBox.SelectedColor.G.ToString("X2") + padColourComboBox.SelectedColor.B.ToString("X2"));
             // Add Video Filters from Video, Post Processing, Pad and Crop
             if (widthTextBox.Text != String.Empty && heightTextBox.Text != String.Empty)
                 addVideoFilter("scale=" + widthTextBox.Text + ":" + heightTextBox.Text + ":interl=-1");

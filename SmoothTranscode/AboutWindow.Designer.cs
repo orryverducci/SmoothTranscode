@@ -227,7 +227,7 @@
             this.creditsLabel.AutoSize = true;
             this.creditsLabel.Location = new System.Drawing.Point(20, 20);
             this.creditsLabel.Name = "creditsLabel";
-            this.creditsLabel.Size = new System.Drawing.Size(349, 117);
+            this.creditsLabel.Size = new System.Drawing.Size(349, 130);
             this.creditsLabel.TabIndex = 0;
             this.creditsLabel.Text = resources.GetString("creditsLabel.Text");
             // 

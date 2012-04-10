@@ -71,6 +71,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ColorComboBox.designer.cs">
+      <DependentUpon>ColorComboBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="ffprobe.cs" />
     <Compile Include="HiddenTabsControl.cs">
       <SubType>Component</SubType>
@@ -121,6 +127,9 @@
     <EmbeddedResource Include="AboutWindow.resx">
       <DependentUpon>AboutWindow.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorComboBox.resx">
+      <DependentUpon>ColorComboBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
