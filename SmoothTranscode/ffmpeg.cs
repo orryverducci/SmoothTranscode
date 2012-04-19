@@ -52,9 +52,9 @@ namespace SmoothTranscode
             ffmpegProcInfo.UseShellExecute = false;
             ffmpegProcInfo.RedirectStandardError = true;
             if (IntPtr.Size == 8) //If running on 64-bit system
-            	ffmpegProcInfo.FileName = "ffmpeg/ffmpeg-x64.exe";
+            	ffmpegProcInfo.FileName = "ffmpeg/x64/ffmpeg.exe";
             else
-            	ffmpegProcInfo.FileName = "ffmpeg/ffmpeg-x86.exe";
+            	ffmpegProcInfo.FileName = "ffmpeg/x86/ffmpeg.exe";
             ffmpegProcInfo.CreateNoWindow = true;
         }
 

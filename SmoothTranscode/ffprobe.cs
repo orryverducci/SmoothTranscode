@@ -40,9 +40,9 @@ namespace SmoothTranscode
             ffprobeProcInfo.UseShellExecute = false;
             ffprobeProcInfo.RedirectStandardOutput = true;
             if (IntPtr.Size == 8) //If running on 64-bit system
-                ffprobeProcInfo.FileName = "ffmpeg/ffprobe-x64.exe";
+                ffprobeProcInfo.FileName = "ffmpeg/x64/ffprobe.exe";
             else
-                ffprobeProcInfo.FileName = "ffmpeg/ffprobe-x86.exe";
+                ffprobeProcInfo.FileName = "ffmpeg/x86/ffprobe.exe";
             ffprobeProcInfo.CreateNoWindow = true;
         }
 
