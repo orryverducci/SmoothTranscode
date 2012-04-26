@@ -1566,6 +1566,8 @@
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainWindow_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainWindow_DragEnter);
+            this.DragOver += new System.Windows.Forms.DragEventHandler(this.MainWindow_DragOver);
+            this.DragLeave += new System.EventHandler(this.MainWindow_DragLeave);
             this.mainTabs.ResumeLayout(false);
             this.inputTab.ResumeLayout(false);
             this.inputTab.PerformLayout();

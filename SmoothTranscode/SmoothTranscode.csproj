@@ -77,6 +77,7 @@
     <Compile Include="ColorComboBox.designer.cs">
       <DependentUpon>ColorComboBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="DragDropLib.cs" />
     <Compile Include="ffprobe.cs" />
     <Compile Include="HiddenTabsControl.cs">
       <SubType>Component</SubType>

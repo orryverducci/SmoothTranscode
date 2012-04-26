@@ -44,6 +44,7 @@ namespace SmoothTranscode
         VP8Window advancedVP8Window = new VP8Window();
         ffprobe ffmpegInfo = new ffprobe();
 
+        #region Form Open Events
         public MainWindow()
         {
             this.Font = SystemFonts.MessageBoxFont; // Sets UI font to system font
@@ -67,29 +68,59 @@ namespace SmoothTranscode
             // Set info event handlers
             ffmpegInfo.infoRetrieved += new ffprobe.InfoEventHandler(UpdateInfo);
         }
+        #endregion
 
+        #region Drag Events
         private void MainWindow_DragEnter(object sender, DragEventArgs e)
         {
             // Allows files to be dragged onto the window
-            if (e.Data.GetDataPresent(DataFormats.FileDrop, false) == true)
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
-                e.Effect = DragDropEffects.Copy;
+                e.Effect = e.AllowedEffect & DragDropEffects.Copy;
+                DropTargetHelper.DragEnter(this, e.Data, Cursor.Position, e.Effect, "Open with %1", "SmoothTranscode");
             }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+                DropTargetHelper.DragEnter(this, e.Data, Cursor.Position, e.Effect);
+            }
+        }
+
+        private void MainWindow_DragOver(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = e.AllowedEffect & DragDropEffects.Copy;
+            else
+                e.Effect = DragDropEffects.None;
+            DropTargetHelper.DragOver(Cursor.Position, e.Effect);
+        }
+
+        private void MainWindow_DragLeave(object sender, EventArgs e)
+        {
+            DropTargetHelper.DragLeave();
         }
 
         private void MainWindow_DragDrop(object sender, DragEventArgs e)
         {
-            // Places the filename of dropped files into the input text box
-            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = e.AllowedEffect & DragDropEffects.Copy;
+            else
+                e.Effect = DragDropEffects.None;
+            DropTargetHelper.Drop(e.Data, Cursor.Position, e.Effect);
 
-            foreach (string file in files)
+            if (e.Effect == DragDropEffects.Copy)
             {
-                inputTextBox.Text = file;
+                // Places the filename of dropped files into the input text box
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+
+                inputTextBox.Text = files[0];
                 ffmpeg.inputFile = inputTextBox.Text;
                 ffmpegInfo.GetInfo(inputTextBox.Text);
             }
         }
+        #endregion
 
+        #region Button Clicks
         private void aboutButton_Click(object sender, EventArgs e)
         {
             // Opens the about window
@@ -105,6 +136,7 @@ namespace SmoothTranscode
             Help.MainWindow helpWindow = new Help.MainWindow();
             helpWindow.Show();
         }
+        #endregion
 
         #region Input Tab
         private void inputButton_Click(object sender, EventArgs e)
