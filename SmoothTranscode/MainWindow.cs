@@ -892,6 +892,12 @@ namespace SmoothTranscode
                 MessageBox.Show("You need to set both the input and output file fields.", "Unable to Convert", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return; // Cancel conversion
             }
+            // Checks at least one output is selected
+            if ((!audioCheckBox.Checked || !audioCheckBox.Enabled) && (!videoCheckBox.Checked || !videoCheckBox.Enabled))
+            {
+                MessageBox.Show("Both audio and video are disabled. Please select at least one output.", "Unable to Convert", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Cancel conversion
+            }
             // Checks bitrate specified when set to vbr
             if (vbrRadioButton.Checked && vbrTextBox.Text == String.Empty)
             {
