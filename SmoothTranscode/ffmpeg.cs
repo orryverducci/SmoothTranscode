@@ -163,7 +163,7 @@ namespace SmoothTranscode
                 logging.log(e.Data);
                 if (duration != -1)
                 {
-                    if (e.Data.Contains("time"))
+                    if (e.Data.Contains(" time="))
                     {
                         //Percentage
                         TimeSpan.TryParse(GetStringInBetween("time=", " bitrate=", e.Data), out currentTime);
@@ -188,7 +188,7 @@ namespace SmoothTranscode
                 }
                 else
                 {
-                    if (e.Data.Contains("Duration"))
+                    if (e.Data.Contains("Duration: "))
                     {
                         totalTime = TimeSpan.Parse(GetStringInBetween("Duration: ", ", start", e.Data));
                         if (trimstart.TotalSeconds > 0)
