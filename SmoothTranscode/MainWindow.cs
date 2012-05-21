@@ -1023,9 +1023,15 @@ namespace SmoothTranscode
                 Arguments += " -vf \"" + VideoFilters + "\"";
             // Trim tab
             if (trimStartTextBox.Text != String.Empty)
+            {
                 Arguments += " -ss " + trimStartTextBox.Text;
+                ffmpeg.trimStart = new TimeSpan(0, 0, Convert.ToInt16(trimStartTextBox.Text));
+            }
             if (trimEndTextBox.Text != String.Empty)
+            {
                 Arguments += " -t " + trimEndTextBox.Text;
+                ffmpeg.trimLength = new TimeSpan(0, 0, Convert.ToInt16(trimEndTextBox.Text));
+            }
             // Meta data tab
             if (titleTextBox.Text != String.Empty && titleTextBox.Enabled)
                 Arguments += " -metadata title=\"" + titleTextBox.Text + "\"";

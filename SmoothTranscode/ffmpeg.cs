@@ -36,6 +36,8 @@ namespace SmoothTranscode
         private static string output;
         private int duration = -1;
         private int pass = 1;
+        private static TimeSpan trimstart = new TimeSpan(0, 0, 0);
+        private static TimeSpan trimlength = new TimeSpan(0, 0, 0);
         private int percentage;
         private string ffmpegOutput;
         private bool cancelled = false;
@@ -79,6 +81,30 @@ namespace SmoothTranscode
             set
             {
                 arguments = value;
+            }
+        }
+
+        public static TimeSpan trimStart
+        {
+            get
+            {
+                return trimstart;
+            }
+            set
+            {
+                trimstart = value;
+            }
+        }
+
+        public static TimeSpan trimLength
+        {
+            get
+            {
+                return trimlength;
+            }
+            set
+            {
+                trimlength = value;
             }
         }
 
@@ -165,7 +191,18 @@ namespace SmoothTranscode
                     if (e.Data.Contains("Duration"))
                     {
                         totalTime = TimeSpan.Parse(GetStringInBetween("Duration: ", ", start", e.Data));
-                        duration = Convert.ToInt32(totalTime.TotalSeconds);
+                        if (trimstart.TotalSeconds > 0)
+                        {
+                            totalTime = totalTime.Subtract(trimstart);
+                        }
+                        if (totalTime.TotalSeconds > trimlength.TotalSeconds)
+                        {
+                            duration = Convert.ToInt32(trimlength.TotalSeconds);
+                        }
+                        else
+                        {
+                            duration = Convert.ToInt32(totalTime.TotalSeconds);
+                        }
                     }
                 }
             }
