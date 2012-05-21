@@ -195,7 +195,7 @@ namespace SmoothTranscode
                         {
                             totalTime = totalTime.Subtract(trimstart);
                         }
-                        if (totalTime.TotalSeconds > trimlength.TotalSeconds)
+                        if (totalTime.TotalSeconds > trimlength.TotalSeconds && trimlength.TotalSeconds > 0)
                         {
                             duration = Convert.ToInt32(trimlength.TotalSeconds);
                         }
