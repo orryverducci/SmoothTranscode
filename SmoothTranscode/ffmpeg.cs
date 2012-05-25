@@ -45,7 +45,7 @@ namespace SmoothTranscode
         public event FinishedEventHandler conversionEnded;
         public delegate void ProgressEventHandler(object sender, ProgressEventArgs cmdoutput);
         public event ProgressEventHandler progressUpdate;
-        private logger logging = new logger();
+        private logger logging = new logger("encode");
 
         public ffmpeg()
         {
@@ -281,8 +281,6 @@ namespace SmoothTranscode
             else
             {
                 logging.finishLog();
-                
-                    // error = ffmpegOutput;
                 if (conversionEnded != null)
                 {
                     if (percentage < 100 && !cancelled)

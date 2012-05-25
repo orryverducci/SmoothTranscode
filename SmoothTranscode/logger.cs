@@ -28,12 +28,12 @@ namespace SmoothTranscode
     {
         System.IO.StreamWriter logFile;
 
-        public logger()
+        public logger(string filename)
         {
             string appDataFolder = Environment.GetEnvironmentVariable("LocalAppData");
             if (!Directory.Exists(appDataFolder + "\\SmoothTranscode"))
                 Directory.CreateDirectory(appDataFolder + "\\SmoothTranscode");
-            logFile = new System.IO.StreamWriter(appDataFolder + "\\SmoothTranscode\\encode.log");
+            logFile = new System.IO.StreamWriter(appDataFolder + "\\SmoothTranscode\\" + filename + ".log");
             log("Version: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString().Remove(3));
             if (IntPtr.Size == 8) //If running on 64-bit system
                 log("Architecture: 64 bit");
