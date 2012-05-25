@@ -18,9 +18,10 @@
  */
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using System.Diagnostics;
+using System.Threading;
 using System.Xml.Linq;
 
 namespace SmoothTranscode
@@ -32,6 +33,7 @@ namespace SmoothTranscode
         private static string infoXML = "";
         public delegate void InfoEventHandler(object sender, InfoEventArgs cmdoutput);
         public event InfoEventHandler infoRetrieved;
+        private logger logging = new logger("fileopen");
 
         public ffprobe()
         {
@@ -63,6 +65,7 @@ namespace SmoothTranscode
         {
             if (e.Data != null)
             {
+                logging.log(e.Data);
                 infoXML += e.Data;
             }
         }
@@ -328,7 +331,9 @@ namespace SmoothTranscode
 
         protected virtual void FfprobeProcessExited(object sender, EventArgs e)
         {
+            Thread.Sleep(500);
             ffprobeProcess.CancelOutputRead();
+            logging.finishLog();
             if (infoRetrieved != null)
                 infoRetrieved(this, new InfoEventArgs());
         }
