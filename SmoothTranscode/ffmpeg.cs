@@ -38,7 +38,7 @@ namespace SmoothTranscode
         private int pass = 1;
         private static TimeSpan trimstart = new TimeSpan(0, 0, 0);
         private static TimeSpan trimlength = new TimeSpan(0, 0, 0);
-        private int percentage;
+        private bool successful = false;
         private string ffmpegOutput;
         private bool cancelled = false;
         public delegate void FinishedEventHandler(object sender, FinishedEventArgs cmdoutput);
@@ -152,6 +152,7 @@ namespace SmoothTranscode
 
         private void ParseProgress(object sender, DataReceivedEventArgs e)
         {
+            int percentage;
             string fps;
             string bitrate;
             TimeSpan currentTime;
@@ -184,6 +185,10 @@ namespace SmoothTranscode
                             //Update progress
                             ProgressUpdate(this, new ProgressEventArgs(percentage, fps, bitrate, pass));
                         }
+                    }
+                    else if (e.Data.Contains("global headers:"))
+                    {
+                        successful = true;
                     }
                 }
                 else
@@ -283,7 +288,7 @@ namespace SmoothTranscode
                 logging.finishLog();
                 if (conversionEnded != null)
                 {
-                    if (percentage < 100 && !cancelled)
+                    if (!successful && !cancelled)
                         conversionEnded(this, new FinishedEventArgs(true, ffmpegOutput));
                     else
                         conversionEnded(this, new FinishedEventArgs(false, ""));
