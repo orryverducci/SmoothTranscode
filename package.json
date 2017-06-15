@@ -1,0 +1,29 @@
+{
+  "name": "smoothtranscode",
+  "version": "1.0.0",
+  "description": "Video and audio format conversion application",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/orryverducci/SmoothTranscode.git"
+  },
+  "keywords": [
+    "encoding",
+    "transcode",
+    "video",
+    "audio",
+    "convert"
+  ],
+  "author": "Orry Verducci",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/orryverducci/SmoothTranscode/issues"
+  },
+  "homepage": "https://github.com/orryverducci/SmoothTranscode",
+  "dependencies": {
+    "electron": "1.6.11"
+  }
+}
