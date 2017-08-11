@@ -30,6 +30,9 @@ node_modules/
 # dotenv environment variables file
 .env
 
+# Built application
+build/
+
 # operating system crap
 .DS_Store
 Thumbs.db
