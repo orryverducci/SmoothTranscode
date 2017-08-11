@@ -25,5 +25,8 @@
   "homepage": "https://github.com/orryverducci/SmoothTranscode",
   "dependencies": {
     "electron": "1.6.11"
+  },
+  "devDependencies": {
+    "gulp": "github:gulpjs/gulp#4.0"
   }
 }
