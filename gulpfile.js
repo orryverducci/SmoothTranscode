@@ -2,7 +2,10 @@
 
 const gulp = require("gulp"),
     path = require("path"),
-    exec = require("child_process").execSync;
+    exec = require("child_process").execSync,
+    sass = require("gulp-sass"),
+    del = require("del"),
+    vinylPaths = require("vinyl-paths");
 
 /*****************
 *** PREPARE TASKS
@@ -13,8 +16,18 @@ gulp.task("prepare:copy", function() {
         .pipe(gulp.dest(path.join("build", "dist")));
 });
 
+gulp.task("prepare:sass", function() {
+    return gulp.src(path.join("build", "dist", "**", "*.scss"))
+        .pipe(vinylPaths(del))
+        .pipe(sass().on("error", sass.logError))
+        .pipe(gulp.dest((file) => {
+            return file.base;
+        }));
+});
+
 gulp.task("prepare", gulp.series(
-    "prepare:copy"
+    "prepare:copy",
+    "prepare:sass"
 ));
 
 /*************
