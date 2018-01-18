@@ -7,6 +7,15 @@ const gulp = require("gulp"),
     del = require("del"),
     vinylPaths = require("vinyl-paths");
 
+/***************
+*** CLEAN TASKS
+****************/
+
+gulp.task("clean", function(done) {
+    del.sync("build");
+    done();
+});
+
 /*****************
 *** PREPARE TASKS
 ******************/
@@ -44,6 +53,7 @@ gulp.task("start-electron", function(done) {
 });
 
 gulp.task("run", gulp.series(
+    "clean",
     "prepare",
     "start-electron"
 ));
