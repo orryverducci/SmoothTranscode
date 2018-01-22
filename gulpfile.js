@@ -34,9 +34,15 @@ gulp.task("prepare:sass", function() {
         }));
 });
 
+gulp.task("prepare:fontawesome", function() {
+    return gulp.src(path.join(__dirname, "node_modules", "@fortawesome", "fontawesome-pro-webfonts", "webfonts", "*.woff2"))
+        .pipe(gulp.dest(path.join("build", "dist", "assets")));
+});
+
 gulp.task("prepare", gulp.series(
     "prepare:copy",
-    "prepare:sass"
+    "prepare:sass",
+    "prepare:fontawesome"
 ));
 
 /*************
