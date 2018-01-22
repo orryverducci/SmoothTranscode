@@ -3,6 +3,7 @@
 const gulp = require("gulp"),
     path = require("path"),
     exec = require("child_process").execSync,
+    execAsync = require("child_process").exec,
     sass = require("gulp-sass"),
     del = require("del"),
     vinylPaths = require("vinyl-paths");
@@ -50,10 +51,10 @@ gulp.task("prepare", gulp.series(
 **************/
 
 gulp.task("start-electron", (done) => {
-    exec("electron " + path.join("build", "dist", "main.js"), (err, stdout, stderr) => {
-        console.log(stdout);
-        console.log(stderr);
-        cb(err);
+    execAsync("electron " + path.join("build", "dist", "main.js"), (err, stdout, stderr) => {
+        if (err) {
+            console.error("Error: ${err}");
+        }
     });
     done();
 });
