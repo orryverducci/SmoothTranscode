@@ -20,7 +20,7 @@ function createMainWindow() {
     // Destroy reference to the main window when it is closed
     mainWindow.on("closed", () => {
         mainWindow = null;
-    })
+    });
 }
 
 // Create the main window when Electron has finished initialization
@@ -29,4 +29,4 @@ app.on("ready", createMainWindow);
 // Quit the application when all windows are closed
 app.on("window-all-closed", () => {
     app.quit();
-})
+});
