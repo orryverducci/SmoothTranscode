@@ -1,0 +1,74 @@
+#main-window {
+    nav {
+        flex: 0 0 auto;
+    }
+
+    main {
+        flex: 1 0 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    #drag-notice {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.8);
+        opacity: 0;
+        transition: opacity 0.2s linear;
+        pointer-events: none;
+    }
+
+    #placeholder {
+        opacity: 1;
+        transition: opacity 0.2s linear;
+    }
+
+    #placeholder, #drag-notice p {
+        flex: 0 0 auto;
+        color: #BDBDBD;
+        margin: 0;
+        font-size: 2rem;
+
+        &:before {
+            display: block;
+            margin: 0 0 2rem 0;
+            font-size: 10rem;
+            text-align: center;
+            line-height: 1em;
+        }
+    }
+
+    #drop-target {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: none;
+    }
+
+    .drop-active {
+        #placeholder {
+            opacity: 0;
+        }
+
+        #drag-notice {
+            opacity: 1;
+        }
+
+        #drop-target {
+            display: initial;
+        }
+    }
+}

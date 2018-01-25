@@ -1,4 +1,4 @@
-const {app, BrowserWindow} = require("electron"),
+const {app, BrowserWindow, ipcMain, dialog} = require("electron"),
     path = require("path"),
     url = require("url");
 
@@ -11,9 +11,9 @@ function createMainWindow() {
         width: 800,
         height: 600
     });
-    // Load index.html in the main window
+    // Load the main window
     mainWindow.loadURL(url.format({
-        pathname: path.join(__dirname, "ui", "index.html"),
+        pathname: path.join(__dirname, "main-window", "index.html"),
         protocol: "file:",
         slashes: true
     }));
@@ -29,4 +29,13 @@ app.on("ready", createMainWindow);
 // Quit the application when all windows are closed
 app.on("window-all-closed", () => {
     app.quit();
+});
+
+// Show not implemented error messages
+ipcMain.on("start-converting-clicked", (event) => {
+    dialog.showErrorBox("Not Yet Implemented", "This feature has not yet been implemented.");
+});
+
+ipcMain.on("add-file-clicked", (event) => {
+    dialog.showErrorBox("Not Yet Implemented", "This feature has not yet been implemented.");
 });

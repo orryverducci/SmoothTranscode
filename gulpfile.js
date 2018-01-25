@@ -29,7 +29,12 @@ gulp.task("prepare:copy", () => {
 gulp.task("prepare:sass", () => {
     return gulp.src(path.join("build", "dist", "**", "*.scss"))
         .pipe(vinylPaths(del))
-        .pipe(sass().on("error", sass.logError))
+        .pipe(sass({
+            includePaths: [
+                path.join(__dirname, "src"),
+                path.join(__dirname, "node_modules", "bootstrap", "scss"),
+            ]
+        }).on("error", sass.logError))
         .pipe(gulp.dest((file) => {
             return file.base;
         }));
