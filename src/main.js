@@ -35,7 +35,3 @@ app.on("window-all-closed", () => {
 ipcMain.on("start-converting-clicked", (event) => {
     dialog.showErrorBox("Not Yet Implemented", "This feature has not yet been implemented.");
 });
-
-ipcMain.on("add-file-clicked", (event) => {
-    dialog.showErrorBox("Not Yet Implemented", "This feature has not yet been implemented.");
-});

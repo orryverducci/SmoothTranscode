@@ -1,8 +1,17 @@
 const ipc = require("electron").ipcRenderer,
+    {dialog, getCurrentWindow} = require("electron").remote,
+    path = require("path"),
     startConvertingBtn = document.getElementById("start-converting-btn"),
     addFileBtn = document.getElementById("add-file-btn"),
     mainArea = document.getElementsByTagName("main")[0],
+    fileList = document.getElementById("file-list"),
     dropTarget = document.getElementById("drop-target");
+
+/*************
+*** VARIABLES
+**************/
+
+var files = [];
 
 /***********************
 *** BUTTON CLICK EVENTS
@@ -13,7 +22,11 @@ startConvertingBtn.addEventListener("click", (event) => {
 });
 
 addFileBtn.addEventListener("click", (event) => {
-    ipc.send("add-file-clicked");
+    dialog.showOpenDialog(getCurrentWindow(), {properties: ["openFile", "multiSelections"]}, (filePaths) => {
+        for (let file of filePaths) {
+            addFile(file);
+        }
+    });
 });
 
 /********************
@@ -43,9 +56,24 @@ dropTarget.addEventListener("dragleave", (event) => {
 dropTarget.addEventListener("drop", (event) => {
     event.preventDefault();
     for (let file of event.dataTransfer.files) {
-        console.log('File(s) you dragged here: ', file.path)
+        addFile(file.path);
     }
     if (mainArea.classList.contains("drop-active")) {
         mainArea.classList.remove("drop-active");
     }
 });
+
+/*******************
+*** FILE MANAGEMENT
+********************/
+
+function addFile(filePath) {
+    if (!files.includes(filePath)) {
+        mainArea.classList.remove("placeholder-visible");
+        files.push(filePath);
+        let fileListEntry = document.createElement("li");
+        fileListEntry.setAttribute("data-file", "0");
+        fileListEntry.innerHTML = filePath.substring(filePath.lastIndexOf(path.sep) + 1);
+        fileList.appendChild(fileListEntry);
+    }
+}
