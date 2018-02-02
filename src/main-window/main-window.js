@@ -1,5 +1,4 @@
-const ipc = require("electron").ipcRenderer,
-    {dialog, getCurrentWindow} = require("electron").remote,
+const {dialog, getCurrentWindow} = require("electron").remote,
     path = require("path"),
     startConvertingBtn = document.getElementById("start-converting-btn"),
     addFileBtn = document.getElementById("add-file-btn"),
@@ -18,7 +17,7 @@ var files = [];
 ************************/
 
 startConvertingBtn.addEventListener("click", (event) => {
-    ipc.send("start-converting-clicked");
+    dialog.showErrorBox("Not Yet Implemented", "This feature has not yet been implemented.");
 });
 
 addFileBtn.addEventListener("click", (event) => {

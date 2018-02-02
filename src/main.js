@@ -1,4 +1,4 @@
-const {app, BrowserWindow, ipcMain, dialog} = require("electron"),
+const {app, BrowserWindow, dialog} = require("electron"),
     path = require("path"),
     url = require("url");
 
@@ -29,9 +29,4 @@ app.on("ready", createMainWindow);
 // Quit the application when all windows are closed
 app.on("window-all-closed", () => {
     app.quit();
-});
-
-// Show not implemented error messages
-ipcMain.on("start-converting-clicked", (event) => {
-    dialog.showErrorBox("Not Yet Implemented", "This feature has not yet been implemented.");
 });
