@@ -10,10 +10,10 @@
             "windows": {
                 "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
             },
-            "program": "${workspaceFolder}/build/dist/main.js",
+            "program": "${workspaceFolder}/build/SmoothTranscode/main.js",
             "protocol": "legacy",
             "outFiles": [
-                "${workspaceFolder}/build/dist/**/*.js"
+                "${workspaceFolder}/build/SmoothTranscode/**/*.js"
             ]
         }
     ]

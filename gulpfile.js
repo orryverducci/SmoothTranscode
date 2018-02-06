@@ -22,16 +22,16 @@ gulp.task("clean", (done) => {
 ******************/
 
 gulp.task("prepare:copy", () => {
-    return gulp.src(path.join("src", "**", "*"))
-        .pipe(gulp.dest(path.join("build", "dist")));
+    return gulp.src(path.join("src", "SmoothTranscode", "**", "*"))
+        .pipe(gulp.dest(path.join("build", "SmoothTranscode")));
 });
 
 gulp.task("prepare:sass", () => {
-    return gulp.src(path.join("build", "dist", "**", "*.scss"))
+    return gulp.src(path.join("build", "SmoothTranscode", "**", "*.scss"))
         .pipe(vinylPaths(del))
         .pipe(sass({
             includePaths: [
-                path.join(__dirname, "src"),
+                path.join(__dirname, "src", "SmoothTranscode"),
                 path.join(__dirname, "node_modules", "bootstrap", "scss"),
             ]
         }).on("error", sass.logError))
@@ -42,7 +42,7 @@ gulp.task("prepare:sass", () => {
 
 gulp.task("prepare:fontawesome", () => {
     return gulp.src(path.join(__dirname, "node_modules", "@fortawesome", "fontawesome-pro-webfonts", "webfonts", "*.woff2"))
-        .pipe(gulp.dest(path.join("build", "dist", "assets")));
+        .pipe(gulp.dest(path.join("build", "SmoothTranscode", "assets")));
 });
 
 gulp.task("prepare", gulp.series(
@@ -56,7 +56,7 @@ gulp.task("prepare", gulp.series(
 **************/
 
 gulp.task("start-electron", (done) => {
-    execAsync("electron " + path.join("build", "dist", "main.js"), (err, stdout, stderr) => {
+    execAsync("electron " + path.join("build", "SmoothTranscode", "main.js"), (err, stdout, stderr) => {
         if (err) {
             console.error("Error: ${err}");
         }

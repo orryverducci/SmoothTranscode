@@ -25,17 +25,18 @@
     <Content Include="LICENSE.md" />
     <Content Include="README.md" />
     <Compile Include="gulpfile.js" />
-    <Compile Include="src\main.js" />
-    <Content Include="src\global.scss" />
-    <Content Include="src\_base.scss" />
-    <Content Include="src\_toolbar.scss" />
-    <Content Include="src\main-window\index.html" />
-    <Content Include="src\main-window\_style.html" />
-    <Content Include="src\main-window\main-window.js" />
+    <Compile Include="src\SmoothTranscode\main.js" />
+    <Content Include="src\SmoothTranscode\global.scss" />
+    <Content Include="src\SmoothTranscode\_base.scss" />
+    <Content Include="src\SmoothTranscode\_toolbar.scss" />
+    <Content Include="src\SmoothTranscode\main-window\index.html" />
+    <Content Include="src\SmoothTranscode\main-window\_style.html" />
+    <Content Include="src\SmoothTranscode\main-window\main-window.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src" />
-    <Folder Include="src\main-window" />
+    <Folder Include="src\SmoothTranscode" />
+    <Folder Include="src\SmoothTranscode\main-window" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <!--Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them.-->
