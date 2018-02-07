@@ -6,7 +6,8 @@ const gulp = require("gulp"),
     execAsync = require("child_process").exec,
     sass = require("gulp-sass"),
     del = require("del"),
-    vinylPaths = require("vinyl-paths");
+    vinylPaths = require("vinyl-paths"),
+    os = require("os");
 
 /***************
 *** CLEAN TASKS
@@ -45,10 +46,52 @@ gulp.task("prepare:fontawesome", () => {
         .pipe(gulp.dest(path.join("build", "SmoothTranscode", "assets")));
 });
 
+gulp.task("prepare:ffmpeg", (done) => {
+    exec(path.join(__dirname, "src", "ffmpeg", "configure") + " --prefix=" + path.join(__dirname, "build") + " --pkg-config=pkg-config --pkg-config-flags=--static --enable-gpl --enable-version3 --enable-gray --disable-ffplay --disable-logging --disable-doc --arch=x86_64", {
+        cwd: path.join(__dirname, "src", "ffmpeg"),
+        env: {
+            "LDFLAGS": "-L" + path.join(__dirname, "build", "lib"),
+            "CFLAGS": "-I" + path.join(__dirname, "build", "include")
+        }
+    }, (err, stdout, stderr) => {
+        if (err) {
+            console.error("Error: ${err}");
+        }
+    });
+    done();
+});
+
 gulp.task("prepare", gulp.series(
     "prepare:copy",
     "prepare:sass",
-    "prepare:fontawesome"
+    "prepare:fontawesome",
+    "prepare:ffmpeg"
+));
+
+/***************
+*** BUILD TASKS
+****************/
+
+gulp.task("build:ffmpeg", (done) => {
+    exec("make -j " + os.cpus().length, {
+        cwd: path.join(__dirname, "src", "ffmpeg")
+     }, (err, stdout, stderr) => {
+        if (err) {
+            console.error("Error: ${err}");
+        }
+    });
+    exec("make install", {
+        cwd: path.join(__dirname, "src", "ffmpeg")
+     }, (err, stdout, stderr) => {
+        if (err) {
+            console.error("Error: ${err}");
+        }
+    });
+    done();
+});
+
+gulp.task("build", gulp.series(
+    "build:ffmpeg"
 ));
 
 /*************
@@ -67,5 +110,6 @@ gulp.task("start-electron", (done) => {
 gulp.task("run", gulp.series(
     "clean",
     "prepare",
+    "build",
     "start-electron"
 ));
