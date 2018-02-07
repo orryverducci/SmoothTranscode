@@ -99,7 +99,7 @@ gulp.task("build", gulp.series(
 **************/
 
 gulp.task("start-electron", (done) => {
-    execAsync("electron " + path.join("build", "SmoothTranscode", "main.js"), (err, stdout, stderr) => {
+    execAsync(path.join(__dirname, "node_modules", ".bin", "electron") + " " + path.join("build", "SmoothTranscode", "main.js"), (err, stdout, stderr) => {
         if (err) {
             console.error("Error: ${err}");
         }
