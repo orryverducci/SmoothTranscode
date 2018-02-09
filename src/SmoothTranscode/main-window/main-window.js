@@ -1,5 +1,7 @@
 const {dialog, getCurrentWindow} = require("electron").remote,
     path = require("path"),
+    _ = require("../lodash"),
+    {File} = require("../file");
     startConvertingBtn = document.getElementById("start-converting-btn"),
     addFileBtn = document.getElementById("add-file-btn"),
     mainArea = document.getElementsByTagName("main")[0],
@@ -67,11 +69,12 @@ dropTarget.addEventListener("drop", (event) => {
 ********************/
 
 function addFile(filePath) {
-    if (!files.includes(filePath)) {
+    if (!_.find(files, { path: filePath })) {
+        let mediaFile = new File(filePath);
+        files.push(mediaFile);
         mainArea.classList.remove("placeholder-visible");
-        files.push(filePath);
         let fileListEntry = document.createElement("li");
-        fileListEntry.setAttribute("data-file", "0");
+        fileListEntry.setAttribute("data-file", mediaFile.id);
         fileListEntry.innerHTML = filePath.substring(filePath.lastIndexOf(path.sep) + 1);
         fileList.appendChild(fileListEntry);
     }
