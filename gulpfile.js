@@ -46,6 +46,11 @@ gulp.task("prepare:fontawesome", () => {
         .pipe(gulp.dest(path.join("build", "SmoothTranscode", "assets")));
 });
 
+gulp.task("prepare:lodash", () => {
+    return gulp.src(path.join(__dirname, "node_modules", "lodash", "lodash.js"))
+        .pipe(gulp.dest(path.join("build", "SmoothTranscode")));
+});
+
 gulp.task("prepare:ffmpeg", (done) => {
     exec(path.join(__dirname, "src", "ffmpeg", "configure") + " --prefix=" + path.join(__dirname, "build") + " --pkg-config=pkg-config --pkg-config-flags=--static --enable-gpl --enable-version3 --enable-gray --disable-ffplay --disable-logging --disable-doc --arch=x86_64", {
         cwd: path.join(__dirname, "src", "ffmpeg"),
@@ -65,6 +70,7 @@ gulp.task("prepare", gulp.series(
     "prepare:copy",
     "prepare:sass",
     "prepare:fontawesome",
+    "prepare:lodash",
     "prepare:ffmpeg"
 ));
 
