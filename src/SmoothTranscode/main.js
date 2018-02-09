@@ -5,6 +5,9 @@ const {app, BrowserWindow, dialog} = require("electron"),
 // Global reference for the main window, preventing it from being garbage collected
 let mainWindow;
 
+// Set app path to the application's root folder
+app.setAppPath(__dirname);
+
 function createMainWindow() {
     // Create the main window
     mainWindow = new BrowserWindow({
