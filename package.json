@@ -2,7 +2,7 @@
   "name": "smoothtranscode",
   "version": "1.0.0",
   "description": "Video and audio format conversion application",
-  "main": "src/main.js",
+  "main": "src/SmoothTranscode/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
