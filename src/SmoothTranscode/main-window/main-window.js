@@ -23,11 +23,12 @@ startConvertingBtn.addEventListener("click", (event) => {
 });
 
 addFileBtn.addEventListener("click", (event) => {
-    dialog.showOpenDialog(getCurrentWindow(), {properties: ["openFile", "multiSelections"]}, (filePaths) => {
+    let filePaths = dialog.showOpenDialog(getCurrentWindow(), {properties: ["openFile", "multiSelections"]});
+    if (typeof filePaths !== "undefined") {
         for (let file of filePaths) {
             addFile(file);
         }
-    });
+    }
 });
 
 /********************
