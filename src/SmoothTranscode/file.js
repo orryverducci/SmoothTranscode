@@ -2,7 +2,7 @@ const {app} = require("electron").remote,
     exec = require("child_process").execFileSync,
     path = require("path");
 
-/** Provides information and transcode settings a media file. */
+/** Provides information and transcode settings for a media file. */
 class File {
     /**
      * Initialises an instance of File.
