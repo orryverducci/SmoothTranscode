@@ -76,6 +76,12 @@ function addFile(filePath) {
             mainArea.classList.remove("placeholder-visible");
             let fileListEntry = document.createElement("li");
             fileListEntry.setAttribute("data-file", mediaFile.id);
+            if (mediaFile.videoStreams.length > 0) {
+                fileListEntry.setAttribute("data-icon", "\uf008");
+            }
+            else {
+                fileListEntry.setAttribute("data-icon", "\uf028");
+            }
             fileListEntry.innerHTML = filePath.substring(filePath.lastIndexOf(path.sep) + 1);
             fileList.appendChild(fileListEntry);
         }
