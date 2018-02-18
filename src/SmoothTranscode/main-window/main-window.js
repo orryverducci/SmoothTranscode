@@ -71,11 +71,21 @@ dropTarget.addEventListener("drop", (event) => {
 function addFile(filePath) {
     if (!_.find(files, { path: filePath })) {
         let mediaFile = new File(filePath);
-        files.push(mediaFile);
-        mainArea.classList.remove("placeholder-visible");
-        let fileListEntry = document.createElement("li");
-        fileListEntry.setAttribute("data-file", mediaFile.id);
-        fileListEntry.innerHTML = filePath.substring(filePath.lastIndexOf(path.sep) + 1);
-        fileList.appendChild(fileListEntry);
+        if (!mediaFile.error) {
+            files.push(mediaFile);
+            mainArea.classList.remove("placeholder-visible");
+            let fileListEntry = document.createElement("li");
+            fileListEntry.setAttribute("data-file", mediaFile.id);
+            fileListEntry.innerHTML = filePath.substring(filePath.lastIndexOf(path.sep) + 1);
+            fileList.appendChild(fileListEntry);
+        }
+        else {
+            dialog.showMessageBox(getCurrentWindow(), {
+                type: "error",
+                title: "Unable to add file",
+                message: "Unable to add file",
+                detail: "Check the file is a valid video or audio file."
+            });
+        }
     }
 }
