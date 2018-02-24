@@ -29,6 +29,7 @@
     <Content Include="src\SmoothTranscode\global.scss" />
     <Content Include="src\SmoothTranscode\_base.scss" />
     <Content Include="src\SmoothTranscode\_toolbar.scss" />
+    <Compile Include="src\SmoothTranscode\file.js" />
     <Content Include="src\SmoothTranscode\main-window\index.html" />
     <Content Include="src\SmoothTranscode\main-window\_style.html" />
     <Content Include="src\SmoothTranscode\main-window\main-window.js" />
