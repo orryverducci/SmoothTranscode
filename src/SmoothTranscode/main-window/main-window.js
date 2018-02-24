@@ -87,7 +87,11 @@ function addFile(filePath) {
             }
             fileHeading.innerHTML = filePath.substring(filePath.lastIndexOf(path.sep) + 1);
             fileListEntry.appendChild(fileHeading);
+            let fileOutputs = document.createElement("ul");
+            fileOutputs.id = "file-" + mediaFile.id + "-outputs";
+            fileListEntry.appendChild(fileOutputs);
             fileList.appendChild(fileListEntry);
+            addOutput(mediaFile.id);
         }
         else {
             dialog.showMessageBox(getCurrentWindow(), {
@@ -98,4 +102,21 @@ function addFile(filePath) {
             });
         }
     }
+}
+
+function addOutput(fileID)
+{
+    let file = files.find(element => {
+        return element.id == fileID;
+    });
+    if (typeof file == "undefined") {
+        return;
+    }
+    let transcodeOutput = file.addOutput();
+    let outputEntry = document.createElement("li");
+    outputEntry.setAttribute("data-output", transcodeOutput.id);
+    outputEntry.id = "output-" + transcodeOutput.id;
+    outputEntry.innerHTML = transcodeOutput.path;
+    fileEntry = document.getElementById("file-" + fileID + "-outputs");
+    fileEntry.appendChild(outputEntry);
 }

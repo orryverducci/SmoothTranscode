@@ -1,6 +1,7 @@
 const {app} = require("electron").remote,
     exec = require("child_process").execFileSync,
-    path = require("path");
+    path = require("path"),
+    {Output} = require("./output");
 
 /** Provides information and transcode settings for a media file. */
 class File {
@@ -13,6 +14,8 @@ class File {
         this.error = false;
         this.videoStreams = [];
         this.audioStreams = [];
+        this.outputs = [];
+        this.newOutputSuffix = 1;
         // Set the file path
         this.path = filePath;
         // Generate unique ID, based on timestamp plus a random number
@@ -101,6 +104,22 @@ class File {
         };
         // Add stream to list of audio streams
         this.audioStreams.push(streamInfo);
+    }
+
+    /**
+     * Add a new transcode output to the file.
+     */
+    addOutput() {
+        // Create new file path for the output
+        let filePath = this.path.substring(0, this.path.lastIndexOf(".")) + "_" + this.newOutputSuffix + this.path.substring(this.path.lastIndexOf("."));
+        // Create output
+        let transcodeOutput = new Output(filePath);
+        // Add output
+        this.outputs.push(transcodeOutput);
+        // Increase output suffix
+        this.newOutputSuffix++;
+        // Return the output ID
+        return transcodeOutput;
     }
 }
 
