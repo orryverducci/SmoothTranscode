@@ -82,8 +82,11 @@
 
         li {
             list-style: none;
-            background: #EEEEEE;
-            padding: 1.5rem;
+
+            header {
+                background: #EEEEEE;
+                padding: 1.5rem;
+            }
         }
     }
 

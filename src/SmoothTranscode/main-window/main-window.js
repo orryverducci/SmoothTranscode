@@ -78,13 +78,15 @@ function addFile(filePath) {
             let fileListEntry = document.createElement("li");
             fileListEntry.setAttribute("data-file", mediaFile.id);
             fileListEntry.id = "file-" + mediaFile.id;
+            let fileHeading = document.createElement("header");
             if (mediaFile.videoStreams.length > 0) {
-                fileListEntry.setAttribute("data-icon", "\uf008");
+                fileHeading.setAttribute("data-icon", "\uf008");
             }
             else {
-                fileListEntry.setAttribute("data-icon", "\uf028");
+                fileHeading.setAttribute("data-icon", "\uf028");
             }
-            fileListEntry.innerHTML = filePath.substring(filePath.lastIndexOf(path.sep) + 1);
+            fileHeading.innerHTML = filePath.substring(filePath.lastIndexOf(path.sep) + 1);
+            fileListEntry.appendChild(fileHeading);
             fileList.appendChild(fileListEntry);
         }
         else {
