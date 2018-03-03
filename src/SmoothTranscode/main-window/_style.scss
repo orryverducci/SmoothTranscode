@@ -85,7 +85,35 @@
 
             header {
                 background: #EEEEEE;
-                padding: 1.5rem;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                div {
+                    padding: 1.5rem 0 1.5rem 1.5rem;
+                    flex: 0 0 auto;
+
+                    &:last-child {
+                        padding-right: 1.5rem;
+                    }
+                }
+
+                .title {
+                    flex: 1 0 0;
+                }
+
+                .button {
+                    margin: -1rem 0;
+                    background: none;
+
+                    &:hover {
+                        background: #E0E0E0;
+                    }
+
+                    &:active {
+                        background: #BDBDBD;
+                    }
+                }
             }
 
             ul {

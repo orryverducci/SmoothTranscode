@@ -79,13 +79,27 @@ function addFile(filePath) {
             fileListEntry.setAttribute("data-file", mediaFile.id);
             fileListEntry.id = "file-" + mediaFile.id;
             let fileHeading = document.createElement("header");
+            let fileHeadingTitle = document.createElement("div");
             if (mediaFile.videoStreams.length > 0) {
-                fileHeading.setAttribute("data-icon", "\uf008");
+                fileHeadingTitle.setAttribute("data-icon", "\uf008");
             }
             else {
-                fileHeading.setAttribute("data-icon", "\uf028");
+                fileHeadingTitle.setAttribute("data-icon", "\uf028");
             }
-            fileHeading.innerHTML = filePath.substring(filePath.lastIndexOf(path.sep) + 1);
+            fileHeadingTitle.innerHTML = filePath.substring(filePath.lastIndexOf(path.sep) + 1);
+            fileHeadingTitle.classList.add("title");
+            fileHeading.appendChild(fileHeadingTitle);
+            fileHeadingButtons = document.createElement("div");
+            addButton = document.createElement("a");
+            addButton.setAttribute("href", "#");
+            addButton.setAttribute("data-icon", "\uf067");
+            addButton.classList.add("button");
+            addButton.innerHTML = "Add Output";
+            addButton.addEventListener("click", (event) => {
+                addOutput(mediaFile.id);
+            });
+            fileHeadingButtons.appendChild(addButton);
+            fileHeading.appendChild(fileHeadingButtons);
             fileListEntry.appendChild(fileHeading);
             let fileOutputs = document.createElement("ul");
             fileOutputs.id = "file-" + mediaFile.id + "-outputs";
