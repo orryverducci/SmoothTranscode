@@ -90,6 +90,15 @@ function addFile(filePath) {
             fileHeadingTitle.classList.add("title");
             fileHeading.appendChild(fileHeadingTitle);
             fileHeadingButtons = document.createElement("div");
+            deleteButton = document.createElement("a");
+            deleteButton.setAttribute("href", "#");
+            deleteButton.setAttribute("data-icon", "\uf2ed");
+            deleteButton.classList.add("button");
+            deleteButton.innerHTML = "Remove File";
+            deleteButton.addEventListener("click", (event) => {
+                removeFile(mediaFile.id);
+            });
+            fileHeadingButtons.appendChild(deleteButton);
             addButton = document.createElement("a");
             addButton.setAttribute("href", "#");
             addButton.setAttribute("data-icon", "\uf067");
@@ -115,6 +124,19 @@ function addFile(filePath) {
                 detail: "Check the file is a valid video or audio file."
             });
         }
+    }
+}
+
+function removeFile(fileID) {
+    let removeResults = _.remove(files, (file) => {
+        return file.id == fileID;
+    })
+    if (removeResults.length > 0) {
+        let fileListEntry = document.getElementById("file-" + fileID);
+        fileListEntry.parentNode.removeChild(fileListEntry);
+    }
+    if (fileList.childElementCount == 0) {
+        mainArea.classList.add("placeholder-visible");
     }
 }
 
