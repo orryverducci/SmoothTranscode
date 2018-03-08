@@ -11,4 +11,13 @@
     &:active {
         background: #E0E0E0;
     }
+
+    &.icon-only {
+        font-size: 0;
+
+        &[data-icon]:before {
+            font-size: 1rem;
+            margin: 0;
+        }
+    }
 }

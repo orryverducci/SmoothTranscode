@@ -20,8 +20,8 @@
                             {{ file.name }}
                         </div>
                         <div>
-                            <a href="#" class="button" data-icon="" v-on:click="removeFile(file)">Remove File</a>
-                            <a href="#" class="button" data-icon="" v-on:click="addOutput(file)">Add Output</a>
+                            <a href="#" title="Remove File" class="button icon-only" data-icon="" v-on:click="removeFile(file)">Remove File</a>
+                            <a href="#" title="Add Output" class="button icon-only" data-icon="" v-on:click="addOutput(file)">Add Output</a>
                         </div>
                     </header>
                     <ul v-if="file.outputs.length > 0">
