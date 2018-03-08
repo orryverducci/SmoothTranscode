@@ -12,13 +12,30 @@
                 <li><a href="#" data-icon="" id="add-file-btn">Add File</a></li>
             </ul>
         </nav>
-        <main class="placeholder-visible">
-            <ul id="file-list"></ul>
-            <p id="placeholder" data-icon="">Add video or audio files to get started</p>
-            <div id="drag-notice">
+        <main v-on:dragenter="dragEnter">
+            <ul id="file-list" v-if="files.length > 0">
+                <li v-for="file in files" v-bind:data-file="file.id" :key="file.id">
+                    <header>
+                        <div class="title" :data-icon="file.videoStreams.length > 0 ? '\uf008' : '\uf028'">
+                            {{ file.name }}
+                        </div>
+                        <div>
+                            <a href="#" class="button" data-icon="" v-on:click="removeFile(file)">Remove File</a>
+                            <a href="#" class="button" data-icon="" v-on:click="addOutput(file)">Add Output</a>
+                        </div>
+                    </header>
+                    <ul v-if="file.outputs.length > 0">
+                        <li v-for="output in file.outputs" v-bind:data-output="output.id" :key="output.id">
+                            {{ output.path }}
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <p id="placeholder" data-icon="" v-if="showPlaceholder">Add video or audio files to get started</p>
+            <div id="drag-notice" v-if="dropActive">
                 <p data-icon="">Drop files here</p>
             </div>
-            <div id="drop-target"></div>
+            <div id="drop-target" v-if="dropActive" v-on:dragleave="dragLeave" v-on:drop="drop"></div>
         </main>
         <script type="text/javascript" src="main-window.js"></script>
     </body>

@@ -18,6 +18,7 @@ class File {
         this.newOutputSuffix = 1;
         // Set the file path
         this.path = filePath;
+        this.name = this.path.substring(this.path.lastIndexOf(path.sep) + 1);
         // Generate unique ID, based on timestamp plus a random number
         this.id = Date.now() + Math.round(Math.random() * 10e5);
         // Retrieve information about the file from FFprobe
@@ -112,14 +113,10 @@ class File {
     addOutput() {
         // Create new file path for the output
         let filePath = this.path.substring(0, this.path.lastIndexOf(".")) + "_" + this.newOutputSuffix + this.path.substring(this.path.lastIndexOf("."));
-        // Create output
-        let transcodeOutput = new Output(filePath);
         // Add output
-        this.outputs.push(transcodeOutput);
+        this.outputs.push(new Output(filePath));
         // Increase output suffix
         this.newOutputSuffix++;
-        // Return the output ID
-        return transcodeOutput;
     }
 }
 

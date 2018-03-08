@@ -24,7 +24,8 @@
   },
   "homepage": "https://github.com/orryverducci/SmoothTranscode",
   "dependencies": {
-    "electron": "1.6.11"
+    "electron": "1.6.11",
+    "electron-devtools-installer": "^2.2.3"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-pro-webfonts": "^1.0.2",
@@ -33,6 +34,7 @@
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-sass": "^3.1.0",
     "lodash": "^4.17.5",
-    "vinyl-paths": "^2.1.0"
+    "vinyl-paths": "^2.1.0",
+    "vue": "^2.5.13"
   }
 }

@@ -1,18 +1,52 @@
 const {dialog, getCurrentWindow} = require("electron").remote,
     path = require("path"),
+    Vue = require("../vue"),
     _ = require("../lodash"),
     {File} = require("../file");
     startConvertingBtn = document.getElementById("start-converting-btn"),
-    addFileBtn = document.getElementById("add-file-btn"),
-    mainArea = document.getElementsByTagName("main")[0],
-    fileList = document.getElementById("file-list"),
-    dropTarget = document.getElementById("drop-target");
+    addFileBtn = document.getElementById("add-file-btn");
 
 /*************
 *** VARIABLES
 **************/
 
 var files = [];
+
+/******************
+*** USER INTERFACE
+*******************/
+
+let fileList = new Vue({
+    el: "main",
+    data: {
+        files: files,
+        dropActive: false
+    },
+    computed: {
+        showPlaceholder: function() {
+            return this.files.length == 0 && !this.dropActive;
+        }
+    },
+    methods: {
+        dragEnter: function(event) {
+            event.preventDefault();
+            this.dropActive = true;
+        },
+        dragLeave: function(event) {
+            event.preventDefault();
+            this.dropActive = false;
+        },
+        drop: function(event) {
+            event.preventDefault();
+            for (let file of event.dataTransfer.files) {
+                addFile(file.path);
+            }
+            this.dropActive = false;
+        },
+        removeFile: removeFile,
+        addOutput: addOutput
+    }
+})
 
 /***********************
 *** BUTTON CLICK EVENTS
@@ -43,28 +77,6 @@ document.addEventListener("drop", (event) => {
     event.preventDefault();
 });
 
-mainArea.addEventListener("dragenter", (event) => {
-    event.preventDefault();
-    mainArea.classList.add("drop-active");
-});
-
-dropTarget.addEventListener("dragleave", (event) => {
-    event.preventDefault();
-    if (mainArea.classList.contains("drop-active")) {
-        mainArea.classList.remove("drop-active");
-    }
-});
-
-dropTarget.addEventListener("drop", (event) => {
-    event.preventDefault();
-    for (let file of event.dataTransfer.files) {
-        addFile(file.path);
-    }
-    if (mainArea.classList.contains("drop-active")) {
-        mainArea.classList.remove("drop-active");
-    }
-});
-
 /*******************
 *** FILE MANAGEMENT
 ********************/
@@ -74,47 +86,7 @@ function addFile(filePath) {
         let mediaFile = new File(filePath);
         if (!mediaFile.error) {
             files.push(mediaFile);
-            mainArea.classList.remove("placeholder-visible");
-            let fileListEntry = document.createElement("li");
-            fileListEntry.setAttribute("data-file", mediaFile.id);
-            fileListEntry.id = "file-" + mediaFile.id;
-            let fileHeading = document.createElement("header");
-            let fileHeadingTitle = document.createElement("div");
-            if (mediaFile.videoStreams.length > 0) {
-                fileHeadingTitle.setAttribute("data-icon", "\uf008");
-            }
-            else {
-                fileHeadingTitle.setAttribute("data-icon", "\uf028");
-            }
-            fileHeadingTitle.innerHTML = filePath.substring(filePath.lastIndexOf(path.sep) + 1);
-            fileHeadingTitle.classList.add("title");
-            fileHeading.appendChild(fileHeadingTitle);
-            fileHeadingButtons = document.createElement("div");
-            deleteButton = document.createElement("a");
-            deleteButton.setAttribute("href", "#");
-            deleteButton.setAttribute("data-icon", "\uf2ed");
-            deleteButton.classList.add("button");
-            deleteButton.innerHTML = "Remove File";
-            deleteButton.addEventListener("click", (event) => {
-                removeFile(mediaFile.id);
-            });
-            fileHeadingButtons.appendChild(deleteButton);
-            addButton = document.createElement("a");
-            addButton.setAttribute("href", "#");
-            addButton.setAttribute("data-icon", "\uf067");
-            addButton.classList.add("button");
-            addButton.innerHTML = "Add Output";
-            addButton.addEventListener("click", (event) => {
-                addOutput(mediaFile.id);
-            });
-            fileHeadingButtons.appendChild(addButton);
-            fileHeading.appendChild(fileHeadingButtons);
-            fileListEntry.appendChild(fileHeading);
-            let fileOutputs = document.createElement("ul");
-            fileOutputs.id = "file-" + mediaFile.id + "-outputs";
-            fileListEntry.appendChild(fileOutputs);
-            fileList.appendChild(fileListEntry);
-            addOutput(mediaFile.id);
+            addOutput(mediaFile);
         }
         else {
             dialog.showMessageBox(getCurrentWindow(), {
@@ -127,32 +99,10 @@ function addFile(filePath) {
     }
 }
 
-function removeFile(fileID) {
-    let removeResults = _.remove(files, (file) => {
-        return file.id == fileID;
-    })
-    if (removeResults.length > 0) {
-        let fileListEntry = document.getElementById("file-" + fileID);
-        fileListEntry.parentNode.removeChild(fileListEntry);
-    }
-    if (fileList.childElementCount == 0) {
-        mainArea.classList.add("placeholder-visible");
-    }
+function removeFile(file) {
+    files.splice(files.indexOf(file), 1);
 }
 
-function addOutput(fileID)
-{
-    let file = files.find(element => {
-        return element.id == fileID;
-    });
-    if (typeof file == "undefined") {
-        return;
-    }
-    let transcodeOutput = file.addOutput();
-    let outputEntry = document.createElement("li");
-    outputEntry.setAttribute("data-output", transcodeOutput.id);
-    outputEntry.id = "output-" + transcodeOutput.id;
-    outputEntry.innerHTML = transcodeOutput.path;
-    fileEntry = document.getElementById("file-" + fileID + "-outputs");
-    fileEntry.appendChild(outputEntry);
+function addOutput(file) {
+    file.addOutput();
 }

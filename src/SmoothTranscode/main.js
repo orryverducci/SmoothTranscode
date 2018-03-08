@@ -1,4 +1,5 @@
 const {app, BrowserWindow, dialog} = require("electron"),
+    {default: installExtension, VUEJS_DEVTOOLS} = require("electron-devtools-installer"),
     path = require("path"),
     url = require("url");
 
@@ -26,8 +27,18 @@ function createMainWindow() {
     });
 }
 
+function setupDevTools() {
+    // Add Vue Devtools
+    installExtension(VUEJS_DEVTOOLS).catch((error) => {
+        console.log("Error occurred adding Vue Devtools: ", error);
+    });
+}
+
 // Create the main window when Electron has finished initialization
-app.on("ready", createMainWindow);
+app.on("ready", () => {
+    setupDevTools();
+    createMainWindow();
+});
 
 // Quit the application when all windows are closed
 app.on("window-all-closed", () => {
