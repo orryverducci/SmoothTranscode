@@ -26,7 +26,12 @@
                     </header>
                     <ul v-if="file.outputs.length > 0">
                         <li v-for="output in file.outputs" v-bind:data-output="output.id" :key="output.id">
-                            {{ output.path }}
+                            <div class="info">
+                                {{ output.path }}
+                            </div>
+                            <div>
+                                <a href="#" title="Remove Output" class="button icon-only" data-icon="" v-on:click="removeOutput(file, output)">Remove Output</a>
+                            </div>
                         </li>
                     </ul>
                 </li>

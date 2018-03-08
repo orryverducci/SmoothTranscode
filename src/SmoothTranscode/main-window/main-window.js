@@ -44,7 +44,8 @@ let fileList = new Vue({
             this.dropActive = false;
         },
         removeFile: removeFile,
-        addOutput: addOutput
+        addOutput: addOutput,
+        removeOutput: removeOutput
     }
 })
 
@@ -105,4 +106,8 @@ function removeFile(file) {
 
 function addOutput(file) {
     file.addOutput();
+}
+
+function removeOutput(file, output) {
+    file.removeOutput(output);
 }

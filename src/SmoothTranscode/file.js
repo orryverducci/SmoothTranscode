@@ -118,6 +118,14 @@ class File {
         // Increase output suffix
         this.newOutputSuffix++;
     }
+
+    /**
+     * Removes a transcode output from the file
+     * @param {Object} output - The output to remove.
+     */
+    removeOutput(output) {
+        this.outputs.splice(this.outputs.indexOf(output), 1);
+    }
 }
 
 module.exports.File = File;
