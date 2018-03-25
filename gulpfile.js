@@ -55,11 +55,17 @@ gulp.task("prepare:lodash", () => {
         .pipe(gulp.dest(path.join("build", "frontend")));
 });
 
+gulp.task("prepare:moment", () => {
+    return gulp.src(path.join(__dirname, "node_modules", "moment", "moment.js"))
+        .pipe(gulp.dest(path.join("build", "frontend")));
+});
+
 gulp.task("prepare:frontend", gulp.parallel(
     "prepare:copy",
     "prepare:fontawesome",
     "prepare:vue",
-    "prepare:lodash"
+    "prepare:lodash",
+    "prepare:moment"
 ));
 
 /*****************************

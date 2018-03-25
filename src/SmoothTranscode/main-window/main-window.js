@@ -2,9 +2,8 @@ const {dialog, getCurrentWindow} = require("electron").remote,
     path = require("path"),
     Vue = require("../vue"),
     _ = require("../lodash"),
-    {File} = require("../file");
-    startConvertingBtn = document.getElementById("start-converting-btn"),
-    addFileBtn = document.getElementById("add-file-btn");
+    {File} = require("../file"),
+    {FFmpeg} = require("../ffmpeg");
 
 /*************
 *** VARIABLES
@@ -16,18 +15,29 @@ var files = [];
 *** USER INTERFACE
 *******************/
 
-let fileList = new Vue({
-    el: "main",
+let ui = new Vue({
+    el: "#main-window",
     data: {
         files: files,
-        dropActive: false
+        dropActive: false,
+        encoding: false,
+        currentEncode: 0,
+        encodeSessions: [],
+        encodePercentage: 0,
+        encodeStatus: ""
     },
     computed: {
         showPlaceholder: function() {
             return this.files.length == 0 && !this.dropActive;
+        },
+        totalPercentage: function() {
+            return Math.round(((100 * this.currentEncode) + this.encodePercentage) / this.encodeSessions.length);
         }
     },
     methods: {
+        convertClicked: StartTranscoding,
+        stopClicked: StopTranscoding,
+        addFilesClicked: AddFilesClicked,
         dragEnter: function(event) {
             event.preventDefault();
             this.dropActive = true;
@@ -53,18 +63,14 @@ let fileList = new Vue({
 *** BUTTON CLICK EVENTS
 ************************/
 
-startConvertingBtn.addEventListener("click", (event) => {
-    dialog.showErrorBox("Not Yet Implemented", "This feature has not yet been implemented.");
-});
-
-addFileBtn.addEventListener("click", (event) => {
+function AddFilesClicked(event) {
     let filePaths = dialog.showOpenDialog(getCurrentWindow(), {properties: ["openFile", "multiSelections"]});
     if (typeof filePaths !== "undefined") {
         for (let file of filePaths) {
             addFile(file);
         }
     }
-});
+}
 
 /********************
 *** DRAG/DROP EVENTS
@@ -110,4 +116,55 @@ function addOutput(file) {
 
 function removeOutput(file, output) {
     file.removeOutput(output);
+}
+
+/***************
+*** TRANSCODING
+****************/
+
+function StartTranscoding() {
+    if (files.length > 0) {
+        for (let i = 0; i < files.length; i++) {
+            for (let x = 0; x < files[i].outputs.length; x++) {
+                let encodeSession = new FFmpeg(files[i], x);
+                ui.encodeSessions.push(encodeSession);
+            }
+        }
+        ui.encoding = true;
+        StartNextFile();
+    } else {
+        dialog.showMessageBox(getCurrentWindow(), {
+            type: "error",
+            title: "No files to convert",
+            message: "No files to convert",
+            detail: "Please add video or audio files to convert them."
+        });
+    }
+}
+
+function StartNextFile() {
+    ui.encodePercentage = 0;
+    ui.encodeStatus = "";
+    if (ui.currentEncode < ui.encodeSessions.length) {
+        ui.encodeSessions[ui.currentEncode].addListener("progressChanged", () => {
+            ui.encodePercentage = ui.encodeSessions[ui.currentEncode].progressPercentage;
+            ui.encodeStatus = ui.encodeSessions[ui.currentEncode].progressStatus;
+        });
+        ui.encodeSessions[ui.currentEncode].addListener("finished", () => {
+            ui.currentEncode++;
+            StartNextFile();
+        });
+        ui.encodeSessions[ui.currentEncode].start();
+    } else {
+        ui.encoding = false;
+        ui.currentEncode = 0;
+    }
+}
+
+function StopTranscoding() {
+    dialog.showMessageBox(getCurrentWindow(), {
+        type: "error",
+        title: "Not Yet Implemented",
+        message: "Not Yet Implemented"
+    });
 }

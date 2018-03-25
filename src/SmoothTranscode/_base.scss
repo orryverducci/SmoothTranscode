@@ -39,8 +39,6 @@ html {
 }
 
 body {
-    display: flex;
-    flex-direction: column;
     user-select: none;
 }
 
@@ -65,4 +63,8 @@ a {
     margin-right: 0.8rem;
     -webkit-font-smoothing: antialiased;
     line-height: 1rem;
+}
+
+.window {
+    height: 100%;
 }
