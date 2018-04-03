@@ -162,6 +162,7 @@ function StartNextFile() {
     } else {
         ui.encoding = false;
         ui.currentEncode = 0;
+        ui.encodeSessions = [];
     }
 }
 
