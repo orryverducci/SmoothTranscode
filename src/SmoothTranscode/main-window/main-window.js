@@ -31,7 +31,11 @@ let ui = new Vue({
             return this.files.length == 0 && !this.dropActive;
         },
         totalPercentage: function() {
-            return Math.round(((100 * this.currentEncode) + this.encodePercentage) / this.encodeSessions.length);
+            if (this.encodeSessions.length > 0) {
+                return Math.round(((100 * this.currentEncode) + this.encodePercentage) / this.encodeSessions.length);
+            } else {
+                return 0;
+            }
         }
     },
     methods: {

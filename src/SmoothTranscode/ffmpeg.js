@@ -17,8 +17,8 @@ class FFmpeg {
         this.listeners = new Map();
         // Initialise encoding progress information
         this.duration;
-        this.progressPercentage;
-        this.progressStatus;
+        this.progressPercentage = 0;
+        this.progressStatus = "";
     }
 
     /**
