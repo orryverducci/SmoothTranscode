@@ -83,7 +83,7 @@ class FFmpeg {
         // Log output for debugging
         console.info("[FFmpeg] " + output);
         // Process output from FFmpeg depending on what the output is
-        if (output.startsWith("Input")) { // Output contains input information
+        if (output.includes("Input #0")) { // Output contains input information
             // Locate the duration in the input information
             let durationIndex = output.indexOf("Duration:");
             // If the duration is found, retrieve it
