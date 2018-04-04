@@ -100,7 +100,7 @@ class FFmpeg {
             if (typeof this.duration !== "undefined") {
                 // Locate the timecode in the progress information
                 let timeIndex = output.indexOf("time");
-                // Increate time index to the start of the timecode
+                // Increase time index to the start of the timecode
                 timeIndex += 5;
                 // Locate the space following the duration
                 let spaceIndex = output.indexOf(" ", timeIndex);
