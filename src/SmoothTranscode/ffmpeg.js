@@ -17,8 +17,10 @@ class FFmpeg {
         this.listeners = new Map();
         // Initialise encoding progress information
         this.duration;
+        this.progressTime = "";
+        this.progressBitrate = "";
+        this.progressSpeed = "";
         this.progressPercentage = 0;
-        this.progressStatus = "";
     }
 
     /**
@@ -96,21 +98,30 @@ class FFmpeg {
                 this.duration = moment.duration(output.slice(durationIndex, commaIndex));
             }
         } else if (output.startsWith("frame=") || output.startsWith("size=")) { // Output contains encoding progress
+            // Create a map of status properties
+            let status = new Map();
+            // Remove spaces in output following a '=' character
+            output = output.replace(/=( *)/g, "=")
+            // Split output line into segments split by spaces
+            let outputSegments = output.split(" ");
+            // Split each segment into key and value, and add to the map of statush properties
+            outputSegments.forEach((segment) => {
+                let segmentValues = segment.split("=");
+                status.set(segmentValues[0], segmentValues[1]);
+            });
+            // Update time encoded
+            this.progressTime = status.get("time").substring(0, status.get("time").length - 3);
             // If a duration has been set, calculate progress percentage
             if (typeof this.duration !== "undefined") {
-                // Locate the timecode in the progress information
-                let timeIndex = output.indexOf("time");
-                // Increase time index to the start of the timecode
-                timeIndex += 5;
-                // Locate the space following the duration
-                let spaceIndex = output.indexOf(" ", timeIndex);
                 // Retrieve current timecode
-                let timecode = moment.duration(output.slice(timeIndex, spaceIndex));
+                let timecode = moment.duration(this.progressTime);
                 // Convert times to seconds and calculate percentage encoded
                 this.progressPercentage = Math.round((100 / this.duration.asSeconds()) * timecode.asSeconds());
             }
-            // Update the progress status with the output
-            this.progressStatus = output;
+            // Update encoding bitrate
+            this.progressBitrate = status.get("bitrate");
+            // Update encoding speed
+            this.progressSpeed = status.get("speed");
             // Fire progress changed event
             this.fireEvent("progressChanged");
         }

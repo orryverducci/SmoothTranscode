@@ -47,7 +47,7 @@
             <aside v-if="encoding">
                 <p>Encoding {{ currentEncode + 1 }} of {{ encodeSessions.length }}</p>
                 <progress v-bind:value="totalPercentage" max="100">{{totalPercentage}}%</progress>
-                <p>{{ encodeStatus }}</p>
+                <p>Time Encoded: {{ encodeTime }} - Encoding Bitrate: {{ encodeBitrate }} - Encoding Speed: {{ encodeSpeed }}</p>
             </aside>
         </div>
         <script type="text/javascript" src="main-window.js"></script>
