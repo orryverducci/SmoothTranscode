@@ -5,12 +5,6 @@ const {dialog, getCurrentWindow} = require("electron").remote,
     {File} = require("../file"),
     {FFmpeg} = require("../ffmpeg");
 
-/*************
-*** VARIABLES
-**************/
-
-var files = [];
-
 /******************
 *** USER INTERFACE
 *******************/
@@ -18,7 +12,7 @@ var files = [];
 let ui = new Vue({
     el: "#main-window",
     data: {
-        files: files,
+        files: [],
         dropActive: false,
         encoding: false,
         currentEncode: 0,
@@ -95,10 +89,10 @@ document.addEventListener("drop", (event) => {
 ********************/
 
 function addFile(filePath) {
-    if (!_.find(files, { path: filePath })) {
+    if (!_.find(ui.files, { path: filePath })) {
         let mediaFile = new File(filePath);
         if (!mediaFile.error) {
-            files.push(mediaFile);
+            ui.files.push(mediaFile);
             addOutput(mediaFile);
         }
         else {
@@ -113,7 +107,7 @@ function addFile(filePath) {
 }
 
 function removeFile(file) {
-    files.splice(files.indexOf(file), 1);
+    ui.files.splice(ui.files.indexOf(file), 1);
 }
 
 function addOutput(file) {
@@ -129,10 +123,10 @@ function removeOutput(file, output) {
 ****************/
 
 function StartTranscoding() {
-    if (files.length > 0) {
-        for (let i = 0; i < files.length; i++) {
-            for (let x = 0; x < files[i].outputs.length; x++) {
-                let encodeSession = new FFmpeg(files[i], x);
+    if (ui.files.length > 0) {
+        for (let i = 0; i < ui.files.length; i++) {
+            for (let x = 0; x < ui.files[i].outputs.length; x++) {
+                let encodeSession = new FFmpeg(ui.files[i], x);
                 ui.encodeSessions.push(encodeSession);
             }
         }
