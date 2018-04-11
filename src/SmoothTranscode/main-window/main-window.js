@@ -167,9 +167,8 @@ function StartNextFile() {
 }
 
 function StopTranscoding() {
-    dialog.showMessageBox(getCurrentWindow(), {
-        type: "error",
-        title: "Not Yet Implemented",
-        message: "Not Yet Implemented"
-    });
+    ui.encodeSessions[ui.currentEncode].stop();
+    ui.encoding = false;
+    ui.currentEncode = 0;
+    ui.encodeSessions = [];
 }

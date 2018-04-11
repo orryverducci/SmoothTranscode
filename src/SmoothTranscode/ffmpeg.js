@@ -1,5 +1,6 @@
 const {app} = require("electron").remote,
     {spawn} = require("child_process"),
+    fs = require("fs"),
     moment = require("moment");
 
 /** Runs FFmpeg to transcode an output. */
@@ -15,6 +16,9 @@ class FFmpeg {
         this.settings = input.outputs[outputIndex];
         // Initialise event listeners
         this.listeners = new Map();
+        // Initialise encoding process
+        this.running = false;
+        this.process;
         // Initialise encoding progress information
         this.duration;
         this.progressTime = "";
@@ -30,16 +34,34 @@ class FFmpeg {
         // Build the command to run
         let args = [];
         args = this.buildInputArgs().concat(this.buildEncodingArgs(), ["-hide_banner", "-y", this.settings.path]);
+        // Mark the process as running
+        this.running = true;
         // Start encoding process
-        let process = spawn(path.join(app.getAppPath(), "../", "bin", "ffmpeg"), args, {
+        this.process = spawn(path.join(app.getAppPath(), "../", "bin", "ffmpeg"), args, {
             windowsHide: true
         });
-        // Fire finished event when FFmpeg closes
-        process.on("close", () => {
+        // Fire finished event and mark as not running when FFmpeg closes
+        this.process.on("close", () => {
+            this.running = false;
             this.fireEvent("finished");
         });
         // Process FFmpeg output
-        process.stderr.on("data", this.processOutput.bind(this));
+        this.process.stderr.on("data", this.processOutput.bind(this));
+    }
+
+    /**
+     * Stops the transcode.
+     */
+    stop() {
+        // Stop transcoding if the process is currently running
+        if (this.running) {
+            // Mark encode as not running
+            this.running = false;
+            // Kill the FFmpeg process
+            this.process.kill();
+            // Delete the partially transcoded file
+            fs.unlinkSync(this.settings.path);
+        }
     }
 
     /**
@@ -84,46 +106,50 @@ class FFmpeg {
         let output = data.toString();
         // Log output for debugging
         console.info("[FFmpeg] " + output);
-        // Process output from FFmpeg depending on what the output is
-        if (output.includes("Input #0")) { // Output contains input information
-            // Locate the duration in the input information
-            let durationIndex = output.indexOf("Duration:");
-            // If the duration is found, retrieve it
-            if (durationIndex !== -1) {
-                // Increase duration index to start of duration time
-                durationIndex += 10;
-                // Locate the comma following the duration
-                let commaIndex = output.indexOf(",", durationIndex);
-                // Retrieve duration time
-                this.duration = moment.duration(output.slice(durationIndex, commaIndex));
+        // Process output and update progress if the encode is running
+        if (this.running) {
+            // Process output from FFmpeg depending on what the output is
+            if (output.includes("Input #0")) { // Output contains input information
+                console.log("test");
+                // Locate the duration in the input information
+                let durationIndex = output.indexOf("Duration:");
+                // If the duration is found, retrieve it
+                if (durationIndex !== -1) {
+                    // Increase duration index to start of duration time
+                    durationIndex += 10;
+                    // Locate the comma following the duration
+                    let commaIndex = output.indexOf(",", durationIndex);
+                    // Retrieve duration time
+                    this.duration = moment.duration(output.slice(durationIndex, commaIndex));
+                }
+            } else if (output.startsWith("frame=") || output.startsWith("size=")) { // Output contains encoding progress
+                // Create a map of status properties
+                let status = new Map();
+                // Remove spaces in output following a '=' character
+                output = output.replace(/=( *)/g, "=")
+                // Split output line into segments split by spaces
+                let outputSegments = output.split(" ");
+                // Split each segment into key and value, and add to the map of statush properties
+                outputSegments.forEach((segment) => {
+                    let segmentValues = segment.split("=");
+                    status.set(segmentValues[0], segmentValues[1]);
+                });
+                // Update time encoded
+                this.progressTime = status.get("time").substring(0, status.get("time").length - 3);
+                // If a duration has been set, calculate progress percentage
+                if (typeof this.duration !== "undefined") {
+                    // Retrieve current timecode
+                    let timecode = moment.duration(this.progressTime);
+                    // Convert times to seconds and calculate percentage encoded
+                    this.progressPercentage = Math.round((100 / this.duration.asSeconds()) * timecode.asSeconds());
+                }
+                // Update encoding bitrate
+                this.progressBitrate = status.get("bitrate");
+                // Update encoding speed
+                this.progressSpeed = status.get("speed");
+                // Fire progress changed event
+                this.fireEvent("progressChanged");
             }
-        } else if (output.startsWith("frame=") || output.startsWith("size=")) { // Output contains encoding progress
-            // Create a map of status properties
-            let status = new Map();
-            // Remove spaces in output following a '=' character
-            output = output.replace(/=( *)/g, "=")
-            // Split output line into segments split by spaces
-            let outputSegments = output.split(" ");
-            // Split each segment into key and value, and add to the map of statush properties
-            outputSegments.forEach((segment) => {
-                let segmentValues = segment.split("=");
-                status.set(segmentValues[0], segmentValues[1]);
-            });
-            // Update time encoded
-            this.progressTime = status.get("time").substring(0, status.get("time").length - 3);
-            // If a duration has been set, calculate progress percentage
-            if (typeof this.duration !== "undefined") {
-                // Retrieve current timecode
-                let timecode = moment.duration(this.progressTime);
-                // Convert times to seconds and calculate percentage encoded
-                this.progressPercentage = Math.round((100 / this.duration.asSeconds()) * timecode.asSeconds());
-            }
-            // Update encoding bitrate
-            this.progressBitrate = status.get("bitrate");
-            // Update encoding speed
-            this.progressSpeed = status.get("speed");
-            // Fire progress changed event
-            this.fireEvent("progressChanged");
         }
     }
 
