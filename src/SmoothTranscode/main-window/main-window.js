@@ -172,3 +172,24 @@ function StopTranscoding() {
     ui.currentEncode = 0;
     ui.encodeSessions = [];
 }
+
+/****************
+*** WINDOW CLOSE
+*****************/
+
+window.onbeforeunload = (event) => {
+    if (ui.encoding) {
+        let confirmResult = dialog.showMessageBox(getCurrentWindow(), {
+            type: "warning",
+            buttons: ["Yes", "No"],
+            title: "Encode in Progress",
+            message: "Are you sure you want to exit?",
+            detail: "An encode is currently in progress. Exiting will stop the encode before it completes."
+        });
+        if (confirmResult === 0) {
+            StopTranscoding();
+        } else {
+            event.returnValue = false;
+        }
+    }
+}
