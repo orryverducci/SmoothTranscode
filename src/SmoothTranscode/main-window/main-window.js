@@ -16,11 +16,7 @@ let ui = new Vue({
         dropActive: false,
         encoding: false,
         currentEncode: 0,
-        encodeSessions: [],
-        encodePercentage: 0,
-        encodeTime: "00:00:00",
-        encodeBitrate: "0kbits/s",
-        encodeSpeed: "0x"
+        encodeSessions: []
     },
     computed: {
         showPlaceholder: function() {
@@ -28,7 +24,7 @@ let ui = new Vue({
         },
         totalPercentage: function() {
             if (this.encodeSessions.length > 0) {
-                return Math.round(((100 * this.currentEncode) + this.encodePercentage) / this.encodeSessions.length);
+                return Math.round(((100 * this.currentEncode) + this.encodeSessions[this.currentEncode].progressPercentage) / this.encodeSessions.length);
             } else {
                 return 0;
             }
@@ -143,17 +139,7 @@ function StartTranscoding() {
 }
 
 function StartNextFile() {
-    ui.encodePercentage = 0;
-    ui.encodeTime = "00:00:00";
-    ui.encodeBitrate = "0kbits/s";
-    ui.encodeSpeed = "0x";
     if (ui.currentEncode < ui.encodeSessions.length) {
-        ui.encodeSessions[ui.currentEncode].addListener("progressChanged", () => {
-            ui.encodePercentage = ui.encodeSessions[ui.currentEncode].progressPercentage;
-            ui.encodeTime = ui.encodeSessions[ui.currentEncode].progressTime;
-            ui.encodeBitrate = ui.encodeSessions[ui.currentEncode].progressBitrate;
-            ui.encodeSpeed = ui.encodeSessions[ui.currentEncode].progressSpeed;
-        });
         ui.encodeSessions[ui.currentEncode].addListener("finished", () => {
             ui.currentEncode++;
             StartNextFile();

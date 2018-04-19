@@ -21,9 +21,9 @@ class FFmpeg {
         this.process;
         // Initialise encoding progress information
         this.duration;
-        this.progressTime = "";
-        this.progressBitrate = "";
-        this.progressSpeed = "";
+        this.progressTime = "00:00:00";
+        this.progressBitrate = "0kbits/s";
+        this.progressSpeed = "0x";
         this.progressPercentage = 0;
     }
 
@@ -147,8 +147,6 @@ class FFmpeg {
                 this.progressBitrate = status.get("bitrate");
                 // Update encoding speed
                 this.progressSpeed = status.get("speed");
-                // Fire progress changed event
-                this.fireEvent("progressChanged");
             }
         }
     }
