@@ -3,7 +3,7 @@
 const gulp = require("gulp"),
     path = require("path"),
     exec = require("child_process").execSync,
-    execAsync = require("child_process").exec,
+    {spawn} = require("child_process"),
     sass = require("gulp-sass"),
     del = require("del"),
     vinylPaths = require("vinyl-paths"),
@@ -150,10 +150,12 @@ gulp.task("build:all", gulp.parallel(
 **************/
 
 gulp.task("start-electron", (done) => {
-    execAsync(path.join(__dirname, "node_modules", ".bin", "electron") + " " + path.join("build", "frontend", "main.js"), (err, stdout, stderr) => {
-        if (err) {
-            console.error(`Error: ${err}`);
-        }
+    let extension = "";
+    if (os.platform == "win32") {
+        extension = ".bat";
+    }
+    this.process = spawn(path.join(__dirname, "node_modules", ".bin", "electron" + extension ), [path.join("build", "frontend", "main.js")], {
+        windowsHide: true
     });
     done();
 });
