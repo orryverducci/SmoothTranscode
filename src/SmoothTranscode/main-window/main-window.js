@@ -51,7 +51,8 @@ let ui = new Vue({
         },
         removeFile: removeFile,
         addOutput: addOutput,
-        removeOutput: removeOutput
+        removeOutput: removeOutput,
+        changeOutputPath: ChangeOutputPath
     }
 })
 
@@ -112,6 +113,13 @@ function addOutput(file) {
 
 function removeOutput(file, output) {
     file.removeOutput(output);
+}
+
+function ChangeOutputPath(output) {
+    let filePath = dialog.showSaveDialog(getCurrentWindow(), {defaultPath: output.path});
+    if (typeof filePath !== "undefined") {
+        output.path = filePath;
+    }
 }
 
 /***************

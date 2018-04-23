@@ -94,6 +94,15 @@
 
             .title, .info {
                 flex: 1 0 0;
+
+                p:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            .output-link {
+                color: #36B;
+                cursor: pointer;
             }
 
             ul {

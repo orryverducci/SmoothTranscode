@@ -29,7 +29,7 @@
                         <ul v-if="file.outputs.length > 0">
                             <li v-for="output in file.outputs" v-bind:data-output="output.id" :key="output.id">
                                 <div class="info">
-                                    {{ output.path }}
+                                    <p><strong>Output: </strong><a href="#" class="output-link" v-on:click="changeOutputPath(output)">{{ output.path }}</a></p>
                                 </div>
                                 <div v-if="!encoding">
                                     <a href="#" title="Remove Output" class="button icon-only" data-icon="" v-on:click="removeOutput(file, output)">Remove Output</a>
