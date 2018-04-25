@@ -9,6 +9,10 @@ class Output {
         this.path = filePath;
         // Generate unique ID, based on timestamp plus a random number
         this.id = Date.now() + Math.round(Math.random() * 10e5);
+        // Set initial status
+        this.status = "pending";
+        // Set error message to a blank string
+        this.errorMessage = "";
     }
 }
 

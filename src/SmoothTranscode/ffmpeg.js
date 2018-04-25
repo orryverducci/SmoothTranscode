@@ -13,7 +13,7 @@ class FFmpeg {
     constructor(input, outputIndex) {
         // Initialise input file path and encoding settings
         this.input = input;
-        this.settings = input.outputs[outputIndex];
+        this.output = input.outputs[outputIndex];
         // Initialise event listeners
         this.listeners = new Map();
         // Initialise encoding process
@@ -25,6 +25,7 @@ class FFmpeg {
         this.progressBitrate = "0kbits/s";
         this.progressSpeed = "0x";
         this.progressPercentage = 0;
+        this.lastStatus = "";
     }
 
     /**
@@ -33,7 +34,7 @@ class FFmpeg {
     start() {
         // Build the command to run
         let args = [];
-        args = this.buildInputArgs().concat(this.buildEncodingArgs(), ["-hide_banner", "-y", this.settings.path]);
+        args = this.buildInputArgs().concat(this.buildEncodingArgs(), ["-hide_banner", "-y", this.output.path]);
         // Mark the process as running
         this.running = true;
         // Start encoding process
@@ -41,10 +42,7 @@ class FFmpeg {
             windowsHide: true
         });
         // Fire finished event and mark as not running when FFmpeg closes
-        this.process.on("close", () => {
-            this.running = false;
-            this.fireEvent("finished");
-        });
+        this.process.on("close", this.encodeFinished.bind(this));
         // Process FFmpeg output
         this.process.stderr.on("data", this.processOutput.bind(this));
     }
@@ -60,7 +58,7 @@ class FFmpeg {
             // Kill the FFmpeg process
             this.process.kill();
             // Delete the partially transcoded file
-            fs.unlinkSync(this.settings.path);
+            fs.unlinkSync(this.output.path);
         }
     }
 
@@ -102,8 +100,9 @@ class FFmpeg {
      * @param {stream.Readable} data - The line of data outputted by FFmpeg.
      */
     processOutput(data) {
-        // Convert output stream to text
+        // Convert output stream to text and set as last status message received
         let output = data.toString();
+        this.lastStatus = output;
         // Log output for debugging
         console.info("[FFmpeg] " + output);
         // Process output and update progress if the encode is running
@@ -148,6 +147,26 @@ class FFmpeg {
                 // Update encoding speed
                 this.progressSpeed = status.get("speed");
             }
+        }
+    }
+
+    /**
+     * Handles the completion of an encode.
+     * @param {int} code - The exit code returned by FFmpeg.
+     * @param {string} signal - The signal that was used to terminate FFmpeg.
+     */
+    encodeFinished(code, signal) {
+        if (this.running) {
+            // Set that the encode is no longer running
+            this.running = false;
+            // If the exit code is not 0, set that there was an error and delete the partially transcoded file
+            if (code !== 0) {
+                this.output.status = "error";
+                this.output.errorMessage = this.lastStatus;
+                fs.unlinkSync(this.output.path);
+            }
+            // Fire the finished event
+            this.fireEvent("finished");
         }
     }
 
