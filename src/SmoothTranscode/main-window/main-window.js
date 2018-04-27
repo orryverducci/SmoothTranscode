@@ -159,6 +159,9 @@ function StartNextFile() {
         ui.encoding = false;
         ui.currentEncode = 0;
         ui.encodeSessions = [];
+        let completeNotification = new Notification("SmoothTranscode", {
+            body: "Media conversions finished"
+        });
     }
 }
 
