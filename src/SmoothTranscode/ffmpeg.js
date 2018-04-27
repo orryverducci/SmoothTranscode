@@ -159,11 +159,13 @@ class FFmpeg {
         if (this.running) {
             // Set that the encode is no longer running
             this.running = false;
-            // If the exit code is not 0, set that there was an error and delete the partially transcoded file
+            // If the exit code is not 0, set that there was an error and delete the partially transcoded file, otherwise set the status to complete
             if (code !== 0) {
                 this.output.status = "error";
                 this.output.errorMessage = this.lastStatus;
                 fs.unlinkSync(this.output.path);
+            } else {
+                this.output.status = "complete";
             }
             // Fire the finished event
             this.fireEvent("finished");

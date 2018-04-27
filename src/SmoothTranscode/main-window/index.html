@@ -28,7 +28,8 @@
                         </header>
                         <ul v-if="file.outputs.length > 0">
                             <li v-for="output in file.outputs" v-bind:data-output="output.id" :key="output.id">
-                                <div class="error" data-icon="" v-if="output.status == 'error'" :title="output.errorMessage"></div>
+                                <div class="status error" data-icon="" v-if="output.status == 'error'" :title="output.errorMessage"></div>
+                                <div class="status complete" data-icon="" v-if="output.status == 'complete'" title="Encode Finished"></div>
                                 <div class="info">
                                     <p><strong>Output: </strong><a href="#" class="output-link" v-on:click="changeOutputPath(output)">{{ output.path }}</a></p>
                                 </div>

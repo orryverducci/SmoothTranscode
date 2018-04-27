@@ -100,12 +100,16 @@
                 }
             }
 
+            .status:before {
+                margin: 0;
+            }
+
+            .complete {
+                color: #8BC34A;
+            }
+
             .error {
                 color: #F44336;
-
-                &:before {
-                    margin: 0;
-                }
             }
 
             .output-link {
