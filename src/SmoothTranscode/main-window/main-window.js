@@ -130,8 +130,10 @@ function StartTranscoding() {
     if (ui.files.length > 0) {
         for (let i = 0; i < ui.files.length; i++) {
             for (let x = 0; x < ui.files[i].outputs.length; x++) {
-                let encodeSession = new FFmpeg(ui.files[i], x);
-                ui.encodeSessions.push(encodeSession);
+                if (ui.files[i].outputs[x].status == "pending") {
+                    let encodeSession = new FFmpeg(ui.files[i], x);
+                    ui.encodeSessions.push(encodeSession);
+                }
             }
         }
         ui.encoding = true;
