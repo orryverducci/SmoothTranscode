@@ -47,9 +47,9 @@
                 <div id="drop-target" v-if="dropActive" v-on:dragleave="dragLeave" v-on:drop="drop"></div>
             </main>
             <aside v-if="encoding">
-                <p>Encoding {{ currentEncode + 1 }} of {{ encodeSessions.length }}</p>
+                <p>Encoding {{ completedEncodes + 1 }} of {{ totalEncodes }}</p>
                 <progress v-bind:value="totalPercentage" max="100">{{totalPercentage}}%</progress>
-                <p>Time Encoded: {{ encodeSessions[currentEncode].progressTime }} - Encoding Bitrate: {{ encodeSessions[currentEncode].progressBitrate }} - Encoding Speed: {{ encodeSessions[currentEncode].progressSpeed }}</p>
+                <p>Time Encoded: {{ currentEncode.progressTime }} - Encoding Bitrate: {{ currentEncode.progressBitrate }} - Encoding Speed: {{ currentEncode.progressSpeed }}</p>
             </aside>
         </div>
         <script type="text/javascript" src="main-window.js"></script>

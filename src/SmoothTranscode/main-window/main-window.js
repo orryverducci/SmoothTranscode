@@ -15,21 +15,35 @@ let ui = new Vue({
         files: [],
         dropActive: false,
         encoding: false,
-        currentEncode: 0,
-        encodeSessions: []
+        completedEncodes: 0,
+        currentEncode: null,
+        pendingEncodes: []
     },
     computed: {
         showPlaceholder: function() {
             return this.files.length == 0 && !this.dropActive;
         },
+        totalEncodes: function() {
+            return this.completedEncodes + this.pendingEncodes.length + (this.currentEncode === null ? 0 : 1);
+        },
         totalPercentage: function() {
-            if (this.encodeSessions.length > 0) {
-                return Math.round(((100 * this.currentEncode) + this.encodeSessions[this.currentEncode].progressPercentage) / this.encodeSessions.length);
+            if (this.encoding) {
+                return Math.round(((100 * this.completedEncodes) + this.currentEncode.progressPercentage) / this.totalEncodes);
             } else {
                 return 0;
             }
         }
     },
+    /*watch: {
+        pendingEncodes: {
+            handler: function() {
+                console.log("test");
+            },
+            deep: true
+            getCurrentWindow().setProgressBar(-1);
+            getCurrentWindow().setProgressBar(progress / 100);
+        }
+    },*/
     methods: {
         convertClicked: StartTranscoding,
         stopClicked: StopTranscoding,
@@ -132,11 +146,10 @@ function StartTranscoding() {
             for (let x = 0; x < ui.files[i].outputs.length; x++) {
                 if (ui.files[i].outputs[x].status == "pending") {
                     let encodeSession = new FFmpeg(ui.files[i], x);
-                    ui.encodeSessions.push(encodeSession);
+                    ui.pendingEncodes.push(encodeSession);
                 }
             }
         }
-        ui.encoding = true;
         StartNextFile();
     } else {
         dialog.showMessageBox(getCurrentWindow(), {
@@ -149,16 +162,19 @@ function StartTranscoding() {
 }
 
 function StartNextFile() {
-    if (ui.currentEncode < ui.encodeSessions.length) {
-        ui.encodeSessions[ui.currentEncode].addListener("finished", () => {
+    if (ui.pendingEncodes.length > 0) {
+        ui.currentEncode = ui.pendingEncodes.shift();
+        ui.currentEncode.addListener("finished", () => {
+            ui.completedEncodes++;
             ui.currentEncode++;
             StartNextFile();
         });
-        ui.encodeSessions[ui.currentEncode].start();
+        ui.encoding = true;
+        ui.currentEncode.start();
     } else {
         ui.encoding = false;
-        ui.currentEncode = 0;
-        ui.encodeSessions = [];
+        ui.completedEncodes = 0;
+        ui.currentEncode = null;
         let completeNotification = new Notification("SmoothTranscode", {
             body: "Media conversions finished"
         });
@@ -166,10 +182,11 @@ function StartNextFile() {
 }
 
 function StopTranscoding() {
-    ui.encodeSessions[ui.currentEncode].stop();
+    ui.currentEncode.stop();
     ui.encoding = false;
     ui.currentEncode = 0;
-    ui.encodeSessions = [];
+    ui.currentEncode = null;
+    ui.pendingEncodes = [];
 }
 
 /****************
