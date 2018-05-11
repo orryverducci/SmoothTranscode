@@ -28,8 +28,11 @@ let ui = new Vue({
         },
         totalPercentage: function() {
             if (this.encoding) {
-                return Math.round(((100 * this.completedEncodes) + this.currentEncode.progressPercentage) / this.totalEncodes);
+                let progress = Math.round(((100 * this.completedEncodes) + this.currentEncode.progressPercentage) / this.totalEncodes);
+                getCurrentWindow().setProgressBar(progress / 100);
+                return progress;
             } else {
+                getCurrentWindow().setProgressBar(-1);
                 return 0;
             }
         }
@@ -165,6 +168,7 @@ function StartNextFile() {
         ui.encoding = false;
         ui.completedEncodes = 0;
         ui.currentEncode = null;
+        getCurrentWindow().setProgressBar(-1);
         let completeNotification = new Notification("SmoothTranscode", {
             body: "Media conversions finished"
         });
@@ -177,6 +181,7 @@ function StopTranscoding() {
     ui.currentEncode = 0;
     ui.currentEncode = null;
     ui.pendingEncodes = [];
+    getCurrentWindow().setProgressBar(-1);
 }
 
 /****************
