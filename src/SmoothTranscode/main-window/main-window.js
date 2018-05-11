@@ -34,16 +34,6 @@ let ui = new Vue({
             }
         }
     },
-    /*watch: {
-        pendingEncodes: {
-            handler: function() {
-                console.log("test");
-            },
-            deep: true
-            getCurrentWindow().setProgressBar(-1);
-            getCurrentWindow().setProgressBar(progress / 100);
-        }
-    },*/
     methods: {
         convertClicked: StartTranscoding,
         stopClicked: StopTranscoding,
