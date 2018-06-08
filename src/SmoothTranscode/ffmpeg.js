@@ -84,12 +84,12 @@ class FFmpeg {
         // If the input contains video, set the video encoder
         if (this.input.videoStreams.length > 0) {
             args.push("-c:v");
-            args.push("mpeg2video");
+            args.push(this.output.settings.videoCodec);
         }
         // If the input contains audio, set the audio encoder
         if (this.input.audioStreams.length > 0) {
             args.push("-c:a");
-            args.push("aac");
+            args.push(this.output.settings.audioCodec);
         }
         // Return arguments
         return args;
