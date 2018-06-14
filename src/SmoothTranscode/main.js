@@ -13,7 +13,8 @@ function createMainWindow() {
     // Create the main window
     mainWindow = new BrowserWindow({
         width: 800,
-        height: 600
+        height: 600,
+        show: false
     });
     // Load the main window
     mainWindow.loadURL(url.format({
@@ -21,6 +22,10 @@ function createMainWindow() {
         protocol: "file:",
         slashes: true
     }));
+    // Show the window when the page has been rendered
+    mainWindow.once("ready-to-show", () => {
+        mainWindow.show()
+    })
     // Destroy reference to the main window when it is closed
     mainWindow.on("closed", () => {
         mainWindow = null;
