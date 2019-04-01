@@ -13,12 +13,12 @@ const gulp = require("gulp"),
 *** CLEAN TASKS
 ****************/
 
-gulp.task("clean:frontend", (done) => {
+gulp.task("clean-frontend", (done) => {
     del.sync(path.join("build", "frontend"));
     done();
 });
 
-gulp.task("clean:native", (done) => {
+gulp.task("clean-native", (done) => {
     del.sync(path.join("build", "bin"));
     del.sync(path.join("build", "include"));
     del.sync(path.join("build", "lib"));
@@ -26,7 +26,7 @@ gulp.task("clean:native", (done) => {
     done();
 });
 
-gulp.task("clean:all", (done) => {
+gulp.task("clean", (done) => {
     del.sync("build");
     done();
 });
@@ -35,44 +35,44 @@ gulp.task("clean:all", (done) => {
 *** FRONTEND PREPARE TASKS
 ***************************/
 
-gulp.task("prepare:copy", () => {
+gulp.task("prepare-copy", () => {
     return gulp.src(path.join("src", "SmoothTranscode", "**", "*"))
         .pipe(gulp.dest(path.join("build", "frontend")));
 });
 
-gulp.task("prepare:fontawesome", () => {
+gulp.task("prepare-fontawesome", () => {
     return gulp.src(path.join(__dirname, "node_modules", "@fortawesome", "fontawesome-pro-webfonts", "webfonts", "*.woff2"))
         .pipe(gulp.dest(path.join("build", "frontend", "assets")));
 });
 
-gulp.task("prepare:vue", () => {
+gulp.task("prepare-vue", () => {
     return gulp.src(path.join(__dirname, "node_modules", "vue", "dist", "vue.js"))
         .pipe(gulp.dest(path.join("build", "frontend")));
 });
 
-gulp.task("prepare:lodash", () => {
+gulp.task("prepare-lodash", () => {
     return gulp.src(path.join(__dirname, "node_modules", "lodash", "lodash.js"))
         .pipe(gulp.dest(path.join("build", "frontend")));
 });
 
-gulp.task("prepare:moment", () => {
+gulp.task("prepare-moment", () => {
     return gulp.src(path.join(__dirname, "node_modules", "moment", "moment.js"))
         .pipe(gulp.dest(path.join("build", "frontend")));
 });
 
-gulp.task("prepare:frontend", gulp.parallel(
-    "prepare:copy",
-    "prepare:fontawesome",
-    "prepare:vue",
-    "prepare:lodash",
-    "prepare:moment"
+gulp.task("prepare-frontend", gulp.parallel(
+    "prepare-copy",
+    "prepare-fontawesome",
+    "prepare-vue",
+    "prepare-lodash",
+    "prepare-moment"
 ));
 
 /*****************************
 *** NATIVE CODE PREPARE TASKS
 ******************************/
 
-gulp.task("prepare:ffmpeg", (done) => {
+gulp.task("prepare-ffmpeg", (done) => {
     exec(path.join(__dirname, "src", "ffmpeg", "configure") + " --prefix=" + path.join(__dirname, "build") + " --pkg-config=pkg-config --pkg-config-flags=--static --enable-gpl --enable-version3 --enable-gray --disable-ffplay --disable-logging --disable-doc --arch=x86_64", {
         cwd: path.join(__dirname, "src", "ffmpeg"),
         env: {
@@ -91,16 +91,16 @@ gulp.task("prepare:ffmpeg", (done) => {
 *** FULL PREPARE TASK
 **********************/
 
-gulp.task("prepare:all", gulp.parallel(
-    "prepare:frontend",
-    "prepare:ffmpeg"
+gulp.task("prepare", gulp.parallel(
+    "prepare-frontend",
+    "prepare-ffmpeg"
 ));
 
 /************************
 *** FRONTEND BUILD TASKS
 *************************/
 
-gulp.task("build:sass", () => {
+gulp.task("build-sass", () => {
     return gulp.src(path.join("build", "frontend", "**", "*.scss"))
         .pipe(vinylPaths(del))
         .pipe(sass({
@@ -118,7 +118,7 @@ gulp.task("build:sass", () => {
 *** NATIVE CODE BUILD TASKS
 ****************************/
 
-gulp.task("build:ffmpeg", (done) => {
+gulp.task("build-ffmpeg", (done) => {
     exec("make -j " + os.cpus().length, {
         cwd: path.join(__dirname, "src", "ffmpeg")
      }, (err, stdout, stderr) => {
@@ -140,9 +140,9 @@ gulp.task("build:ffmpeg", (done) => {
 *** FULL BUILD TASK
 ********************/
 
-gulp.task("build:all", gulp.parallel(
-    "build:sass",
-    "build:ffmpeg"
+gulp.task("build", gulp.parallel(
+    "build-sass",
+    "build-ffmpeg"
 ));
 
 /*************
@@ -161,15 +161,15 @@ gulp.task("start-electron", (done) => {
 });
 
 gulp.task("run", gulp.series(
-    "clean:frontend",
-    "prepare:frontend",
-    "build:sass",
+    "clean-frontend",
+    "prepare-frontend",
+    "build-sass",
     "start-electron"
 ));
 
-gulp.task("run:fullbuild", gulp.series(
-    "clean:all",
-    "prepare:all",
-    "build:all",
+gulp.task("run-fullbuild", gulp.series(
+    "clean",
+    "prepare",
+    "build",
     "start-electron"
 ));
