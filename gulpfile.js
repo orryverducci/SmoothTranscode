@@ -152,9 +152,10 @@ gulp.task("build", gulp.parallel(
 gulp.task("start-electron", (done) => {
     let extension = "";
     if (os.platform == "win32") {
-        extension = ".bat";
+        extension = ".cmd";
     }
-    this.process = spawn(path.join(__dirname, "node_modules", ".bin", "electron" + extension ), [path.join("build", "frontend", "main.js")], {
+    this.process = spawn(`"${path.join(__dirname, "node_modules", ".bin", "electron" + extension)}"`, [`"${path.join("build", "frontend", "main.js")}"`], {
+        shell: true,
         windowsHide: true
     });
     done();
