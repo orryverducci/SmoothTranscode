@@ -2,7 +2,6 @@
 
 const gulp = require("gulp"),
     path = require("path"),
-    exec = require("child_process").execSync,
     {spawn} = require("child_process"),
     sass = require("gulp-sass"),
     del = require("del"),
@@ -60,40 +59,12 @@ gulp.task("prepare-moment", () => {
         .pipe(gulp.dest(path.join("build", "frontend")));
 });
 
-gulp.task("prepare-frontend", gulp.parallel(
+gulp.task("prepare", gulp.parallel(
     "prepare-copy",
     "prepare-fontawesome",
     "prepare-vue",
     "prepare-lodash",
     "prepare-moment"
-));
-
-/*****************************
-*** NATIVE CODE PREPARE TASKS
-******************************/
-
-gulp.task("prepare-ffmpeg", (done) => {
-    exec(path.join(__dirname, "src", "ffmpeg", "configure") + " --prefix=" + path.join(__dirname, "build") + " --pkg-config=pkg-config --pkg-config-flags=--static --enable-gpl --enable-version3 --enable-gray --disable-ffplay --disable-logging --disable-doc --arch=x86_64", {
-        cwd: path.join(__dirname, "src", "ffmpeg"),
-        env: {
-            "LDFLAGS": "-L" + path.join(__dirname, "build", "lib"),
-            "CFLAGS": "-I" + path.join(__dirname, "build", "include")
-        }
-    }, (err, stdout, stderr) => {
-        if (err) {
-            console.error("Error: ${err}");
-        }
-    });
-    done();
-});
-
-/*********************
-*** FULL PREPARE TASK
-**********************/
-
-gulp.task("prepare", gulp.parallel(
-    "prepare-frontend",
-    "prepare-ffmpeg"
 ));
 
 /************************
@@ -119,21 +90,24 @@ gulp.task("build-sass", () => {
 ****************************/
 
 gulp.task("build-ffmpeg", (done) => {
-    exec("make -j " + os.cpus().length, {
-        cwd: path.join(__dirname, "src", "ffmpeg")
-     }, (err, stdout, stderr) => {
-        if (err) {
-            console.error("Error: ${err}");
+    let test = spawn(`"${path.join(__dirname, "native-build.sh")}"`, {
+        shell: true,
+        windowsHide: true
+    })
+    test.stdout.on('data', (data) => {
+        console.log(data.toString());
+      });
+      
+      test.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`);
+      });
+    test.on("close", (code) => {
+        if (code === 0) {
+            done();
+        } else {
+            done(new Error())
         }
-    });
-    exec("make install", {
-        cwd: path.join(__dirname, "src", "ffmpeg")
-     }, (err, stdout, stderr) => {
-        if (err) {
-            console.error("Error: ${err}");
-        }
-    });
-    done();
+    })
 });
 
 /*******************
@@ -163,7 +137,7 @@ gulp.task("start-electron", (done) => {
 
 gulp.task("run", gulp.series(
     "clean-frontend",
-    "prepare-frontend",
+    "prepare",
     "build-sass",
     "start-electron"
 ));
