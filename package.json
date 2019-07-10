@@ -33,7 +33,7 @@
     "electron": "^2.0.2",
     "electron-devtools-installer": "^2.2.4",
     "gulp": "^4.0.0",
-    "gulp-sass": "^4.0.1",
+    "gulp-sass": "^4.0.2",
     "lodash": "^4.17.5",
     "moment": "^2.21.0",
     "vinyl-paths": "^2.1.0",
