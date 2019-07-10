@@ -71,9 +71,10 @@ gulp.task("prepare", gulp.parallel(
 *** FRONTEND BUILD TASKS
 *************************/
 
-gulp.task("build-sass", () => {
-    return gulp.src(path.join("build", "frontend", "**", "*.scss"))
-        .pipe(vinylPaths(del))
+gulp.task("build-sass", () => new Promise(function (resolve, reject) {
+    const vp = vinylPaths();
+    gulp.src(path.join("build", "frontend", "**", "*.scss"))
+        .pipe(vp)
         .pipe(sass({
             includePaths: [
                 path.join(__dirname, "src", "SmoothTranscode"),
@@ -82,8 +83,16 @@ gulp.task("build-sass", () => {
         }).on("error", sass.logError))
         .pipe(gulp.dest((file) => {
             return file.base;
-        }));
-});
+        }))
+        .on("end", async () => {
+            try {
+                await del(vp.paths);
+                resolve();
+            } catch (error) {
+                reject(error);
+            };
+        });
+}));
 
 /***************************
 *** NATIVE CODE BUILD TASKS
