@@ -40,7 +40,7 @@ gulp.task("prepare-copy", () => {
 });
 
 gulp.task("prepare-fontawesome", () => {
-    return gulp.src(path.join(__dirname, "node_modules", "@fortawesome", "fontawesome-pro-webfonts", "webfonts", "*.woff2"))
+    return gulp.src(path.join(__dirname, "node_modules", "@fortawesome", "fontawesome-free", "webfonts", "*.woff2"))
         .pipe(gulp.dest(path.join("build", "frontend", "assets")));
 });
 

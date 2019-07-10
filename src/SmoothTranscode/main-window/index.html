@@ -41,9 +41,9 @@
                         </ul>
                     </li>
                 </ul>
-                <p id="placeholder" data-icon="" v-if="showPlaceholder">Add video or audio files to get started</p>
+                <p id="placeholder" data-icon="" v-if="showPlaceholder">Add video or audio files to get started</p>
                 <div id="drag-notice" v-if="dropActive">
-                    <p data-icon="">Drop files here</p>
+                    <p data-icon="">Drop files here</p>
                 </div>
                 <div id="drop-target" v-if="dropActive" v-on:dragleave="dragLeave" v-on:drop="drop"></div>
             </main>

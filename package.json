@@ -27,7 +27,7 @@
     "jsonfile": "^5.0.0"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-pro-webfonts": "^1.0.2",
+    "@fortawesome/fontawesome-free": "^5.9.0",
     "bootstrap": "^4.3.1",
     "del": "^5.0.0",
     "electron": "^5.0.6",
