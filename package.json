@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/orryverducci/SmoothTranscode",
   "dependencies": {
-    "jsonfile": "^4.0.0"
+    "jsonfile": "^5.0.0"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-pro-webfonts": "^1.0.2",
