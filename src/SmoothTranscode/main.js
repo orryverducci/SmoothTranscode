@@ -14,7 +14,10 @@ function createMainWindow() {
     mainWindow = new BrowserWindow({
         width: 800,
         height: 600,
-        show: false
+        show: false,
+        webPreferences: {
+            nodeIntegration: true
+        }
     });
     // Load the main window
     mainWindow.loadURL(url.format({
