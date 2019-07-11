@@ -35,7 +35,7 @@ gulp.task("clean", (done) => {
 ***************************/
 
 gulp.task("prepare-copy", () => {
-    return gulp.src(path.join("src", "SmoothTranscode", "**", "*"))
+    return gulp.src(path.join("src", "frontend", "**", "*"))
         .pipe(gulp.dest(path.join("build", "frontend")));
 });
 
@@ -77,7 +77,7 @@ gulp.task("build-sass", () => new Promise(function (resolve, reject) {
         .pipe(vp)
         .pipe(sass({
             includePaths: [
-                path.join(__dirname, "src", "SmoothTranscode"),
+                path.join(__dirname, "src", "frontend"),
                 path.join(__dirname, "node_modules", "bootstrap", "scss"),
             ]
         }).on("error", sass.logError))
