@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/orryverducci/SmoothTranscode",
   "dependencies": {
+    "esm": "^3.2.25",
     "jsonfile": "^5.0.0"
   },
   "devDependencies": {
