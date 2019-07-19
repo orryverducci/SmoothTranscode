@@ -89,6 +89,13 @@ function setupDevTools() {
     });
 }
 
+// Disable navigation in windows
+app.on("web-contents-created", (event, contents) => {
+    contents.on("will-navigate", (event, navigationUrl) => {
+        event.preventDefault();
+    })
+});
+
 // Create the main window when Electron has finished initialisation
 app.on("ready", () => {
     createAppProtocol();
