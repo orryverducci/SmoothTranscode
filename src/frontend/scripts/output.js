@@ -1,8 +1,11 @@
-const {Settings} = require("./settings"),
-    jsonfile = require("jsonfile");
+import { Settings } from "./settings.js";
+
+const {app} = require("electron").remote,
+    jsonfile = require("jsonfile"),
+    path = require("path");
 
 /** Provides information and transcode settings for an individual transcode output. */
-class Output {
+export class Output {
     /**
      * Initialises an instance of Output.
      * @param {string} filePath - The initial path to the output file.
@@ -24,7 +27,7 @@ class Output {
 
     ChangeExtension() {
         // Load list of available containers and their extensions
-        let containers = jsonfile.readFileSync(path.join(__dirname, "containers.json"));
+        let containers = jsonfile.readFileSync(path.join(app.getAppPath(), "scripts", "containers.json"));
         // Find object containing the container information
         let containerInfo = containers[this.settings.container];
         // If the container info was found, find the extension for the container, and set it
@@ -36,5 +39,3 @@ class Output {
         }
     }
 }
-
-module.exports.Output = Output;

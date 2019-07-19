@@ -1,5 +1,5 @@
 /** Provides transcode settings. */
-class Settings {
+export class Settings {
     constructor() {
         // Initialise default preset name
         this.presetName = "Default";
@@ -11,5 +11,3 @@ class Settings {
         this.audioCodec = "aac";
     }
 }
-
-module.exports.Settings = Settings;

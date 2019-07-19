@@ -1,10 +1,11 @@
-const {app} = require("electron").remote,
+import { Output } from "./output.js";
+
+const { app } = require("electron").remote,
     exec = require("child_process").execFileSync,
-    path = require("path"),
-    {Output} = require("./output");
+    path = require("path");
 
 /** Provides information and transcode settings for a media file. */
-class File {
+export class File {
     /**
      * Initialises an instance of File.
      * @param {string} filePath - The path to the file.
@@ -127,5 +128,3 @@ class File {
         this.outputs.splice(this.outputs.indexOf(output), 1);
     }
 }
-
-module.exports.File = File;

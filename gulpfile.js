@@ -5,8 +5,12 @@ const gulp = require("gulp"),
     {spawn} = require("child_process"),
     sass = require("gulp-sass"),
     del = require("del"),
-    vinylPaths = require("vinyl-paths"),
-    os = require("os");
+    os = require("os"),
+    rollup = require("gulp-better-rollup"),
+    resolve = require("rollup-plugin-node-resolve"),
+    alias = require("rollup-plugin-alias"),
+    vue = require("rollup-plugin-vue"),
+    commonjs = require("rollup-plugin-commonjs");
 
 /***************
 *** CLEAN TASKS
@@ -35,7 +39,7 @@ gulp.task("clean", (done) => {
 ***************************/
 
 gulp.task("prepare-copy", () => {
-    return gulp.src(path.join("src", "frontend", "**", "*"))
+    return gulp.src([path.join("src", "frontend", "*"), path.join("src", "frontend", "scripts", "*.json")], { base: path.join("src", "frontend") })
         .pipe(gulp.dest(path.join("build", "frontend")));
 });
 
@@ -44,55 +48,46 @@ gulp.task("prepare-fontawesome", () => {
         .pipe(gulp.dest(path.join("build", "frontend", "assets")));
 });
 
-gulp.task("prepare-vue", () => {
-    return gulp.src(path.join(__dirname, "node_modules", "vue", "dist", "vue.js"))
-        .pipe(gulp.dest(path.join("build", "frontend")));
-});
-
-gulp.task("prepare-lodash", () => {
-    return gulp.src(path.join(__dirname, "node_modules", "lodash", "lodash.js"))
-        .pipe(gulp.dest(path.join("build", "frontend")));
-});
-
-gulp.task("prepare-moment", () => {
-    return gulp.src(path.join(__dirname, "node_modules", "moment", "moment.js"))
-        .pipe(gulp.dest(path.join("build", "frontend")));
-});
-
 gulp.task("prepare", gulp.parallel(
     "prepare-copy",
-    "prepare-fontawesome",
-    "prepare-vue",
-    "prepare-lodash",
-    "prepare-moment"
+    "prepare-fontawesome"
 ));
 
 /************************
 *** FRONTEND BUILD TASKS
 *************************/
 
-gulp.task("build-sass", () => new Promise(function (resolve, reject) {
-    const vp = vinylPaths();
-    gulp.src(path.join("build", "frontend", "**", "*.scss"))
-        .pipe(vp)
+gulp.task("build-js", () => {
+    return gulp.src(path.join("src", "frontend", "scripts", "main.js"))
+        .pipe(rollup({
+            cache: false,
+            plugins: [
+                alias({
+                    Vue: path.join(__dirname, "node_modules", "vue", "dist", "vue.esm.js")
+                }),
+                resolve({
+                    mainFields: ["module", "jsnext", "jsnext:main"]
+                }),
+                commonjs(),
+                vue()
+            ]
+        }, {
+            file: "main.js",
+            format: "es"
+        }))
+        .pipe(gulp.dest(path.join("build", "frontend", "scripts")));
+});
+
+gulp.task("build-sass", () => {
+    return gulp.src(path.join("src", "frontend", "styles", "global.scss"))
         .pipe(sass({
             includePaths: [
-                path.join(__dirname, "src", "frontend"),
+                path.join(__dirname, "src", "frontend", "styles"),
                 path.join(__dirname, "node_modules", "bootstrap", "scss"),
             ]
         }).on("error", sass.logError))
-        .pipe(gulp.dest((file) => {
-            return file.base;
-        }))
-        .on("end", async () => {
-            try {
-                await del(vp.paths);
-                resolve();
-            } catch (error) {
-                reject(error);
-            };
-        });
-}));
+        .pipe(gulp.dest(path.join("build", "frontend", "styles")));
+});
 
 /***************************
 *** NATIVE CODE BUILD TASKS
@@ -124,6 +119,7 @@ gulp.task("build-ffmpeg", (done) => {
 ********************/
 
 gulp.task("build", gulp.parallel(
+    "build-js",
     "build-sass",
     "build-ffmpeg"
 ));
@@ -147,6 +143,7 @@ gulp.task("start-electron", (done) => {
 gulp.task("run", gulp.series(
     "clean-frontend",
     "prepare",
+    "build-js",
     "build-sass",
     "start-electron"
 ));

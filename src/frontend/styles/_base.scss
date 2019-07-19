@@ -2,28 +2,28 @@
     font-family: 'Font Awesome 5 Free';
     font-style: normal;
     font-weight: 300;
-    src: url('assets/fa-light-300.woff2') format('woff2');
+    src: url('../assets/fa-light-300.woff2') format('woff2');
 }
 
 @font-face {
     font-family: 'Font Awesome 5 Free';
     font-style: normal;
     font-weight: 400;
-    src: url('assets/fa-regular-400.woff2') format('woff2');
+    src: url('../assets/fa-regular-400.woff2') format('woff2');
 }
 
 @font-face {
     font-family: 'Font Awesome 5 Free';
     font-style: normal;
     font-weight: 900;
-    src: url('assets/fa-solid-900.woff2') format('woff2');
+    src: url('../assets/fa-solid-900.woff2') format('woff2');
 }
 
 @font-face {
     font-family: 'Font Awesome 5 Brands';
     font-style: normal;
     font-weight: 400;
-    src: url('assets/fa-brands-400.woff2') format('woff2');
+    src: url('../assets/fa-brands-400.woff2') format('woff2');
 }
 
 * {
@@ -65,6 +65,6 @@ a {
     line-height: 1rem;
 }
 
-.window {
+#container, .window {
     height: 100%;
 }

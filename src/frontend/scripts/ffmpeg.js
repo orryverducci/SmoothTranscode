@@ -1,10 +1,12 @@
+import moment from "moment";
+
 const {app} = require("electron").remote,
     {spawn} = require("child_process"),
     fs = require("fs"),
-    moment = require("moment");
+    path = require("path");
 
 /** Runs FFmpeg to transcode an output. */
-class FFmpeg {
+export class FFmpeg {
     /**
      * Initialises an instance of FFmpeg.
      * @param {File} input - The input file.
@@ -229,5 +231,3 @@ class FFmpeg {
         }
     }
 }
-
-module.exports.FFmpeg = FFmpeg;
