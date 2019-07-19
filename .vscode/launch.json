@@ -4,16 +4,24 @@
         {
             "type": "node",
             "request": "launch",
+            "protocol": "inspector",
             "name": "Electron Main Process",
-            "cwd": "${workspaceRoot}",
             "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
             "windows": {
                 "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
             },
-            "program": "${workspaceFolder}/build/SmoothTranscode/main.js",
-            "protocol": "legacy",
-            "outFiles": [
-                "${workspaceFolder}/build/SmoothTranscode/**/*.js"
+            "program": "${workspaceFolder}/build/frontend/main.js",
+            "localRoot": "${workspaceFolder}/src/frontend",
+            "remoteRoot": "${workspaceFolder}/build/frontend",
+            "outputCapture": "std"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Gulp Run Task",
+            "program": "${workspaceFolder}/node_modules/gulp/bin/gulp.js",
+            "args": [
+                "run"
             ]
         }
     ]
