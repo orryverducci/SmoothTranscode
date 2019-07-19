@@ -10,7 +10,8 @@ const gulp = require("gulp"),
     resolve = require("rollup-plugin-node-resolve"),
     alias = require("rollup-plugin-alias"),
     vue = require("rollup-plugin-vue"),
-    commonjs = require("rollup-plugin-commonjs");
+    commonjs = require("rollup-plugin-commonjs"),
+    sourcemaps = require('gulp-sourcemaps');
 
 /***************
 *** CLEAN TASKS
@@ -59,6 +60,7 @@ gulp.task("prepare", gulp.parallel(
 
 gulp.task("build-js", () => {
     return gulp.src(path.join("src", "frontend", "scripts", "main.js"))
+        .pipe(sourcemaps.init())
         .pipe(rollup({
             cache: false,
             plugins: [
@@ -75,17 +77,20 @@ gulp.task("build-js", () => {
             file: "main.js",
             format: "es"
         }))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest(path.join("build", "frontend", "scripts")));
 });
 
 gulp.task("build-sass", () => {
     return gulp.src(path.join("src", "frontend", "styles", "global.scss"))
+        .pipe(sourcemaps.init())
         .pipe(sass({
             includePaths: [
                 path.join(__dirname, "src", "frontend", "styles"),
                 path.join(__dirname, "node_modules", "bootstrap", "scss"),
             ]
         }).on("error", sass.logError))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest(path.join("build", "frontend", "styles")));
 });
 
