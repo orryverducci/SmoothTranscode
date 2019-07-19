@@ -1,14 +1,62 @@
-import { app, BrowserWindow, dialog } from "electron";
+import { app, BrowserWindow, protocol } from "electron";
 import installExtension, { VUEJS_DEVTOOLS } from "electron-devtools-installer";
+import {readFileSync as read} from "fs";
 import path from "path";
-import url from "url";
+import { URL } from "url";
+import jsonfile from "jsonfile";
 
 // Global reference for the main window, preventing it from being garbage collected
-let mainWindow;
+let mainWindow = null;
 
 // Set app path to the application's root folder
 app.setAppPath(__dirname);
 
+// Register the app protocol as a standard stream
+protocol.registerSchemesAsPrivileged([
+    {
+        scheme: "app",
+        privileges: {
+            standard: true,
+            secure: true
+        }
+    }
+]);
+
+/**
+ * Creates a standard scheme for use by the application
+ */
+function createAppProtocol() {
+    // Create the app protocol
+    protocol.registerBufferProtocol("app", (request, callback) => {
+        // Get path name from url
+        let pathName = new URL(request.url).pathname;
+        // Create path to the file to return
+        let filePath = path.join(__dirname, pathName);
+        // Get the file extension
+        let fileExtension = path.extname(filePath).substr(1);
+        // Determine the appropriate MIME type for the file
+        let fileMimeType = "application/octet-stream";
+        let mimeTypes = jsonfile.readFileSync(path.join(__dirname, "mimetypes.json"));
+        if (typeof mimeTypes[fileExtension] !== "undefined") {
+            fileMimeType = mimeTypes[fileExtension];
+        }
+        // Get a buffer containing the file contents
+        let fileData = read(filePath);
+        // Return the file contents with the appropriate mime type
+        callback({
+            mimeType: fileMimeType,
+            data: fileData
+        });
+    }, (error) => {
+        if (error) {
+            console.error("Failed to register app protocol");
+        }
+    });
+}
+
+/**
+ * Creates the main application window
+ */
 function createMainWindow() {
     // Create the main window
     mainWindow = new BrowserWindow({
@@ -20,11 +68,7 @@ function createMainWindow() {
         }
     });
     // Load the main window
-    mainWindow.loadURL(url.format({
-        pathname: path.join(__dirname, "main-window", "index.html"),
-        protocol: "file:",
-        slashes: true
-    }));
+    mainWindow.loadURL("app://smoothtranscode/main-window.html");
     // Show the window when the page has been rendered
     mainWindow.once("ready-to-show", () => {
         mainWindow.show()
@@ -35,15 +79,19 @@ function createMainWindow() {
     });
 }
 
+/**
+ * Setup Chrome developer tools
+ */
 function setupDevTools() {
     // Add Vue Devtools
     installExtension(VUEJS_DEVTOOLS).catch((error) => {
-        console.log("Error occurred adding Vue Devtools: ", error);
+        console.log(`Unable to add Vue Devtools: ${error}`);
     });
 }
 
-// Create the main window when Electron has finished initialization
+// Create the main window when Electron has finished initialisation
 app.on("ready", () => {
+    createAppProtocol();
     setupDevTools();
     createMainWindow();
 });
