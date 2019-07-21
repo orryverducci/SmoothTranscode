@@ -1,6 +1,6 @@
 import { app, BrowserWindow, protocol } from "electron";
 import installExtension, { VUEJS_DEVTOOLS } from "electron-devtools-installer";
-import {readFileSync as read} from "fs";
+import { createReadStream, existsSync as fileExists } from "fs";
 import path from "path";
 import { URL } from "url";
 import jsonfile from "jsonfile";
@@ -27,7 +27,7 @@ protocol.registerSchemesAsPrivileged([
  */
 function createAppProtocol() {
     // Create the app protocol
-    protocol.registerBufferProtocol("app", (request, callback) => {
+    protocol.registerStreamProtocol("app", (request, callback) => {
         // Get path name from url
         let pathName = new URL(request.url).pathname;
         // Create path to the file to return
@@ -40,12 +40,22 @@ function createAppProtocol() {
         if (typeof mimeTypes[fileExtension] !== "undefined") {
             fileMimeType = mimeTypes[fileExtension];
         }
-        // Get a buffer containing the file contents
-        let fileData = read(filePath);
+        // Check the file exists and get the file's stream if it does
+        let statusCode, fileStream;
+        if (fileExists(filePath)) {
+            statusCode = 200;
+            fileStream = createReadStream(filePath);
+        } else {
+            statusCode = 404;
+        }
         // Return the file contents with the appropriate mime type
         callback({
-            mimeType: fileMimeType,
-            data: fileData
+            statusCode: statusCode,
+            headers: {
+                "Content-Type": fileMimeType,
+                "Content-Security-Policy": "default-src app:; script-src 'unsafe-inline'"
+            },
+            data: fileStream
         });
     }, (error) => {
         if (error) {
