@@ -8,7 +8,6 @@ const gulp = require("gulp"),
     os = require("os"),
     rollup = require("gulp-better-rollup"),
     resolve = require("rollup-plugin-node-resolve"),
-    alias = require("rollup-plugin-alias"),
     vue = require("rollup-plugin-vue"),
     commonjs = require("rollup-plugin-commonjs"),
     sourcemaps = require('gulp-sourcemaps');
@@ -64,9 +63,6 @@ gulp.task("build-js", () => {
         .pipe(rollup({
             cache: false,
             plugins: [
-                alias({
-                    Vue: path.join(__dirname, "node_modules", "vue", "dist", "vue.esm.js")
-                }),
                 resolve({
                     mainFields: ["module", "jsnext", "jsnext:main"]
                 }),

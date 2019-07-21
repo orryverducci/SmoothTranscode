@@ -6,7 +6,5 @@ import MainWindow from "./main-window.vue";
  */
 new Vue({ 
     el: "#container",
-    components: {
-        MainWindow
-    }
+    render: h => h(MainWindow)
 });
