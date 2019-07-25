@@ -53,7 +53,8 @@ import _ from "lodash";
 import { File } from "./file.js";
 import { FFmpeg } from "./ffmpeg.js";
 
-const { dialog, getCurrentWindow } = require("electron").remote;
+const { ipcRenderer } = require("electron"),
+    { dialog, getCurrentWindow } = require("electron").remote;
 
 export default {
     data: function() {
@@ -212,6 +213,7 @@ export default {
                 }
             }
         }
+        ipcRenderer.send("ready");
     }
 }
 </script>
