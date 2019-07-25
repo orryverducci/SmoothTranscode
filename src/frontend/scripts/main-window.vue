@@ -2,41 +2,43 @@
     <div id="main-window" class="window">
         <nav id="toolbar">
             <ul>
-                <li v-if="!encoding"><a href="#" data-icon="" id="start-converting-btn" v-on:click="convertClicked">Start Converting</a></li>
-                <li v-if="encoding"><a href="#" data-icon="" id="stop-converting-btn" v-on:click="stopClicked">Stop Converting</a></li>
-                <li v-if="!encoding"><a href="#" data-icon="" id="add-file-btn" v-on:click="addFilesClicked">Add File</a></li>
+                <li v-if="!encoding"><a href="#" id="start-converting-btn" v-on:click="convertClicked"><font-awesome-icon icon="play"></font-awesome-icon>Start Converting</a></li>
+                <li v-if="encoding"><a href="#" id="stop-converting-btn" v-on:click="stopClicked"><font-awesome-icon icon="stop"></font-awesome-icon>Stop Converting</a></li>
+                <li v-if="!encoding"><a href="#" id="add-file-btn" v-on:click="addFilesClicked"><font-awesome-icon icon="plus"></font-awesome-icon>Add File</a></li>
             </ul>
         </nav>
         <main v-on:dragenter="dragEnter">
             <ul id="file-list" v-if="files.length > 0">
                 <li v-for="file in files" v-bind:data-file="file.id" :key="file.id">
                     <header>
-                        <div class="title" :data-icon="file.videoStreams.length > 0 ? '\uf008' : '\uf028'">
+                        <div class="title">
+                            <font-awesome-icon icon="film" v-if="file.videoStreams.length > 0"></font-awesome-icon>
+                            <font-awesome-icon icon="volume-up" v-if="file.videoStreams.length == 0"></font-awesome-icon>
                             {{ file.name }}
                         </div>
                         <div v-if="!encoding">
-                            <a href="#" title="Remove File" class="button icon-only" data-icon="" v-on:click="removeFile(file)">Remove File</a>
-                            <a href="#" title="Add Output" class="button icon-only" data-icon="" v-on:click="addOutput(file)">Add Output</a>
+                            <a href="#" title="Remove File" class="button icon-only" v-on:click="removeFile(file)"><font-awesome-icon icon="trash-alt"></font-awesome-icon>Remove File</a>
+                            <a href="#" title="Add Output" class="button icon-only" v-on:click="addOutput(file)"><font-awesome-icon icon="plus"></font-awesome-icon>Add Output</a>
                         </div>
                     </header>
                     <ul v-if="file.outputs.length > 0">
                         <li v-for="output in file.outputs" v-bind:data-output="output.id" :key="output.id">
-                            <div class="status error" data-icon="" v-if="output.status == 'error'" :title="output.errorMessage"></div>
-                            <div class="status complete" data-icon="" v-if="output.status == 'complete'" title="Encode Finished"></div>
+                            <div class="status error" v-if="output.status == 'error'" :title="output.errorMessage"><font-awesome-icon icon="times-circle"></font-awesome-icon></div>
+                            <div class="status complete" v-if="output.status == 'complete'" title="Encode Finished"><font-awesome-icon icon="check-circle"></font-awesome-icon></div>
                             <div class="info">
                                 <p><strong>Output: </strong><a href="#" class="output-link" v-on:click="changeOutputPath(output)">{{ output.path }}</a></p>
                                 <p><strong>Preset: </strong>{{ output.settings.presetName }}</p>
                             </div>
                             <div v-if="!encoding">
-                                <a href="#" title="Remove Output" class="button icon-only" data-icon="" v-on:click="removeOutput(file, output)">Remove Output</a>
+                                <a href="#" title="Remove Output" class="button icon-only" v-on:click="removeOutput(file, output)"><font-awesome-icon icon="trash-alt"></font-awesome-icon>Remove Output</a>
                             </div>
                         </li>
                     </ul>
                 </li>
             </ul>
-            <p id="placeholder" data-icon="" v-if="showPlaceholder">Add video or audio files to get started</p>
+            <p id="placeholder" v-if="showPlaceholder"><font-awesome-icon icon="file-medical"></font-awesome-icon>Add video or audio files to get started</p>
             <div id="drag-notice" v-if="dropActive">
-                <p data-icon="">Drop files here</p>
+                <p><font-awesome-icon icon="arrow-down"></font-awesome-icon>Drop files here</p>
             </div>
             <div id="drop-target" v-if="dropActive" v-on:dragleave="dragLeave" v-on:drop="drop"></div>
         </main>

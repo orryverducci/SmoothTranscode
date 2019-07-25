@@ -12,10 +12,14 @@
         background: #E0E0E0;
     }
 
+    svg {
+        margin-right: 0.8rem;
+    }
+
     &.icon-only {
         font-size: 0;
 
-        &[data-icon]:before {
+        svg {
             font-size: 1rem;
             margin: 0;
         }

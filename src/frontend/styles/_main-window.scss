@@ -35,12 +35,10 @@
         margin: 0;
         font-size: 2rem;
 
-        &:before {
+        svg {
             display: block;
-            margin: 0 0 2rem 0;
+            margin: 0 auto 2rem auto;
             font-size: 10rem;
-            text-align: center;
-            line-height: 1em;
         }
     }
 
@@ -69,6 +67,10 @@
                 flex-direction: row;
                 align-items: center;
 
+                svg {
+                    margin-right: 0.8rem;
+                }
+
                 .button {
                     margin: -1rem 0;
                     background: none;
@@ -79,6 +81,10 @@
 
                     &:active {
                         background: #BDBDBD;
+                    }
+
+                    svg {
+                        margin: 0;
                     }
                 }
             }
@@ -98,10 +104,6 @@
                 p:last-child {
                     margin-bottom: 0;
                 }
-            }
-
-            .status:before {
-                margin: 0;
             }
 
             .complete {

@@ -38,20 +38,10 @@ gulp.task("clean", (done) => {
 *** FRONTEND PREPARE TASKS
 ***************************/
 
-gulp.task("prepare-copy", () => {
+gulp.task("prepare", () => {
     return gulp.src([path.join("src", "frontend", "*"), path.join("src", "frontend", "scripts", "*.json")], { base: path.join("src", "frontend") })
         .pipe(gulp.dest(path.join("build", "frontend")));
 });
-
-gulp.task("prepare-fontawesome", () => {
-    return gulp.src(path.join(__dirname, "node_modules", "@fortawesome", "fontawesome-free", "webfonts", "*.woff2"))
-        .pipe(gulp.dest(path.join("build", "frontend", "assets")));
-});
-
-gulp.task("prepare", gulp.parallel(
-    "prepare-copy",
-    "prepare-fontawesome"
-));
 
 /************************
 *** FRONTEND BUILD TASKS
@@ -84,6 +74,7 @@ gulp.task("build-sass", () => {
             includePaths: [
                 path.join(__dirname, "src", "frontend", "styles"),
                 path.join(__dirname, "node_modules", "bootstrap", "scss"),
+                path.join(__dirname, "node_modules", "@fortawesome", "fontawesome-svg-core")
             ]
         }).on("error", sass.logError))
         .pipe(sourcemaps.write())
