@@ -4,9 +4,11 @@ import { createReadStream, existsSync as fileExists } from "fs";
 import path from "path";
 import { URL } from "url";
 import jsonfile from "jsonfile";
+import { EncodeManager } from "./encode-manager";
 
-// Global reference for the main window, preventing it from being garbage collected
-let mainWindow = null;
+// Global references for the main window and the file manager, preventing them from being garbage collected
+let mainWindow = null,
+    encodeManager = new EncodeManager();
 
 // Set app path to the application's root folder
 app.setAppPath(__dirname);

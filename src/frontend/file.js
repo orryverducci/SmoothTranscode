@@ -1,7 +1,8 @@
+import { app } from "electron";
+import _ from "lodash";
 import { Output } from "./output.js";
 
-const { app } = require("electron").remote,
-    exec = require("child_process").execFileSync,
+const exec = require("child_process").execFileSync,
     path = require("path");
 
 /** Provides information and transcode settings for a media file. */
@@ -122,9 +123,16 @@ export class File {
 
     /**
      * Removes a transcode output from the file
-     * @param {Object} output - The output to remove.
+     * @param {number} outputID - The ID of the output to remove.
      */
-    removeOutput(output) {
+    removeOutput(outputID) {
+        // Find the output to remove
+        let output = _.find(this.outputs, { id: outputID });
+        // If an output with the given ID can't be found, return the method
+        if (typeof output === "undefined") {
+            return;
+        }
+        // 
         this.outputs.splice(this.outputs.indexOf(output), 1);
     }
 }

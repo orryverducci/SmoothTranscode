@@ -1,7 +1,7 @@
+import { app } from "electron";
 import moment from "moment";
 
-const {app} = require("electron").remote,
-    {spawn} = require("child_process"),
+const {spawn} = require("child_process"),
     fs = require("fs"),
     path = require("path");
 
@@ -148,6 +148,8 @@ export class FFmpeg {
                 this.progressBitrate = status.get("bitrate");
                 // Update encoding speed
                 this.progressSpeed = status.get("speed");
+                // Fire update event
+                this.fireEvent("status-updated");
             }
         }
     }

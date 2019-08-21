@@ -1,7 +1,7 @@
+import { app } from "electron";
 import { Settings } from "./settings.js";
 
-const {app} = require("electron").remote,
-    jsonfile = require("jsonfile"),
+const jsonfile = require("jsonfile"),
     path = require("path");
 
 /** Provides information and transcode settings for an individual transcode output. */

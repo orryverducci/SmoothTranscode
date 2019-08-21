@@ -26,7 +26,7 @@
                             <div class="status error" v-if="output.status == 'error'" :title="output.errorMessage"><font-awesome-icon icon="times-circle"></font-awesome-icon></div>
                             <div class="status complete" v-if="output.status == 'complete'" title="Encode Finished"><font-awesome-icon icon="check-circle"></font-awesome-icon></div>
                             <div class="info">
-                                <p><strong>Output: </strong><a href="#" class="output-link" v-on:click="changeOutputPath(output)">{{ output.path }}</a></p>
+                                <p><strong>Output: </strong><a href="#" class="output-link" v-on:click="changeOutputPath(file, output)">{{ output.path }}</a></p>
                                 <p><strong>Preset: </strong>{{ output.settings.presetName }}</p>
                             </div>
                             <div v-if="!encoding">
@@ -43,18 +43,14 @@
             <div id="drop-target" v-if="dropActive" v-on:dragleave="dragLeave" v-on:drop="drop"></div>
         </main>
         <aside v-if="encoding">
-            <p>Encoding {{ completedEncodes + 1 }} of {{ totalEncodes }}</p>
-            <progress v-bind:value="totalPercentage" max="100">{{totalPercentage}}%</progress>
-            <p>Time Encoded: {{ currentEncode.progressTime }} - Encoding Bitrate: {{ currentEncode.progressBitrate }} - Encoding Speed: {{ currentEncode.progressSpeed }}</p>
+            <p>Encoding {{ currentEncode }} of {{ totalEncodes }}</p>
+            <progress v-bind:value="percentComplete" max="100">{{percentComplete}}%</progress>
+            <p>Time Encoded: {{ time }} - Encoding Bitrate: {{ bitrate }} - Encoding Speed: {{ speed }}</p>
         </aside>
     </div>
 </template>
 
 <script>
-import _ from "lodash";
-import { File } from "./file.js";
-import { FFmpeg } from "./ffmpeg.js";
-
 const { ipcRenderer } = require("electron"),
     { dialog, getCurrentWindow } = require("electron").remote;
 
@@ -64,41 +60,28 @@ export default {
             files: [],
             dropActive: false,
             encoding: false,
-            completedEncodes: 0,
-            currentEncode: null,
-            pendingEncodes: []
+            percentComplete: -1,
+            currentEncode: 0,
+            totalEncodes: 0,
+            time: "00:00:00",
+            bitrate: "0kbits/s",
+            speed: "0x"
         }
     },
     computed: {
         showPlaceholder: function() {
             return this.files.length == 0 && !this.dropActive;
-        },
-        totalEncodes: function() {
-            return this.completedEncodes + this.pendingEncodes.length + (this.currentEncode === null ? 0 : 1);
-        },
-        totalPercentage: function() {
-            if (this.encoding) {
-                let progress = Math.round(((100 * this.completedEncodes) + this.currentEncode.progressPercentage) / this.totalEncodes);
-                getCurrentWindow().setProgressBar(progress / 100);
-                return progress;
-            } else {
-                getCurrentWindow().setProgressBar(-1);
-                return 0;
-            }
+        }
+    },
+    watch: {
+        percentComplete: function() {
+            getCurrentWindow().setProgressBar(percentage);
         }
     },
     methods: {
         convertClicked: function() {
             if (this.files.length > 0) {
-                for (let i = 0; i < this.files.length; i++) {
-                    for (let x = 0; x < this.files[i].outputs.length; x++) {
-                        if (this.files[i].outputs[x].status == "pending") {
-                            let encodeSession = new FFmpeg(this.files[i], x);
-                            this.pendingEncodes.push(encodeSession);
-                        }
-                    }
-                }
-                this.startNextFile();
+                ipcRenderer.send("start-encoding");
             } else {
                 dialog.showMessageBox(getCurrentWindow(), {
                     type: "error",
@@ -108,33 +91,17 @@ export default {
                 });
             }
         },
-        startNextFile: function() {
-            if (this.pendingEncodes.length > 0) {
-                this.currentEncode = this.pendingEncodes.shift();
-                this.currentEncode.addListener("finished", () => {
-                    this.completedEncodes++;
-                    this.currentEncode++;
-                    this.startNextFile();
-                });
-                this.encoding = true;
-                this.currentEncode.start();
-            } else {
-                this.encoding = false;
-                this.completedEncodes = 0;
-                this.currentEncode = null;
-                getCurrentWindow().setProgressBar(-1);
-                let completeNotification = new Notification("SmoothTranscode", {
-                    body: "Media conversions finished"
-                });
-            }
-        },
         stopClicked: function() {
-            this.currentEncode.stop();
-            this.encoding = false;
-            this.currentEncode = 0;
-            this.currentEncode = null;
-            this.pendingEncodes = [];
-            getCurrentWindow().setProgressBar(-1);
+            ipcRenderer.send("stop-encoding");
+        },
+        updateEncodeStatus: function(event, status) {
+            this.encoding = status.encoding;
+            this.percentComplete = status.percentage;
+            this.currentEncode = status.currentEncode;
+            this.totalEncodes = status.totalEncodes;
+            this.time = status.time,
+            this.bitrate = status.bitrate,
+            this.speed = status.speed
         },
         addFilesClicked: function(event) {
             let filePaths = dialog.showOpenDialog(getCurrentWindow(), {properties: ["openFile", "multiSelections"]});
@@ -145,21 +112,18 @@ export default {
             }
         },
         addFile: function(filePath) {
-            if (!_.find(this.files, { path: filePath })) {
-                let mediaFile = new File(filePath);
-                if (!mediaFile.error) {
-                    this.files.push(mediaFile);
-                    this.addOutput(mediaFile);
-                }
-                else {
-                    dialog.showMessageBox(getCurrentWindow(), {
-                        type: "error",
-                        title: "Unable to add file",
-                        message: "Unable to add file",
-                        detail: "Check the file is a valid video or audio file."
-                    });
-                }
-            }
+            ipcRenderer.send("add-file", filePath);
+        },
+        showAddFileError: function() {
+            dialog.showMessageBox(getCurrentWindow(), {
+                type: "error",
+                title: "Unable to add file",
+                message: "Unable to add file",
+                detail: "Check the file is a valid video or audio file."
+            });
+        },
+        updateFiles: function(event, files) {
+            this.files = JSON.parse(files);
         },
         dragEnter: function(event) {
             event.preventDefault();
@@ -177,18 +141,18 @@ export default {
             this.dropActive = false;
         },
         removeFile: function(file) {
-            this.files.splice(this.files.indexOf(file), 1);
+            ipcRenderer.send("remove-file", file.id);
         },
         addOutput: function(file) {
-            file.addOutput();
+            ipcRenderer.send("add-output", file.id);
         },
         removeOutput: function(file, output) {
-            file.removeOutput(output);
+            ipcRenderer.send("remove-output", file.id, output.id);
         },
-        changeOutputPath: function(output) {
+        changeOutputPath: function(file, output) {
             let filePath = dialog.showSaveDialog(getCurrentWindow(), {defaultPath: output.path});
             if (typeof filePath !== "undefined") {
-                output.path = filePath;
+                ipcRenderer.send("change-output-path", file.id, output.id, filePath);
             }
         }
     },
@@ -215,6 +179,9 @@ export default {
                 }
             }
         }
+        ipcRenderer.on("add-file-error", this.showAddFileError);
+        ipcRenderer.on("update-files", this.updateFiles);
+        ipcRenderer.on("encode-status-update", this.updateEncodeStatus);
         ipcRenderer.send("ready");
     }
 }
