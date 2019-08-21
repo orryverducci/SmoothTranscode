@@ -105,13 +105,10 @@ export class FFmpeg {
         // Convert output stream to text and set as last status message received
         let output = data.toString();
         this.lastStatus = output;
-        // Log output for debugging
-        console.info("[FFmpeg] " + output);
         // Process output and update progress if the encode is running
         if (this.running) {
             // Process output from FFmpeg depending on what the output is
             if (output.includes("Input #0")) { // Output contains input information
-                console.log("test");
                 // Locate the duration in the input information
                 let durationIndex = output.indexOf("Duration:");
                 // If the duration is found, retrieve it
