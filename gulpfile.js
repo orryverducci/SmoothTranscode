@@ -26,6 +26,7 @@ gulp.task("clean-native", (done) => {
     del.sync(path.join("build", "include"));
     del.sync(path.join("build", "lib"));
     del.sync(path.join("build", "share"));
+    del.sync(path.join("build", "ffmpeg-build.log"));
     done();
 });
 
