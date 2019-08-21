@@ -39,7 +39,7 @@ gulp.task("clean", (done) => {
 ***************************/
 
 gulp.task("prepare", () => {
-    return gulp.src([path.join("src", "frontend", "*"), path.join("src", "frontend", "scripts", "*.json")], { base: path.join("src", "frontend") })
+    return gulp.src([path.join("src", "frontend", "main-process", "*"), path.join("src", "frontend", "ui", "*.html")], { base: path.join("src", "frontend") })
         .pipe(gulp.dest(path.join("build", "frontend")));
 });
 
@@ -48,7 +48,7 @@ gulp.task("prepare", () => {
 *************************/
 
 gulp.task("build-js", () => {
-    return gulp.src(path.join("src", "frontend", "scripts", "main.js"))
+    return gulp.src(path.join("src", "frontend", "ui", "main.js"))
         .pipe(sourcemaps.init())
         .pipe(rollup({
             cache: false,
@@ -64,11 +64,11 @@ gulp.task("build-js", () => {
             format: "es"
         }))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(path.join("build", "frontend", "scripts")));
+        .pipe(gulp.dest(path.join("build", "frontend", "ui")));
 });
 
 gulp.task("build-sass", () => {
-    return gulp.src(path.join("src", "frontend", "styles", "global.scss"))
+    return gulp.src(path.join("src", "frontend", "ui", "styles", "global.scss"))
         .pipe(sourcemaps.init())
         .pipe(sass({
             includePaths: [
@@ -78,7 +78,7 @@ gulp.task("build-sass", () => {
             ]
         }).on("error", sass.logError))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(path.join("build", "frontend", "styles")));
+        .pipe(gulp.dest(path.join("build", "frontend", "ui", "styles")));
 });
 
 /***************************
@@ -125,7 +125,7 @@ gulp.task("start-electron", (done) => {
     if (os.platform == "win32") {
         extension = ".cmd";
     }
-    this.process = spawn(`"${path.join(__dirname, "node_modules", ".bin", "electron" + extension)}"`, [`"${path.join("build", "frontend", "main.js")}"`], {
+    this.process = spawn(`"${path.join(__dirname, "node_modules", ".bin", "electron" + extension)}"`, [`"${path.join("build", "frontend", "main-process", "main.js")}"`], {
         shell: true,
         windowsHide: true
     });

@@ -40,7 +40,7 @@ export class FFmpeg {
         // Mark the process as running
         this.running = true;
         // Start encoding process
-        this.process = spawn(path.join(app.getAppPath(), "../", "bin", "ffmpeg"), args, {
+        this.process = spawn(path.join(app.getAppPath(), "..", "..", "bin", "ffmpeg"), args, {
             windowsHide: true
         });
         // Fire finished event and mark as not running when FFmpeg closes

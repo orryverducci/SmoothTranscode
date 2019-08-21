@@ -33,7 +33,7 @@ function createAppProtocol() {
         // Get path name from url
         let pathName = new URL(request.url).pathname;
         // Create path to the file to return
-        let filePath = path.join(__dirname, pathName);
+        let filePath = path.join(__dirname, "..", "ui", pathName);
         // Get the file extension
         let fileExtension = path.extname(filePath).substr(1);
         // Determine the appropriate MIME type for the file

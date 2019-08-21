@@ -25,7 +25,7 @@ export class File {
         this.id = Date.now() + Math.round(Math.random() * 10e5);
         // Retrieve information about the file from FFprobe
         try {
-            let fileInfo = exec(path.join(app.getAppPath(), "../", "bin", "ffprobe"),
+            let fileInfo = exec(path.join(app.getAppPath(), "..", "..", "bin", "ffprobe"),
             ["-v", "quiet", "-print_format", "json", "-show_format", "-show_streams", filePath], {
                 windowsHide: true,
                 encoding: "utf8"

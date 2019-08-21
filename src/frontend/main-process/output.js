@@ -27,7 +27,7 @@ export class Output {
 
     ChangeExtension() {
         // Load list of available containers and their extensions
-        let containers = jsonfile.readFileSync(path.join(app.getAppPath(), "scripts", "containers.json"));
+        let containers = jsonfile.readFileSync(path.join(app.getAppPath(), "containers.json"));
         // Find object containing the container information
         let containerInfo = containers[this.settings.container];
         // If the container info was found, find the extension for the container, and set it
