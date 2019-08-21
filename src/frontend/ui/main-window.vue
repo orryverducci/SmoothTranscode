@@ -104,7 +104,7 @@ export default {
             this.speed = status.speed
         },
         addFilesClicked: function(event) {
-            let filePaths = dialog.showOpenDialog(getCurrentWindow(), {properties: ["openFile", "multiSelections"]});
+            let filePaths = dialog.showOpenDialogSync(getCurrentWindow(), {properties: ["openFile", "multiSelections"]});
             if (typeof filePaths !== "undefined") {
                 for (let file of filePaths) {
                     this.addFile(file);

@@ -33,7 +33,7 @@
     "@fortawesome/vue-fontawesome": "^0.1.6",
     "bootstrap": "^4.3.1",
     "del": "^5.0.0",
-    "electron": "^5.0.7",
+    "electron": "^6.0.3",
     "electron-devtools-installer": "^2.2.4",
     "gulp": "^4.0.2",
     "gulp-better-rollup": "^4.0.1",
