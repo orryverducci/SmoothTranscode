@@ -1,10 +1,11 @@
-import { app, BrowserWindow, protocol, ipcMain } from "electron";
+import { app, protocol } from "electron";
 import installExtension, { VUEJS_DEVTOOLS } from "electron-devtools-installer";
 import { createReadStream, existsSync as fileExists } from "fs";
 import path from "path";
 import { URL } from "url";
 import jsonfile from "jsonfile";
 import { EncodeManager } from "./encode-manager";
+import { MainWindow } from "./main-window";
 
 // Global references for the main window and the file manager, preventing them from being garbage collected
 let mainWindow = null,
@@ -70,21 +71,7 @@ function createAppProtocol() {
  * Creates the main application window
  */
 function createMainWindow() {
-    // Create the main window
-    mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
-        show: false,
-        webPreferences: {
-            nodeIntegration: true
-        }
-    });
-    // Load the main window
-    mainWindow.loadURL("app://smoothtranscode/main-window.html");
-    // Destroy reference to the main window when it is closed
-    mainWindow.on("closed", () => {
-        mainWindow = null;
-    });
+    mainWindow = new MainWindow();
 }
 
 /**
@@ -109,11 +96,6 @@ app.on("ready", () => {
     createAppProtocol();
     setupDevTools();
     createMainWindow();
-});
-
-// Show the main window when the ready event has been received from the renderer process
-ipcMain.on("ready", (event, arg) => {  
-    mainWindow.show();
 });
 
 // Quit the application when all windows are closed
