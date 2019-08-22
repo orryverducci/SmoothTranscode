@@ -1,23 +1,23 @@
 import { app } from "electron";
 import moment from "moment";
+import { EventClass } from "./event-class.js";
 
 const {spawn} = require("child_process"),
     fs = require("fs"),
     path = require("path");
 
 /** Runs FFmpeg to transcode an output. */
-export class FFmpeg {
+export class FFmpeg extends EventClass {
     /**
      * Initialises an instance of FFmpeg.
      * @param {File} input - The input file.
      * @param {int} outputIndex - The output index to use.
      */
     constructor(input, outputIndex) {
+        super();
         // Initialise input file path and encoding settings
         this.input = input;
         this.output = input.outputs[outputIndex];
-        // Initialise event listeners
-        this.listeners = new Map();
         // Initialise encoding process
         this.running = false;
         this.process;
@@ -146,7 +146,7 @@ export class FFmpeg {
                 // Update encoding speed
                 this.progressSpeed = status.get("speed");
                 // Fire update event
-                this.fireEvent("status-updated");
+                super.fireEvent("status-updated");
             }
         }
     }
@@ -169,64 +169,7 @@ export class FFmpeg {
                 this.output.status = "complete";
             }
             // Fire the finished event
-            this.fireEvent("finished");
-        }
-    }
-
-    /**
-     * Add an event listener callback to an event channel.
-     * @param {string} channel - The name of the channel to listen to.
-     * @param {function} callback - A callback method to run when the event channel is fired.
-     */
-    addListener(channel, callback) {
-        // Create the event channel with an empty array of callbacks if it doesn't exist
-        if (!this.listeners.has(channel)) {
-            this.listeners.set(channel, []);
-        }
-        // Add the callback to the event channel array
-        this.listeners.get(channel).push(callback);
-    }
-
-    /**
-     * Removes an event listener callback from an event channel.
-     * @param {string} channel - The name of the channel to remove the listener from.
-     * @param {function} callback - The callback method to be removed from the event channel.
-     * @returns {boolean} True if successfully removed, false otherwise.
-     */
-    removeListener(channel, callback) {
-        // Get listener callbacks for the channel, and initialise the index
-        let listeners = this.listeners.get(channel);
-        let index;
-        // If there are listeners for the channel, check for the callback and remove it
-        if (typeof listeners !== "undefined" && listeners.length > 0) {
-            // Determine the index of the callback to be removed
-            index = listeners.reduce((i, listener, index) => {
-                return (typeof listener == "function" && listener === callback) ? i = index : i;
-            }, -1);
-            // If an index is returned, remove it from the array of callbacks
-            if (index > -1) {
-                listeners.splice(index, 1);
-                this.listeners.set(channel, listeners);
-                // Return tue to indicate the listener was successfully removed
-                return true;
-            }
-        }
-        // Return false if unable to remove the callback
-        return false;
-    }
-
-    /**
-     * Fires an event channel.
-     * @param {string} channel - The name of the event channel to fire.
-     */
-    fireEvent(channel) {
-        // Get the event listeners for the channel
-        let listeners = this.listeners.get(channel);
-        // If there are listeners, call each one
-        if (typeof listeners !== "undefined" && listeners.length > 0) {
-            listeners.forEach((listener) => {
-                listener(); 
-            });
+            super.fireEvent("finished");
         }
     }
 }
