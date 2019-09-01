@@ -10,7 +10,19 @@ const gulp = require("gulp"),
     resolve = require("rollup-plugin-node-resolve"),
     vue = require("rollup-plugin-vue"),
     commonjs = require("rollup-plugin-commonjs"),
-    sourcemaps = require('gulp-sourcemaps');
+    sourcemaps = require('gulp-sourcemaps'),
+    eslint = require("gulp-eslint");
+
+/****************
+*** HELPER TASKS
+*****************/
+
+gulp.task("lint", (done) => {
+    return gulp.src(path.join("src", "frontend", "**", "*.{js,vue}"))
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+});
 
 /***************
 *** CLEAN TASKS
