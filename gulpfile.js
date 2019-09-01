@@ -138,7 +138,7 @@ gulp.task("start-electron", (done) => {
     if (os.platform == "win32") {
         extension = ".cmd";
     }
-    this.process = spawn(`"${path.join(__dirname, "node_modules", ".bin", "electron" + extension)}"`, [`"${path.join("build", "frontend", "main-process", "main.js")}"`], {
+    this.process = spawn(`"${path.join(__dirname, "node_modules", ".bin", "electron" + extension)}"`, ["--remote-debugging-port=9223", `"${path.join("build", "frontend", "main-process", "main.js")}"`], {
         shell: true,
         windowsHide: true
     });
