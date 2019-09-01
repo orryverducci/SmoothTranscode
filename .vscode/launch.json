@@ -10,9 +10,9 @@
             "windows": {
                 "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
             },
-            "program": "${workspaceFolder}/build/frontend/main.js",
-            "localRoot": "${workspaceFolder}/src/frontend",
-            "remoteRoot": "${workspaceFolder}/build/frontend",
+            "program": "${workspaceFolder}/build/frontend/main-process/main.js",
+            "localRoot": "${workspaceFolder}/src/frontend/main-process",
+            "remoteRoot": "${workspaceFolder}/build/frontend/main-process",
             "outputCapture": "std"
         },
         {
