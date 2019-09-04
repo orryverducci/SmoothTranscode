@@ -1,4 +1,4 @@
-import { BrowserWindow, ipcMain } from "electron";
+import {BrowserWindow, ipcMain} from "electron";
 
 /** The main window for the application. */
 export class MainWindow {

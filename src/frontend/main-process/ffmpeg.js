@@ -1,6 +1,6 @@
-import { app } from "electron";
+import {app} from "electron";
 import moment from "moment";
-import { EventClass } from "./event-class.js";
+import {EventClass} from "./event-class.js";
 
 const {spawn} = require("child_process"),
     fs = require("fs"),

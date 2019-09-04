@@ -1,7 +1,7 @@
-import { ipcMain, IpcMessageEvent, Notification } from "electron";
+import {ipcMain, IpcMessageEvent, Notification} from "electron";
 import _ from "lodash";
-import { File } from "./file";
-import { FFmpeg } from "./ffmpeg";
+import {File} from "./file";
+import {FFmpeg} from "./ffmpeg";
 
 /** Manages the files to be encoded. */
 export class EncodeManager {

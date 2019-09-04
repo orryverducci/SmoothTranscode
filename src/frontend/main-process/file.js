@@ -1,6 +1,6 @@
-import { app } from "electron";
+import {app} from "electron";
 import _ from "lodash";
-import { Output } from "./output.js";
+import {Output} from "./output.js";
 
 const exec = require("child_process").execFileSync,
     path = require("path");

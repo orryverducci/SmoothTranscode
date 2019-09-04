@@ -1,11 +1,11 @@
-import { app, protocol } from "electron";
-import installExtension, { VUEJS_DEVTOOLS } from "electron-devtools-installer";
-import { createReadStream, existsSync as fileExists } from "fs";
+import {app, protocol} from "electron";
+import installExtension, {VUEJS_DEVTOOLS} from "electron-devtools-installer";
+import {createReadStream, existsSync as fileExists} from "fs";
 import path from "path";
-import { URL } from "url";
+import {URL} from "url";
 import jsonfile from "jsonfile";
-import { EncodeManager } from "./encode-manager";
-import { MainWindow } from "./main-window";
+import {EncodeManager} from "./encode-manager";
+import {MainWindow} from "./main-window";
 
 // Global references for the main window and the file manager, preventing them from being garbage collected
 let mainWindow = null,

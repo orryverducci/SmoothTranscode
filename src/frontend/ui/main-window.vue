@@ -51,8 +51,8 @@
 </template>
 
 <script>
-const { ipcRenderer } = require("electron"),
-    { dialog, getCurrentWindow } = require("electron").remote;
+const {ipcRenderer} = require("electron"),
+    {dialog, getCurrentWindow} = require("electron").remote;
 
 export default {
     data: function() {

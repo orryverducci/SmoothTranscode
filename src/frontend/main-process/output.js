@@ -1,5 +1,5 @@
-import { app } from "electron";
-import { Settings } from "./settings.js";
+import {app} from "electron";
+import {Settings} from "./settings.js";
 
 const jsonfile = require("jsonfile"),
     path = require("path");
