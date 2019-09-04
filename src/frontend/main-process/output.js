@@ -1,8 +1,7 @@
 import {app} from "electron";
+import path from "path";
+import jsonfile from "jsonfile";
 import {Settings} from "./settings.js";
-
-const jsonfile = require("jsonfile"),
-    path = require("path");
 
 /** Provides information and transcode settings for an individual transcode output. */
 export class Output {

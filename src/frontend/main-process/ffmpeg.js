@@ -1,10 +1,9 @@
 import {app} from "electron";
+import {spawn} from "child_process";
+import fs from "fs";
+import path from "path";
 import moment from "moment";
 import {EventClass} from "./event-class.js";
-
-const {spawn} = require("child_process"),
-    fs = require("fs"),
-    path = require("path");
 
 /** Runs FFmpeg to transcode an output. */
 export class FFmpeg extends EventClass {

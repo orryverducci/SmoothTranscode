@@ -1,9 +1,8 @@
 import {app} from "electron";
+import path from "path";
+import {execFileSync as exec} from "child_process";
 import _ from "lodash";
 import {Output} from "./output.js";
-
-const exec = require("child_process").execFileSync,
-    path = require("path");
 
 /** Provides information and transcode settings for a media file. */
 export class File {
