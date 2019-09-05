@@ -103,10 +103,10 @@ export default {
             this.bitrate = status.bitrate,
             this.speed = status.speed
         },
-        addFilesClicked: function(event) {
-            let filePaths = dialog.showOpenDialogSync(getCurrentWindow(), {properties: ["openFile", "multiSelections"]});
-            if (typeof filePaths !== "undefined") {
-                for (let file of filePaths) {
+        addFilesClicked: async function(event) {
+            let dialogResult = await dialog.showOpenDialog(getCurrentWindow(), {properties: ["openFile", "multiSelections"]});
+            if (!dialogResult.canceled) {
+                for (let file of dialogResult.filePaths) {
                     this.addFile(file);
                 }
             }
@@ -149,10 +149,10 @@ export default {
         removeOutput: function(file, output) {
             ipcRenderer.send("remove-output", file.id, output.id);
         },
-        changeOutputPath: function(file, output) {
-            let filePath = dialog.showSaveDialog(getCurrentWindow(), {defaultPath: output.path});
-            if (typeof filePath !== "undefined") {
-                ipcRenderer.send("change-output-path", file.id, output.id, filePath);
+        changeOutputPath: async function(file, output) {
+            let dialogResult = await dialog.showSaveDialog(getCurrentWindow(), {defaultPath: output.path});
+            if (!dialogResult.canceled) {
+                ipcRenderer.send("change-output-path", file.id, output.id, dialogResult.filePath);
             }
         }
     },
@@ -163,16 +163,16 @@ export default {
         document.addEventListener("drop", (event) => {
             event.preventDefault();
         });
-        window.onbeforeunload = (event) => {
+        window.onbeforeunload = async (event) => {
             if (this.encoding) {
-                let confirmResult = dialog.showMessageBox(getCurrentWindow(), {
+                let dialogResult = await dialog.showMessageBox(getCurrentWindow(), {
                     type: "warning",
                     buttons: ["Yes", "No"],
                     title: "Encode in Progress",
                     message: "Are you sure you want to exit?",
                     detail: "An encode is currently in progress. Exiting will stop the encode before it completes."
                 });
-                if (confirmResult === 0) {
+                if (dialogResult.response === 0) {
                     this.stopClicked();
                 } else {
                     event.returnValue = false;
