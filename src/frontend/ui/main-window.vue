@@ -163,8 +163,10 @@ export default {
         document.addEventListener("drop", (event) => {
             event.preventDefault();
         });
-        window.onbeforeunload = async (event) => {
+        window.addEventListener("beforeunload", async (event) => {
             if (this.encoding) {
+                event.preventDefault();
+                event.returnValue = false;
                 let dialogResult = await dialog.showMessageBox(getCurrentWindow(), {
                     type: "warning",
                     buttons: ["Yes", "No"],
@@ -174,11 +176,10 @@ export default {
                 });
                 if (dialogResult.response === 0) {
                     this.stopClicked();
-                } else {
-                    event.returnValue = false;
+                    getCurrentWindow().destroy();
                 }
             }
-        }
+        });
         ipcRenderer.on("add-file-error", this.showAddFileError);
         ipcRenderer.on("update-files", this.updateFiles);
         ipcRenderer.on("encode-status-update", this.updateEncodeStatus);
