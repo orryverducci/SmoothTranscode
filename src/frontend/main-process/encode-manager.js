@@ -180,6 +180,7 @@ export class EncodeManager {
      */
     startNextFile() {
         this._currentEncode++;
+        this._ipcEvent.reply("update-files", JSON.stringify(this.files));
         if (this._currentEncode < this._encodes.length) {
             this._encodes[this._currentEncode].addListener("status-updated", this.sendEncodingStatus.bind(this));
             this._encodes[this._currentEncode].addListener("finished", this.startNextFile.bind(this));
