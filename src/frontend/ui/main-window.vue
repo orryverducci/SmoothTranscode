@@ -45,7 +45,7 @@
         <aside v-if="encoding">
             <p>Encoding {{ currentEncode }} of {{ totalEncodes }}</p>
             <progress v-bind:value="percentComplete" max="100">{{percentComplete}}%</progress>
-            <p>Time Encoded: {{ time }} - Encoding Bitrate: {{ bitrate }} - Encoding Speed: {{ speed }}</p>
+            <p>Time Encoded: {{ time }} - Encoding Bitrate: {{ bitrate }} - Encoding Speed: {{ speed }} - Estimated Time on File: {{ eta }}</p>
         </aside>
     </div>
 </template>
@@ -65,7 +65,8 @@ export default {
             totalEncodes: 0,
             time: "00:00:00",
             bitrate: "0kbits/s",
-            speed: "0x"
+            speed: "0x",
+            eta: "0 seconds"
         }
     },
     computed: {
@@ -102,6 +103,7 @@ export default {
             this.time = status.time,
             this.bitrate = status.bitrate,
             this.speed = status.speed
+            this.eta = status.eta;
         },
         addFilesClicked: async function(event) {
             let dialogResult = await dialog.showOpenDialog(getCurrentWindow(), {properties: ["openFile", "multiSelections"]});

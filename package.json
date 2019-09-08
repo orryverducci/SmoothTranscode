@@ -42,6 +42,7 @@
     "gulp-eslint": "^6.0.0",
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
+    "humanize-duration": "^3.20.1",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "rollup": "^1.17.0",
@@ -49,6 +50,7 @@
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-vue": "^5.0.1",
+    "simple-eta": "^3.0.1",
     "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10"
   }

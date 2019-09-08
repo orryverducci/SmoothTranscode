@@ -1,5 +1,6 @@
 import {ipcMain, IpcMessageEvent, Notification} from "electron";
 import _ from "lodash";
+import humanizeDuration from "humanize-duration";
 import {File} from "./file";
 import {FFmpeg} from "./ffmpeg";
 
@@ -221,6 +222,7 @@ export class EncodeManager {
         let time = this._encoding ? this._encodes[this._currentEncode].progressTime : "00:00:00";
         let bitrate = this._encoding ? this._encodes[this._currentEncode].progressBitrate : "0kbits/s";
         let speed = this._encoding ? this._encodes[this._currentEncode].progressSpeed : "0x";
+        let eta = this._encoding ? humanizeDuration(this._encodes[this._currentEncode].eta.estimate() * 1000, {round: true}) : "0 seconds";
         this._ipcEvent.reply("encode-status-update", {
             encoding: this._encoding,
             percentage: percentage,
@@ -228,7 +230,8 @@ export class EncodeManager {
             totalEncodes: this._encodes.length,
             time: time,
             bitrate: bitrate,
-            speed: speed
+            speed: speed,
+            eta: eta
         });
         if (!this._encoding) {
             this._ipcEvent = null;

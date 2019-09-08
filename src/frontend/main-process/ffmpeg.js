@@ -3,6 +3,7 @@ import {spawn} from "child_process";
 import fs from "fs";
 import path from "path";
 import moment from "moment";
+import makeEta from "simple-eta";
 import {EventClass} from "./event-class.js";
 
 /** Runs FFmpeg to transcode an output. */
@@ -27,6 +28,7 @@ export class FFmpeg extends EventClass {
         this.progressSpeed = "0x";
         this.progressPercentage = 0;
         this.lastStatus = "";
+        this.eta = makeEta({min: 0, max: 100});
     }
 
     /**
@@ -46,6 +48,8 @@ export class FFmpeg extends EventClass {
         this.process.on("close", this.encodeFinished.bind(this));
         // Process FFmpeg output
         this.process.stderr.on("data", this.processOutput.bind(this));
+        // Start calculating ETA
+        this.eta.start();
     }
 
     /**
@@ -133,12 +137,14 @@ export class FFmpeg extends EventClass {
                 });
                 // Update time encoded
                 this.progressTime = status.get("time").substring(0, status.get("time").length - 3);
-                // If a duration has been set, calculate progress percentage
+                // If a duration has been set, calculate progress percentage and update eta
                 if (typeof this.duration !== "undefined") {
                     // Retrieve current timecode
                     let timecode = moment.duration(this.progressTime);
                     // Convert times to seconds and calculate percentage encoded
-                    this.progressPercentage = Math.round((100 / this.duration.asSeconds()) * timecode.asSeconds());
+                    let percentage = (100 / this.duration.asSeconds()) * timecode.asSeconds();
+                    this.eta.report(percentage);
+                    this.progressPercentage = Math.round(percentage);
                 }
                 // Update encoding bitrate
                 this.progressBitrate = status.get("bitrate");
