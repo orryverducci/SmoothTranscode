@@ -7,6 +7,7 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 /**
  * The main vue instance for the application.
  */
+// eslint-disable-next-line no-new
 new Vue({
     el: "#container",
     render: (h) => h(MainWindow),
