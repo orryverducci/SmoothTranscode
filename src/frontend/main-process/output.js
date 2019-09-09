@@ -34,7 +34,7 @@ export class Output {
             // Find default extension for chosen container
             let extension = containerInfo.extensions[0];
             // Change the extension of the file path
-            this.path = this.path.substring(0, this.path.lastIndexOf(".")) + "." + extension;
+            this.path = `${this.path.substring(0, this.path.lastIndexOf("."))}.${extension}`;
         }
     }
 }

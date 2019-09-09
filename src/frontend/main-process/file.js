@@ -113,7 +113,7 @@ export class File {
      */
     addOutput() {
         // Create new file path for the output
-        let filePath = this.path.substring(0, this.path.lastIndexOf(".")) + "_" + this.newOutputSuffix + this.path.substring(this.path.lastIndexOf("."));
+        let filePath = `${this.path.substring(0, this.path.lastIndexOf("."))}_${this.newOutputSuffix}${this.path.substring(this.path.lastIndexOf("."))}`;
         // Add output
         this.outputs.push(new Output(filePath));
         // Increase output suffix
