@@ -57,7 +57,7 @@ export class EncodeManager {
      */
     addFile(event, filePath) {
         // Check if the file has already been added, and ignore it if it has
-        if (_.find(this.files, { path: filePath })) {
+        if (_.find(this.files, {path: filePath})) {
             return;
         }
         // Create the file
@@ -79,7 +79,7 @@ export class EncodeManager {
      */
     removeFile(event, fileID) {
         // Find the file to remove
-        let file = _.find(this.files, { id: fileID });
+        let file = _.find(this.files, {id: fileID});
         // If a file with the given ID can't be found, return the method
         if (typeof file === "undefined") {
             return;
@@ -97,7 +97,7 @@ export class EncodeManager {
      */
     addOutput(event, fileID) {
         // Find the file to add an output to
-        let file = _.find(this.files, { id: fileID });
+        let file = _.find(this.files, {id: fileID});
         // If a file with the given ID can't be found, return the method
         if (typeof file === "undefined") {
             return;
@@ -118,7 +118,7 @@ export class EncodeManager {
      */
     removeOutput(event, fileID, outputID) {
         // Find the file to remove an output from
-        let file = _.find(this.files, { id: fileID });
+        let file = _.find(this.files, {id: fileID});
         // If a file with the given ID can't be found, return the method
         if (typeof file === "undefined") {
             return;
@@ -138,13 +138,13 @@ export class EncodeManager {
      */
     changeOutputPath(event, fileID, outputID, filePath) {
         // Find the file containing the output to be changed
-        let file = _.find(this.files, { id: fileID });
+        let file = _.find(this.files, {id: fileID});
         // If a file with the given ID can't be found, return the method
         if (typeof file === "undefined") {
             return;
         }
         // Find the output to change
-        let output = _.find(file.outputs, { id: outputID });
+        let output = _.find(file.outputs, {id: outputID});
         // If an output with the given ID can't be found, return the method
         if (typeof file === "undefined") {
             return;

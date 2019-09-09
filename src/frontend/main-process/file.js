@@ -126,7 +126,7 @@ export class File {
      */
     removeOutput(outputID) {
         // Find the output to remove
-        let output = _.find(this.outputs, { id: outputID });
+        let output = _.find(this.outputs, {id: outputID});
         // If an output with the given ID can't be found, return the method
         if (typeof output === "undefined") {
             return;
