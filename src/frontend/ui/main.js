@@ -9,7 +9,7 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
  */
 new Vue({
     el: "#container",
-    render: h => h(MainWindow),
+    render: (h) => h(MainWindow),
     created: function() {
         config.autoAddCss = false;
         library.add(faArrowDown);
