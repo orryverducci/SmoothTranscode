@@ -42,8 +42,7 @@ export class File {
                         break;
                 }
             });
-        }
-        catch (error) {
+        } catch (error) {
             this.error = true;
         }
     }
