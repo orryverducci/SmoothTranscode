@@ -21,10 +21,10 @@ export class Output {
         // Initialise encode settings with defaults
         this.settings = new Settings();
         // Set file extension to the container default
-        this.ChangeExtension();
+        this.changeExtension();
     }
 
-    ChangeExtension() {
+    changeExtension() {
         // Load list of available containers and their extensions
         let containers = jsonfile.readFileSync(path.join(app.getAppPath(), "containers.json"));
         // Find object containing the container information
