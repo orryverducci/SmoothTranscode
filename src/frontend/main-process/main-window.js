@@ -28,7 +28,7 @@ export class MainWindow {
             this._window = null;
         });
         // Show the main window when the ready event has been received from the renderer process
-        ipcMain.on("ready", (event, arg) => {  
+        ipcMain.on("ready", (event, arg) => {
             this._window.show();
         });
     }

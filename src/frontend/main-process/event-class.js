@@ -63,7 +63,7 @@ export class EventClass {
         // If there are listeners, call each one
         if (typeof listeners !== "undefined" && listeners.length > 0) {
             listeners.forEach((listener) => {
-                listener(); 
+                listener();
             });
         }
     }

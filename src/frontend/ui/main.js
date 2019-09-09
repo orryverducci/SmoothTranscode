@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 /**
  * The main vue instance for the application.
  */
-new Vue({ 
+new Vue({
     el: "#container",
     render: h => h(MainWindow),
     created: function() {
