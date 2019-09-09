@@ -76,7 +76,7 @@ export default {
     },
     watch: {
         percentComplete: function() {
-            getCurrentWindow().setProgressBar(percentage);
+            getCurrentWindow().setProgressBar(this.percentComplete / 100);
         }
     },
     methods: {
