@@ -131,7 +131,7 @@ export class File {
         if (typeof output === "undefined") {
             return;
         }
-        // 
+        // Remove the output
         this.outputs.splice(this.outputs.indexOf(output), 1);
     }
 }
