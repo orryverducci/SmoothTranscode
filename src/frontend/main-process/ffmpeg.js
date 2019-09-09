@@ -127,7 +127,7 @@ export class FFmpeg extends EventClass {
                 // Create a map of status properties
                 let status = new Map();
                 // Remove spaces in output following a '=' character
-                output = output.replace(/=( *)/g, "=")
+                output = output.replace(/=( *)/g, "=");
                 // Split output line into segments split by spaces
                 let outputSegments = output.split(" ");
                 // Split each segment into key and value, and add to the map of statush properties

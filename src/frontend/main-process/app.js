@@ -88,7 +88,7 @@ function setupDevTools() {
 app.on("web-contents-created", (event, contents) => {
     contents.on("will-navigate", (event, navigationUrl) => {
         event.preventDefault();
-    })
+    });
 });
 
 // Create the main window when Electron has finished initialisation

@@ -1,8 +1,8 @@
 import Vue from "Vue";
 import MainWindow from "./main-window.vue";
-import { config, library } from '@fortawesome/fontawesome-svg-core'
-import { faArrowDown, faCheckCircle, faFileMedical, faFilm, faPlay, faPlus, faStop, faTimesCircle, faTrashAlt, faVolumeUp } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { config, library } from '@fortawesome/fontawesome-svg-core';
+import { faArrowDown, faCheckCircle, faFileMedical, faFilm, faPlay, faPlus, faStop, faTimesCircle, faTrashAlt, faVolumeUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 /**
  * The main vue instance for the application.

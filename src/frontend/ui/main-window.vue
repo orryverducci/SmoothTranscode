@@ -67,7 +67,7 @@ export default {
             bitrate: "0kbits/s",
             speed: "0x",
             eta: "0 seconds"
-        }
+        };
     },
     computed: {
         showPlaceholder: function() {
@@ -102,7 +102,7 @@ export default {
             this.totalEncodes = status.totalEncodes;
             this.time = status.time,
             this.bitrate = status.bitrate,
-            this.speed = status.speed
+            this.speed = status.speed;
             this.eta = status.eta;
         },
         addFilesClicked: async function(event) {
@@ -187,5 +187,5 @@ export default {
         ipcRenderer.on("encode-status-update", this.updateEncodeStatus);
         ipcRenderer.send("ready");
     }
-}
+};
 </script>
