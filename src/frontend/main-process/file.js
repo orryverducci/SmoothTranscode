@@ -25,10 +25,10 @@ export class File {
         // Retrieve information about the file from FFprobe
         try {
             let fileInfo = exec(path.join(app.getAppPath(), "..", "..", "bin", "ffprobe"),
-            ["-v", "quiet", "-print_format", "json", "-show_format", "-show_streams", filePath], {
-                windowsHide: true,
-                encoding: "utf8"
-            });
+                ["-v", "quiet", "-print_format", "json", "-show_format", "-show_streams", filePath], {
+                    windowsHide: true,
+                    encoding: "utf8"
+                });
             // Process information retrieved from FFprobe
             fileInfo = JSON.parse(fileInfo);
             // Loop through each stream, adding them to the video and audio streams as appropriate
