@@ -1,3 +1,3 @@
-require = require("esm")(module);
+require = require("esm")(module); // eslint-disable-line no-global-assign
 
 module.exports = require("./app.js");
