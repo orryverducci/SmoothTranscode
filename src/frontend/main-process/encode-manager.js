@@ -165,7 +165,7 @@ export class EncodeManager {
         }
         for (let i = 0; i < this.files.length; i++) {
             for (let x = 0; x < this.files[i].outputs.length; x++) {
-                if (this.files[i].outputs[x].status == "pending") {
+                if (this.files[i].outputs[x].status === "pending") {
                     let encode = new FFmpeg(this.files[i], x);
                     this._encodes.push(encode);
                 }

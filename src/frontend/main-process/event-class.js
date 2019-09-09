@@ -39,7 +39,7 @@ export class EventClass {
         if (typeof listeners !== "undefined" && listeners.length > 0) {
             // Determine the index of the callback to be removed
             index = listeners.reduce((i, listener, index) => {
-                return (typeof listener == "function" && listener === callback) ? i = index : i;
+                return (typeof listener === "function" && listener === callback) ? i = index : i;
             }, -1);
             // If an index is returned, remove it from the array of callbacks
             if (index > -1) {

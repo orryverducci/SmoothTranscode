@@ -71,7 +71,7 @@ export default {
     },
     computed: {
         showPlaceholder: function() {
-            return this.files.length == 0 && !this.dropActive;
+            return this.files.length === 0 && !this.dropActive;
         }
     },
     watch: {

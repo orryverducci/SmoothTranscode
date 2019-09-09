@@ -54,7 +54,7 @@ export class File {
      */
     addVideoStream(stream) {
         // If the video stream is an attached image (e.g. album art), do not process it
-        if (stream.disposition.attached_pic != 0) {
+        if (stream.disposition.attached_pic !== 0) {
             return;
         }
         // Process stream information
