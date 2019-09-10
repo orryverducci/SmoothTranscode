@@ -5,6 +5,7 @@
     },
     "extends": [
         "eslint:recommended",
+        "plugin:jsdoc/recommended",
         "plugin:vue/essential"
     ],
     "parserOptions": {
@@ -12,6 +13,7 @@
         "sourceType": "module"
     },
     "plugins": [
+        "jsdoc",
         "vue"
     ],
     "rules": {
