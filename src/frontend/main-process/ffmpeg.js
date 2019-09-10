@@ -12,7 +12,7 @@ export class FFmpeg extends EventClass {
      * Initialises an instance of FFmpeg.
      *
      * @param {File} input - The input file.
-     * @param {int} outputIndex - The output index to use.
+     * @param {number} outputIndex - The output index to use.
      */
     constructor(input, outputIndex) {
         super();
@@ -163,7 +163,7 @@ export class FFmpeg extends EventClass {
     /**
      * Handles the completion of an encode.
      *
-     * @param {int} code - The exit code returned by FFmpeg.
+     * @param {number} code - The exit code returned by FFmpeg.
      * @param {string} signal - The signal that was used to terminate FFmpeg.
      */
     encodeFinished(code, signal) {
