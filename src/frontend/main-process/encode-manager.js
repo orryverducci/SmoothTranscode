@@ -212,10 +212,8 @@ export class EncodeManager {
 
     /**
      * Stops the currently running encodes.
-     *
-     * @param {IpcMessageEvent} event - The IPC event.
      */
-    stopEncoding(event) {
+    stopEncoding() {
         if (!this._encoding) {
             return;
         }

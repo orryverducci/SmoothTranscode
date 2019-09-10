@@ -86,7 +86,7 @@ function setupDevTools() {
 
 // Disable navigation in windows
 app.on("web-contents-created", (event, contents) => {
-    contents.on("will-navigate", (event, navigationUrl) => {
+    contents.on("will-navigate", (event) => {
         event.preventDefault();
     });
 });

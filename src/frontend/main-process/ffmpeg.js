@@ -165,9 +165,8 @@ export class FFmpeg extends EventClass {
      * Handles the completion of an encode.
      *
      * @param {number} code - The exit code returned by FFmpeg.
-     * @param {string} signal - The signal that was used to terminate FFmpeg.
      */
-    encodeFinished(code, signal) {
+    encodeFinished(code) {
         if (this.running) {
             // Set that the encode is no longer running
             this.running = false;

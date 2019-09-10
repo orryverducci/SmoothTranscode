@@ -105,7 +105,7 @@ export default {
             this.speed = status.speed;
             this.eta = status.eta;
         },
-        addFilesClicked: async function(event) {
+        addFilesClicked: async function() {
             let dialogResult = await dialog.showOpenDialog(getCurrentWindow(), {properties: ["openFile", "multiSelections"]});
             if (!dialogResult.canceled) {
                 for (let file of dialogResult.filePaths) {
