@@ -51,7 +51,7 @@ export class File {
     /**
      * Add a video stream to the file information.
      *
-     * @param {Object} stream - The stream from FFprobe to add.
+     * @param {object} stream - The stream from FFprobe to add.
      */
     addVideoStream(stream) {
         // If the video stream is an attached image (e.g. album art), do not process it
@@ -96,7 +96,7 @@ export class File {
     /**
      * Add an audio stream to the file information.
      *
-     * @param {Object} stream - The stream from FFprobe to add.
+     * @param {object} stream - The stream from FFprobe to add.
      */
     addAudioStream(stream) {
         // Create stream information
