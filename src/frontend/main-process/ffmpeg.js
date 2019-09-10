@@ -2,6 +2,7 @@ import {app} from "electron";
 import {spawn} from "child_process";
 import fs from "fs";
 import path from "path";
+import stream from "stream";
 import moment from "moment";
 import makeEta from "simple-eta";
 import {EventClass} from "./event-class.js";
