@@ -8,6 +8,7 @@ import {Output} from "./output.js";
 export class File {
     /**
      * Initialises an instance of File.
+     *
      * @param {string} filePath - The path to the file.
      */
     constructor(filePath) {
@@ -49,6 +50,7 @@ export class File {
 
     /**
      * Add a video stream to the file information.
+     *
      * @param {Object} stream - The stream from FFprobe to add.
      */
     addVideoStream(stream) {
@@ -93,6 +95,7 @@ export class File {
 
     /**
      * Add an audio stream to the file information.
+     *
      * @param {Object} stream - The stream from FFprobe to add.
      */
     addAudioStream(stream) {
@@ -121,6 +124,7 @@ export class File {
 
     /**
      * Removes a transcode output from the file
+     *
      * @param {number} outputID - The ID of the output to remove.
      */
     removeOutput(outputID) {

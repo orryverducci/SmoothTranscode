@@ -10,6 +10,7 @@ import {EventClass} from "./event-class.js";
 export class FFmpeg extends EventClass {
     /**
      * Initialises an instance of FFmpeg.
+     *
      * @param {File} input - The input file.
      * @param {int} outputIndex - The output index to use.
      */
@@ -69,6 +70,7 @@ export class FFmpeg extends EventClass {
 
     /**
      * Builds the arguments to set the input file and options.
+     *
      * @returns {Array.<string>} Returns an array of arguments in the correct order.
      */
     buildInputArgs() {
@@ -82,6 +84,7 @@ export class FFmpeg extends EventClass {
 
     /**
      * Builds the arguments to set the encoding options.
+     *
      * @returns {Array.<string>} Returns an array of arguments in the correct order.
      */
     buildEncodingArgs() {
@@ -102,6 +105,7 @@ export class FFmpeg extends EventClass {
 
     /**
      * Processes the output from the FFmpeg encode.
+     *
      * @param {stream.Readable} data - The line of data outputted by FFmpeg.
      */
     processOutput(data) {
@@ -158,6 +162,7 @@ export class FFmpeg extends EventClass {
 
     /**
      * Handles the completion of an encode.
+     *
      * @param {int} code - The exit code returned by FFmpeg.
      * @param {string} signal - The signal that was used to terminate FFmpeg.
      */

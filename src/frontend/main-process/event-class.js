@@ -2,6 +2,7 @@
 export class EventClass {
     /**
      * The event listeners.
+     *
      * @type {Map}
      */
     _listeners = new Map();
@@ -13,6 +14,7 @@ export class EventClass {
 
     /**
      * Add an event listener callback to an event channel.
+     *
      * @param {string} channel - The name of the channel to listen to.
      * @param {Function} callback - A callback method to run when the event channel is fired.
      */
@@ -27,6 +29,7 @@ export class EventClass {
 
     /**
      * Removes an event listener callback from an event channel.
+     *
      * @param {string} channel - The name of the channel to remove the listener from.
      * @param {Function} callback - The callback method to be removed from the event channel.
      * @returns {boolean} True if successfully removed, false otherwise.
@@ -58,6 +61,7 @@ export class EventClass {
 
     /**
      * Fires an event channel.
+     *
      * @param {string} channel - The name of the event channel to fire.
      */
     fireEvent(channel) {

@@ -4,6 +4,7 @@ import {BrowserWindow, ipcMain} from "electron";
 export class MainWindow {
     /**
      * The window.
+     *
      * @type {BrowserWindow}
      */
     _window = null;

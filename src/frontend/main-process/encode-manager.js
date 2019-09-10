@@ -8,30 +8,35 @@ import {FFmpeg} from "./ffmpeg";
 export class EncodeManager {
     /**
      * The files to be encoded.
+     *
      * @type {Array.<File>}
      */
     files = [];
 
     /**
      * Represents if encodes are currently running.
+     *
      * @type {boolean}
      */
     _encoding = false;
 
     /**
      * The IPC event used for encode status replies.
+     *
      * @type {IpcMessageEvent}
      */
     _ipcEvent = null;
 
     /**
      * The currently running encodes.
+     *
      * @type {Array.<FFmpeg>}
      */
     _encodes = [];
 
     /**
      * The index of the current encode.
+     *
      * @type {number}
      */
     _currentEncode = -1;
@@ -52,6 +57,7 @@ export class EncodeManager {
 
     /**
      * Adds a file to be encoded.
+     *
      * @param {IpcMessageEvent} event - The IPC event.
      * @param {string} filePath - The path to the file to be added.
      */
@@ -74,6 +80,7 @@ export class EncodeManager {
 
     /**
      * Removes a file from the list of files to be encoded.
+     *
      * @param {IpcMessageEvent} event - The IPC event.
      * @param {number} fileID - The ID of the file to remove.
      */
@@ -92,6 +99,7 @@ export class EncodeManager {
 
     /**
      * Adds an output to a file.
+     *
      * @param {IpcMessageEvent} event - The IPC event.
      * @param {number} fileID - The ID of the file to add an output to.
      */
@@ -112,6 +120,7 @@ export class EncodeManager {
 
     /**
      * Removes an output from a file.
+     *
      * @param {IpcMessageEvent} event - The IPC event.
      * @param {number} fileID - The ID of the file to remove an output from.
      * @param {number} outputID - The ID of the output to remove.
@@ -131,6 +140,7 @@ export class EncodeManager {
 
     /**
      * Changes the file path of an output.
+     *
      * @param {IpcMessageEvent} event - The IPC event.
      * @param {number} fileID - The ID of the file containing the output to be changed.
      * @param {number} outputID - The ID of the output to change.
@@ -157,6 +167,7 @@ export class EncodeManager {
 
     /**
      * Starts encoding the files.
+     *
      * @param {IpcMessageEvent} event - The IPC event.
      */
     startEncoding(event) {
@@ -201,6 +212,7 @@ export class EncodeManager {
 
     /**
      * Stops the currently running encodes.
+     *
      * @param {IpcMessageEvent} event - The IPC event.
      */
     stopEncoding(event) {

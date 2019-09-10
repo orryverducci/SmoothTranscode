@@ -7,6 +7,7 @@ import {Settings} from "./settings.js";
 export class Output {
     /**
      * Initialises an instance of Output.
+     *
      * @param {string} filePath - The initial path to the output file.
      */
     constructor(filePath) {
