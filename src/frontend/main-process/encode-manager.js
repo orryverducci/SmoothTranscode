@@ -1,8 +1,8 @@
 import {ipcMain, IpcMessageEvent, Notification} from "electron";
 import _ from "lodash";
 import humanizeDuration from "humanize-duration";
-import {File} from "./file";
-import {FFmpeg} from "./ffmpeg";
+import {File} from "./file.js";
+import {FFmpeg} from "./ffmpeg.js";
 
 /** Manages the files to be encoded. */
 export class EncodeManager {

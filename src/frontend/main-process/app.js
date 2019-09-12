@@ -4,8 +4,8 @@ import {createReadStream, existsSync as fileExists} from "fs";
 import path from "path";
 import {URL} from "url";
 import jsonfile from "jsonfile";
-import {EncodeManager} from "./encode-manager";
-import {MainWindow} from "./main-window";
+import {EncodeManager} from "./encode-manager.js";
+import {MainWindow} from "./main-window.js";
 
 // Global references for the main window and the file manager, preventing them from being garbage collected
 let mainWindow = null,
