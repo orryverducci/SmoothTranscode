@@ -61,7 +61,7 @@ gulp.task("prepare", () => {
 *************************/
 
 gulp.task("build-js", () => {
-    return gulp.src(path.join("src", "frontend", "ui", "main.js"))
+    return gulp.src(path.join("src", "frontend", "ui", "scripts", "main.js"))
         .pipe(sourcemaps.init())
         .pipe(rollup({
             cache: false,
@@ -77,7 +77,7 @@ gulp.task("build-js", () => {
             format: "es"
         }))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(path.join("build", "frontend", "ui")));
+        .pipe(gulp.dest(path.join("build", "frontend", "ui", "scripts")));
 });
 
 gulp.task("build-sass", () => {

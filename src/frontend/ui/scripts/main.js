@@ -1,5 +1,5 @@
 import Vue from "Vue";
-import MainWindow from "main-window/main-window.vue";
+import MainWindow from "../main-window/main-window.vue";
 import {config, library} from "@fortawesome/fontawesome-svg-core";
 import {faArrowDown, faCheckCircle, faFileMedical, faFilm, faPlay, faPlus, faStop, faTimesCircle, faTrashAlt, faVolumeUp} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
