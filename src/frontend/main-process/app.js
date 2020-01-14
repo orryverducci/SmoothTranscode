@@ -29,10 +29,10 @@ protocol.registerSchemesAsPrivileged([
  * @param {Function} callback - The callback to return the content requested.
  */
 function appProtocolHandler(request, callback) {
-    // Get path name from url
-    let pathName = new URL(request.url).pathname;
+    // Get path from the url
+    let urlPath = request.url.replace("app://", "");
     // Create path to the file to return
-    let filePath = path.join(__dirname, "..", "ui", pathName);
+    let filePath = path.join(__dirname, "..", "ui", urlPath);
     // Determine the appropriate MIME type for the file
     let fileExtension = path.extname(filePath).substr(1);
     let fileMimeType = "application/octet-stream";
@@ -52,6 +52,7 @@ function appProtocolHandler(request, callback) {
     callback({
         statusCode: statusCode,
         headers: {
+            "Access-Control-Allow-Origin": "*",
             "Content-Type": fileMimeType,
             "Content-Security-Policy": "default-src app:; script-src 'unsafe-inline'"
         },
