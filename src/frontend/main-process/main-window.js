@@ -23,7 +23,7 @@ export class MainWindow {
             }
         });
         // Load the main window
-        this._window.loadURL("app://smoothtranscode/main-window.html");
+        this._window.loadURL("app://smoothtranscode/main-window/index.html");
         // Destroy reference to the window when it is closed
         this._window.on("closed", () => {
             this._window = null;

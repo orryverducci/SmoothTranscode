@@ -52,7 +52,7 @@ gulp.task("clean", (done) => {
 ***************************/
 
 gulp.task("prepare", () => {
-    return gulp.src([path.join("src", "frontend", "main-process", "*"), path.join("src", "frontend", "ui", "*.html")], { base: path.join("src", "frontend") })
+    return gulp.src([path.join("src", "frontend", "main-process", "*"), path.join("src", "frontend", "ui", "**", "*.html")], { base: path.join("src", "frontend") })
         .pipe(gulp.dest(path.join("build", "frontend")));
 });
 
