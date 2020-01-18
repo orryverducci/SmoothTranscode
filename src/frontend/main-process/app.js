@@ -2,7 +2,6 @@ import {app, dialog, protocol} from "electron";
 import installExtension, {VUEJS_DEVTOOLS} from "electron-devtools-installer";
 import {existsSync as fileExists} from "fs";
 import path from "path";
-import jsonfile from "jsonfile";
 import {EncodeManager} from "./encode-manager.js";
 import {MainWindow} from "./main-window.js";
 
