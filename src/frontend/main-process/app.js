@@ -9,7 +9,8 @@ import {MainWindow} from "./main-window.js";
 
 // Global references for the main window and the file manager, preventing them from being garbage collected
 let mainWindow = null, // eslint-disable-line no-unused-vars
-    encodeManager = new EncodeManager(); // eslint-disable-line no-unused-vars
+    encodeManager = new EncodeManager(), // eslint-disable-line no-unused-vars
+    mimeTypes;
 
 // Register the 'app' protocol as a standard stream
 protocol.registerSchemesAsPrivileged([
@@ -35,10 +36,11 @@ function appProtocolHandler(request, callback) {
     let filePath = path.join(__dirname, "..", "ui", urlPath);
     // Determine the appropriate MIME type for the file
     let fileExtension = path.extname(filePath).substr(1);
-    let fileMimeType = "application/octet-stream";
-    let mimeTypes = jsonfile.readFileSync(path.join(__dirname, "mimetypes.json"));
+    let fileMimeType;
     if (typeof mimeTypes[fileExtension] !== "undefined") {
         fileMimeType = mimeTypes[fileExtension];
+    } else {
+        fileMimeType = "application/octet-stream";
     }
     // Return the file with the appropriate headers if it exists, otherwise return an error
     if (fileExists(filePath)) {
@@ -64,6 +66,8 @@ app.on("web-contents-created", (e, contents) => {
 
 // Initialise the application when Electron is ready
 app.on("ready", () => {
+    // Load mime types
+    mimeTypes = jsonfile.readFileSync(path.join(__dirname, "mimetypes.json"));
     // Create the 'app' protocol used by the application to load UI pages
     protocol.registerFileProtocol("app", appProtocolHandler, (error) => {
         if (error) {
