@@ -40,24 +40,19 @@ function appProtocolHandler(request, callback) {
     if (typeof mimeTypes[fileExtension] !== "undefined") {
         fileMimeType = mimeTypes[fileExtension];
     }
-    // Check the file exists and get the file's stream if it does
-    let statusCode, fileStream;
+    // Return the file with the appropriate headers if it exists, otherwise return an error
     if (fileExists(filePath)) {
-        statusCode = 200;
-        fileStream = createReadStream(filePath);
+        callback({
+            path: filePath,
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Content-Type": fileMimeType,
+                "Content-Security-Policy": "default-src app:; script-src app: 'unsafe-inline'"
+            }
+        });
     } else {
-        statusCode = 404;
+        callback(404);
     }
-    // Return the file contents with the appropriate mime type
-    callback({
-        statusCode: statusCode,
-        headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Content-Type": fileMimeType,
-            "Content-Security-Policy": "default-src app:; script-src 'unsafe-inline'"
-        },
-        data: fileStream
-    });
 }
 
 // Disable navigation in windows
@@ -70,7 +65,7 @@ app.on("web-contents-created", (e, contents) => {
 // Initialise the application when Electron is ready
 app.on("ready", () => {
     // Create the 'app' protocol used by the application to load UI pages
-    protocol.registerStreamProtocol("app", appProtocolHandler, (error) => {
+    protocol.registerFileProtocol("app", appProtocolHandler, (error) => {
         if (error) {
             dialog.showErrorBox("Failed to register protocol", "SmoothTranscode was unable to start as it can't create the user interface.");
             app.quit();
