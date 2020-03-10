@@ -27,7 +27,7 @@
     "jsonfile": "^5.0.0",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
-    "simple-eta": "^3.0.1"
+    "simple-eta": "^3.0.2"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
