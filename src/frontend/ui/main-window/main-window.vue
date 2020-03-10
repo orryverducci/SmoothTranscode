@@ -12,8 +12,8 @@
                 <li v-for="file in files" v-bind:data-file="file.id" :key="file.id">
                     <header>
                         <div class="title">
-                            <font-awesome-icon icon="film" v-if="file.videoStreams.length > 0"></font-awesome-icon>
-                            <font-awesome-icon icon="volume-up" v-if="file.videoStreams.length == 0"></font-awesome-icon>
+                            <font-awesome-icon icon="film" v-if="file.streamInfo.videoStreams.length > 0"></font-awesome-icon>
+                            <font-awesome-icon icon="volume-up" v-if="file.streamInfo.videoStreams.length == 0"></font-awesome-icon>
                             {{ file.name }}
                         </div>
                         <div v-if="!encoding">
@@ -114,7 +114,7 @@ export default {
             }
         },
         addFile: function(filePath) {
-            ipcRenderer.send("add-file", filePath);
+            ipcRenderer.send("add-source", filePath);
         },
         showAddFileError: function() {
             dialog.showMessageBox(getCurrentWindow(), {
@@ -182,8 +182,8 @@ export default {
                 }
             }
         });
-        ipcRenderer.on("add-file-error", this.showAddFileError);
-        ipcRenderer.on("update-files", this.updateFiles);
+        ipcRenderer.on("add-source-error", this.showAddFileError);
+        ipcRenderer.on("update-queue", this.updateFiles);
         ipcRenderer.on("encode-status-update", this.updateEncodeStatus);
         ipcRenderer.send("ready");
     }

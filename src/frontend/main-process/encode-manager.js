@@ -1,17 +1,17 @@
 import {ipcMain, IpcMessageEvent, Notification} from "electron";
 import _ from "lodash";
 import humanizeDuration from "humanize-duration";
-import {File} from "./file.js";
+import {SourceFile} from "./source-file.js";
 import {FFmpeg} from "./ffmpeg.js";
 
 /** Manages the files to be encoded. */
 export class EncodeManager {
     /**
-     * The files to be encoded.
+     * The queue of source files and the encode jobs.
      *
-     * @type {Array.<File>}
+     * @type {Array.<SourceFile>}
      */
-    files = [];
+    _queue = [];
 
     /**
      * Represents if encodes are currently running.
@@ -46,8 +46,8 @@ export class EncodeManager {
      */
     constructor() {
         // Add event listeners
-        ipcMain.on("add-file", this.addFile.bind(this));
-        ipcMain.on("remove-file", this.removeFile.bind(this));
+        ipcMain.on("add-source", this.addSource.bind(this));
+        ipcMain.on("remove-file", this.removeSource.bind(this));
         ipcMain.on("add-output", this.addOutput.bind(this));
         ipcMain.on("remove-output", this.removeOutput.bind(this));
         ipcMain.on("change-output-path", this.changeOutputPath.bind(this));
@@ -56,117 +56,110 @@ export class EncodeManager {
     }
 
     /**
-     * Adds a file to be encoded.
+     * Adds a source file to the queue.
      *
      * @param {IpcMessageEvent} event - The IPC event.
      * @param {string} filePath - The path to the file to be added.
      */
-    addFile(event, filePath) {
+    addSource(event, filePath) {
         // Check if the file has already been added, and ignore it if it has
-        if (_.find(this.files, {path: filePath})) {
+        if (_.find(this._queue, {path: filePath})) {
             return;
         }
-        // Create the file
-        let file = new File(filePath);
-        // If the file is a valid media file, add it to the list of files, otherwise return an error
-        if (!file.error) {
-            this.files.push(file);
-            this.addOutput(null, file.id);
-            event.reply("update-files", JSON.stringify(this.files));
+        // Create the source
+        let source = new SourceFile(filePath);
+        // If the source is a valid media file, add it to the queue, otherwise return an error
+        if (!source.error) {
+            this._queue.push(source);
+            event.reply("update-queue", JSON.stringify(this._queue));
         } else {
-            event.reply("add-file-error");
+            event.reply("add-source-error");
         }
     }
 
     /**
-     * Removes a file from the list of files to be encoded.
+     * Removes a source file from the queue.
      *
      * @param {IpcMessageEvent} event - The IPC event.
-     * @param {number} fileID - The ID of the file to remove.
+     * @param {number} sourceID - The ID of the source to remove.
      */
-    removeFile(event, fileID) {
-        // Find the file to remove
-        let file = _.find(this.files, {id: fileID});
-        // If a file with the given ID can't be found, return the method
-        if (typeof file === "undefined") {
+    removeSource(event, sourceID) {
+        // Find the source to remove
+        let source = _.find(this._queue, {id: sourceID});
+        // If a source with the given ID can't be found, return the method
+        if (typeof source === "undefined") {
             return;
         }
-        // Remove the file
-        this.files.splice(this.files.indexOf(file), 1);
-        // Send a reply to the frontend to update files
-        event.reply("update-files", JSON.stringify(this.files));
+        // Remove the source from the queue
+        this._queue.splice(this._queue.indexOf(source), 1);
+        event.reply("update-queue", JSON.stringify(this._queue));
     }
 
     /**
-     * Adds an output to a file.
+     * Adds an output to a source.
      *
      * @param {IpcMessageEvent} event - The IPC event.
-     * @param {number} fileID - The ID of the file to add an output to.
+     * @param {number} sourceID - The ID of the source to add an output to.
      */
-    addOutput(event, fileID) {
-        // Find the file to add an output to
-        let file = _.find(this.files, {id: fileID});
-        // If a file with the given ID can't be found, return the method
-        if (typeof file === "undefined") {
+    addOutput(event, sourceID) {
+        // Find the source to add an output to
+        let source = _.find(this._queue, {id: sourceID});
+        // If a source with the given ID can't be found, return the method
+        if (typeof source === "undefined") {
             return;
         }
         // Add an output to the file
-        file.addOutput();
-        // If an IPC event has been provided, send a reply to the frontend to update files
-        if (event !== null) {
-            event.reply("update-files", JSON.stringify(this.files));
-        }
+        source.addOutput();
+        event.reply("update-queue", JSON.stringify(this._queue));
     }
 
     /**
      * Removes an output from a file.
      *
      * @param {IpcMessageEvent} event - The IPC event.
-     * @param {number} fileID - The ID of the file to remove an output from.
+     * @param {number} sourceID - The ID of the source to remove an output from.
      * @param {number} outputID - The ID of the output to remove.
      */
-    removeOutput(event, fileID, outputID) {
-        // Find the file to remove an output from
-        let file = _.find(this.files, {id: fileID});
-        // If a file with the given ID can't be found, return the method
-        if (typeof file === "undefined") {
+    removeOutput(event, sourceID, outputID) {
+        // Find the source to remove an output from
+        let source = _.find(this._queue, {id: sourceID});
+        // If a source with the given ID can't be found, return the method
+        if (typeof source === "undefined") {
             return;
         }
         // Add an output to the file
-        file.removeOutput(outputID);
-        // Send a reply to the frontend to update files
-        event.reply("update-files", JSON.stringify(this.files));
+        source.removeOutput(outputID);
+        event.reply("update-queue", JSON.stringify(this._queue));
     }
 
     /**
      * Changes the file path of an output.
      *
      * @param {IpcMessageEvent} event - The IPC event.
-     * @param {number} fileID - The ID of the file containing the output to be changed.
+     * @param {number} sourceID - The ID of the source containing the output to be changed.
      * @param {number} outputID - The ID of the output to change.
      * @param {string} filePath - The output file path.
      */
-    changeOutputPath(event, fileID, outputID, filePath) {
+    changeOutputPath(event, sourceID, outputID, filePath) {
         // Find the file containing the output to be changed
-        let file = _.find(this.files, {id: fileID});
-        // If a file with the given ID can't be found, return the method
-        if (typeof file === "undefined") {
+        let source = _.find(this._queue, {id: sourceID});
+        // If a source with the given ID can't be found, return the method
+        if (typeof source === "undefined") {
             return;
         }
         // Find the output to change
-        let output = _.find(file.outputs, {id: outputID});
+        let output = _.find(source.outputs, {id: outputID});
         // If an output with the given ID can't be found, return the method
-        if (typeof file === "undefined") {
+        if (typeof output === "undefined") {
             return;
         }
         // Change the file path for the output
         output.path = filePath;
-        // Send a reply to the frontend to update files
-        event.reply("update-files", JSON.stringify(this.files));
+        event.reply("update-queue", JSON.stringify(this._queue));
     }
 
     /**
-     * Starts encoding the files.
+     * Starts encoding the queue.
      *
      * @param {IpcMessageEvent} event - The IPC event.
      */
@@ -174,10 +167,10 @@ export class EncodeManager {
         if (this._encoding) {
             return;
         }
-        for (let i = 0; i < this.files.length; i++) {
-            for (let x = 0; x < this.files[i].outputs.length; x++) {
-                if (this.files[i].outputs[x].status === "pending") {
-                    let encode = new FFmpeg(this.files[i], x);
+        for (let i = 0; i < this._queue.length; i++) {
+            for (let x = 0; x < this._queue[i].outputs.length; x++) {
+                if (this._queue[i].outputs[x].status === "pending") {
+                    let encode = new FFmpeg(this._queue[i], x);
                     this._encodes.push(encode);
                 }
             }
@@ -192,7 +185,7 @@ export class EncodeManager {
      */
     startNextFile() {
         this._currentEncode++;
-        this._ipcEvent.reply("update-files", JSON.stringify(this.files));
+        this._ipcEvent.reply("update-queue", JSON.stringify(this._queue));
         if (this._currentEncode < this._encodes.length) {
             this._encodes[this._currentEncode].addListener("status-updated", this.sendEncodingStatus.bind(this));
             this._encodes[this._currentEncode].addListener("finished", this.startNextFile.bind(this));
