@@ -81,7 +81,7 @@ gulp.task("build-js", () => {
 });
 
 gulp.task("build-sass", () => {
-    return gulp.src(path.join("src", "frontend", "ui", "styles", "global.scss"))
+    return gulp.src(path.join("src", "frontend", "ui", "styles", "global.scss"), {base: path.join("src", "frontend", "ui", "styles")})
         .pipe(sourcemaps.init())
         .pipe(sass({
             includePaths: [
