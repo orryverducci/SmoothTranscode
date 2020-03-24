@@ -22,6 +22,8 @@ export class MainWindow {
                 nodeIntegration: true
             }
         });
+        // Remove the window menu
+        this._window.removeMenu();
         // Load the main window
         this._window.loadURL("app://main-window/index.html");
         // Destroy reference to the window when it is closed
