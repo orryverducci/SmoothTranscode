@@ -19,6 +19,7 @@ export class MainWindow {
             height: 600,
             show: false,
             webPreferences: {
+                enableRemoteModule: true,
                 nodeIntegration: true
             }
         });
