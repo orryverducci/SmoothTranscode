@@ -43,7 +43,7 @@ echo "BUILDING FFMPEG" >> $LOGFILE 2>&1
 echo "---------------" >> $LOGFILE 2>&1
 
 # Change to FFmpeg directory
-cd $BASEDIR/src/ffmpeg
+cd $BASEDIR/ffmpeg
 
 # Configure FFmpeg
 ./configure \
