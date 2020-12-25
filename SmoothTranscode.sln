@@ -27,8 +27,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Installer\Setup.nsi = Installer\Setup.nsi
 	EndProjectSection
 EndProject
-Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Setup", "Setup\Setup.wixproj", "{FC8EE97D-0243-4FA2-8F4F-51F7DC7526BF}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -89,16 +87,6 @@ Global
 		{7C2CCE0A-A288-4869-A7B7-CC0D18AF3B8C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{7C2CCE0A-A288-4869-A7B7-CC0D18AF3B8C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{7C2CCE0A-A288-4869-A7B7-CC0D18AF3B8C}.Release|x86.ActiveCfg = Release|Any CPU
-		{FC8EE97D-0243-4FA2-8F4F-51F7DC7526BF}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{FC8EE97D-0243-4FA2-8F4F-51F7DC7526BF}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{FC8EE97D-0243-4FA2-8F4F-51F7DC7526BF}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{FC8EE97D-0243-4FA2-8F4F-51F7DC7526BF}.Debug|x86.ActiveCfg = Debug|x86
-		{FC8EE97D-0243-4FA2-8F4F-51F7DC7526BF}.Debug|x86.Build.0 = Debug|x86
-		{FC8EE97D-0243-4FA2-8F4F-51F7DC7526BF}.Release|Any CPU.ActiveCfg = Release|x86
-		{FC8EE97D-0243-4FA2-8F4F-51F7DC7526BF}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{FC8EE97D-0243-4FA2-8F4F-51F7DC7526BF}.Release|Mixed Platforms.Build.0 = Release|x86
-		{FC8EE97D-0243-4FA2-8F4F-51F7DC7526BF}.Release|x86.ActiveCfg = Release|x86
-		{FC8EE97D-0243-4FA2-8F4F-51F7DC7526BF}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
