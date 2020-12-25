@@ -19,12 +19,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Windows7ProgressBar", "Wind
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DBB47E20-42A0-45A7-BE50-6F58F7CE5B4C}"
 	ProjectSection(SolutionItems) = preProject
-		Changelog.txt = Changelog.txt
 		Installer\DotNetVer.nsh = Installer\DotNetVer.nsh
-		gpl-3.0.txt = gpl-3.0.txt
 		README.md = README.md
-		Release Notes.txt = Release Notes.txt
 		Installer\Setup.nsi = Installer\Setup.nsi
+		Changelog.md = Changelog.md
+		LICENSE.md = LICENSE.md
+		native-build.sh = native-build.sh
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
 	EndProjectSection
 EndProject
 Global
