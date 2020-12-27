@@ -20,5 +20,5 @@
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
-  <Import Project="..\..\SmoothTranscode.Shared\SmoothTranscode.Shared.projitems" Label="Shared" />
+  <Import Project="..\SmoothTranscode.Shared\SmoothTranscode.Shared.projitems" Label="Shared" />
 </Project>
