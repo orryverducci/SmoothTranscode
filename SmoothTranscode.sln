@@ -38,8 +38,11 @@ Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "SmoothTranscode.Windows.Pac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmoothTranscode.Windows", "SmoothTranscode.Windows\SmoothTranscode.Windows.csproj", "{F708285D-F7E3-4A97-9ECB-905E294BD2EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmoothTranscode.Linux", "SmoothTranscode.Linux\SmoothTranscode.Linux.csproj", "{04876715-13A9-402D-AC91-A4EB331CA1C7}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		SmoothTranscode.Shared\SmoothTranscode.Shared.projitems*{04876715-13a9-402d-ac91-a4eb331ca1c7}*SharedItemsImports = 5
 		SmoothTranscode.Shared\SmoothTranscode.Shared.projitems*{23b12c60-46a5-4129-b578-10124ffde7cf}*SharedItemsImports = 13
 		SmoothTranscode.Shared\SmoothTranscode.Shared.projitems*{45831bfc-9e0d-4530-b6b9-200e9d1494a1}*SharedItemsImports = 4
 		SmoothTranscode.Shared\SmoothTranscode.Shared.projitems*{f708285d-f7e3-4a97-9ecb-905e294bd2ea}*SharedItemsImports = 5
@@ -191,6 +194,26 @@ Global
 		{F708285D-F7E3-4A97-9ECB-905E294BD2EA}.Release|x64.Build.0 = Release|x64
 		{F708285D-F7E3-4A97-9ECB-905E294BD2EA}.Release|x86.ActiveCfg = Release|x86
 		{F708285D-F7E3-4A97-9ECB-905E294BD2EA}.Release|x86.Build.0 = Release|x86
+		{04876715-13A9-402D-AC91-A4EB331CA1C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04876715-13A9-402D-AC91-A4EB331CA1C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04876715-13A9-402D-AC91-A4EB331CA1C7}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{04876715-13A9-402D-AC91-A4EB331CA1C7}.Debug|arm64.Build.0 = Debug|Any CPU
+		{04876715-13A9-402D-AC91-A4EB331CA1C7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{04876715-13A9-402D-AC91-A4EB331CA1C7}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{04876715-13A9-402D-AC91-A4EB331CA1C7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{04876715-13A9-402D-AC91-A4EB331CA1C7}.Debug|x64.Build.0 = Debug|Any CPU
+		{04876715-13A9-402D-AC91-A4EB331CA1C7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{04876715-13A9-402D-AC91-A4EB331CA1C7}.Debug|x86.Build.0 = Debug|Any CPU
+		{04876715-13A9-402D-AC91-A4EB331CA1C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04876715-13A9-402D-AC91-A4EB331CA1C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04876715-13A9-402D-AC91-A4EB331CA1C7}.Release|arm64.ActiveCfg = Release|Any CPU
+		{04876715-13A9-402D-AC91-A4EB331CA1C7}.Release|arm64.Build.0 = Release|Any CPU
+		{04876715-13A9-402D-AC91-A4EB331CA1C7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{04876715-13A9-402D-AC91-A4EB331CA1C7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{04876715-13A9-402D-AC91-A4EB331CA1C7}.Release|x64.ActiveCfg = Release|Any CPU
+		{04876715-13A9-402D-AC91-A4EB331CA1C7}.Release|x64.Build.0 = Release|Any CPU
+		{04876715-13A9-402D-AC91-A4EB331CA1C7}.Release|x86.ActiveCfg = Release|Any CPU
+		{04876715-13A9-402D-AC91-A4EB331CA1C7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

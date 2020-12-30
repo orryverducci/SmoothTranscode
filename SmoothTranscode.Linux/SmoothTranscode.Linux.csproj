@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>SmoothTranscode</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Filter" Version="1.1.1" />
+    <PackageReference Include="Uno.WinUI.RemoteControl" Version="3.4.0" />
+    <PackageReference Include="Uno.WinUI.Skia.Gtk" Version="3.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Include="..\SmoothTranscode.Shared\**\*.xaml" />
+  </ItemGroup>
+
+  <Import Project="..\SmoothTranscode.Shared\SmoothTranscode.Shared.projitems" Label="Shared" />
+
+</Project>
