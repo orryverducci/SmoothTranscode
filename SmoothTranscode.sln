@@ -42,6 +42,7 @@ Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		SmoothTranscode.Shared\SmoothTranscode.Shared.projitems*{23b12c60-46a5-4129-b578-10124ffde7cf}*SharedItemsImports = 13
 		SmoothTranscode.Shared\SmoothTranscode.Shared.projitems*{45831bfc-9e0d-4530-b6b9-200e9d1494a1}*SharedItemsImports = 4
+		SmoothTranscode.Shared\SmoothTranscode.Shared.projitems*{f708285d-f7e3-4a97-9ecb-905e294bd2ea}*SharedItemsImports = 5
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
