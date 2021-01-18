@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmoothTranscode", "SmoothTranscode\SmoothTranscode.csproj", "{2BE418FC-333A-4726-9A38-B5A456D222B7}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -35,6 +35,10 @@ EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SmoothTranscode.Shared", "SmoothTranscode.Shared\SmoothTranscode.Shared.shproj", "{3317D35C-9582-4E4C-A2D1-413F3DD79A28}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		SmoothTranscode.Shared\SmoothTranscode.Shared.projitems*{27416909-0c9e-4b91-b79c-16857a640137}*SharedItemsImports = 4
+		SmoothTranscode.Shared\SmoothTranscode.Shared.projitems*{3317d35c-9582-4e4c-a2d1-413f3dd79a28}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -109,5 +113,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BAD27C76-DF57-4324-8AEF-CBA9629CC29C}
 	EndGlobalSection
 EndGlobal
