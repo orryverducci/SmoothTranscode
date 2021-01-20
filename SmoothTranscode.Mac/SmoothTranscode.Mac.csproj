@@ -86,6 +86,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Window.cs" />
+    <Compile Include="MenuExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms">
