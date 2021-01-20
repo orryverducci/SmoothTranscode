@@ -27,6 +27,7 @@ namespace SmoothTranscode.Mac
             CreateApplicationMenu(menu);
             CreateViewMenu(menu);
             CreateWindowMenu(menu);
+            CreateHelpMenu(menu);
             NSApplication.SharedApplication.MainMenu = menu;
         }
 
@@ -91,6 +92,20 @@ namespace SmoothTranscode.Mac
             NSApplication.SharedApplication.WindowsMenu = subMenu;
             menu.SetSubmenu(subMenu, windowMenu);
             menu.AddItem(windowMenu);
+        }
+
+        private void CreateHelpMenu(NSMenu menu)
+        {
+            // Create the menu
+            NSMenuItem helpMenu = new NSMenuItem("Help");
+            NSMenu subMenu = new NSMenu("Help");
+
+            // Add the menu items
+            subMenu.AddMenuItem("SmoothTranscode Help", "h", "showHelp:");
+
+            // Set the menu as a submenu and add it
+            menu.SetSubmenu(subMenu, helpMenu);
+            menu.AddItem(helpMenu);
         }
     }
 }
