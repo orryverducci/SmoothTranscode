@@ -6,8 +6,15 @@ using Xamarin.Forms.Platform.MacOS;
 
 namespace SmoothTranscode
 {
+    /// <summary>
+    /// Provides a user interface window.
+    /// </summary>
     public class Window : NSWindow
     {
+        /// <summary>
+        /// Initialises a new instance of the <see cref="SmoothTranscode.Window"/> class.
+        /// </summary>
+        /// <param name="page">The <see cref="Xamarin.Forms.ContentPage"/> to be displayed within the window.</param>
         public Window(ContentPage page)
         {
             // Set the window style

@@ -4,11 +4,21 @@ using Foundation;
 
 namespace SmoothTranscode.Mac
 {
+    /// <summary>
+    /// The application delegate.
+    /// </summary>
     [Register("AppDelegate")]
     public class AppDelegate : NSApplicationDelegate
     {
+        /// <summary>
+        /// The main application window.
+        /// </summary>
         private UI.MainWindow? _mainWindow;
 
+        /// <summary>
+        /// The method run when the app is ready to run. Creates the menu and opens the main window.
+        /// </summary>
+        /// <param name="notification">The broadcast notification.</param>
         public override void DidFinishLaunching(NSNotification notification)
         {
             // Create the application menu
@@ -18,8 +28,16 @@ namespace SmoothTranscode.Mac
             _mainWindow = new UI.MainWindow();
         }
 
+        /// <summary>
+        /// The method run when the last window is closed to indicate if the app should be terminated.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <returns><see langword="true"/>, indicating the app should terminate.</returns>
         public override bool ApplicationShouldTerminateAfterLastWindowClosed(NSApplication sender) => true;
 
+        /// <summary>
+        /// Creates the main menu and puts it in the menu bar.
+        /// </summary>
         private void CreateMenu()
         {
             NSMenu menu = new NSMenu();
@@ -30,6 +48,10 @@ namespace SmoothTranscode.Mac
             NSApplication.SharedApplication.MainMenu = menu;
         }
 
+        /// <summary>
+        /// Creates the application submenu.
+        /// </summary>
+        /// <param name="menu">The menu the submenu should be placed in.</param>
         private void CreateApplicationMenu(NSMenu menu)
         {
             // Get the application name
@@ -60,6 +82,10 @@ namespace SmoothTranscode.Mac
             menu.AddItem(appMenu);
         }
 
+        /// <summary>
+        /// Creates the view submenu.
+        /// </summary>
+        /// <param name="menu">The menu the submenu should be placed in.</param>
         private void CreateViewMenu(NSMenu menu)
         {
             // Create the menu
@@ -74,6 +100,10 @@ namespace SmoothTranscode.Mac
             menu.AddItem(viewMenu);
         }
 
+        /// <summary>
+        /// Creates the window submenu.
+        /// </summary>
+        /// <param name="menu">The menu the submenu should be placed in.</param>
         private void CreateWindowMenu(NSMenu menu)
         {
             // Create the menu
@@ -93,6 +123,10 @@ namespace SmoothTranscode.Mac
             menu.AddItem(windowMenu);
         }
 
+        /// <summary>
+        /// Creates the help submenu.
+        /// </summary>
+        /// <param name="menu">The menu the submenu should be placed in.</param>
         private void CreateHelpMenu(NSMenu menu)
         {
             // Create the menu
