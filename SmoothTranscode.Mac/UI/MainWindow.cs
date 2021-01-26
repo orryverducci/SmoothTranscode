@@ -1,6 +1,7 @@
 using System;
+using SmoothTranscode.UI;
 
-namespace SmoothTranscode.UI
+namespace SmoothTranscode.Mac.UI
 {
     /// <summary>
     /// The main application window.

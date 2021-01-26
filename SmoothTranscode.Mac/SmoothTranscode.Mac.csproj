@@ -77,6 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="UI\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -85,8 +86,9 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="Window.cs" />
     <Compile Include="MenuExtensions.cs" />
+    <Compile Include="UI\Window.cs" />
+    <Compile Include="UI\MainWindow.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms">

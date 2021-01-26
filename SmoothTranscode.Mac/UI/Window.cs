@@ -4,7 +4,7 @@ using CoreGraphics;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.MacOS;
 
-namespace SmoothTranscode
+namespace SmoothTranscode.Mac.UI
 {
     /// <summary>
     /// Provides a user interface window.
@@ -12,7 +12,7 @@ namespace SmoothTranscode
     public class Window : NSWindow
     {
         /// <summary>
-        /// Initialises a new instance of the <see cref="SmoothTranscode.Window"/> class.
+        /// Initialises a new instance of the <see cref="SmoothTranscode.Mac.UI.Window"/> class.
         /// </summary>
         /// <param name="page">The <see cref="Xamarin.Forms.ContentPage"/> to be displayed within the window.</param>
         public Window(ContentPage page)
