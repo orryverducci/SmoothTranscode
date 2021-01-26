@@ -91,6 +91,7 @@
     <Compile Include="MenuExtensions.cs" />
     <Compile Include="UI\Window.cs" />
     <Compile Include="UI\MainWindow.cs" />
+    <Compile Include="UI\MainWindowToolbarDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms">
