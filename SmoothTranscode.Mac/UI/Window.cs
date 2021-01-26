@@ -12,10 +12,9 @@ namespace SmoothTranscode.Mac.UI
     public class Window : NSWindow
     {
         /// <summary>
-        /// Initialises a new instance of the <see cref="SmoothTranscode.Mac.UI.Window"/> class.
+        /// Initialises the window.
         /// </summary>
-        /// <param name="page">The <see cref="Xamarin.Forms.ContentPage"/> to be displayed within the window.</param>
-        public Window(ContentPage page)
+        protected void InitialiseWindow()
         {
             // Set the window style
             AllowsAutomaticWindowTabbing = false;
@@ -24,17 +23,19 @@ namespace SmoothTranscode.Mac.UI
 
             // Set the window size and position
             SetFrame(new CGRect((NSScreen.MainScreen.Frame.Width - 700) / 2, (NSScreen.MainScreen.Frame.Height - 500) / 2, 700, 500), true);
+        }
 
-            // Add the provided page to the window and set the title from the content page
-            NSViewController viewController = page.CreateViewController();
-            ContentViewController = viewController;
-            if (page.Title != null)
+        /// <summary>
+        /// Sets up a <see cref="Xamarin.Forms.ContentPage"/> and displays it within the window.
+        /// </summary>
+        /// <param name="contentPage">The <see cref="Xamarin.Forms.ContentPage"/> to be displayed within the window.</param>
+        protected void InitialiseContent(ContentPage contentPage)
+        {
+            ContentViewController = contentPage.CreateViewController();
+            if (contentPage.Title != null)
             {
-                Title = page.Title;
+                Title = contentPage.Title;
             }
-
-            // Display the window
-            MakeKeyAndOrderFront(NSApplication.SharedApplication);
         }
     }
 }
