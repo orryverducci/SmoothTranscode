@@ -18,8 +18,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)UI\MainWindowContent.xaml.cs">
       <DependentUpon>MainWindowContent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Models\MediaFile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\MediaType.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)UI\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Models\" />
   </ItemGroup>
 </Project>
