@@ -10,7 +10,7 @@ namespace SmoothTranscode.Mac.UI
     public class MainWindow : Window
     {
         /// <summary>
-        /// Initialises a new instance of the <see cref="SmoothTranscode.UI.MainWindow"/> class.
+        /// Initialises a new instance of the <see cref="SmoothTranscode.Mac.UI.MainWindow"/> class.
         /// </summary>
         public MainWindow()
         {
