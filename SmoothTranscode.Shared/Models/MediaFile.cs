@@ -24,6 +24,7 @@ namespace SmoothTranscode.Models
         /// <param name="filename">The file name of the media file.</param>
         public MediaFile(string filename)
         {
+            // Check the file exists
             if (File.Exists(filename))
             {
                 FileName = filename;
