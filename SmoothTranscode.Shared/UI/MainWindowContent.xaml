@@ -2,9 +2,21 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:SmoothTranscode"
     x:Class="SmoothTranscode.UI.MainWindowContent"
+    Background="{AppThemeBinding Light=White, Dark=Black}"
     Title="SmoothTranscode">
     <ContentPage.Content>
-        <Label Text="Hello World!" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+        <ListView Background="Transparent" ItemsSource="{x:Static local:EncodeManager.FileQueue}" RowHeight="40" SelectionMode="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame Background="{AppThemeBinding Light=#EEEEEE, Dark=#212121}" CornerRadius="5" Padding="15, 0" HasShadow="False">
+                            <Label FontSize="Small" Text="{Binding FileName}" VerticalOptions="Center" />
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>
