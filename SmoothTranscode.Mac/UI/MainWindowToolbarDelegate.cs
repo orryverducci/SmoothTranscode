@@ -71,7 +71,7 @@ namespace SmoothTranscode.Mac.UI
             }
 
             // Set the clicked event to be fired when the toolbar item is activated
-            item.Activated += (sender, e) => ToolbarButtonClicked?.Invoke(sender, "AddFile");
+            item.Activated += (sender, e) => ToolbarButtonClicked?.Invoke(sender, itemIdentifier);
 
             // Return the toolbar item
             return item;
