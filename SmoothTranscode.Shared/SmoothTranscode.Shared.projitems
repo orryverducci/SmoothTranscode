@@ -20,6 +20,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Models\MediaFile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\MediaType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EncodeManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)UI\" />
