@@ -95,7 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms">
-      <Version>5.0.0.1931</Version>
+      <Version>5.0.0.2012</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="..\SmoothTranscode.Shared\SmoothTranscode.Shared.projitems" Label="Shared" Condition="Exists('..\SmoothTranscode.Shared\SmoothTranscode.Shared.projitems')" />
