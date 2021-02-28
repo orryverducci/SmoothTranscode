@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 
 namespace SmoothTranscode.Models
 {
@@ -24,15 +23,7 @@ namespace SmoothTranscode.Models
         /// <param name="filename">The file name of the media file.</param>
         public MediaFile(string filename)
         {
-            // Check the file exists
-            if (File.Exists(filename))
-            {
-                FileName = filename;
-            }
-            else
-            {
-                throw new FileNotFoundException("The media file could not be found.", filename);
-            }            
+            FileName = filename;
         }
     }
 }

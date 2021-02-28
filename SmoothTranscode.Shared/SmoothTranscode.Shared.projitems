@@ -21,6 +21,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\MediaFile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\MediaType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EncodeManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\EncodeJob.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\EncodeOutput.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)UI\" />

@@ -7,13 +7,20 @@
     Background="{AppThemeBinding Light=White, Dark=Black}"
     Title="SmoothTranscode">
     <ContentPage.Content>
-        <ListView Background="Transparent" ItemsSource="{x:Static local:EncodeManager.FileQueue}" RowHeight="40" SelectionMode="None">
+        <ListView Background="Transparent" GroupDisplayBinding="{Binding Source.FileName}" ItemsSource="{x:Static local:EncodeManager.JobQueue}" IsGroupingEnabled="True" SelectionMode="None">
+            <ListView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame Background="{AppThemeBinding Light=#EEEEEE, Dark=#212121}" CornerRadius="5" Margin="15, 0, 15, 20" Padding="15, 0" HasShadow="False">
+                            <Label FontSize="Small" Text="{Binding Source.FileName}" VerticalOptions="Center" />
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.GroupHeaderTemplate>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Frame Background="{AppThemeBinding Light=#EEEEEE, Dark=#212121}" CornerRadius="5" Padding="15, 0" HasShadow="False">
-                            <Label FontSize="Small" Text="{Binding FileName}" VerticalOptions="Center" />
-                        </Frame>
+                        <Frame />
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

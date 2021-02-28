@@ -10,14 +10,14 @@ namespace SmoothTranscode
     public static class EncodeManager
     {
         /// <summary>
-        /// The queue of media files to be transcoded.
+        /// The queue of encode jobs.
         /// </summary>
-        public static ObservableCollection<MediaFile> FileQueue { get; private set; } = new ObservableCollection<MediaFile>();
+        public static ObservableCollection<EncodeJob> JobQueue { get; private set; } = new ObservableCollection<EncodeJob>();
 
         /// <summary>
-        /// Adds a file to the queue of media files to be transcoded.
+        /// Adds a file to the encode job queue.
         /// </summary>
         /// <param name="path"></param>
-        public static void AddFile(string path) => FileQueue.Add(new MediaFile(path));
+        public static void AddFile(string path) => JobQueue.Add(new EncodeJob(path));
     }
 }
