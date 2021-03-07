@@ -34,10 +34,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmoothTranscode.Mac", "Smoo
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SmoothTranscode.Shared", "SmoothTranscode.Shared\SmoothTranscode.Shared.shproj", "{3317D35C-9582-4E4C-A2D1-413F3DD79A28}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmoothTranscode.Windows", "SmoothTranscode.Windows\SmoothTranscode.Windows.csproj", "{E1D49B9B-AFCC-40CD-8034-EEE3A3D07877}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		SmoothTranscode.Shared\SmoothTranscode.Shared.projitems*{27416909-0c9e-4b91-b79c-16857a640137}*SharedItemsImports = 4
 		SmoothTranscode.Shared\SmoothTranscode.Shared.projitems*{3317d35c-9582-4e4c-a2d1-413f3dd79a28}*SharedItemsImports = 13
+		SmoothTranscode.Shared\SmoothTranscode.Shared.projitems*{e1d49b9b-afcc-40cd-8034-eee3a3d07877}*SharedItemsImports = 5
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -110,6 +113,18 @@ Global
 		{27416909-0C9E-4B91-B79C-16857A640137}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{27416909-0C9E-4B91-B79C-16857A640137}.Release|x86.ActiveCfg = Release|Any CPU
 		{27416909-0C9E-4B91-B79C-16857A640137}.Release|x86.Build.0 = Release|Any CPU
+		{E1D49B9B-AFCC-40CD-8034-EEE3A3D07877}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1D49B9B-AFCC-40CD-8034-EEE3A3D07877}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1D49B9B-AFCC-40CD-8034-EEE3A3D07877}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E1D49B9B-AFCC-40CD-8034-EEE3A3D07877}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E1D49B9B-AFCC-40CD-8034-EEE3A3D07877}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E1D49B9B-AFCC-40CD-8034-EEE3A3D07877}.Debug|x86.Build.0 = Debug|Any CPU
+		{E1D49B9B-AFCC-40CD-8034-EEE3A3D07877}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1D49B9B-AFCC-40CD-8034-EEE3A3D07877}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1D49B9B-AFCC-40CD-8034-EEE3A3D07877}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{E1D49B9B-AFCC-40CD-8034-EEE3A3D07877}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{E1D49B9B-AFCC-40CD-8034-EEE3A3D07877}.Release|x86.ActiveCfg = Release|Any CPU
+		{E1D49B9B-AFCC-40CD-8034-EEE3A3D07877}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows10.0.18362.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>SmoothTranscode</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="**\*.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ModernWpfUI" Version="0.9.3" />
+    <PackageReference Include="Xamarin.Forms.Platform.WPF" Version="5.0.0.2012" />
+  </ItemGroup>
+
+  <Import Project="..\SmoothTranscode.Shared\SmoothTranscode.Shared.projitems" Label="Shared" />
+
+</Project>
