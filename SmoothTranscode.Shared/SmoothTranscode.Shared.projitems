@@ -15,6 +15,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)UI\AppThemeBindingExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\MainWindowContent.xaml.cs">
       <DependentUpon>MainWindowContent.xaml</DependentUpon>
     </Compile>

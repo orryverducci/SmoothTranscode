@@ -3,8 +3,9 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:SmoothTranscode"
+    xmlns:ui="clr-namespace:SmoothTranscode.UI"
     x:Class="SmoothTranscode.UI.MainWindowContent"
-    Background="{AppThemeBinding Light=White, Dark=Black}"
+    Background="{ui:AppThemeBinding Light=White, Dark=Black}"
     Title="SmoothTranscode">
     <ContentPage.Content>
         <ListView Background="Transparent" GroupDisplayBinding="{Binding Source.FileName}" ItemsSource="{x:Static local:EncodeManager.JobQueue}" IsGroupingEnabled="True" SelectionMode="None">
