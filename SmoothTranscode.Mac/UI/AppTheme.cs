@@ -31,7 +31,7 @@ namespace SmoothTranscode.UI
         /// <summary>
         /// Event fired when the system theme has changed.
         /// </summary>
-        public event EventHandler ThemeChanged;
+        public event EventHandler? ThemeChanged;
 
         /// <summary>
         /// Initialises a new instance of the <see cref="SmoothTranscode.UI.AppTheme"/> class.

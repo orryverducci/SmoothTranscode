@@ -36,7 +36,7 @@ namespace SmoothTranscode.UI
         /// <summary>
         /// Event fired when a property changes.
         /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         /// <summary>
         /// Initialises a new instance of the <see cref="SmoothTranscode.UI.AppThemeBindingExtension"/> class.
