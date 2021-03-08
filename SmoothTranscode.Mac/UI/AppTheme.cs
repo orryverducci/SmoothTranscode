@@ -84,6 +84,8 @@ namespace SmoothTranscode.UI
             {
                 Current = Theme.Light;
             }
+
+            ThemeChanged?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
