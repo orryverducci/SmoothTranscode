@@ -1,0 +1,17 @@
+﻿<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:local="clr-namespace:SmoothTranscode.Maui"
+			 x:Class="SmoothTranscode.Maui.App">
+    <Application.Resources>
+        <ResourceDictionary>
+        
+            <Color x:Key="PageBackgroundColor">White</Color>
+            <Color x:Key="PrimaryTextColor">#2c3e50</Color>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}" />
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
