@@ -27,11 +27,12 @@
 
 	<ItemGroup>
 		<Compile Include="..\SmoothTranscode.Maui\*.cs" Link="%(FileName)%(Extension)" />
+    <Compile Include="..\SmoothTranscode.Maui\UI\*.cs" Link="UI\%(FileName)%(Extension)" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<EmbeddedResource Remove="Windows\*.xaml" />
-		<EmbeddedResource Include="..\SmoothTranscode.Maui\*.xaml" Link="%(FileName)%(Extension)" />
+		<EmbeddedResource Include="..\SmoothTranscode.Maui\UI\*.xaml" Link="UI\%(FileName)%(Extension)" />
 	</ItemGroup>
 
 	<ItemGroup>
