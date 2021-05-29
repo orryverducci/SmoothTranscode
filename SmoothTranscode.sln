@@ -34,7 +34,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmoothTranscode.Mac", "Smoo
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SmoothTranscode.Shared", "SmoothTranscode.Shared\SmoothTranscode.Shared.shproj", "{3317D35C-9582-4E4C-A2D1-413F3DD79A28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmoothTranscode.Windows", "SmoothTranscode.Windows\SmoothTranscode.Windows.csproj", "{E1D49B9B-AFCC-40CD-8034-EEE3A3D07877}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmoothTranscode.Windows", "SmoothTranscode.Windows\SmoothTranscode.Windows.csproj", "{E1D49B9B-AFCC-40CD-8034-EEE3A3D07877}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmoothTranscode.Maui", "SmoothTranscode.Maui\SmoothTranscode.Maui.csproj", "{EC9A5AFC-00DC-4E11-833B-14A62DC2D90B}"
 EndProject
