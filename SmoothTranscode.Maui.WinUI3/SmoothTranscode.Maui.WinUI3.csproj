@@ -32,6 +32,7 @@
 
 	<ItemGroup>
 		<EmbeddedResource Remove="Windows\*.xaml" />
+		<EmbeddedResource Include="..\SmoothTranscode.Maui\*.xaml" Link="%(FileName)%(Extension)" />
 		<EmbeddedResource Include="..\SmoothTranscode.Maui\UI\*.xaml" Link="UI\%(FileName)%(Extension)" />
 	</ItemGroup>
 
