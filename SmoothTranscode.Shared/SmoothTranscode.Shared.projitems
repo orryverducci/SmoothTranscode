@@ -9,16 +9,6 @@
     <Import_RootNamespace>SmoothTranscode</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)UI\MainWindowContent.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)UI\AppThemeBindingExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)UI\MainWindowContent.xaml.cs">
-      <DependentUpon>MainWindowContent.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Models\MediaFile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\MediaType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EncodeManager.cs" />
@@ -26,7 +16,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\EncodeOutput.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)UI\" />
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />
   </ItemGroup>
 </Project>

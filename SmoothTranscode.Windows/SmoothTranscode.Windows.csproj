@@ -18,4 +18,6 @@
 
   <Import Project="..\SmoothTranscode.Shared\SmoothTranscode.Shared.projitems" Label="Shared" />
 
+  <Import Project="..\SmoothTranscode.Shared.Forms\SmoothTranscode.Shared.Forms.projitems" Label="Shared" />
+
 </Project>

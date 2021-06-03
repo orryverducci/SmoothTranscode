@@ -100,5 +100,6 @@
     </PackageReference>
   </ItemGroup>
   <Import Project="..\SmoothTranscode.Shared\SmoothTranscode.Shared.projitems" Label="Shared" Condition="Exists('..\SmoothTranscode.Shared\SmoothTranscode.Shared.projitems')" />
+  <Import Project="..\SmoothTranscode.Shared.Forms\SmoothTranscode.Shared.Forms.projitems" Label="Shared" Condition="Exists('..\SmoothTranscode.Shared.Forms\SmoothTranscode.Shared.Forms.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
 </Project>

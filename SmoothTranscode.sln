@@ -42,10 +42,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmoothTranscode.Maui.WinUI3
 EndProject
 Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "SmoothTranscode.Maui.WinUI3 (Package)", "SmoothTranscode.Maui.WinUI3 (Package)\SmoothTranscode.Maui.WinUI3 (Package).wapproj", "{7C11A2B7-AFD7-44B7-9B53-E18599898917}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SmoothTranscode.Shared.Forms", "SmoothTranscode.Shared.Forms\SmoothTranscode.Shared.Forms.shproj", "{57DD1123-2EBB-444A-8E54-6073FC033ABD}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		SmoothTranscode.Shared.Forms\SmoothTranscode.Shared.Forms.projitems*{27416909-0c9e-4b91-b79c-16857a640137}*SharedItemsImports = 4
 		SmoothTranscode.Shared\SmoothTranscode.Shared.projitems*{27416909-0c9e-4b91-b79c-16857a640137}*SharedItemsImports = 4
 		SmoothTranscode.Shared\SmoothTranscode.Shared.projitems*{3317d35c-9582-4e4c-a2d1-413f3dd79a28}*SharedItemsImports = 13
+		SmoothTranscode.Shared.Forms\SmoothTranscode.Shared.Forms.projitems*{57dd1123-2ebb-444a-8e54-6073fc033abd}*SharedItemsImports = 13
+		SmoothTranscode.Shared.Forms\SmoothTranscode.Shared.Forms.projitems*{e1d49b9b-afcc-40cd-8034-eee3a3d07877}*SharedItemsImports = 5
 		SmoothTranscode.Shared\SmoothTranscode.Shared.projitems*{e1d49b9b-afcc-40cd-8034-eee3a3d07877}*SharedItemsImports = 5
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
