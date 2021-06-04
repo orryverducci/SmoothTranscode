@@ -1,4 +1,4 @@
-﻿using Microsoft.Maui;
+using Microsoft.Maui;
 using Microsoft.UI.Xaml;
 using Windows.ApplicationModel;
 
