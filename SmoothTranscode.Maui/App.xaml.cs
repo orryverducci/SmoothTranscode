@@ -1,8 +1,11 @@
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
+using Microsoft.Maui.Controls.Xaml;
 using Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;
 using Application = Microsoft.Maui.Controls.Application;
+using WindowsConfiguration = Microsoft.Maui.Controls.PlatformConfiguration.Windows;
 
+[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace SmoothTranscode.Maui
 {
     public partial class App : Application
@@ -14,12 +17,9 @@ namespace SmoothTranscode.Maui
 
         protected override IWindow CreateWindow(IActivationState activationState)
         {
-            Microsoft.Maui.Controls.Compatibility.Forms.Init(activationState);
+            On<WindowsConfiguration>().SetImageDirectory("Assets");
 
-            this.On<Microsoft.Maui.Controls.PlatformConfiguration.Windows>()
-                .SetImageDirectory("Assets");
-
-            return new Microsoft.Maui.Controls.Window(new UI.MainPage());
+            return new Window(new UI.MainPage());
         }
     }
 }
