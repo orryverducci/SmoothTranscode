@@ -11,7 +11,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<MauiImage Include="..\SmoothTranscode.Maui\Resources\appicon.svg" Link="Resources\appicon.svg" ForegroundFile="Resources\appiconfg.svg" IsAppIcon="true" Color="#512BD4" />
+		<MauiImage Include="..\SmoothTranscode.Maui\Resources\appicon.svg" Link="Resources\appicon.svg" ForegroundFile="..\SmoothTranscode.Maui\Resources\appiconfg.svg" IsAppIcon="true" Color="#512BD4" />
 		<MauiSplashScreen Include="..\SmoothTranscode.Maui\Resources\appiconfg.svg" Link="Resources\appiconfg.svg" Color="#512BD4" />
 		<MauiImage Include="..\SmoothTranscode.Maui\Resources\Images\*" Link="Resources\Images\%(Filename)%(Extension)" />
 	</ItemGroup>
