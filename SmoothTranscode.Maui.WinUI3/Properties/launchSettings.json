@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "WeatherTwentyOne.WinUI": {
+    "SmoothTranscode.Maui.WinUI": {
       "commandName": "AppContainer"
     }
   }
