@@ -5,4 +5,22 @@
              Title="SmoothTranscode"
              BackgroundColor="{DynamicResource PageBackgroundColor}">
 
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackLayout BackgroundColor="#E5E7EB" Orientation="Horizontal">
+            <Button Padding="20, 0" Text="Add File" Clicked="AddFileClicked" />
+            <Button Padding="20, 0" Text="Start Conversion" Clicked="StartConversionClicked" />
+        </StackLayout>
+
+    </Grid>
+
 </ContentPage>

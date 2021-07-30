@@ -13,5 +13,15 @@ namespace SmoothTranscode.Maui.UI
         /// Initialises a new instance of the <see cref="SmoothTranscode.Maui.UI.MainPage"/> class.
         /// </summary>
         public MainPage() => InitializeComponent();
+
+        async private void AddFileClicked(object sender, EventArgs args)
+        {
+            await DisplayAlert("Not Yet Implemented", "This feature has not yet been implemented", "OK");
+        }
+
+        async private void StartConversionClicked(object sender, EventArgs args)
+        {
+            await DisplayAlert("Not Yet Implemented", "This feature has not yet been implemented", "OK");
+        }
     }
 }
