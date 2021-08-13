@@ -7,7 +7,7 @@ namespace SmoothTranscode.Maui.UI
     /// <summary>
     /// The page containing the content of the main window.
     /// </summary>
-    public partial class MainPage : ContentPage, IPage
+    public partial class MainPage : ContentPage
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="SmoothTranscode.Maui.UI.MainPage"/> class.

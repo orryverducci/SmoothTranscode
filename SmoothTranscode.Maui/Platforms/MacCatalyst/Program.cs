@@ -11,6 +11,6 @@ namespace SmoothTranscode.Maui
         /// The entry point for the application.
         /// </summary>
         /// <param name="args">The command line arguments the application is launched with.</param>
-        static void Main(string[] args) => UIApplication.Main(args, null, "AppDelegate");
+        static void Main(string[] args) => UIApplication.Main(args, null, typeof(AppDelegate));
     }
 }
