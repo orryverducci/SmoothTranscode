@@ -21,6 +21,13 @@
             <Button Padding="20, 0" Text="Start Conversion" Clicked="StartConversionClicked" />
         </StackLayout>
 
+        <CollectionView Grid.Row="1" ItemsSource="{Binding JobQueue}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding Source.FileName}" BackgroundColor="#ECEFF1" Padding="20" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </Grid>
 
 </ContentPage>
