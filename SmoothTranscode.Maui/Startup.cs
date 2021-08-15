@@ -1,3 +1,4 @@
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui;
 using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Hosting;
@@ -9,7 +10,10 @@ namespace SmoothTranscode.Maui
         public void Configure(IAppHostBuilder appBuilder)
         {
             appBuilder
-                .UseMauiApp<App>();
+                .UseMauiApp<App>()
+                .ConfigureServices(services => {
+                    services.AddSingleton<EncodeManager>();
+                });
         }
     }
 }
