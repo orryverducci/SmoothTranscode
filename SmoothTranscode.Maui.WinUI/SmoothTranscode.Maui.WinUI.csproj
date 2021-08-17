@@ -21,6 +21,7 @@
 	<ItemGroup>
 		<Compile Include="..\SmoothTranscode.Maui\*.cs" Link="%(FileName)%(Extension)" />
 		<Compile Include="..\SmoothTranscode.Maui\UI\*.cs" Link="UI\%(FileName)%(Extension)" />
+		<Compile Include="..\SmoothTranscode.Maui\Services\*.cs" Link="Services\%(FileName)%(Extension)" />
 		<MauiXaml Include="..\SmoothTranscode.Maui\*.xaml" Link="%(FileName)%(Extension)" />
 		<MauiXaml Include="..\SmoothTranscode.Maui\UI\*.xaml" Link="UI\%(FileName)%(Extension)" />
 	</ItemGroup>
