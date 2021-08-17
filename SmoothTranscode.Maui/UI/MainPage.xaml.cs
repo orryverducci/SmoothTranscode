@@ -29,7 +29,7 @@ namespace SmoothTranscode.Maui.UI
             };
             IEnumerable<FileResult> files = await FilePicker.PickMultipleAsync(options);
 
-            foreach (var file in files)
+            foreach (FileResult file in files)
             {
                 _encodeManager.AddFile(file.FullPath);
             }
