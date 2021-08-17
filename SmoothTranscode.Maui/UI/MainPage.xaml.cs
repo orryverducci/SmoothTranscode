@@ -10,7 +10,7 @@ namespace SmoothTranscode.Maui.UI
     /// </summary>
     public partial class MainPage : ContentPage
     {
-        private EncodeManager _encodeManager = Services.ServiceProvider.GetService<EncodeManager>();
+        private readonly EncodeManager _encodeManager = Services.ServiceProvider.GetService<EncodeManager>();
 
         /// <summary>
         /// Initialises a new instance of the <see cref="SmoothTranscode.Maui.UI.MainPage"/> class.
