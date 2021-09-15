@@ -8,10 +8,10 @@
         <ResourceDictionary>
         
             <Color x:Key="PageBackgroundColor">White</Color>
-            <Color x:Key="PrimaryTextColor">#2c3e50</Color>
+            <Color x:Key="PrimaryColor">#2c3e50</Color>
 
             <Style TargetType="Label">
-                <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}" />
+                <Setter Property="TextColor" Value="{DynamicResource PrimaryColor}" />
             </Style>
 
         </ResourceDictionary>

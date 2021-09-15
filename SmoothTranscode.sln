@@ -39,8 +39,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmoothTranscode.Windows", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmoothTranscode.Maui", "SmoothTranscode.Maui\SmoothTranscode.Maui.csproj", "{EC9A5AFC-00DC-4E11-833B-14A62DC2D90B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmoothTranscode.Maui.WinUI", "SmoothTranscode.Maui.WinUI\SmoothTranscode.Maui.WinUI.csproj", "{951B74AC-6C2C-4108-A519-F8F466177F55}"
-EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SmoothTranscode.Shared.Forms", "SmoothTranscode.Shared.Forms\SmoothTranscode.Shared.Forms.shproj", "{57DD1123-2EBB-444A-8E54-6073FC033ABD}"
 EndProject
 Global
@@ -49,7 +47,6 @@ Global
 		SmoothTranscode.Shared\SmoothTranscode.Shared.projitems*{27416909-0c9e-4b91-b79c-16857a640137}*SharedItemsImports = 4
 		SmoothTranscode.Shared\SmoothTranscode.Shared.projitems*{3317d35c-9582-4e4c-a2d1-413f3dd79a28}*SharedItemsImports = 13
 		SmoothTranscode.Shared.Forms\SmoothTranscode.Shared.Forms.projitems*{57dd1123-2ebb-444a-8e54-6073fc033abd}*SharedItemsImports = 13
-		SmoothTranscode.Shared\SmoothTranscode.Shared.projitems*{951b74ac-6c2c-4108-a519-f8f466177f55}*SharedItemsImports = 5
 		SmoothTranscode.Shared.Forms\SmoothTranscode.Shared.Forms.projitems*{e1d49b9b-afcc-40cd-8034-eee3a3d07877}*SharedItemsImports = 5
 		SmoothTranscode.Shared\SmoothTranscode.Shared.projitems*{e1d49b9b-afcc-40cd-8034-eee3a3d07877}*SharedItemsImports = 5
 		SmoothTranscode.Shared\SmoothTranscode.Shared.projitems*{ec9a5afc-00dc-4e11-833b-14a62dc2d90b}*SharedItemsImports = 5
@@ -153,18 +150,6 @@ Global
 		{EC9A5AFC-00DC-4E11-833B-14A62DC2D90B}.Release|x86.ActiveCfg = Release|Any CPU
 		{EC9A5AFC-00DC-4E11-833B-14A62DC2D90B}.Release|x86.Build.0 = Release|Any CPU
 		{EC9A5AFC-00DC-4E11-833B-14A62DC2D90B}.Release|x86.Deploy.0 = Release|Any CPU
-		{951B74AC-6C2C-4108-A519-F8F466177F55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{951B74AC-6C2C-4108-A519-F8F466177F55}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{951B74AC-6C2C-4108-A519-F8F466177F55}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{951B74AC-6C2C-4108-A519-F8F466177F55}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{951B74AC-6C2C-4108-A519-F8F466177F55}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{951B74AC-6C2C-4108-A519-F8F466177F55}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{951B74AC-6C2C-4108-A519-F8F466177F55}.Debug|x86.Build.0 = Debug|Any CPU
-		{951B74AC-6C2C-4108-A519-F8F466177F55}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{951B74AC-6C2C-4108-A519-F8F466177F55}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{951B74AC-6C2C-4108-A519-F8F466177F55}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{951B74AC-6C2C-4108-A519-F8F466177F55}.Release|x86.ActiveCfg = Release|Any CPU
-		{951B74AC-6C2C-4108-A519-F8F466177F55}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

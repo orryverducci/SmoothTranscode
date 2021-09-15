@@ -7,7 +7,8 @@ namespace SmoothTranscode.Maui
     /// The application delegate.
     /// </summary>
     [Register("AppDelegate")]
-    public class AppDelegate : MauiUIApplicationDelegate<Startup>
+    public class AppDelegate : MauiUIApplicationDelegate
     {
+        protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
     }
 }
