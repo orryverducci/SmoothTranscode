@@ -11,10 +11,8 @@
 		<AssemblyName>SmoothTranscode</AssemblyName>
 		<ApplicationTitle>SmoothTranscode</ApplicationTitle>
 		<ApplicationId>uk.co.orryverducci.SmoothTranscode</ApplicationId>
-		<ApplicationVersion>1.0</ApplicationVersion>
-		<AndroidVersionCode>1</AndroidVersionCode>
+		<ApplicationVersion>1</ApplicationVersion>
 		<UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
-		<RuntimeIdentifier Condition="$(TargetFramework.Contains('-windows'))">win-x64</RuntimeIdentifier>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
@@ -29,10 +27,11 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
-		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0-experimental1" />
-		<PackageReference Include="Microsoft.WindowsAppSDK.Foundation" Version="1.0.0-experimental1" />
-		<PackageReference Include="Microsoft.WindowsAppSDK.WinUI" Version="1.0.0-experimental1" />
-		<PackageReference Include="Microsoft.WindowsAppSDK.InteractiveExperiences" Version="1.0.0-experimental1" NoWarn="NU1701" />
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0-preview2" />
+		<PackageReference Include="Microsoft.WindowsAppSDK.Foundation" Version="1.0.0-preview2" />
+		<PackageReference Include="Microsoft.WindowsAppSDK.WinUI" Version="1.0.0-preview2" />
+		<PackageReference Include="Microsoft.WindowsAppSDK.InteractiveExperiences" Version="1.0.0-preview2" NoWarn="NU1701" />
+		<PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.0.27-preview1" />
 	</ItemGroup>
 
 	<Import Project="..\SmoothTranscode.Shared\SmoothTranscode.Shared.projitems" Label="Shared" />
