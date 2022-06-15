@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31220.234
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32611.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmoothTranscode", "SmoothTranscode\SmoothTranscode.csproj", "{2BE418FC-333A-4726-9A38-B5A456D222B7}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -42,15 +42,6 @@ EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SmoothTranscode.Shared.Forms", "SmoothTranscode.Shared.Forms\SmoothTranscode.Shared.Forms.shproj", "{57DD1123-2EBB-444A-8E54-6073FC033ABD}"
 EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		SmoothTranscode.Shared.Forms\SmoothTranscode.Shared.Forms.projitems*{27416909-0c9e-4b91-b79c-16857a640137}*SharedItemsImports = 4
-		SmoothTranscode.Shared\SmoothTranscode.Shared.projitems*{27416909-0c9e-4b91-b79c-16857a640137}*SharedItemsImports = 4
-		SmoothTranscode.Shared\SmoothTranscode.Shared.projitems*{3317d35c-9582-4e4c-a2d1-413f3dd79a28}*SharedItemsImports = 13
-		SmoothTranscode.Shared.Forms\SmoothTranscode.Shared.Forms.projitems*{57dd1123-2ebb-444a-8e54-6073fc033abd}*SharedItemsImports = 13
-		SmoothTranscode.Shared.Forms\SmoothTranscode.Shared.Forms.projitems*{e1d49b9b-afcc-40cd-8034-eee3a3d07877}*SharedItemsImports = 5
-		SmoothTranscode.Shared\SmoothTranscode.Shared.projitems*{e1d49b9b-afcc-40cd-8034-eee3a3d07877}*SharedItemsImports = 5
-		SmoothTranscode.Shared\SmoothTranscode.Shared.projitems*{ec9a5afc-00dc-4e11-833b-14a62dc2d90b}*SharedItemsImports = 5
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -139,6 +130,7 @@ Global
 		{EC9A5AFC-00DC-4E11-833B-14A62DC2D90B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{EC9A5AFC-00DC-4E11-833B-14A62DC2D90B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{EC9A5AFC-00DC-4E11-833B-14A62DC2D90B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{EC9A5AFC-00DC-4E11-833B-14A62DC2D90B}.Debug|Mixed Platforms.Deploy.0 = Debug|Any CPU
 		{EC9A5AFC-00DC-4E11-833B-14A62DC2D90B}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{EC9A5AFC-00DC-4E11-833B-14A62DC2D90B}.Debug|x86.Build.0 = Debug|Any CPU
 		{EC9A5AFC-00DC-4E11-833B-14A62DC2D90B}.Debug|x86.Deploy.0 = Debug|Any CPU
@@ -156,5 +148,14 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BAD27C76-DF57-4324-8AEF-CBA9629CC29C}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		SmoothTranscode.Shared.Forms\SmoothTranscode.Shared.Forms.projitems*{27416909-0c9e-4b91-b79c-16857a640137}*SharedItemsImports = 4
+		SmoothTranscode.Shared\SmoothTranscode.Shared.projitems*{27416909-0c9e-4b91-b79c-16857a640137}*SharedItemsImports = 4
+		SmoothTranscode.Shared\SmoothTranscode.Shared.projitems*{3317d35c-9582-4e4c-a2d1-413f3dd79a28}*SharedItemsImports = 13
+		SmoothTranscode.Shared.Forms\SmoothTranscode.Shared.Forms.projitems*{57dd1123-2ebb-444a-8e54-6073fc033abd}*SharedItemsImports = 13
+		SmoothTranscode.Shared.Forms\SmoothTranscode.Shared.Forms.projitems*{e1d49b9b-afcc-40cd-8034-eee3a3d07877}*SharedItemsImports = 5
+		SmoothTranscode.Shared\SmoothTranscode.Shared.projitems*{e1d49b9b-afcc-40cd-8034-eee3a3d07877}*SharedItemsImports = 5
+		SmoothTranscode.Shared\SmoothTranscode.Shared.projitems*{ec9a5afc-00dc-4e11-833b-14a62dc2d90b}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal
