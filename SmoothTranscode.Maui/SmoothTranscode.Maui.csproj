@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net6.0-ios;net6.0-android;net6.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) and '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net6.0-windows10.0.19041</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net6.0-windows10.0.19041</TargetFrameworks>
 		<OutputType>Exe</OutputType>
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
@@ -11,6 +11,7 @@
 		<AssemblyName>SmoothTranscode</AssemblyName>
 		<ApplicationTitle>SmoothTranscode</ApplicationTitle>
 		<ApplicationId>uk.co.orryverducci.SmoothTranscode</ApplicationId>
+    <ApplicationIdGuid>7412df65-df8b-4d39-bca4-6120b4b28bcd</ApplicationIdGuid>
 		<ApplicationVersion>1</ApplicationVersion>
 		<UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
 		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-ios'">14.2</SupportedOSPlatformVersion>
@@ -29,11 +30,6 @@
 		<MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg.svg" Color="#512BD4" />
 		<MauiSplashScreen Include="Resources\appiconfg.svg" Color="#512BD4" />
 		<MauiImage Include="Resources\Images\*" />
-	</ItemGroup>
-
-	<ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
-		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0" />
-		<PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.0.30" />
 	</ItemGroup>
 
 	<Import Project="..\SmoothTranscode.Shared\SmoothTranscode.Shared.projitems" Label="Shared" />
