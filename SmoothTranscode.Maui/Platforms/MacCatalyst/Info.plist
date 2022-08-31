@@ -7,8 +7,6 @@
 		<integer>1</integer>
 		<integer>2</integer>
 	</array>
-	<key>XSAppIconAssets</key>
-	<string>Assets.xcassets/appicon.appiconset</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>arm64</string>
@@ -26,22 +24,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>UIApplicationSceneManifest</key>
-    <dict>
-	    <key>UIApplicationSupportsMultipleScenes</key>
-	    <true/>
-	    <key>UISceneConfigurations</key>
-	    <dict>
-		    <key>UIWindowSceneSessionRoleApplication</key>
-		    <array>
-			    <dict>
-				    <key>UISceneConfigurationName</key>
-				    <string>__MAUI_DEFAULT_SCENE_CONFIGURATION__</string>
-				    <key>UISceneDelegateClassName</key>
-				    <string>SceneDelegate</string>
-			    </dict>
-		    </array>
-	    </dict>
-    </dict>
+	<key>XSAppIconAssets</key>
+	<string>Assets.xcassets/appicon.appiconset</string>
 </dict>
 </plist>

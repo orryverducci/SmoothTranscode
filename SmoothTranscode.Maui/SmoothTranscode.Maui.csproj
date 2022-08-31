@@ -6,30 +6,36 @@
 		<OutputType>Exe</OutputType>
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
-		<EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
 		<RootNamespace>SmoothTranscode.Maui</RootNamespace>
 		<AssemblyName>SmoothTranscode</AssemblyName>
+
+		<!-- Display name -->
 		<ApplicationTitle>SmoothTranscode</ApplicationTitle>
+
+		<!-- App Identifier -->
 		<ApplicationId>uk.co.orryverducci.SmoothTranscode</ApplicationId>
     <ApplicationIdGuid>7412df65-df8b-4d39-bca4-6120b4b28bcd</ApplicationIdGuid>
-		<ApplicationVersion>1</ApplicationVersion>
-		<UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
-		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-ios'">14.2</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-maccatalyst'">14.0</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-android'">21.0</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</SupportedOSPlatformVersion>
-		<TargetPlatformMinVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</TargetPlatformMinVersion>
-	</PropertyGroup>
 
-	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
-		<OutputType>WinExe</OutputType>
-		<RuntimeIdentifier>win10-x64</RuntimeIdentifier>
+		<!-- App Version -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<!-- PlatformVersions -->
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg.svg" Color="#512BD4" />
 		<MauiSplashScreen Include="Resources\appiconfg.svg" Color="#512BD4" />
 		<MauiImage Include="Resources\Images\*" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="6.0.0" />
 	</ItemGroup>
 
 	<Import Project="..\SmoothTranscode.Shared\SmoothTranscode.Shared.projitems" Label="Shared" />
