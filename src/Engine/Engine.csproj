@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <RootNamespace>SmoothTranscode.Engine</RootNamespace>
+        <AssemblyTitle>Transcode Engine</AssemblyTitle>
+        <Description>Provides the ability to transcode media files</Description>
+        <Product>SmoothTranscode</Product>
+    </PropertyGroup>
+
+</Project>
